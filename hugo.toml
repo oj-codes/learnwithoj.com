@@ -1,0 +1,4 @@
+baseURL = 'https://learnwithoj.com/'
+languageCode = 'en-us'
+title = 'Learn with O.J.'
+theme = 'm10c'
