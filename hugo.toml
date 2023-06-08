@@ -6,6 +6,9 @@ googleAnalytics = 'G-KRPFDW123M'
 disqusShortname = 'learn-with-o-j'
 paginate = 8
 
+[permalinks]
+  posts = '/posts/:year/:month/:title/'
+
 [menu]
   [[menu.main]]
     identifier = "home"
