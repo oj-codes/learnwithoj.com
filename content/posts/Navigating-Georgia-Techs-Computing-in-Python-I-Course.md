@@ -1,6 +1,6 @@
 ---
 title: "Navigating Georgia Tech's Computing in Python I Course"
-date: 2023-06-01T20:50:00-04:00
+date: 2023-06-07T20:50:00-04:00
 draft: false
 ---
 
