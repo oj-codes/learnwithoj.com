@@ -2,7 +2,7 @@ baseURL = 'https://learnwithoj.com/'
 languageCode = 'en-us'
 title = 'Learn with O.J.'
 theme = 'm10c'
-googleAnalytics='G-JGNPWEYKM8'
+googleAnalytics='G-KRPFDW123M'
 paginate = 8
 
 [menu]
