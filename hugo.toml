@@ -2,3 +2,34 @@ baseURL = 'https://learnwithoj.com/'
 languageCode = 'en-us'
 title = 'Learn with O.J.'
 theme = 'm10c'
+paginate = 8
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 2
+
+[params]
+author = 'O.J.'
+description = "Welcome to my byte-sized sanctuary in the tech cosmos where I, O.J. (not a citrusy beverage, mind you), demystify tech jargon through tales of my own tech triumphs and tribulations."
+avatar = "smiling-amex-avatar.jpg"
+menu_item_separator = " - "
+  [[params.social]]
+    icon = "github"
+    name = "Github"
+    url = "https://github.com/oj-codes"
+  [[params.social]]
+    icon = "twitter"
+    name = "Twitter"
+    url = "https://twitter.com/ojcodes"
+  [[params.social]]
+    icon = "linkedin"
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/ojcodes"
