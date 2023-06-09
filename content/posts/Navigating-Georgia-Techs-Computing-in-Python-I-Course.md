@@ -33,3 +33,12 @@ It emphasizes problem-solving and computational thinking, equipping students wit
 ### Course Content – Here’s the Meat
 
 I’m currently enrolled in this course and will update this post with more information as I make my way through each module.
+
+#### Chapter 1.1: Computing Takeaways
+
+The main goal of this course is not only to teach you the mechanics of writing code but also to immerse you in a vibrant community that speaks the language of code. This chapter goes over basic terminology and concepts like Input and Output, Compiling and Running, and Command-line vs GUI. Learning programming is akin to learning a new language – it's about grasping the grammar, syntax, and nuances of communication. 
+
+Python being an interpreted language means that errors may lie dormant until we bravely attempt to run our code. It's like discovering hidden landmines while venturing through uncharted territory. This flexibility also allows for rapid development and experimentation.
+
+We also learn that programming principles are remarkably transferable. Diving into your second language becomes significantly easier once you've grasped the fundamentals of your first one. This chapter compares Python to some other languages to give you a broad view of the programming language landscape. 
+
