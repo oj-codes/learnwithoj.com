@@ -12,7 +12,9 @@ draft: false
 ---
 In my early days of learning Python, I thought it was all about mastering syntax and memorizing commands. Then, I encountered my first bug - a misplaced colon that turned my elegant code into gibberish. I soon realized that Python isn't just a language; it's a test of patience, a humbling journey where a tiny punctuation mark can wield immense power!
 
-Thankfully Georgia Tech released a free beginner-friendly course that unpacks Python programming in a digestible and engaging way: [Computing in Python I: Fundamentals and Procedural Programming](https://www.edx.org/course/computing-in-python-i-fundamentals-and-procedural). This course not only introduces students to Python syntax and procedural programming, but also fosters computational thinking and problem-solving skills, vital tools for any budding programmer.
+Thankfully Georgia Tech released a free beginner-friendly series of courses that unpacks Python programming in a digestible and engaging way: [Introduction to Python Programming](https://www.edx.org/professional-certificate/introduction-to-python-programming). 
+
+This post will go over the first course in the series called [Computing in Python I: Fundamentals and Procedural Programming](https://www.edx.org/course/computing-in-python-i-fundamentals-and-procedural). It not only introduces students to Python syntax and procedural programming, but also fosters computational thinking and problem-solving skills, vital tools for any budding programmer.
 
 ### Python Why Bother?
 
