@@ -3,12 +3,18 @@ title: "Navigating Georgia Tech's Computing in Python I Course"
 date: 2023-06-07T20:50:00-04:00
 draft: false
 ---
+* [Python Why Bother?](#python-why-bother)
+* [What is Procedural Programming?](#what-is-procedural-programming)
+* [Delving into the Course](#delving-into-the-course)
+* [Course Content](#course-content)
+   * [Chapter 1.1: Computing Takeaways](#chapter-11-computing-takeaways)
 
+---
 In my early days of learning Python, I thought it was all about mastering syntax and memorizing commands. Then, I encountered my first bug - a misplaced colon that turned my elegant code into gibberish. I soon realized that Python isn't just a language; it's a test of patience, a humbling journey where a tiny punctuation mark can wield immense power!
 
 Thankfully Georgia Tech released a free beginner-friendly course that unpacks Python programming in a digestible and engaging way: [Computing in Python I: Fundamentals and Procedural Programming](https://www.edx.org/course/computing-in-python-i-fundamentals-and-procedural). This course not only introduces students to Python syntax and procedural programming, but also fosters computational thinking and problem-solving skills, vital tools for any budding programmer.
 
-### Python – Why Bother?
+### Python Why Bother?
 
 Python is often hailed as the Swiss Army Knife of programming languages, thanks to its ability to tackle almost any task in the tech world. Its popularity stems from its simplicity, readability, and vast standard library. Whether you're developing a web application, analyzing data, automating tasks, or venturing into artificial intelligence, Python is ready to lend a hand.
 
@@ -16,7 +22,7 @@ Don't be fooled, Python's name isn't inspired by the slithering reptile but by t
 
 Python, with its clean syntax and English-like commands, is like the friendly neighbor of programming languages, always there to ease newcomers into the coding world. Its emphasis on readability reduces the learning curve, making it less about wrestling with complex syntax and more about learning to think like a programmer. Plus, Python's wide application across diverse fields offers a gratifying sense of "coding something useful" right from the get-go!
 
-### What is Procedural Programming? And Should I be Afraid of It?
+### What is Procedural Programming?
 
 Procedural programming is like a cooking recipe for your computer; it's a coding approach based on step-by-step instructions. You divide your program into procedures, also known as functions or routines, that each perform a specific task. For instance, in a coffee machine program, you might have procedures for adding water, heating up, adding coffee, and pouring into a cup. This 'do this, then this, and then that' approach makes your code easy to read, debug, and maintain.
 
@@ -30,7 +36,7 @@ Georgia Tech's Computing in Python I: Fundamentals and Procedural Programming is
 
 It emphasizes problem-solving and computational thinking, equipping students with invaluable skills. They learn to approach challenges like detectives, breaking them down into smaller, manageable pieces and creatively solving them using the tools Python provides. It's like being handed a magnifying glass and a detective hat, ready to tackle coding mysteries and unravel the secrets of elegant solutions.
 
-### Course Content – Here’s the Meat
+### Course Content
 
 I’m currently enrolled in this course and will update this post with more information as I make my way through each module.
 
