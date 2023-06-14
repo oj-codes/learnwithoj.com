@@ -3,13 +3,20 @@ title: "Navigating Georgia Tech's Computing in Python I Course"
 date: 2023-06-07T20:50:00-04:00
 draft: false
 ---
+![Georgia Tech's Computing in Python I Course](/gt-python-1/gtintroimage.jpg)
+
+
 * [Python Why Bother?](#python-why-bother)
 * [What is Procedural Programming?](#what-is-procedural-programming)
 * [Delving into the Course](#delving-into-the-course)
 * [Course Content](#course-content)
-   * [Chapter 1.1: Computing Takeaways](#chapter-11-computing-takeaways)
+   * [Chapter 1.1: Computing](#chapter-11-computing)
+   * [Chapter 1.2: Programming](#chapter-12-programming)
+
 
 ---
+*edited June 14, 2023*
+
 In my early days of learning Python, I thought it was all about mastering syntax and memorizing commands. Then, I encountered my first bug - a misplaced colon that turned my elegant code into gibberish. I soon realized that Python isn't just a language; it's a test of patience, a humbling journey where a tiny punctuation mark can wield immense power!
 
 Thankfully Georgia Tech released a free beginner-friendly series of courses that unpacks Python programming in a digestible and engaging way: [Introduction to Python Programming](https://www.edx.org/professional-certificate/introduction-to-python-programming). 
@@ -42,7 +49,7 @@ It emphasizes problem-solving and computational thinking, equipping students wit
 
 I’m currently enrolled in this course and will update this post with more information as I make my way through each module.
 
-#### Chapter 1.1: Computing Takeaways
+#### Chapter 1.1: Computing
 
 The main goal of this course is not only to teach you the mechanics of writing code but also to immerse you in a vibrant community that speaks the language of code. This chapter goes over basic terminology and concepts like Input and Output, Compiling and Running, and Command-line vs GUI. Learning programming is akin to learning a new language – it's about grasping the grammar, syntax, and nuances of communication. 
 
@@ -50,3 +57,14 @@ Python being an interpreted language means that errors may lie dormant until we 
 
 We learn that programming principles are remarkably transferable. Diving into your second language becomes significantly easier once you've grasped the fundamentals of your first one. This chapter compares Python to some other languages to give you a broad view of the programming language landscape. 
 
+#### Chapter 1.2: Programming
+
+![The Programming Flow](/gt-python-1/Slide11.png)
+
+In this chapter we learn that programming is a lively tango, an iterative process where you write, test, and revise your code. Imagine your first tryst with Python being as simple as saying "hello world". Through the classic print statement, you make the computer echo your greeting back to you, and voila! You've written your first program. But don't be fooled, the journey has just begun.
+
+Learning programming isn't about dashing off an entire epic in one go. You wouldn't guzzle down a whole feast without tasting it, would you? Likewise, you wouldn't complete a Picasso masterpiece without taking a step back, squinting your eyes, and evaluating your progress. In programming, we adopt the same philosophy, preferring to mold our creations bit by bit, testing, and retesting every morsel of code to ensure it's cooked to perfection.
+
+But not all coding languages are built the same, and this chapter unravels the intriguing differences between static (compiled) and dynamic (interpreted) languages. Think of static languages as that meticulous chef who prepares everything beforehand, making sure each ingredient is just right. On the other hand, dynamic languages prefer to season the dish as it's cooking, allowing for spontaneous flavor adjustments along the way.
+
+Errors in your code? Don't sweat it. They're more common than spilled coffee in a bustling café. Much like a good detective novel, you'll learn how to look for the signs, understand the clues, and solve the mysteries of these digital misdemeanors. More techniques for dealing with errors are covered in the next chapter on debugging.
