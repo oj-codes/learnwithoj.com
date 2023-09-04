@@ -8,7 +8,7 @@ Hello there, future networking ninja! 🥷
 
 Ever heard of the CompTIA Network+ certification? If not, think of it as your golden ticket into the Willy Wonka factory of networking. It's an IT certification that vouches for your skills to design, manage, and troubleshoot any wired and wireless devices.
 
-Why get it? Well, aside from flaunting a shiny new certification on your resume, it's a magnet for employers and a huge confidence booster. It also counts as college credit for WGU’s Bachelors in Computer Science.
+Why get it? Well, aside from flaunting a shiny new certification on your resume, it's a magnet for employers and a huge confidence booster. It also counts as college credit for (WGU’s Bachelors in Computer Science)[https://www.wgu.edu/online-it-degrees/computer-science.html].
 
 This article will cover what the exam is all about, how to prepare for and take the exam, and what to do afterwards. We're here to be your Virgil through the Divine Comedy of CompTIA Network+. Less inferno, more paradise!
 
