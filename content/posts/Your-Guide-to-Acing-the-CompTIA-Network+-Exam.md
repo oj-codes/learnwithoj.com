@@ -43,7 +43,9 @@ Once you've earned your shiny Network+ badge, what next? Consider specializing f
 ### Conclusion
 To wrap up, the CompTIA Network+ certification isn’t just another feather in your cap. It's a rocket booster for your IT career.
 
-If you're on the fence about taking the leap, remember: every expert was once a beginner. With determination and the right resources (like this guide!), you’re set to ace the Network+ exam. Godspeed, future network ninja!
+If you're on the fence about taking the leap, remember: every expert was once a beginner. With determination and the right resources (like this guide!), you’re set to ace the Network+ exam. 
+
+Godspeed, future network ninja!
 
 
 
