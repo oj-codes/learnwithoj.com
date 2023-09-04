@@ -27,7 +27,7 @@ There are loads of study materials, official study guides, online courses, and t
 Consistency is key. Schedule regular study sessions, join a study group, and practice with mock exams until they feel like second nature.
 
 ### Taking the Exam
-Registration is a breeze. Head to the CompTIA website, select the Network+ exam, and pay the fee. Your exam journey has officially begun!
+Registration is a breeze. Head to the CompTIA website, create an account, schedule the exam, and pay the fee. For more information visit (this page)[https://partners.comptia.org/how-to/register-for-an-exam]. Your exam journey has officially begun!
 
 On the big day, get a good night’s sleep, eat a hearty breakfast, and arrive early. Remember, the early bird gets the networking worm.
 
