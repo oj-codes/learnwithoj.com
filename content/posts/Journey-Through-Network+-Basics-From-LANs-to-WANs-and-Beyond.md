@@ -3,6 +3,9 @@ title: "Journey Through Network+ Basics: From LANs to WANs and Beyond"
 date: 2023-09-11T18:29:54-04:00
 draft: false
 ---
+![Cars on Road in City during Night Time](/pexels/pexels-kehn-hermano-3849167.jpg)
+
+
 Hello, tech-savvy reader! Ready to unravel the mysteries of the networking realm? Grab your virtual ethernet cable and join me on a journey through the basics of networks. Let's jump right in!
 
 ### 1. The Usual Suspects: Network Components

@@ -3,6 +3,8 @@ title: "Your Guide to Acing the CompTIA Network+ Exam"
 date: 2023-09-04T13:47:13-04:00
 draft: false
 ---
+![Software Engineer Standing Beside Server Racks](/pexels/pexels-christina-morillo-1181354.jpg)
+
 
 Hello there, future networking ninja! 🥷
 
