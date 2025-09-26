@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Learn with O.J.">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="/img/posts/bg-calculus-1-overview.png">
+    <meta property="twitter:image" content="/img/posts/bg-calculus-1-overview.png" />
+    
+
+    
+    <meta name="title" content="Calculus 1 Overview" />
+    <meta property="og:title" content="Calculus 1 Overview" />
+    <meta property="twitter:title" content="Calculus 1 Overview" />
+    
+
+    
+    <meta name="description" content="Tour of Calculus I (limits, derivatives, integrals) explained in everyday language. See how “rate of change” and “total over time” show up in real life and SRE work.">
+    <meta property="og:description" content="Tour of Calculus I (limits, derivatives, integrals) explained in everyday language. See how “rate of change” and “total over time” show up in real life and SRE work." />
+    <meta property="twitter:description" content="Tour of Calculus I (limits, derivatives, integrals) explained in everyday language. See how “rate of change” and “total over time” show up in real life and SRE work." />
+    
+
+    <meta property="og:url" content="http://localhost:1313/2025/09/25/calculus-1-overview/" />
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="learn computer science, CS study guide, discrete math tutorial, data structures and algorithms, Java fundamentals, linux essentials, network fundamentals, version control git, computer architecture basics">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Calculus 1 Overview | Learn with O.J.</title>
+
+    <link rel="canonical" href="/2025/09/25/calculus-1-overview/">
+
+    
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.min.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRPFDW123M"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-KRPFDW123M');
+        }
+      </script>
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Learn with O.J.</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/math/">math</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/about//">ABOUT</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/posts/bg-calculus-1-overview.png')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/math" title="Math">
+                            Math
+                        </a>
+                        
+                        <a class="tag" href="/tags/calculus-1" title="Calculus 1">
+                            Calculus 1
+                        </a>
+                        
+                    </div>
+                    <h1>Calculus 1 Overview</h1>
+                    <h2 class="subheading">A gentle start to the math behind reliable systems</h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                O.J. Wilcox
+                             
+                            on 
+                            Thursday, September 25, 2025
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h2 id="calculus-1-overview">Calculus 1 Overview</h2>
+<p>Calculus is the toolkit we use to talk about two things:</p>
+<ol>
+<li>How fast something is changing right now</li>
+<li>How much has piled up over time</li>
+</ol>
+<p>That’s it. In SRE terms: “Is this metric spiking this second?” and “How much total impact did we take this hour?”</p>
+<p>More formally, Calculus is the math of change and accumulation. In day-to-day engineering, and especially in SRE, you constantly estimate rates (error growth, QPS spikes), optimize configurations (cost vs. latency), and reason about cumulative effects (downtime minutes, p95 tails). Calculus gives you the formal tools for those instincts: limits (what happens as we approach something), derivatives (how fast it’s changing), and integrals (how much has accumulated).</p>
+<p>Below I’ll walk through the Sophia Learning Calculus I unit map and connect each topic to practical, real-world and SRE-flavored examples.</p>
+<hr>
+<h3 id="unit-1-a-quick-pre-calculus-refresh">Unit 1: A quick pre-calculus refresh</h3>
+<p>You’ll warm up with lines, basic functions, and how graphs behave.</p>
+<p><strong>Lines:</strong> A line has a “steepness.” Think of it as “how much does the y-value go up when x goes up a little.”</p>
+<ul>
+<li>SRE tie-in: During a rollout, if the error line is steep, things are getting worse quickly → consider rollback.</li>
+<li>Everyday: Your gas bill rising at a steady rate month over month is a “line” story.</li>
+</ul>
+<p><strong>Functions &amp; graphs:</strong> A function is just a rule: put in x, get out y. Some go up, some go down, some level off.</p>
+<ul>
+<li>SRE: “Latency as we add more pods” is a function. It improves at first, then hits a wall. Recognizing the shape matters.</li>
+<li>Everyday: Body temp over 24 hours has a repeating “wave” shape.</li>
+</ul>
+<p><strong>Combining functions:</strong> Big systems are made of smaller pieces.</p>
+<ul>
+<li>SRE: “Total request time = parse + call service A + call service B.” If one part slows, the whole thing slows.</li>
+<li>Everyday: “Trip time = drive to airport + security + flight.”</li>
+</ul>
+<hr>
+<h3 id="unit-2-limits--continuity-getting-instant-without-zooming-forever">Unit 2: Limits &amp; continuity (getting “instant” without zooming forever)</h3>
+<p>A limit is just “what value we’re heading toward” as we zoom in closer and closer.</p>
+<p><strong>Instant vs. average:</strong> The speed on your speedometer = “instant now.” Your trip’s miles per hour at the end = “average.” Calculus is how we move from the average to the instant.</p>
+<ul>
+<li>SRE: A 5-minute average error rate can look fine while you’re actually getting hammered this second. Limits help us focus on “right now.”</li>
+</ul>
+<p><strong>Continuity (no sudden jumps):</strong> If tiny input changes cause tiny output changes, the graph is “smooth.”</p>
+<ul>
+<li>SRE: SLO burn rate should move smoothly as load changes. Sudden jumps often mean a broken counter or data glitch.</li>
+<li>Everyday: Room temperature shouldn’t jump 10° in one second unless something weird happened.</li>
+</ul>
+<p><strong>When limits don’t behave:</strong> Sometimes a graph wiggles wildly or blows up. That means “no well-behaved limit.”</p>
+<ul>
+<li>SRE: During a canary, if the metric near deploy time is chaotic, don’t fit a clean model yet—stabilize first.</li>
+</ul>
+<hr>
+<h3 id="unit-3-derivatives-rate-of-change-right-now">Unit 3: Derivatives (rate of change, right now)</h3>
+<p>A derivative is a fancy word for “how fast is this changing at this exact moment.”</p>
+<p><strong>Why it matters:</strong></p>
+<ul>
+<li>SRE: If traffic is climbing fast, autoscaling needs to react before you hit the wall. Watching the rate of increase beats just watching the level.</li>
+<li>Everyday: Baking bread? The dough rises slowly at first, then faster, then slows again. The “right-now rise” is the derivative.</li>
+</ul>
+<p><strong>Rules without the math soup:</strong> You’ll learn quick ways to get “rate of change” for common shapes—straight lines, curves that look like hills, curves that grow quickly, etc.</p>
+<ul>
+<li>SRE: These shortcuts let you answer “what’s the marginal cost/benefit of one more instance?” without a full simulation.
+**
+<strong>Chained effects (the “because-of” rule):</strong> If A depends on B, and B depends on C, then a nudge to C nudges A.</li>
+<li>SRE: If latency depends on queue length, and queue length depends on arrival rate, then “arrival rate → latency” is the product of those sensitivities. Great for capacity planning conversations.</li>
+</ul>
+<p><strong>Quick estimates (linear approximation):</strong> Near your current point, most curves behave almost like a straight line.</p>
+<ul>
+<li>SRE: “If we add ~40 RPS, expect p95 to creep up by about X.” Fast, back-of-the-envelope reasoning during an incident.</li>
+</ul>
+<p><strong>Implicit/log “tricks”:</strong> Sometimes relationships aren’t neatly solved for “y = …”. You’ll learn friendly ways to deal with “the pieces all multiply together” kinds of formulas.</p>
+<ul>
+<li>SRE: Throughput-latency tradeoffs often live in this world.</li>
+</ul>
+<hr>
+<h3 id="unit-4-what-we-can-do-with-derivatives">Unit 4: What we can do with derivatives</h3>
+<p>Once you know “change right now,” you can find best/worst points, sketch shapes, and compare growth.</p>
+<p><strong>Highs &amp; lows (extremes):</strong> Where does a graph peak or bottom out?</p>
+<ul>
+<li>SRE: Find the sweet spot where cost + reliability penalty is minimized. Not too many replicas, not too few.</li>
+</ul>
+<p><strong>Mean Value Theorem (plain talk version):</strong> If you went from point A to B, then at some moment your “instant speed” matched your overall average.</p>
+<ul>
+<li>SRE: If errors climbed from 0.1% to 1.1% in 10 minutes, there was a moment where the “right-now increase” equaled that average climb. Helpful for narrowing down “when did it get bad?”</li>
+</ul>
+<p>Graph shape from first &amp; second looks:</p>
+<ul>
+<li>Looking at the first “change” tells you whether the graph is going up or down.</li>
+<li>Looking at how that “change” itself is changing tells you if improvements are speeding up or slowing down.</li>
+<li>SRE: Diminishing returns show up as “improvements slowing down” as you scale.</li>
+</ul>
+<p><strong>End behavior (asymptotes):</strong> What happens far out? Do we flatten out to a floor or ceiling?</p>
+<ul>
+<li>SRE: There’s often a best-case latency you can’t beat without a design change. Knowing that “floor” saves time.</li>
+</ul>
+<p><strong>L’Hôpital’s rule (growth face-offs):</strong> When two quantities both head to zero or both blow up, this is a clean way to compare “who wins.”</p>
+<ul>
+<li>SRE: Useful for sanity-checking which cost/latency factor will dominate at scale.</li>
+</ul>
+<hr>
+<h3 id="unit-5-integration-total-over-time">Unit 5: Integration (total over time)</h3>
+<p>Integration is about adding up lots of tiny pieces to get a whole.</p>
+<p><strong>Area as “accumulation”:</strong> Imagine chopping time into tiny slices and adding up “value × time.”</p>
+<ul>
+<li>SRE: Total downtime minutes is the area under your “unavailable = 1, available = 0” curve. A short, severe outage can outweigh a long, mild one.</li>
+</ul>
+<p><strong>Definite integrals (start to finish):</strong> “From 2pm to 3pm, how much did we accumulate?”</p>
+<ul>
+<li>SRE: Add up request rate over a day to get total requests. Billing, forecasting, and audits all live here.</li>
+<li>Everyday: Water usage over a shower: flow rate × minutes.</li>
+</ul>
+<p><strong>Antiderivatives (undoing “rate”):</strong> If you know how fast something changes at each moment, you can “add it up” to get the original quantity.</p>
+<ul>
+<li>SRE: If you have a curve for “how quickly errors are rising,” you can recover “total error rate” over the window and compare rollback options.</li>
+</ul>
+<p><strong>Fundamental connection:</strong> “Instant change” and “total over time” are two sides of the same coin. Change the time window and you change what you’re sensitive to: short windows catch spikes; long windows capture overall impact.</p>
+<hr>
+<h2 id="how-ill-learn-and-share-this">How I’ll learn (and share) this</h2>
+<ul>
+<li><strong>Start simple:</strong> I’ll explain the idea in plain words first.</li>
+<li><strong>Show the behavior:</strong> A quick sketch or tiny code snippet to make it visual.</li>
+<li><strong>Make it practical:</strong> Each post ends with a tiny checklist or calculator you can use during real work (“Is this a spike or noise?”, “What’s the marginal impact if we add capacity?”).</li>
+<li><strong>Keep it honest:</strong> If something tripped me up, I’ll show the version that finally clicked.</li>
+</ul>
+<hr>
+<h2 id="tldr">TL;DR</h2>
+<p><strong>Derivative</strong> = “right-now change.” Great for spikes, alerts, and sensitivity.</p>
+<p><strong>Integral</strong> = “total accumulated.” Great for downtime, cost, and volume.</p>
+<p>Calculus helps you see both the moment-to-moment behavior and the big picture.</p>
+
+
+                
+
+                
+
+                
+<script src="https://giscus.app/client.js"
+        data-repo="oj-codes/learnwithoj.com"
+        data-repo-id="R_kgDOJgmcSQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOJgmcSc4Cv54M"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">OUTLINE</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="mailto:ojcodes@protonmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/oj-codes">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/ojcodes">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Learn with O.J." >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Learn with O.J. 2025
+                    
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow" title="' + t + '">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

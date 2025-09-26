@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Math on Learn with O.J.</title>
+    <link>http://localhost:1313/categories/math/</link>
+    <description>Recent content in Math on Learn with O.J.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 25 Sep 2025 12:00:00 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Calculus 1 Overview</title>
+      <link>http://localhost:1313/2025/09/25/calculus-1-overview/</link>
+      <pubDate>Thu, 25 Sep 2025 12:00:00 -0400</pubDate>
+      <guid>http://localhost:1313/2025/09/25/calculus-1-overview/</guid>
+      <description>&lt;h2 id=&#34;calculus-1-overview&#34;&gt;Calculus 1 Overview&lt;/h2&gt;&#xA;&lt;p&gt;Calculus is the toolkit we use to talk about two things:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;How fast something is changing right now&lt;/li&gt;&#xA;&lt;li&gt;How much has piled up over time&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;That’s it. In SRE terms: “Is this metric spiking this second?” and “How much total impact did we take this hour?”&lt;/p&gt;&#xA;&lt;p&gt;More formally, Calculus is the math of change and accumulation. In day-to-day engineering, and especially in SRE, you constantly estimate rates (error growth, QPS spikes), optimize configurations (cost vs. latency), and reason about cumulative effects (downtime minutes, p95 tails). Calculus gives you the formal tools for those instincts: limits (what happens as we approach something), derivatives (how fast it’s changing), and integrals (how much has accumulated).&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

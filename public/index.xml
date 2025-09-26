@@ -2,9 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Learn with O.J.</title>
-    <link>https://learnwithoj.com/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Learn with O.J.</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://learnwithoj.com/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 25 Sep 2025 12:00:00 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Calculus 1 Overview</title>
+      <link>http://localhost:1313/2025/09/25/calculus-1-overview/</link>
+      <pubDate>Thu, 25 Sep 2025 12:00:00 -0400</pubDate>
+      <guid>http://localhost:1313/2025/09/25/calculus-1-overview/</guid>
+      <description>&lt;h2 id=&#34;calculus-1-overview&#34;&gt;Calculus 1 Overview&lt;/h2&gt;&#xA;&lt;p&gt;Calculus is the toolkit we use to talk about two things:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;How fast something is changing right now&lt;/li&gt;&#xA;&lt;li&gt;How much has piled up over time&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;That’s it. In SRE terms: “Is this metric spiking this second?” and “How much total impact did we take this hour?”&lt;/p&gt;&#xA;&lt;p&gt;More formally, Calculus is the math of change and accumulation. In day-to-day engineering, and especially in SRE, you constantly estimate rates (error growth, QPS spikes), optimize configurations (cost vs. latency), and reason about cumulative effects (downtime minutes, p95 tails). Calculus gives you the formal tools for those instincts: limits (what happens as we approach something), derivatives (how fast it’s changing), and integrals (how much has accumulated).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;h2 id=&#34;about&#34;&gt;About&lt;/h2&gt;&#xA;&lt;p&gt;Learn with O.J. is my public notebook as I earn a B.S. in Computer Science (and later an M.S. in CS) the practical way: by building, breaking, and explaining as I go. I’m Olivia (“O.J.”), a senior SRE/software engineer and Computer Science student who believes the fastest way to master something is to teach it clearly.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;If you can&amp;rsquo;t explain it simply, you don&amp;rsquo;t understand it well enough.&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;what-youll-find-here&#34;&gt;What you’ll find here&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Course-aligned guides: Calculus I, Discrete Math I, Java Fundamentals, Data Structures &amp;amp; Algorithms I, Data Management/SQL, Computer Architecture, Version Control (Git), Scripting &amp;amp; Programming Applications, Software Engineering, Intro to AI for CS, Network &amp;amp; Security Foundations, Fundamentals of Information Security, and Systems Thinking.&lt;/li&gt;&#xA;&lt;li&gt;Certification notes: LPI Linux Essentials, CompTIA Network+ (and other foundational certs as they make sense).&lt;/li&gt;&#xA;&lt;li&gt;SRE-flavored context: Reliability principles, incident-ready habits, and “how this shows up in real systems.”&lt;/li&gt;&#xA;&lt;li&gt;Study assets: Plain-English summaries, worked examples, visual cheatsheets, flashcard decks, and practice prompts.&lt;/li&gt;&#xA;&lt;li&gt;Builds &amp;amp; lab walkthroughs: Small projects that apply concepts (e.g., writing a simple cache, visualizing graph algorithms, containerizing a Java app, or modeling reliability math).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;my-learning-style&#34;&gt;My learning style&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Concept first, code second:&lt;/strong&gt; I start with the “why,” then move to minimal, readable examples.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;No gatekeeping:&lt;/strong&gt; If something confused me, I’ll show the rough draft that made it click.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Repeatable paths:&lt;/strong&gt; I publish step-by-step labs you can run locally (with setup notes and gotchas).&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Career-friendly framing:&lt;/strong&gt; I connect theory to decisions engineers make on-call, in reviews, and in design docs.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;who-this-is-for&#34;&gt;Who this is for&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Self-taught or returning learners who want CS foundations without fluff.&lt;/li&gt;&#xA;&lt;li&gt;Engineers moving toward reliability, platform, or backend roles.&lt;/li&gt;&#xA;&lt;li&gt;Students who prefer pragmatic, example-driven explanations.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;how-to-use-this-site&#34;&gt;How to use this site&lt;/h2&gt;&#xA;&lt;p&gt;Click the category in the top nav bar to browse related posts. You can also jump straight to a course you’re taking. Each article links to prerequisites, next steps, and practice.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/search/placeholder/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/search/placeholder/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

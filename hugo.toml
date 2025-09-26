@@ -1,40 +1,179 @@
 baseURL = 'https://learnwithoj.com/'
 languageCode = 'en-us'
 title = 'Learn with O.J.'
-theme = 'm10c'
-googleAnalytics = 'G-KRPFDW123M'
-disqusShortname = 'learn-with-o-j'
-paginate = 8
+theme = 'hugo-theme-cleanwhite'
+preserveTaxonomyNames = true
+hasCJKLanguage = false
 
-[permalinks]
-  posts = '/posts/:year/:month/:title/'
+[services]
+  # Enable comments by entering your Disqus shortname
+  [services.disqus]
+    shortname = ""
+  [services.googleAnalytics]
+    id = "G-KRPFDW123M"
 
-[menu]
-  [[menu.main]]
-    identifier = "home"
-    name = "Home"
-    url = "/"
-    weight = 1
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/about/"
-    weight = 2
+[pagination]
+  pagerSize = 5 # frontpage pagination
+
+[outputs]
+home = ["HTML", "RSS", "Algolia"]
 
 [params]
-author = 'O.J.'
-description = "Welcome to my byte-sized sanctuary in the tech cosmos where I, O.J. (not a citrusy beverage, mind you), demystify tech jargon through tales of my own tech triumphs and tribulations."
-avatar = "smiling-amex-avatar.jpg"
-menu_item_separator = " - "
-  [[params.social]]
-    icon = "github"
-    name = "Github"
-    url = "https://github.com/oj-codes"
-  [[params.social]]
-    icon = "twitter"
-    name = "Twitter"
-    url = "https://twitter.com/ojcodes"
-  [[params.social]]
-    icon = "linkedin"
-    name = "LinkedIn"
-    url = "https://www.linkedin.com/in/ojcodes"
+  header_image = "img/home-bg-gather-around-laptop.png"
+  SEOTitle = "Learn with O.J."
+  description = "CS study guides by O.J.: Calculus, Discrete Math, Java, DSA, Linux, Networks, Security, Git, AI basics—clear examples, labs, and cert prep with SRE context."
+  keyword = "learn computer science, CS study guide, discrete math tutorial, data structures and algorithms, Java fundamentals, linux essentials, network fundamentals, version control git, computer architecture basics"
+  slogan = "From first principles to working code"
+  upstreamAttribution = true
+
+  image_404 = "img/404-bg.jpg"
+  title_404 = "Page not found :("
+  omit_categories = false
+
+  # leancloud storage for page view counter
+  page_view_counter = false
+  leancloud_app_id = ""
+  leancloud_app_key = ""
+
+  # algolia site search
+  algolia_search = true
+  algolia_appId = "Y3ZD7JCAK4"
+  algolia_indexName = "algolia"
+  algolia_apiKey = "4ec029d526c099d62cde5895a217f04e"
+
+  # Sidebar settings
+  sidebar_about_description = "Senior SRE & CompSci Student"
+  #sidebar_avatar = "img/avatar-ojwilcox.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
+  sidebar_avatar = "img/ojwilcox.png"      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+  featured_tags = false 
+  featured_condition_size = 1 
+
+  # Baidu Analytics
+  ba_track_id = ""
+  
+  # We need a proxy to access Disqus api in China
+  # Follow https://github.com/zhaohuabing/disqus-php-api to set up your own disqus proxy
+  disqus_proxy = ""
+  disqus_site = ""
+
+  # Twikoo comments
+  # Follow https://twikoo.js.org/ to set up your own env_id
+  twikoo_env_id = ""
+
+  # Artalk comments
+  # Follow https://artalk.js.org/ to set up your own server
+  artalk_enable = false
+  artalk_server = "https://xxx.xxx.com"
+  artalk_site = "xxx blog"
+
+  #Enable wechat pay & alipay to allow readers send reward money if they like the articles 
+  reward = false
+  # reward_guide = "If this article is useful to you, please feel free to reward" 
+
+  friends = false
+  bookmarks = false
+  about_me = true
+
+  # Last posts
+  last_posts = true
+  #last_posts_title = "LAST POSTS"
+  #last_posts_count = 5
+
+  # Include any custom CSS and/or JS files, url or relative to /static folder
+  #custom_css = ["css/lightbox.css", "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css", "css/main.css"]
+  #custom_js = ["js/lightbox.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js", "js/main.js"]
+
+  [params.social]
+  rss            = true 
+  email          = "ojcodes@protonmail.com"
+  #facebook      = "full profile url in facebook"
+  #googleplus    = "full profile url in googleplus"
+  #twitter       = "full profile url in twitter"
+  linkedin       = "https://www.linkedin.com/in/ojcodes"
+  #stackoverflow  = "full profile url in stackoverflow"
+  #instagram     = "full profile url in instagram"
+  github         = "https://github.com/oj-codes"
+  #wechat         = "your wechat qr code image"
+  #medium        = "full profile url in medium"
+  #slack         = "full workspace url in slack"
+  #pinterest     = "full profile url in pinterest"
+  #reddit        = "full profile url in reddit"
+  #gitlab        = "full profile url in gitlab"
+  #mastodon      = "full profile url in mastodon"
+  #keybase       = "full profile url in keybase"
+  #xing          = "full profile url in xing"
+  #git           = "full profile url for git user"
+  
+
+  [[params.bookmark_link]]
+  title =  "Martin Fowler"
+  href =  "https://martinfowler.com"
+  [[params.bookmark_link]]
+  title = "ServiceMesher"
+  href =  "http://www.servicemesher.com"
+  [[params.bookmark_link]]
+  title =  "Pxhere"
+  href = "https://pxhere.com"
+  [[params.bookmark_link]]
+  title = "unsplash"
+  href = "https://unsplash.com"
+  
+#  [[params.additional_menus]]
+#  title =  "ARCHIVE"
+#  href =  "/archive/"
+#  [[params.additional_menus]]
+#  title =  "NOTES"
+#  href =  "/notes/"
+  [[params.additional_menus]]
+  title =  "ABOUT"
+  href =  "/about/"
+
+[outputFormats.Algolia]
+baseName = "algolia"
+isPlainText = true
+mediaType = "application/json"
+notAlternative = true
+
+[params.algolia]
+vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
+params = ["categories", "tags"] 
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 2
+    startLevel = 1
+  [markup.highlight]
+    style = "dracula"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+
+[mediaTypes]
+  [mediaTypes.'font/woff']
+    suffixes = ['woff']
+  [mediaTypes.'font/woff2']
+    suffixes = ['woff2']
+
+  [params.giscus]
+  data_repo="oj-codes/learnwithoj.com"
+  data_repo_id="R_kgDOJgmcSQ"
+  data_category="Announcements"
+  data_category_id="DIC_kwDOJgmcSc4Cv54M"
+  data_mapping="pathname"
+  data_strict="0"
+  data_reactions_enabled="1"
+  data_emit_metadata="0"
+  data_theme="light"
+  data_lang="en"
+  crossorigin="anonymous"
+
+  [caches]
+  [caches.images]
+    dir = ':cacheDir/images'

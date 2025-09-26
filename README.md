@@ -1,2 +1,0 @@
-# Learn with O.J.
-
