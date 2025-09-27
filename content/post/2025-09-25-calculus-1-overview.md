@@ -70,9 +70,8 @@ A derivative is a fancy word for “how fast is this changing at this exact mome
 * Everyday: Baking bread? The dough rises slowly at first, then faster, then slows again. The “right-now rise” is the derivative.
 
 **Rules without the math soup:** You’ll learn quick ways to get “rate of change” for common shapes—straight lines, curves that look like hills, curves that grow quickly, etc.
-
 * SRE: These shortcuts let you answer “what’s the marginal cost/benefit of one more instance?” without a full simulation.
-**
+
 **Chained effects (the “because-of” rule):** If A depends on B, and B depends on C, then a nudge to C nudges A.
 * SRE: If latency depends on queue length, and queue length depends on arrival rate, then “arrival rate → latency” is the product of those sensitivities. Great for capacity planning conversations.
 

@@ -6,8 +6,15 @@
     <description>Recent content on Learn with O.J.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Sep 2025 12:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 26 Sep 2025 12:00:00 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Calculus 1 - Unit 1: A quick pre-calculus refresh</title>
+      <link>http://localhost:1313/2025/09/26/calculus-1-unit-1-a-quick-pre-calculus-refresh/</link>
+      <pubDate>Fri, 26 Sep 2025 12:00:00 -0400</pubDate>
+      <guid>http://localhost:1313/2025/09/26/calculus-1-unit-1-a-quick-pre-calculus-refresh/</guid>
+      <description>&lt;h2 id=&#34;calculus-1-unit-1&#34;&gt;Calculus 1: Unit 1&lt;/h2&gt;&#xA;&lt;p&gt;Precalculus is the toolbox you’ll use all through Calculus I. You’ll see lines, circles, functions, tables/graphs, “average change,” piecewise rules, function mash-ups (composition), and quick ways to shift/stretch graphs. Each bit below tells you: &lt;strong&gt;what it is&lt;/strong&gt;, &lt;strong&gt;how to spot it&lt;/strong&gt;, and &lt;strong&gt;why it matters&lt;/strong&gt; (with examples you’ll actually use).&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-lines-in-the-plane-and-distance&#34;&gt;1) Lines in the plane (and distance)&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Idea:&lt;/strong&gt; A line is the simplest trend. “Steepness” (slope) tells you how fast y goes up when x goes up a little.&#xA;&lt;strong&gt;Distance&lt;/strong&gt; is just “how far apart are two points.”&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Calculus 1 Overview</title>
       <link>http://localhost:1313/2025/09/25/calculus-1-overview/</link>
