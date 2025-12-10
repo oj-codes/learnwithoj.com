@@ -254,7 +254,6 @@ a:not(.btn-primary):hover {
 .header .container {
     animation: fadeIn 0.7s ease-out forwards;
     opacity: 0;
-    animation-delay: 0s;
 }
 
 .hero .container {
