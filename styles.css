@@ -92,7 +92,7 @@ main section:last-of-type {
     left: 0;
     bottom: 0;
     height: 2px;
-    width: 100%; /* full width of the text */
+    width: 100%; /* full width of the h2 element */
     background: linear-gradient(
         to right,
         rgba(56, 182, 193, 0.18) 0%,   /* soft beginning */
