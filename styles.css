@@ -158,6 +158,21 @@ a:not(.btn-primary):hover {
     margin-bottom: 0;
 }
 
+.about-headshot {
+    width: 200px; /* adjust between 112—160px depending on your image */
+    height: 200px;
+    border-radius: 12px;
+    object-fit: cover;
+    object-position: center 20%; /* shift crop downward */
+    margin: 0 auto 1.5rem;
+    display: block;
+    border: 2px solid rgba(56,182,193,0.18);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);   /* very soft depth */
+    opacity: 0;
+    animation: fadeIn 0.7s ease-out forwards;
+    animation-delay: 0.2s; /* matches your sequence */
+}
+
 .faq-item {
     margin-bottom: 2rem;
     text-align: left;
