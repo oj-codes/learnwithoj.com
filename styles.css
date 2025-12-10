@@ -35,6 +35,117 @@ body {
     padding: 2rem 0;
 }
 
+main section {
+    padding: 3rem 0;
+}
+
+main section:first-of-type {
+    padding-top: 2rem;
+}
+
+main section:last-of-type {
+    padding-bottom: 4rem;
+}
+
+.section {
+    border-top: 1px solid #2a2a2a;
+}
+
+.section:first-of-type {
+    border-top: none;
+}
+
+.section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.section h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.section h3:first-child {
+    margin-top: 0;
+}
+
+.section p {
+    font-size: 1.125rem;
+    color: #d0d0d0;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.section p:last-child {
+    margin-bottom: 0;
+}
+
+.section ul,
+.section ol {
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
+    padding-left: 1.5rem;
+    color: #d0d0d0;
+}
+
+.section li {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+}
+
+.section li:last-child {
+    margin-bottom: 0;
+}
+
+.faq-item {
+    margin-bottom: 2rem;
+    text-align: left;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.faq-item:last-child {
+    margin-bottom: 0;
+}
+
+.faq-item h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.faq-item p {
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+.cta-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.875rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.cta-button:hover {
+    background: #2a2a2a;
+    border-color: #3a3a3a;
+}
+
 .footer {
     padding: 2rem 0;
     margin-top: 4rem;
@@ -130,6 +241,14 @@ body {
         padding: 1.5rem 0;
     }
     
+    main section {
+        padding: 2.5rem 0;
+    }
+    
+    main section:last-of-type {
+        padding-bottom: 3rem;
+    }
+    
     .footer {
         padding: 1.5rem 0;
         margin-top: 3rem;
@@ -160,6 +279,28 @@ body {
     .email-link {
         font-size: 1rem;
     }
+    
+    .section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .section h3 {
+        font-size: 1.125rem;
+    }
+    
+    .section p {
+        font-size: 1rem;
+    }
+    
+    .section li {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        font-size: 1rem;
+        padding: 0.75rem 1.75rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -172,6 +313,19 @@ body {
     }
     
     .message p {
+        font-size: 0.9375rem;
+    }
+    
+    .section h2 {
+        font-size: 1.375rem;
+    }
+    
+    .section h3 {
+        font-size: 1rem;
+    }
+    
+    .section p,
+    .section li {
         font-size: 0.9375rem;
     }
 }
