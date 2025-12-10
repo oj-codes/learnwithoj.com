@@ -1,0 +1,149 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #0a0a0a;
+    color: #e0e0e0;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.content {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.brand-name {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.tagline {
+    font-size: 1.125rem;
+    color: #b0b0b0;
+    margin-bottom: 3rem;
+    font-weight: 400;
+}
+
+.message {
+    margin-bottom: 3rem;
+}
+
+.message p {
+    font-size: 1.125rem;
+    color: #d0d0d0;
+    margin-bottom: 0.75rem;
+}
+
+.message p:last-child {
+    margin-bottom: 0;
+}
+
+.contact {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid #2a2a2a;
+}
+
+.contact p {
+    font-size: 0.9375rem;
+    color: #909090;
+    margin-bottom: 0.75rem;
+}
+
+.email-link {
+    display: inline-block;
+    font-size: 1.125rem;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+}
+
+.email-link:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 1.5rem;
+    }
+    
+    .brand-name {
+        font-size: 2rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .message {
+        margin-bottom: 2.5rem;
+    }
+    
+    .message p {
+        font-size: 1rem;
+    }
+    
+    .contact {
+        margin-top: 2.5rem;
+        padding-top: 2.5rem;
+    }
+    
+    .email-link {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-name {
+        font-size: 1.75rem;
+    }
+    
+    .tagline {
+        font-size: 0.9375rem;
+    }
+    
+    .message p {
+        font-size: 0.9375rem;
+    }
+}
+
