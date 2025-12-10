@@ -132,6 +132,7 @@ main section:last-of-type {
     align-items: center;
     justify-content: center;
     margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
     padding: 0.875rem 2rem;
     font-size: 1.125rem;
     font-weight: 600;
@@ -148,6 +149,12 @@ main section:last-of-type {
     background: #3b82f6;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.contact-note {
+    margin-top: 0;
+    font-size: 0.95rem;
+    color: #909090;
 }
 
 .footer {
