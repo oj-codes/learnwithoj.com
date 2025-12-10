@@ -12,31 +12,238 @@ html {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: #0a0a0a;
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0B132B;
     color: #e0e0e0;
     line-height: 1.6;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
 }
 
 .container {
     width: 100%;
     max-width: 600px;
+    margin: 0 auto;
+    padding: 0 1rem;
     text-align: center;
 }
 
-.content {
-    animation: fadeIn 1s ease-in;
+.header {
+    padding: 2rem 0;
+}
+
+.hero {
+    padding: 2rem 0;
+}
+
+.hero-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: -3.5rem 0 -0.5rem 0;
+    animation: iconFade 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes iconFade {
+    from { opacity: 0; transform: translateY(6px);}
+    to   { opacity: 1; transform: translateY(0);}
+}
+
+.hero-icon svg {
+    display: block;
+}
+
+main section {
+    padding: 3rem 0;
+}
+
+main section:first-of-type {
+    padding-top: 2rem;
+}
+
+main section:last-of-type {
+    padding-bottom: 4rem;
+}
+
+.section {
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.section:first-of-type {
+    border-top: none;
+}
+
+.section h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+    position: relative;
+    padding-bottom: 0.75rem;
+    border-bottom: none;
+}
+
+.section h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%; /* full width of the h2 element */
+    background: linear-gradient(
+        to right,
+        rgba(56, 182, 193, 0.18) 0%,   /* soft beginning */
+        rgba(56, 182, 193, 0.30) 12%,  /* stronger mid */
+        rgba(56, 182, 193, 0.30) 75%,  /* full visible portion */
+        rgba(56, 182, 193, 0.00) 100%  /* fade out */
+    );
+    border-radius: 9999px;
+}
+
+.section h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.section h3:first-child {
+    margin-top: 0;
+}
+
+.section p {
+    font-size: 1.0625rem;
+    color: #e0e0e0;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.section p:last-child {
+    margin-bottom: 0;
+}
+
+a:not(.btn-primary) {
+    color: #38B6C1;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color 0.2s ease, border-color 0.25s ease;
+}
+
+a:not(.btn-primary):hover {
+    color: #4FCAD7;
+    border-bottom-color: #4FCAD7;
+}
+
+.section ul,
+.section ol {
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
+    padding-left: 1.5rem;
+    color: #e0e0e0;
+}
+
+.section li {
+    font-size: 1.0625rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.65;
+}
+
+.section li:last-child {
+    margin-bottom: 0;
+}
+
+.about-headshot {
+    width: 200px; /* adjust between 112—160px depending on your image */
+    height: 200px;
+    border-radius: 12px;
+    object-fit: cover;
+    object-position: center 20%; /* shift crop downward */
+    margin: 0 auto 1.5rem;
+    display: block;
+    border: 2px solid rgba(56,182,193,0.18);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);   /* very soft depth */
+    opacity: 0;
+    animation: fadeIn 0.7s ease-out forwards;
+    animation-delay: 0.2s; /* matches your sequence */
+}
+
+.faq-item {
+    margin-bottom: 2rem;
+    text-align: left;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.faq-item:last-child {
+    margin-bottom: 0;
+}
+
+.faq-item h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.faq-item p {
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+/* Primary CTA button */
+.btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    border-radius: 9999px;
+    text-decoration: none;
+    color: #ffffff;
+    background: #0E7C86;
+    box-shadow: 0 4px 12px rgba(19, 148, 159, 0.32);
+    transition: transform 0.15s ease, box-shadow 0.25s ease, background 0.2s ease;
+    border: none;
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+
+.btn-primary:hover {
+    background: #13949F;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(56, 182, 193, 0.28);
+}
+
+.contact-note {
+    margin-top: 0;
+    font-size: 0.95rem;
+    color: #909090;
+}
+
+.footer {
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+.footer p {
+    font-size: 0.875rem;
+    color: #707070;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(6px);
     }
     to {
         opacity: 1;
@@ -44,8 +251,55 @@ body {
     }
 }
 
+.header .container {
+    animation: fadeIn 0.7s ease-out forwards;
+    opacity: 0;
+}
+
+.hero .container {
+    animation: fadeIn 0.7s ease-out forwards;
+    opacity: 0;
+    animation-delay: 0.05s;
+}
+
+main .section .container {
+    text-align: left;
+    animation: fadeIn 0.7s ease-out forwards;
+    opacity: 0;
+}
+
+main .section:nth-of-type(1) .container {
+    animation-delay: 0.1s;
+}
+
+main .section:nth-of-type(2) .container {
+    animation-delay: 0.2s;
+}
+
+main .section:nth-of-type(3) .container {
+    animation-delay: 0.3s;
+}
+
+main .section:nth-of-type(4) .container {
+    animation-delay: 0.4s;
+}
+
+main .section:nth-of-type(5) .container {
+    animation-delay: 0.5s;
+}
+
+main .section:nth-of-type(6) .container {
+    animation-delay: 0.6s;
+}
+
+.footer .container {
+    animation: fadeIn 0.7s ease-out forwards;
+    opacity: 0;
+    animation-delay: 0.7s;
+}
+
 .brand-name {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 700;
     color: #ffffff;
     margin-bottom: 0.5rem;
@@ -64,8 +318,9 @@ body {
 }
 
 .message p {
-    font-size: 1.125rem;
-    color: #d0d0d0;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: #e0e0e0;
     margin-bottom: 0.75rem;
 }
 
@@ -85,14 +340,9 @@ body {
     margin-bottom: 0.75rem;
 }
 
+/* keep email-link a bit more subtle if you like */
 .email-link {
-    display: inline-block;
-    font-size: 1.125rem;
-    color: #ffffff;
-    text-decoration: none;
-    transition: color 0.2s ease;
-    border-bottom: 1px solid transparent;
-    padding-bottom: 2px;
+    font-size: 1rem; /* slightly smaller than hero CTA */
 }
 
 .email-link:hover {
@@ -102,8 +352,29 @@ body {
 
 /* Responsive design */
 @media (max-width: 768px) {
-    body {
-        padding: 1.5rem;
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    .header {
+        padding: 1.5rem 0;
+    }
+    
+    .hero {
+        padding: 1.5rem 0;
+    }
+    
+    main section {
+        padding: 2.5rem 0;
+    }
+    
+    main section:last-of-type {
+        padding-bottom: 3rem;
+    }
+    
+    .footer {
+        padding: 1.5rem 0;
+        margin-top: 3rem;
     }
     
     .brand-name {
@@ -131,6 +402,29 @@ body {
     .email-link {
         font-size: 1rem;
     }
+    
+    .section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .section h3 {
+        font-size: 1.125rem;
+    }
+    
+    .section p {
+        font-size: 1.0625rem;
+        line-height: 1.65;
+    }
+    
+    .section li {
+        font-size: 1rem;
+    }
+    
+    .btn-primary {
+        font-size: 1rem;
+        padding: 0.75rem 1.75rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -143,6 +437,19 @@ body {
     }
     
     .message p {
+        font-size: 0.9375rem;
+    }
+    
+    .section h2 {
+        font-size: 1.375rem;
+    }
+    
+    .section h3 {
+        font-size: 1rem;
+    }
+    
+    .section p,
+    .section li {
         font-size: 0.9375rem;
     }
 }
