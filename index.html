@@ -10,12 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-stripe-url="https://buy.stripe.com/7sYcN59jn28AeK7aGIabK00">
     <header class="header">
         <div class="container">
             <a href="#" class="logo">Learn with O.J.</a>
-            <a href="https://buy.stripe.com/7sYcN59jn28AeK7aGIabK00"
-               class="btn-header"
+            <a href="#book"
+               class="btn-header stripe-link"
                target="_blank"
                rel="noopener noreferrer nofollow">Book Session</a>
         </div>
@@ -29,8 +29,8 @@
                     <h1 class="hero-title">Get unstuck. Level up.<br>Reach senior.</h1>
                     <p class="hero-subtitle">60-minute focused sessions with a senior engineer who's been where you are. Real feedback on real challenges. No fluff, no generic advice.</p>
                     <div class="hero-cta">
-                        <a href="https://buy.stripe.com/7sYcN59jn28AeK7aGIabK00"
-                           class="btn-primary"
+                        <a href="#book"
+                           class="btn-primary stripe-link"
                            target="_blank"
                            rel="noopener noreferrer nofollow">
                             Book a Session - $200
@@ -232,8 +232,8 @@
                         <li>Concrete next steps and recommendations</li>
                         <li>Async follow-up for clarifications</li>
                     </ul>
-                    <a href="https://buy.stripe.com/7sYcN59jn28AeK7aGIabK00"
-                       class="btn-primary btn-full"
+                    <a href="#book"
+                       class="btn-primary btn-full stripe-link"
                        target="_blank"
                        rel="noopener noreferrer nofollow">Book Your Session</a>
                     <p class="pricing-note">Questions first? <a href="mailto:oj@learnwithoj.com">oj@learnwithoj.com</a></p>
@@ -286,10 +286,16 @@
     </footer>
 
     <div class="mobile-cta">
-        <a href="https://buy.stripe.com/7sYcN59jn28AeK7aGIabK00"
-           class="btn-primary btn-mobile"
+        <a href="#book"
+           class="btn-primary btn-mobile stripe-link"
            target="_blank"
            rel="noopener noreferrer nofollow">Book Session - $200</a>
     </div>
+
+    <script>
+        document.querySelectorAll('.stripe-link').forEach(link => {
+            link.href = document.body.dataset.stripeUrl;
+        });
+    </script>
 </body>
 </html>
