@@ -64,25 +64,25 @@ Explain the process so people understand the path before they see prices:
 ### 8. Services / Pricing Section
 Three tiers displayed as cards side by side (or stacked on mobile):
 
-#### Fresh Squeeze - $150
+#### Fresh Squeeze - $275
 - Resume review using an 8-stage diagnostic methodology
 - What you get: A Feedback Letter with summary findings and actionable insights, plus a Premium Resume Review Report with detailed analysis, hiring manager perspective, action items, and example bullet rewrites
 - Framing: This is the entry point. Position it as "start here if you're not sure where to begin"
-- CTA: Stripe Checkout button "Get Fresh Squeeze - $150"
+- CTA: Stripe Checkout button "Get Fresh Squeeze - $275"
 - Note: Consider a subtle visual indicator (like "Start Here" badge) to guide people toward this option
 
-#### Career Accelerator - $550
+#### Career Accelerator - $900
 - 3 sessions (60 min each), flexible format
 - Sessions can be any mix: career strategy, pair programming, code review, interview prep, architecture review
 - Framing: For engineers who want sustained support, not just a one-off
-- Highlight the savings vs. 3 individual sessions ($600 value)
-- CTA: Stripe Checkout button "Get Career Accelerator - $550"
+- Highlight the savings vs. 3 individual sessions ($975 value)
+- CTA: Stripe Checkout button "Get Career Accelerator - $900"
 
-#### Focused Hour - $200
+#### Focused Hour - $325
 - Single 60-minute session, any topic
 - Pre-work intake + 60-min call + async follow-up (keep this from current site)
 - Framing: For engineers who know exactly what they need and want to dive in
-- CTA: Stripe Checkout button "Book Focused Hour - $200"
+- CTA: Stripe Checkout button "Book Focused Hour - $325"
 
 ### 9. About Me Section
 - Brief bio establishing credibility (20+ years, leveled up twice, SWE and SRE, real production experience)
@@ -146,11 +146,11 @@ The brand is: Collaborative. Real. Experienced. Irreverent. Determined.
 
 ## Stripe Integration
 - Each service tier needs its own Stripe Checkout embed
-- O.J. will create 3 Stripe products (Fresh Squeeze $150, Career Accelerator $550, Focused Hour $200) and provide the checkout embed code or payment link URLs
+- O.J. will create 3 Stripe products (Fresh Squeeze $275, Career Accelerator $900, Focused Hour $325) and provide the checkout embed code or payment link URLs
 - Buttons should open Stripe Checkout directly (embedded or redirect, depending on what O.J. sets up)
-- Fresh Squeeze: https://buy.stripe.com/3cI3cvgLP5kM59xaGIabK01
-- Career Accelerator: https://buy.stripe.com/cNifZhcvz00sbxV5moabK02
-- Focused Hour: https://buy.stripe.com/8x2fZhdzD4gI6dB5moabK03
+- Fresh Squeeze: https://buy.stripe.com/bJe5kDeDH5kM8lJ9CEabK06
+- Career Accelerator: https://buy.stripe.com/6oU9ATbrvbJaeK7dSUabK05
+- Focused Hour: https://buy.stripe.com/9B67sL7bfcNefOb6qsabK04
 
 ## Important Notes
 - The LinkedIn "Let's Talk First" CTA should be visually dominant over the Stripe buy buttons. The goal is to get people into a conversation first. The buy buttons are there for people who are ready, but the default path is: LinkedIn conversation first, then book.
@@ -177,7 +177,7 @@ Work in small increments. Test and commit after each prompt.
 
 4. "Update the 'What You Get' section to reflect three service tiers (Fresh Squeeze resume review, Career Accelerator 3-session bundle, Focused Hour single session) instead of the single mentoring session. See CLAUDE.md for details on each tier."
 
-5. "Add a Services/Pricing section with 3 cards per CLAUDE.md: Fresh Squeeze ($150), Career Accelerator ($550), Focused Hour ($200). Each card needs a description and a Stripe Checkout button using the URLs from CLAUDE.md. Add a 'Start Here' badge on Fresh Squeeze. Stack cards on mobile."
+5. "Add a Services/Pricing section with 3 cards per CLAUDE.md: Fresh Squeeze ($275), Career Accelerator ($900), Focused Hour ($325). Each card needs a description and a Stripe Checkout button using the URLs from CLAUDE.md. Add a 'Start Here' badge on Fresh Squeeze. Stack cards on mobile."
 
 6. "Add a 'How It Works' section with 3 steps: Connect, Clarity, Go. Position it before the pricing section so people understand the process before seeing prices. See CLAUDE.md for step descriptions."
 
