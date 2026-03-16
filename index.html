@@ -237,25 +237,37 @@
         </section>
 
         <section id="testimonials" class="section">
-            <div class="container">
+            <div class="container container-full">
                 <h2>What people are saying</h2>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <img src="testimonials/kirk-whitehead-avatar.jpeg" alt="Kirk Whitehead" class="testimonial-avatar">
-                        <blockquote class="testimonial-quote">"Olivia has an immediate impact on conversations that can span career assessments to technical goals. What really stood out was her approach to helping me achieve my goals. We moved off of stating problems and instead worked through solutions. She makes the learning process fun and engaging. I highly recommend her, especially if you are new to coding or just want to work through something that has you stuck."</blockquote>
-                        <div class="testimonial-author">
-                            <p class="testimonial-name">Kirk Whitehead</p>
-                            <p class="testimonial-title">Cloud Engineer, Blackbaud</p>
+                <div class="testimonials-carousel">
+                    <button class="carousel-arrow carousel-arrow-left" aria-label="Previous testimonial">&#8249;</button>
+                    <div class="testimonials-track">
+                        <div class="testimonial-card">
+                            <img src="testimonials/kirk-whitehead-avatar.jpeg" alt="Kirk Whitehead" class="testimonial-avatar">
+                            <blockquote class="testimonial-quote">"Olivia has an immediate impact on conversations that can span career assessments to technical goals. What really stood out was her approach to helping me achieve my goals. We moved off of stating problems and instead worked through solutions. She makes the learning process fun and engaging. I highly recommend her, especially if you are new to coding or just want to work through something that has you stuck."</blockquote>
+                            <div class="testimonial-author">
+                                <p class="testimonial-name">Kirk Whitehead</p>
+                                <p class="testimonial-title">Cloud Engineer, Blackbaud</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <img src="testimonials/alexander-maher-avatar.jpeg" alt="Alexander Maher" class="testimonial-avatar">
+                            <blockquote class="testimonial-quote">"I had the pleasure of working with Olivia across two companies. Having the opportunity to rehire someone says a lot about the trust and confidence you have in their character and contributions, and Olivia fully earned that confidence. She is one of the most collaborative and positive team members I've worked with. I would happily recommend her to any organization."</blockquote>
+                            <div class="testimonial-author">
+                                <p class="testimonial-name">Alexander Maher</p>
+                                <p class="testimonial-title">Senior Director of Product, DataSnipper</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <img src="testimonials/sobia-soomro-avatar.png" alt="Sobia Soomro" class="testimonial-avatar">
+                            <blockquote class="testimonial-quote">"Olivia's article really helped give Lumina some visibility by showing it through a real-world example. She was thoughtful in exploring the architecture, design decisions, and purpose behind the template, and turned that into a clear article that helps developers understand how Lumina can support a more expressive portfolio. Olivia has a great ability to capture the technical side."</blockquote>
+                            <div class="testimonial-author">
+                                <p class="testimonial-name">Sobia Soomro</p>
+                                <p class="testimonial-title">Frontend Web Developer & Creator of Lumina</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="testimonial-card">
-                        <img src="testimonials/alexander-maher-avatar.jpeg" alt="Alexander Maher" class="testimonial-avatar">
-                        <blockquote class="testimonial-quote">"I had the pleasure of working with Olivia across two companies. Having the opportunity to rehire someone says a lot about the trust and confidence you have in their character and contributions, and Olivia fully earned that confidence. She is one of the most collaborative and positive team members I've worked with. I would happily recommend her to any organization."</blockquote>
-                        <div class="testimonial-author">
-                            <p class="testimonial-name">Alexander Maher</p>
-                            <p class="testimonial-title">Senior Director of Product, DataSnipper</p>
-                        </div>
-                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" aria-label="Next testimonial">&#8250;</button>
                 </div>
             </div>
         </section>
@@ -392,5 +404,65 @@
            rel="noopener noreferrer">Let's Talk First</a>
     </div>
 
+<script>
+(function() {
+    var track = document.querySelector('.testimonials-track');
+    var leftArrow = document.querySelector('.carousel-arrow-left');
+    var rightArrow = document.querySelector('.carousel-arrow-right');
+
+    function getScrollAmount() {
+        var card = track.querySelector('.testimonial-card');
+        if (!card) return 340;
+        var gap = parseFloat(getComputedStyle(track).gap) || 20;
+        return card.offsetWidth + gap;
+    }
+
+    function updateArrows() {
+        var scrollable = track.scrollWidth > track.clientWidth + 1;
+        track.classList.toggle('can-scroll', scrollable);
+        if (!scrollable) {
+            leftArrow.classList.remove('visible');
+            rightArrow.classList.remove('visible');
+            return;
+        }
+        leftArrow.classList.toggle('visible', track.scrollLeft > 1);
+        rightArrow.classList.toggle('visible', track.scrollLeft + track.clientWidth < track.scrollWidth - 1);
+    }
+
+    function smoothScroll(distance) {
+        var start = track.scrollLeft;
+        var target = Math.max(0, Math.min(start + distance, track.scrollWidth - track.clientWidth));
+        var duration = 300;
+        var startTime = null;
+
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var ease = progress < 0.5
+                ? 2 * progress * progress
+                : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+            track.scrollLeft = start + (target - start) * ease;
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                updateArrows();
+            }
+        }
+        requestAnimationFrame(step);
+    }
+
+    leftArrow.addEventListener('click', function() {
+        smoothScroll(-getScrollAmount());
+    });
+
+    rightArrow.addEventListener('click', function() {
+        smoothScroll(getScrollAmount());
+    });
+
+    track.addEventListener('scroll', updateArrows);
+    window.addEventListener('resize', updateArrows);
+    updateArrows();
+})();
+</script>
 </body>
 </html>

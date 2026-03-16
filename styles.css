@@ -587,16 +587,42 @@ p {
 /* ============================================
    Testimonials Section
    ============================================ */
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+.container-full {
+    max-width: 100%;
+    padding: 0 1.5rem;
 }
 
-@media (min-width: 600px) {
-    .testimonials-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.container-full h2 {
+    text-align: center;
+}
+
+.testimonials-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.testimonials-track {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0.5rem 0;
+    flex: 1;
+}
+
+.testimonials-track.can-scroll {
+    overflow-x: auto;
+}
+
+.testimonials-track:not(.can-scroll) {
+    justify-content: center;
+}
+
+.testimonials-track::-webkit-scrollbar {
+    display: none;
 }
 
 .testimonial-card {
@@ -608,6 +634,35 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 300px;
+    max-width: 380px;
+    flex-shrink: 0;
+}
+
+.carousel-arrow {
+    display: none;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    color: var(--color-white);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+    z-index: 2;
+}
+
+.carousel-arrow:hover {
+    background: var(--color-border);
+    border-color: var(--color-accent-dim);
+}
+
+.carousel-arrow.visible {
+    display: flex;
 }
 
 .testimonial-avatar {
@@ -637,6 +692,16 @@ p {
 .testimonial-title {
     font-size: 0.8125rem;
     color: var(--color-text-dim);
+}
+
+@media (max-width: 599px) {
+    .testimonial-card {
+        min-width: 280px;
+    }
+
+    .testimonials-track {
+        justify-content: flex-start;
+    }
 }
 
 /* ============================================
