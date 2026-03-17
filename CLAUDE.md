@@ -1,192 +1,167 @@
-# CLAUDE.md - Learn with O.J. Landing Page Update
+# CLAUDE.md - Learn with O.J. Site Enhancement: Resources + Guide Download
 
 ## Context
-This is the landing page for Learn with O.J. (learnwithoj.com), a coaching and career strategy business serving software and infrastructure engineers who are experienced but haven't gotten the senior title yet. The founder is O.J. (Olivia Wilcox), a senior engineer with 20+ years of experience across SWE and SRE.
 
-The current site has a single offering (1:1 Mentoring Session, $200/hr) with a "Book a Session" button that hits people cold with the price. We're restructuring to add multiple service tiers and change the primary call-to-action from "pay me now" to "let's talk first."
+This is an incremental update to the Learn with O.J. landing page (learnwithoj.com). The site is static HTML/CSS/JS. The current page is a single-page landing with services, testimonials, FAQ, and CTAs. We are adding:
 
-## Key URLs
-- LinkedIn profile: https://www.linkedin.com/in/learnwithoj/
-- Email: oj@learnwithoj.com
+1. A "Resources" teaser section on the landing page
+2. A new `/resources` page (resources.html) that hosts free resources
+3. The first resource: an AI-Assisted Development guide (PDF) gated behind email capture via Kit (ConvertKit)
 
-## Tech Stack
-- Plain HTML/CSS/JavaScript (static site, no framework)
-- Hosted on GitHub Pages (repo: oj-codes/learnwithoj.com)
-- Stripe Checkout embedded on page for payments
-- No build step, no bundler, no dependencies
+The existing CLAUDE.md from the previous landing page revamp is still the source of truth for brand voice, page structure, and design direction. This file covers only the NEW work being added.
 
-## Design Direction
-- Keep the existing dark theme and color palette (dark navy background, teal/cyan accent color for buttons and highlights)
-- Keep the circular profile photo in the hero
-- Keep the credibility stats bar (20+ years / 2x Senior Engineer / SWE + SRE)
-- The site should feel clean, confident, and personal. Not corporate, not salesy.
+## Brand Voice Reminders
 
-## Page Structure (top to bottom)
-
-The current site already has good bones and a section flow that works. We're keeping the overall structure but updating content, replacing the single offering with three tiers, and shifting the primary CTA from "Book a Session - $200" to "Let's Talk First."
-
-### 1. Navigation Bar
-- Left: "Learn with O.J." (text logo, same as current)
-- Right: "Let's Talk" button (teal accent, links to https://www.linkedin.com/in/learnwithoj/). Replaces the current "Book Session" button.
-- Sticky nav on scroll
-
-### 2. Hero Section
-- Circular profile photo (keep current placement, styling, and animation)
-- Eyebrow text: Replace "1:1 MENTORSHIP FOR ENGINEERS" with something like "A WORKING ENGINEER IN YOUR CORNER"
-- Headline: Keep "Get unstuck. Level up. Reach senior." (this is strong, don't change it)
-- Subtext: Update from the single-session pitch to something broader: "I help experienced engineers close the gap between where they are and where they should be. Real feedback, real strategy, no generic advice."
-- Primary CTA button: "Let's Talk First" (links to https://www.linkedin.com/in/learnwithoj/). This is the dominant button. Replaces "Book a Session - $200."
-- Small text under CTA: "Connect with me on LinkedIn and tell me what you're working on."
-
-### 3. Credibility Stats Bar
-- Keep as-is: 20+ / 2x / SWE + SRE
-- These are effective, no changes needed
-
-### 4. Who This Is For Section
-- Already exists on current site. Update language to use "software and infrastructure engineers" and "experienced engineers who haven't gotten the title yet"
-- This section should make the target audience feel seen and self-select
-
-### 5. What You Get Section
-- Update to reflect the three service tiers instead of the single session
-- Brief overview of what working with O.J. looks like across the different offerings
-- This is the "here's what's on the table" section, not the detailed pricing section
-
-### 6. What We Cover Section
-- Already exists on current site. Keep or update the list of topics/areas covered (career strategy, resume positioning, pair programming, code review, interview prep, architecture review, etc.)
-- This helps people see that the sessions aren't just "career advice" but hands-on technical collaboration
-
-### 7. How It Works Section
-Explain the process so people understand the path before they see prices:
-- Step 1: "Connect" - Reach out on LinkedIn. Tell me where you're stuck.
-- Step 2: "Clarity" - We'll talk through your situation so I understand what you actually need.
-- Step 3: "Go" - Book the right service and we hit the ground running. No wasted time.
-
-### 8. Services / Pricing Section
-Three tiers displayed as cards side by side (or stacked on mobile):
-
-#### Fresh Squeeze - $275
-- Resume review using an 8-stage diagnostic methodology
-- What you get: A Feedback Letter with summary findings and actionable insights, plus a Premium Resume Review Report with detailed analysis, hiring manager perspective, action items, and example bullet rewrites
-- Framing: This is the entry point. Position it as "start here if you're not sure where to begin"
-- CTA: Stripe Checkout button "Get Fresh Squeeze - $275"
-- Note: Consider a subtle visual indicator (like "Start Here" badge) to guide people toward this option
-
-#### Career Accelerator - $900
-- 3 sessions (60 min each), flexible format
-- Sessions can be any mix: career strategy, pair programming, code review, interview prep, architecture review
-- Framing: For engineers who want sustained support, not just a one-off
-- Highlight the savings vs. 3 individual sessions ($975 value)
-- CTA: Stripe Checkout button "Get Career Accelerator - $900"
-
-#### Focused Hour - $325
-- Single 60-minute session, any topic
-- Pre-work intake + 60-min call + async follow-up (keep this from current site)
-- Framing: For engineers who know exactly what they need and want to dive in
-- CTA: Stripe Checkout button "Book Focused Hour - $325"
-
-### 9. About Me Section
-- Brief bio establishing credibility (20+ years, leveled up twice, SWE and SRE, real production experience)
-- Already exists on current site. Keep the personal, conversational tone.
-
-### 10. Testimonials Section
-- Include any available testimonials from past clients or people O.J. has helped (paid or unpaid)
-- Even 1-2 short quotes with names and titles adds significant trust
-- If no testimonials are available yet, this section can be added later. Do not generate placeholder/fake testimonials.
-
-### 11. Second CTA Section
-- Another "Let's Talk First" button or similar CTA linking to https://www.linkedin.com/in/learnwithoj/ to catch people who scrolled all the way down
-- Include a "Have questions? Email me at oj@learnwithoj.com" link as a secondary option (keep from current site)
-
-### 12. Common Questions (FAQ) Section
-- Already exists on current site. Review and update to reflect the new service tiers.
-- Add questions like: "Which service should I start with?" (answer: reach out on LinkedIn and we'll figure it out together, or start with Fresh Squeeze if your resume needs work), "What happens after I pay?", "Can I upgrade from Fresh Squeeze to Career Accelerator?"
-
-### 13. The Bigger Picture Section
-- Already exists on current site. This talks about the long-term vision of building a free learning platform for engineers.
-- Keep as-is or lightly update. This is a differentiator and shows O.J.'s values.
-
-### 14. Footer
-- Links: https://www.linkedin.com/in/learnwithoj/, oj@learnwithoj.com, GitHub (if desired)
-- "Learn with O.J." branding
-- Keep it minimal
-
-## Voice and Copy Guidelines
+- No em dashes. Combine parallel short sentences with "and" not periods.
 - Use "software and infrastructure engineers" not just "engineers"
-- Use "experienced engineers who haven't gotten the title yet" not "mid-career engineers"
-- No em dashes anywhere. Use commas, periods, or restructure the sentence.
-- Combine parallel short sentences with "and" not periods where it flows naturally
-- No "mentor" or "mentorship" language. Use "career strategy," "1:1 sessions," "pair programming," etc.
-- Conversational and direct. Write like you're talking to a fellow engineer, not pitching a corporate training program.
 - No filler phrases like "unlock your potential" or "take your career to the next level"
-- Honest and no-BS. If something is hard, say it's hard. Don't oversell.
+- Honest, direct, no-BS tone. If something is hard, say it's hard. Don't oversell.
+- Use "how" over "why" for systemic critique
+- Pronoun over repeated name
 
-### Brand Personality
-The brand is: Collaborative. Real. Experienced. Irreverent. Determined.
-- The tension between "irreverent" and "determined" is the sweet spot. Playful and approachable but never lightweight.
-- The juice/beverage theme is intentional branding (O.J. = orange juice). Lean into it where it fits naturally (product names like "Fresh Squeeze") but don't force juice puns into every section.
+## What We're Building
 
-### Key Positioning
-- O.J. is a "working engineer helping other engineers level up." She's not coaching from the sidelines, she's still actively doing the work.
-- What she teaches is closer to "operational career intelligence" and "professional operating skills" than generic career coaching. How to actually function inside an organization in a way that gets you promoted.
-- The technical bar is table stakes. How you operate inside the org is what determines whether you clear it.
-- Learn with O.J. serves engineers outside the Big Tech bubble: mid-size companies, healthcare orgs, fintechs, agencies, startups without formal engineering ladders.
+### 1. Resources Teaser Section (on index.html)
 
-### Copy to Use or Riff On
-- Introduction: "I'm O.J., a working engineer helping other engineers level up. My goal is to show others the way to build careers that compound while I help companies move fast without breaking things."
-- On credentials: "20+ years of software engineering experience from startups building smart TV apps competing with Netflix to Fortune 100 organizations like American Express. Leveled up twice, from senior SWE to senior SRE."
-- On the rate objection: "You're not paying for an hour of my time. You're paying for an hour plus over 20 years of professional software experience plus all the extra unpaid time I spend working on projects to keep up with the latest technology."
-- "I don't leave my clients wondering what to do next."
+**Placement:** Between the "The bigger picture" section and the "Ready to get started?" CTA section.
 
-### Copy to Avoid
-- "Unlock your potential" or any generic coaching language
-- "Take your career to the next level"
-- AI-sounding phrases like "You're not X. You're Y."
-- LinkedIn-template energy (emojis, numbered lists, humble brags)
-- The word "mentor" or "mentorship" anywhere on the page
+**Purpose:** Surface the free guide and drive traffic to /resources. Keep it brief. This is a teaser, not the full resources page.
 
-## Stripe Integration
-- Each service tier needs its own Stripe Checkout embed
-- O.J. will create 3 Stripe products (Fresh Squeeze $275, Career Accelerator $900, Focused Hour $325) and provide the checkout embed code or payment link URLs
-- Buttons should open Stripe Checkout directly (embedded or redirect, depending on what O.J. sets up)
-- Fresh Squeeze: https://buy.stripe.com/bJe5kDeDH5kM8lJ9CEabK06
-- Career Accelerator: https://buy.stripe.com/6oU9ATbrvbJaeK7dSUabK05
-- Focused Hour: https://buy.stripe.com/9B67sL7bfcNefOb6qsabK04
+**Content direction:**
+- Short heading like "Free Resources" or "Resources for Engineers"
+- One card for the AI-Assisted Development guide with a brief description (2-3 sentences max), a thumbnail or icon, and a CTA that links to /resources or directly to the guide section on that page
+- Design note: leave room for additional resource cards in the future (the resume/JD match tool, templates, etc.). Use a grid or flexible layout that works with 1 item now but scales to 3-4 items later
 
-## Important Notes
-- The LinkedIn "Let's Talk First" CTA should be visually dominant over the Stripe buy buttons. The goal is to get people into a conversation first. The buy buttons are there for people who are ready, but the default path is: LinkedIn conversation first, then book.
-- Prices are visible on the page (O.J. feels strongly about price transparency) but they're not the first thing you see. The first thing you see is the invitation to connect.
-- Mobile responsive. Most traffic likely comes from LinkedIn on mobile.
-- Keep page load fast. No heavy frameworks, no unnecessary assets.
+**Copy for the guide card:**
+- Title: "AI-Assisted Development: A Practical Guide for Engineering Teams"
+- Description should convey: it's a 10-page guide covering the AI development landscape, how to implement it on your team, and things people aren't talking about. Written by a working engineer, not a vendor pitch.
+- CTA: "Get the Guide" linking to /resources#ai-guide or similar anchor
+
+### 2. Resources Page (resources.html)
+
+**Structure:**
+- Same nav bar as index.html (Learn with O.J. logo left, "Let's Talk" button right linking to https://www.linkedin.com/in/learnwithoj/)
+- Page heading: "Resources" or "Free Resources"
+- Brief intro paragraph: something like "Tools, guides, and resources I'm building to help software and infrastructure engineers level up. Everything here is free."
+- Resource cards/sections below, starting with just the AI guide
+
+**AI-Assisted Development Guide Section:**
+- Anchor: #ai-guide
+- Title: "AI-Assisted Development: A Practical Guide for Engineering Teams"
+- Description: 3-5 sentences expanding on what the guide covers. Emphasize that it's practical and written from hands-on experience, not theory. Mention it helped close a training deal (social proof without being salesy, e.g. "This guide has been used by engineering teams evaluating how to adopt AI-assisted development workflows.")
+- Email capture form: Kit (ConvertKit) embedded form
+- The form collects first name (optional) and email (required)
+- On submit, Kit handles the delivery. The person gets an automated email with the PDF download link.
+- Below the form, a small note: "No spam. Just the guide. You can unsubscribe anytime."
+
+**Future-proofing:**
+- The page should have a clean layout that accommodates additional resources over time
+- Each resource gets its own section with an anchor ID
+- Consider a "Coming Soon" placeholder for the resume/JD match tool with a brief teaser description. Something like: "Resume-to-Job Match Score: Paste your resume and a job description, get a keyword match score and tailoring suggestions. Coming soon." This sets expectations and builds interest without committing to a timeline.
+
+### 3. Kit (ConvertKit) Integration
+
+**How it works:**
+- O.J. creates a Kit account (free tier) at kit.com
+- Creates a "Form" in Kit for the AI guide download
+- Uploads the PDF to Kit and sets it as the incentive email attachment (or links to a hosted version)
+- Kit generates an HTML embed snippet
+- We paste that snippet into resources.html in the guide section
+
+**Implementation notes:**
+- The Kit form embed is a chunk of HTML + JS that Kit provides. Drop it in as-is.
+- Style the surrounding container to match the site's look and feel (dark background, teal accents, clean typography consistent with the rest of the site)
+- The Kit form itself can be styled via Kit's form builder to roughly match, but don't fight it too hard. Getting it functional and reasonably styled is the priority.
+- Test that the form submits correctly and the automated email delivers the PDF
+
+## Design Guidelines
+
+Match the existing site's visual language:
+- Dark background (the current site uses a dark theme)
+- Teal accent color for buttons and highlights (match the existing "Let's Talk" and service CTA buttons)
+- Clean, readable typography consistent with the rest of the page
+- Subtle animations are fine (the site already uses them for the portrait and images) but don't overdo it
+- Mobile responsive, same as the rest of the site
+
+## File Structure
+
+```
+learnwithoj.com/
+  index.html          # existing, add resources teaser section
+  resources.html      # new page
+  assets/
+    ai-guide-thumb.png  # thumbnail or icon for the guide card (create or use placeholder)
+  css/
+    (existing styles)   # add new styles inline or in existing stylesheet
+```
 
 ## What NOT to Do
-- Don't hide prices or make people fill out a form to see pricing
-- Don't use "mentor" or "mentorship" anywhere
-- Don't use em dashes
-- Don't add a chatbot, popup, or email capture form
-- Don't make it look like a SaaS landing page with feature comparison tables
-- Don't use stock photos (the profile photo is O.J.'s actual photo with AI-animated movement, keep it as-is)
 
-## Suggested Claude Code Prompt Sequence
-Work in small increments. Test and commit after each prompt.
+- Don't restructure or redesign the existing page sections. We're only ADDING the resources teaser between "The bigger picture" and "Ready to get started?"
+- Don't change existing copy, CTAs, pricing, or service descriptions
+- Don't add a full navigation menu or sidebar. Keep the single-page feel with the resources page as a clean secondary page.
+- Don't over-engineer the email capture. Kit handles the heavy lifting. We just embed their form.
+- Don't make the "Coming Soon" tool teaser look like it's available. Make it clearly labeled as upcoming.
 
-1. "Read CLAUDE.md. Update the nav bar: change 'Book Session' to 'Let's Talk' and link it to https://www.linkedin.com/in/learnwithoj/"
+## Kit Setup Steps (Manual, Do Before Running Prompts)
 
-2. "Update the hero section: change the eyebrow text from '1:1 MENTORSHIP FOR ENGINEERS' to 'CAREER STRATEGY FOR SOFTWARE & INFRASTRUCTURE ENGINEERS'. Update the subtitle copy per CLAUDE.md. Replace the 'Book a Session - $200' button with a 'Let's Talk First' button linking to https://www.linkedin.com/in/learnwithoj/. Add small text underneath: 'Connect with me on LinkedIn and tell me what you're working on.' Keep the headline and photo as-is."
+1. Go to kit.com and create a free account
+2. Create a new Form (not a Landing Page)
+3. In Form settings, set up the Incentive Email:
+   - Upload the AI-Assisted Development guide PDF
+   - Write a brief delivery email: "Here's your copy of the AI-Assisted Development guide. If you have questions or want to talk about implementing this on your team, reply to this email or book time at learnwithoj.com."
+4. Design the form to collect: Email (required), First Name (optional)
+5. Grab the HTML embed code from Kit
+6. Save the embed code, you'll paste it in during Prompt 3
 
-3. "Update the 'Who This Is For' section: replace any mention of 'mid-career' with 'experienced engineers who haven't gotten the title yet'. Use 'software and infrastructure engineers' instead of just 'engineers'. Remove any 'mentor/mentorship' language."
+## Prompt Sequence for Claude Code
 
-4. "Update the 'What You Get' section to reflect three service tiers (Fresh Squeeze resume review, Career Accelerator 3-session bundle, Focused Hour single session) instead of the single mentoring session. See CLAUDE.md for details on each tier."
+Run these in order. Test after each one before moving to the next.
 
-5. "Add a Services/Pricing section with 3 cards per CLAUDE.md: Fresh Squeeze ($275), Career Accelerator ($900), Focused Hour ($325). Each card needs a description and a Stripe Checkout button using the URLs from CLAUDE.md. Add a 'Start Here' badge on Fresh Squeeze. Stack cards on mobile."
+### Prompt 1: Create the resources page shell
 
-6. "Add a 'How It Works' section with 3 steps: Connect, Clarity, Go. Position it before the pricing section so people understand the process before seeing prices. See CLAUDE.md for step descriptions."
+```
+Read CLAUDE.md. Create resources.html with the same nav bar and footer as index.html. Add a page heading "Free Resources" and a brief intro paragraph. Add an empty section with id="ai-guide" and a placeholder that says "Guide section coming soon." Make sure the page is styled consistently with the existing site. Link it from the nav bar on both pages (add a "Resources" link).
+```
 
-7. "Update the FAQ section to reflect the new service tiers. Add questions about which service to start with, what happens after payment, and whether you can upgrade from Fresh Squeeze to Career Accelerator."
+### Prompt 2: Build the AI guide section on resources.html
 
-8. "Add a testimonials section between About Me and the second CTA. Use placeholder structure for 1-2 testimonial cards (name, title, quote) that I can fill in later. If I provide actual testimonial text, use that instead."
+```
+Read CLAUDE.md. In resources.html, replace the placeholder in #ai-guide with the full guide section: title, description (3-5 sentences, see CLAUDE.md for direction), and a placeholder div where the Kit form embed will go. Also add the "Coming Soon" teaser for the resume/JD match tool below the guide section. Style everything to match the site.
+```
 
-9. "Update the second CTA section: replace any 'Book a Session' button with 'Let's Talk First' linking to LinkedIn. Keep the email link as a secondary option."
+### Prompt 3: Embed the Kit form
 
-10. "Do a full review pass: check all copy for em dashes (replace with commas or periods), check for 'mentor/mentorship' language (replace per CLAUDE.md guidelines), check for 'mid-career' (replace with correct framing), and verify mobile responsiveness on all new sections."
+```
+Read CLAUDE.md. Here's the Kit embed code:
 
-For full brand context including positioning, case studies, and competitive landscape, reference the branding guide in the learnwithoj-internal repo (not included here, ask for it directly when needed).
+<script async data-uid="36c7f50077" src="https://learn-with-o-j.kit.com/36c7f50077/index.js"></script>
+
+Add it to the placeholder div in the #ai-guide section on resources.html. Style the surrounding container so it integrates cleanly with the page. Add the "No spam. Just the guide. You can unsubscribe anytime." note below the form.
+```
+
+### Prompt 4: Add the resources teaser to index.html
+
+```
+Read CLAUDE.md. Add a starburst badge to the hero section that links to /resources.html#ai-guide with the text "Free AI Guide." Place it inside the hero-video-wrapper div, positioned absolutely at the top-right of the circular profile image. Use an inline SVG for the starburst shape (8 points, mathematically generated for consistency, shallow valleys) with a coral/orange fill (#e8755a) to contrast with the teal buttons. Rotate the SVG shape ~15 degrees but keep the text horizontal. Position using left: calc(50% + offset) so it stays anchored relative to the centered image across screen sizes. The badge should scale up slightly and rotate on hover. Keep it small (75-80px) so it doesn't compete with the main CTA.
+```
+
+### Prompt 5: Polish and test
+
+```
+Read CLAUDE.md. Review both index.html and resources.html for:
+- Consistent styling (colors, fonts, spacing, dark theme)
+- Mobile responsiveness (test at 375px, 768px, 1024px widths)
+- All links work (nav, CTAs, anchors, starburst badge links to /resources.html#ai-guide)
+- The starburst badge stays anchored relative to the profile image at all screen sizes and doesn't overlap or obscure the image awkwardly on mobile
+- The badge hover animation (scale + rotate) works smoothly
+- The "Coming Soon" tool teaser looks clearly different from the available guide (maybe slightly muted/grayed)
+- The Kit form embed loads correctly on resources.html (note: form submission won't work locally, just verify it renders)
+Fix anything that's off.
+```
+
+## Notes
+
+- The Kit form won't work in local development since it needs Kit's JS to load. Test the form integration on a deployed version or Kit's preview.
+- The PDF guide should be hosted through Kit (as the incentive email attachment/link), not as a static file on the site. This ensures you capture the email before anyone gets the file.
+- If you want to track downloads or conversions later, Kit has built-in analytics for form submissions.
