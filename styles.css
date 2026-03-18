@@ -149,7 +149,7 @@ body {
    Hero Section
    ============================================ */
 .hero {
-    padding: 3rem 0 2rem;
+    padding: 2rem 0 1.5rem;
     text-align: center;
     position: relative;
     overflow: visible;
@@ -230,7 +230,7 @@ body {
 
 /* Hero Video */
 .hero-video-wrapper {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     position: relative;
 }
 
@@ -264,7 +264,7 @@ body {
     color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .hero-title {
@@ -280,7 +280,7 @@ body {
     font-size: 1.125rem;
     color: var(--color-text-muted);
     line-height: 1.7;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
     max-width: 520px;
     margin-left: auto;
     margin-right: auto;
@@ -1036,7 +1036,7 @@ h2.pricing-heading {
 }
 
 .cta-bottom-alt {
-    margin-top: 1rem;
+    margin-top: 2rem;
     font-size: 0.875rem;
     color: var(--color-text-dim);
 }
@@ -1140,7 +1140,7 @@ h2.pricing-heading {
    ============================================ */
 @media (max-width: 639px) {
     .hero {
-        padding: 3rem 0 2rem;
+        padding: 2rem 0 1.5rem;
     }
 
     .hero-subtitle {
