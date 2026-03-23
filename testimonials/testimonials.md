@@ -35,3 +35,13 @@ Relationship: met at WomenTech Network event in Oct 2025
 Image: sobia-soomro-avatar.jpg
 Quote: "Olivia's article really helped give Lumina some visibility by showing it through a real-world example. She was thoughtful in exploring the architecture, design decisions, and purpose behind the template, and turned that into a clear article that helps developers understand how Lumina can support a more expressive portfolio. Olivia has a great ability to capture the technical side."
 LinkedIn: https://www.linkedin.com/in/sobiasoomro/
+
+---
+
+Name: Susan Burgard
+Title: Retired Programmer/Business Analyst
+Company: Palm Beach State College
+Relationship: Former colleague and friend
+Image: use default avatar
+Quote: "I have known O.J. since the beginning of her IT journey. Her willingness to learn new techniques/skills and take on new tasks has always been excellent. She is then able to implement what she has learned as well as share that knowledge with others through thoughtful and insightful perspective. She is my go to person for technical challenges and someone I readily recommend to others."
+LinkedIn: no LinkedIn
