@@ -712,6 +712,14 @@ p {
     text-align: center;
 }
 
+.section-subtitle {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1.5rem;
+}
+
 .testimonials-carousel {
     position: relative;
     display: flex;
