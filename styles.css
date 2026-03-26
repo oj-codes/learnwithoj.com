@@ -815,6 +815,7 @@ p {
     font-size: 0.9375rem;
     font-weight: 600;
     color: var(--color-white);
+    margin-bottom: 0.2rem !important;
 }
 
 .testimonial-title {
