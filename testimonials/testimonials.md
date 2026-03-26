@@ -67,3 +67,12 @@ She showed early on that she had the technical chops and a deep understanding of
 After a short time, she joined our "CORE" software engineering team and worked on specific components that were preserved for our broader component library.
 She helped us build products in a competitive space and brought energy to the team, making everyone better.
 We've stayed in touch ever since, and I'm not surprised at all that she's building her own thing now!"
+
+---
+
+Name: Mohammad Abuhaija
+Title: Director, Site Reliability Engineering & Enterprise DevOps 
+Company: American Express
+Relationship: Managed O.J. at American Express
+Image: mohammad-abuhaija-avatar.jpeg
+Quote: "Mohammad managed Olivia directlyI have worked with Olivia at American Express who was in the capacity of senior SRE. Olivia is a bright engineer with strong technical skills and sound leadership abilities. Her contributions were critical to launching key products on time and she consistently stepped up to help junior engineers get up to speed and deliver. She took ownership of critical delivery initiatives and made the people around her better by offering support and guidance to other team members. She's is a valuable professional and the kind of engineer you want on your team."
