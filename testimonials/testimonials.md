@@ -76,3 +76,12 @@ Company: American Express
 Relationship: Managed O.J. at American Express
 Image: mohammad-abuhaija-avatar.jpeg
 Quote: "Mohammad managed Olivia directlyI have worked with Olivia at American Express who was in the capacity of senior SRE. Olivia is a bright engineer with strong technical skills and sound leadership abilities. Her contributions were critical to launching key products on time and she consistently stepped up to help junior engineers get up to speed and deliver. She took ownership of critical delivery initiatives and made the people around her better by offering support and guidance to other team members. She's is a valuable professional and the kind of engineer you want on your team."
+
+---
+
+Name: Sylke Lopez
+Title: Senior Designer
+Company: Microsoft
+Relationship: Worked with O.J. at Dycom Industries, Inc
+Image: sylke-lopez-avatar.jpeg
+Quote: "Working with Olivia Wilcox on the Women’s Code and Coffee Python workshops was a standout experience. Back in 2018, Olivia was already leading hands-on sessions on machine learning chatbots, years before AI became mainstream. She explains concepts in multiple ways, creating a supportive and confidence-building learning environment. Olivia is endlessly patient, welcoming, and generous with her time, and her volunteer work made a real impact on everyone who showed up to learn."
