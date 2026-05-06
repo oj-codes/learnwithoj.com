@@ -2203,6 +2203,8 @@ button:focus-visible {
     .btn-primary,
     .btn-primary:hover,
     .btn-primary:active,
+    .btn-header,
+    .btn-header:hover,
     .feature-card,
     .feature-card:hover {
         transition: none;
