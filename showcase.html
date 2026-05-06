@@ -31,13 +31,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="styles.css?v=3">
 
     <!-- Analytics -->
     <script data-goatcounter="https://learnwithoj.goatcounter.com/count"
             async src="https://gc.zgo.at/count.js"></script>
 </head>
-<body>
+<body class="showcase-page">
     <header class="header">
         <div class="container">
             <a href="/" class="logo">Learn with O.J.</a>
@@ -67,11 +67,127 @@
             </div>
         </section>
 
-        <!-- TODO: What I do for companies. 2x2 grid of four service buckets: Senior software engineering, Infrastructure and SRE, AI-assisted development, Fractional engineering leadership. Each with short heading, one-line summary, and a tight list of specifics. Collapses to one column on mobile. -->
-        <section id="services"></section>
+        <section id="services" class="section section-alt">
+            <div class="container container-wide">
+                <h2>What I do for companies</h2>
+                <div class="services-grid">
+                    <article class="feature-card service-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
+                            </svg>
+                        </div>
+                        <h3>Senior software engineering</h3>
+                        <p class="service-summary">Production engineering work alongside your existing team.</p>
+                        <ul class="service-list">
+                            <li>Go, Python, JavaScript</li>
+                            <li>Refactoring legacy systems toward maintainability</li>
+                            <li>Code review at staff and principal level</li>
+                            <li>Turning vibecoded MVPs into production-ready software</li>
+                        </ul>
+                    </article>
 
-        <!-- TODO: How engagements work. Five points: $325/hr cash direct billing, 1099 independent contractor, trust-but-verify start, alongside the team not over them, vetted specialists when needed. Clean numbered list with short explanations. -->
-        <section id="how"></section>
+                    <article class="feature-card service-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="6" rx="1.5"/>
+                                <rect x="3" y="14" width="18" height="6" rx="1.5"/>
+                                <circle cx="7" cy="7" r="0.6" fill="currentColor" stroke="none"/>
+                                <circle cx="7" cy="17" r="0.6" fill="currentColor" stroke="none"/>
+                            </svg>
+                        </div>
+                        <h3>Infrastructure and SRE</h3>
+                        <p class="service-summary">Cloud infrastructure and reliability work, end to end.</p>
+                        <ul class="service-list">
+                            <li>Kubernetes and AWS, including managed K8s migrations</li>
+                            <li>Observability built around SLOs and error budgets</li>
+                            <li>CI/CD pipelines and deployment automation in GitHub Actions</li>
+                            <li>On-call design, incident response, postmortem culture</li>
+                            <li>Cost optimization</li>
+                        </ul>
+                    </article>
+
+                    <article class="feature-card service-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.937A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .963L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+                                <path d="M20 3v4"/>
+                                <path d="M22 5h-4"/>
+                                <path d="M4 17v2"/>
+                                <path d="M5 18H3"/>
+                            </svg>
+                        </div>
+                        <h3>AI-assisted development</h3>
+                        <p class="service-summary">Training engineering teams to use AI tools effectively in their actual codebase.</p>
+                        <ul class="service-list">
+                            <li>Building agentic workflows that ship to production, not demos</li>
+                            <li>Code review and evals for AI-generated code</li>
+                            <li>Closing the gap between AI prototypes and reliable software</li>
+                        </ul>
+                    </article>
+
+                    <article class="feature-card service-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="9"/>
+                                <polygon points="16.5 7.5 13.5 13.5 7.5 16.5 10.5 10.5"/>
+                            </svg>
+                        </div>
+                        <h3>Fractional engineering leadership</h3>
+                        <p class="service-summary">Technical strategy at the CTO and VP-Engineering level for small companies.</p>
+                        <ul class="service-list">
+                            <li>Build versus buy decisions</li>
+                            <li>Hiring and team scaffolding</li>
+                            <li>Bridging dev, infra, and product without political theater</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="how" class="section">
+            <div class="container">
+                <h2>How engagements work</h2>
+                <ul class="steps engagement-steps">
+                    <li class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Direct billing at $325/hr in cash.</h3>
+                            <p>No agency markup, no equity-only deals. Invoiced through Learn with O.J. LLC.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Independent contractor.</h3>
+                            <p>1099 in the US. Your team retains full control of priorities and IP.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Trust-but-verify start.</h3>
+                            <p>Most engagements begin with a small, well-defined project before scaling up. The first 10 to 20 hours prove the fit before either side commits to more.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Alongside your existing team, not over them.</h3>
+                            <p>No throw-it-over-the-wall consulting. Pair programming, code review, async writeups, and showing up to your existing meetings on your existing tools.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Specialists when needed.</h3>
+                            <p>A vetted network for cybersecurity, ML, and other domains outside the software and infrastructure scope. Brought in transparently, billed directly to you.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
 
         <!-- TODO: Recent work. Four short blocks, no client names: fractional CTO engagement (active), AI-assisted development training (closed Q1 2026), 25 discovery conversations, LinkedIn content engine compounding. Matter-of-fact list, not cards. -->
         <section id="proof"></section>
