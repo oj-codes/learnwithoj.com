@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>document.documentElement.classList.add('js');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.add('js');</script>
     <meta name="description" content="B2B engineering, architecture, and AI-assisted development work from a working senior software and infrastructure engineer with 20+ years of experience.">
     <title>Learn with O.J. - For Companies and Referrers</title>
 
@@ -34,7 +34,7 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
-    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="styles.css?v=9">
 
     <!-- Analytics -->
     <script data-goatcounter="https://learnwithoj.goatcounter.com/count"
@@ -61,6 +61,7 @@
                     <div class="showcase-hero-portrait">
                         <video class="showcase-hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/oj-headshot.jpg" aria-label="O.J., senior software and infrastructure engineer">
                             <source src="assets/oj-headshot-hero.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
                         </video>
                     </div>
                     <p class="showcase-hero-eyebrow">ALW Showcase&nbsp;·&nbsp;May 7, 2026</p>
@@ -288,8 +289,14 @@ She's at oj@learnwithoj.com or learnwithoj.com.
                         <svg class="btn-copy-icon btn-copy-icon-success" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M4 10.5l4 4 8.5-8.5"/>
                         </svg>
+                        <svg class="btn-copy-icon btn-copy-icon-error" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="10" cy="10" r="8"/>
+                            <line x1="10" y1="6.5" x2="10" y2="11"/>
+                            <circle cx="10" cy="13.75" r="0.5" fill="currentColor" stroke="none"/>
+                        </svg>
                         <span class="btn-copy-label btn-copy-label-default">Copy intro template</span>
                         <span class="btn-copy-label btn-copy-label-success">Off it goes &#10003;</span>
+                        <span class="btn-copy-label btn-copy-label-error">Couldn't copy, select it manually</span>
                     </button>
                 </div>
                 <noscript>
@@ -338,7 +345,9 @@ She's at oj@learnwithoj.com or learnwithoj.com.
 
         var resetTimer = null;
         var SUCCESS_CLASS = 'is-success';
+        var ERROR_CLASS = 'is-error';
         var HOLD_MS = 2000;
+        var ERROR_HOLD_MS = 4000;
 
         function legacyCopy(text) {
             var ta = document.createElement('textarea');
@@ -369,24 +378,35 @@ She's at oj@learnwithoj.com or learnwithoj.com.
             return Promise.resolve(legacyCopy(text));
         }
 
-        function flashSuccess() {
-            button.classList.add(SUCCESS_CLASS);
-            if (status) {
-                // Re-set so screen readers re-announce on repeated copies.
-                status.textContent = '';
-                window.setTimeout(function () {
-                    status.textContent = 'Intro template copied to clipboard';
-                }, 30);
-            }
+        function announce(message) {
+            if (!status) return;
+            // Re-set so screen readers re-announce on repeated events.
+            status.textContent = '';
+            window.setTimeout(function () {
+                status.textContent = message;
+            }, 30);
+        }
+
+        function flashState(stateClass, holdMs, message) {
+            button.classList.remove(SUCCESS_CLASS);
+            button.classList.remove(ERROR_CLASS);
+            // Force reflow so the keyframe animation re-fires on rapid repeats.
+            void button.offsetWidth;
+            button.classList.add(stateClass);
+            announce(message);
             window.clearTimeout(resetTimer);
             resetTimer = window.setTimeout(function () {
-                button.classList.remove(SUCCESS_CLASS);
-            }, HOLD_MS);
+                button.classList.remove(stateClass);
+            }, holdMs);
         }
 
         button.addEventListener('click', function () {
             Promise.resolve(copyText(target.textContent)).then(function (ok) {
-                if (ok) flashSuccess();
+                if (ok) {
+                    flashState(SUCCESS_CLASS, HOLD_MS, 'Intro template copied to clipboard');
+                } else {
+                    flashState(ERROR_CLASS, ERROR_HOLD_MS, 'Copy failed. Select the template text and copy it manually.');
+                }
             });
         });
     })();

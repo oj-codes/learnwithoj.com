@@ -1917,7 +1917,7 @@ a:hover {
     line-height: 1.65;
     color: var(--color-text);
     white-space: pre-wrap;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
     overflow-x: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -2023,7 +2023,9 @@ a:hover {
 }
 
 .btn-copy-icon-success,
-.btn-copy-label-success {
+.btn-copy-label-success,
+.btn-copy-icon-error,
+.btn-copy-label-error {
     display: none;
 }
 
@@ -2043,6 +2045,27 @@ a:hover {
 
 .btn-copy.is-success .btn-copy-icon-success,
 .btn-copy.is-success .btn-copy-label-success {
+    display: inline-flex;
+}
+
+/* Error state: clipboard write failed (denied, unsupported, sandboxed).
+   Visible state mirrors success in structure (icon + label swap, soft tinted
+   surface) but uses neutral surfaces, since the brand reserves coral for the
+   homepage starburst only. The aria-live status node carries the actionable
+   instruction for screen readers. */
+.btn-copy.is-error {
+    background: var(--color-bg-card);
+    border-color: rgba(255, 255, 255, 0.18);
+    color: var(--color-text);
+}
+
+.btn-copy.is-error .btn-copy-icon-default,
+.btn-copy.is-error .btn-copy-label-default {
+    display: none;
+}
+
+.btn-copy.is-error .btn-copy-icon-error,
+.btn-copy.is-error .btn-copy-label-error {
     display: inline-flex;
 }
 
