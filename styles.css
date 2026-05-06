@@ -13,6 +13,7 @@
     --color-white: #ffffff;
     --color-accent: #38b6c1;
     --color-accent-hover: #4fd1dc;
+    --color-accent-deep: #157d86;
     --color-accent-dim: rgba(56, 182, 193, 0.15);
     --color-accent-glow: rgba(56, 182, 193, 0.25);
     --color-mint: #6ee7b7;
@@ -125,17 +126,20 @@ body {
     display: none;
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--color-white);
-    background: var(--color-accent);
+    background: var(--color-accent-deep);
     border-radius: var(--radius-full);
     text-decoration: none;
-    transition: background var(--transition-fast), transform var(--transition-fast);
+    transition: background var(--transition-fast),
+                transform var(--transition-fast),
+                box-shadow var(--transition-fast);
 }
 
 .btn-header:hover {
-    background: var(--color-accent-hover);
+    background: var(--color-accent-deep);
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(21, 125, 134, 0.4);
 }
 
 @media (min-width: 640px) {
@@ -1109,12 +1113,12 @@ h2.pricing-heading {
 .footer-brand {
     font-size: 0.9375rem;
     font-weight: 500;
-    color: var(--color-text-dim);
+    color: var(--color-text-muted);
 }
 
 .footer-email a {
     font-size: 0.875rem;
-    color: var(--color-text-dim);
+    color: var(--color-text-muted);
     text-decoration: none;
     transition: color var(--transition-fast);
 }
@@ -1381,6 +1385,48 @@ a:hover {
     margin: 0 auto;
 }
 
+.showcase-hero-portrait {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.75rem;
+}
+
+.showcase-hero-video {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-accent);
+    box-shadow:
+        0 0 0 4px var(--color-accent-dim),
+        0 0 24px rgba(56, 182, 193, 0.18),
+        var(--shadow-md);
+}
+
+@media (min-width: 480px) {
+    .showcase-hero-video {
+        width: 108px;
+        height: 108px;
+    }
+}
+
+@media (min-width: 640px) {
+    .showcase-hero-video {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (min-width: 960px) {
+    .showcase-hero-video {
+        width: 132px;
+        height: 132px;
+    }
+    .showcase-hero-portrait {
+        margin-bottom: 2rem;
+    }
+}
+
 .showcase-hero-eyebrow {
     display: inline-block;
     font-size: 0.75rem;
@@ -1453,7 +1499,7 @@ a:hover {
     gap: 0.5rem;
     font-size: 0.9375rem;
     font-weight: 500;
-    color: var(--color-text-dim);
+    color: var(--color-text-muted);
     text-decoration: none;
     padding: 0.5rem 0.75rem;
     border-radius: var(--radius-sm);
@@ -1912,11 +1958,14 @@ a:hover {
 
 /* Copy button: default → hover → success states.
    Default and success icons/labels both live in the DOM;
-   the active pair is toggled via .is-success on the button. */
+   the active pair is toggled via .is-success on the button.
+   Hidden by default; the inline <script> in <head> adds .js to <html>
+   so the button only appears when JavaScript is actually running.
+   Without JS, a <noscript> fallback message renders in its place. */
 .btn-copy {
     appearance: none;
     -webkit-appearance: none;
-    display: inline-flex;
+    display: none;
     align-items: center;
     gap: 0.5rem;
     padding: 0.625rem 1.125rem;
@@ -1932,6 +1981,18 @@ a:hover {
                 border-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
                 color 200ms cubic-bezier(0.4, 0, 0.2, 1),
                 transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.js .btn-copy {
+    display: inline-flex;
+}
+
+.refer-noscript {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    font-style: italic;
 }
 
 .btn-copy:hover {
@@ -2022,7 +2083,7 @@ a:hover {
 }
 
 .refer-contact-label {
-    color: var(--color-text-dim);
+    color: var(--color-text-muted);
     font-weight: 500;
 }
 
@@ -2056,7 +2117,7 @@ a:hover {
 .footer-pointer-text {
     margin: 0;
     text-align: center;
-    color: var(--color-text-dim);
+    color: var(--color-text-muted);
     font-size: 0.9375rem;
     line-height: 1.6;
     max-width: 640px;
@@ -2094,6 +2155,33 @@ a:hover {
     .footer-pointer-arrow,
     .footer-pointer-text a:hover .footer-pointer-arrow,
     .refer-contact-link {
+        transition: none;
+        transform: none;
+    }
+}
+
+/* ============================================
+   Sitewide accessibility
+   ============================================ */
+
+/* Custom focus ring on every focusable interactive element.
+   Component-level :focus-visible rules (with class selectors)
+   override this where they exist. */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+/* Honor prefers-reduced-motion for the few transforms that
+   live on shared site components and were not previously
+   wrapped in a reduced-motion handler. */
+@media (prefers-reduced-motion: reduce) {
+    .btn-primary,
+    .btn-primary:hover,
+    .btn-primary:active,
+    .feature-card,
+    .feature-card:hover {
         transition: none;
         transform: none;
     }

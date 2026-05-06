@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is inspired by [Keep a Changelog](https://keepachangelog.com), and this project adheres to semantic versioning where possible.
 
 
+## [2.4.0] - 2026-05-06
+### Added
+- Showcase page (`showcase.html`) at `/showcase`, the B2B referral landing for ALW Showcase and future pitch contexts. Hero with portrait video, four service buckets, engagement model, recent work, the DST production-down story with the Maher pull quote, copy-to-clipboard referral template, and a quiet pointer back to the B2C site
+- JetBrains Mono (weights 400/500), loaded only on the showcase page, for the referral template's monospace block
+- Mint accent color token (`--color-mint: #6ee7b7`) and monospace font stack token (`--font-mono`)
+- Secondary button style (`.btn-secondary`) for ghost/outline CTAs
+- Visually-hidden `.sr-only` utility for screen-reader-only content (used by the copy-button `aria-live` status node)
+- Custom focus-visible rings on every link and button across the site (2px brand teal, 4px offset)
+- `prefers-reduced-motion` handling on `.btn-primary` and `.feature-card` hover transforms
+
+### Changed
+- Hero eyebrow gradient now references `--color-mint` token instead of a hardcoded hex (no visual change)
+
 ## [2.3.0] - 2026-03-17
 ### Added
 - Resources page (`resources.html`) with shared nav bar, footer, and consistent styling
