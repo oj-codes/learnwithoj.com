@@ -1616,3 +1616,193 @@ a:hover {
         gap: 1rem;
     }
 }
+
+/* Recent work (#proof). Editorial list, not cards.
+   Top-border separators between items, no chrome. */
+.proof-list {
+    list-style: none;
+    margin: 1.75rem 0 0;
+    padding: 0;
+}
+
+.proof-item {
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.proof-item:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+.proof-item:last-child {
+    padding-bottom: 0;
+}
+
+.proof-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-white);
+    letter-spacing: -0.005em;
+    margin: 0 0 0.375rem;
+}
+
+.proof-item p {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (min-width: 640px) {
+    .proof-item {
+        padding: 1.5rem 0;
+    }
+    .proof-item h3 {
+        font-size: 1.0625rem;
+    }
+}
+
+/* DST story + Maher quote (#trust). The emotional center of the page.
+   Narrower column, generous line-height, editorial rhythm. */
+.trust-frame {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.trust-story {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.trust-story p {
+    margin: 0;
+    font-size: 1.0625rem;
+    color: var(--color-text);
+    line-height: 1.75;
+}
+
+@media (min-width: 640px) {
+    .trust-story {
+        gap: 1.625rem;
+        margin-top: 2.25rem;
+    }
+    .trust-story p {
+        font-size: 1.125rem;
+    }
+}
+
+/* Punchline. Stops the scroll: thin mint accent line, larger type. */
+.trust-punchline {
+    position: relative;
+    margin: 3rem 0;
+    padding: 0.25rem 0 0.25rem 1.25rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-white);
+    line-height: 1.45;
+    letter-spacing: -0.015em;
+    border-left: 2px solid var(--color-mint);
+}
+
+@media (min-width: 640px) {
+    .trust-punchline {
+        margin: 3.5rem 0;
+        padding-left: 1.75rem;
+        font-size: 1.4375rem;
+        line-height: 1.4;
+    }
+}
+
+/* Transition line. Quieter beat that bridges story to testimonial. */
+.trust-transition {
+    margin: 0 0 3rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+@media (min-width: 640px) {
+    .trust-transition {
+        margin-bottom: 3.5rem;
+    }
+}
+
+/* Maher pull quote. Hanging open-quote sits in the gutter. */
+.trust-quote {
+    margin: 0;
+    padding: 0 0 0 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .trust-quote {
+        padding-left: 2rem;
+    }
+}
+
+.maher-quote {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.maher-quote::before {
+    content: '\201C';
+    position: absolute;
+    left: -1.5rem;
+    top: -0.45rem;
+    font-size: 2.75rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--color-mint);
+    opacity: 0.5;
+    font-weight: 400;
+    line-height: 1;
+    pointer-events: none;
+}
+
+@media (min-width: 640px) {
+    .maher-quote::before {
+        left: -2rem;
+        top: -0.55rem;
+        font-size: 3.5rem;
+    }
+}
+
+.maher-quote p {
+    margin: 0;
+    font-size: 1.125rem;
+    font-style: italic;
+    color: var(--color-white);
+    line-height: 1.6;
+    letter-spacing: -0.005em;
+}
+
+@media (min-width: 640px) {
+    .maher-quote p {
+        font-size: 1.1875rem;
+        line-height: 1.55;
+    }
+}
+
+.maher-attribution {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+.maher-name {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.maher-divider {
+    margin: 0 0.5rem;
+    color: var(--color-text-dim);
+}
+
+.maher-role {
+    color: var(--color-text-muted);
+}
