@@ -15,6 +15,7 @@
     --color-accent-hover: #4fd1dc;
     --color-accent-dim: rgba(56, 182, 193, 0.15);
     --color-accent-glow: rgba(56, 182, 193, 0.25);
+    --color-mint: #6ee7b7;
     --color-border: rgba(255, 255, 255, 0.08);
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --container-max: 720px;
@@ -274,7 +275,7 @@ body {
     display: inline-block;
     font-size: 0.8125rem;
     font-weight: 500;
-    background: linear-gradient(90deg, #38b6c1, #6ee7b7, #38b6c1);
+    background: linear-gradient(90deg, var(--color-accent), var(--color-mint), var(--color-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1310,4 +1311,180 @@ a {
 
 a:hover {
     color: var(--color-accent-hover);
+}
+
+/* ============================================
+   Secondary Button (ghost / outline)
+   ============================================ */
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-white);
+    background: transparent;
+    border: 1px solid rgba(56, 182, 193, 0.45);
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 220ms cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 220ms cubic-bezier(0.4, 0, 0.2, 1),
+                color 220ms cubic-bezier(0.4, 0, 0.2, 1),
+                transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-secondary:hover {
+    background: rgba(56, 182, 193, 0.1);
+    border-color: var(--color-accent);
+    color: var(--color-white);
+    transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
+}
+
+/* Custom focus ring for primary and secondary buttons */
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+/* ============================================
+   Showcase Page (B2B)
+   ============================================ */
+.showcase-hero {
+    padding: 5rem 0 4rem;
+    text-align: center;
+    position: relative;
+}
+
+@media (min-width: 640px) {
+    .showcase-hero {
+        padding: 8rem 0 6rem;
+    }
+}
+
+@media (min-width: 960px) {
+    .showcase-hero {
+        padding: 10rem 0 8rem;
+    }
+}
+
+.showcase-hero-content {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.showcase-hero-eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-mint);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 1.75rem;
+}
+
+@media (min-width: 640px) {
+    .showcase-hero-eyebrow {
+        font-size: 0.8125rem;
+    }
+}
+
+.showcase-hero-title {
+    font-size: clamp(2.75rem, 8vw, 4.25rem);
+    font-weight: 700;
+    color: var(--color-white);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    margin-bottom: 1.75rem;
+}
+
+.showcase-hero-subtitle {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    margin: 0 auto 2.75rem;
+    max-width: 560px;
+}
+
+@media (min-width: 640px) {
+    .showcase-hero-subtitle {
+        font-size: 1.1875rem;
+        line-height: 1.6;
+    }
+}
+
+.showcase-hero-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    max-width: 320px;
+    margin: 0 auto 2rem;
+}
+
+.showcase-hero-cta .btn-primary,
+.showcase-hero-cta .btn-secondary {
+    min-height: 48px;
+    padding: 0.9375rem 2.25rem;
+}
+
+@media (min-width: 480px) {
+    .showcase-hero-cta {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        max-width: none;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+.showcase-hero-jump {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    transition: color 220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.showcase-hero-jump:hover {
+    color: var(--color-white);
+}
+
+.showcase-hero-jump:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+    color: var(--color-white);
+}
+
+.showcase-hero-jump-arrow {
+    display: inline-block;
+    transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.showcase-hero-jump:hover .showcase-hero-jump-arrow {
+    transform: translateY(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-secondary,
+    .btn-secondary:hover,
+    .showcase-hero-jump,
+    .showcase-hero-jump-arrow,
+    .showcase-hero-jump:hover .showcase-hero-jump-arrow {
+        transition: none;
+        transform: none;
+    }
 }
