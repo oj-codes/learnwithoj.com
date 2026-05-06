@@ -740,6 +740,7 @@ p {
     grid-template-rows: auto 1fr auto;
     gap: 0 1.25rem;
     overflow-x: hidden;
+    overscroll-behavior-x: contain;
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding: 0.5rem 0;
@@ -771,7 +772,14 @@ p {
 }
 
 .carousel-arrow {
-    display: none;
+    /* Always rendered with display: flex so the carousel's flex row width
+       stays stable when the arrow toggles at scroll boundaries. We hide
+       via visibility + opacity instead of display: none to avoid the layout
+       reflow that produced a visible stutter at the end of the track. */
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
     background: var(--color-bg-card);
     border: 1px solid var(--color-border);
     color: var(--color-white);
@@ -783,7 +791,7 @@ p {
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s, border-color 0.2s;
+    transition: opacity 180ms ease, background 0.2s, border-color 0.2s;
     z-index: 2;
 }
 
@@ -793,7 +801,9 @@ p {
 }
 
 .carousel-arrow.visible {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .testimonial-avatar {

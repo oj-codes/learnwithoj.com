@@ -34,7 +34,7 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
-    <link rel="stylesheet" href="styles.css?v=10">
+    <link rel="stylesheet" href="styles.css?v=11">
 
     <!-- Analytics -->
     <script data-goatcounter="https://learnwithoj.goatcounter.com/count"
@@ -219,6 +219,45 @@
                         <p>A career story posted in mid-April reached 119,000+ impressions, 64,000+ members, and generated hundreds of inbound DMs. Inbound is converting.</p>
                     </li>
                 </ul>
+            </div>
+        </section>
+
+        <section id="voices" class="section section-alt">
+            <div class="container container-full">
+                <h2>What people I've worked with say</h2>
+                <div class="testimonials-carousel">
+                    <button class="carousel-arrow carousel-arrow-left" aria-label="Previous testimonial">&#8249;</button>
+                    <div class="testimonials-track">
+                        <div class="testimonial-card">
+                            <img src="testimonials/mohammad-abuhaija-avatar.jpeg" alt="Mohammad Abuhaija" class="testimonial-avatar">
+                            <blockquote class="testimonial-quote">"Olivia is a bright engineer with strong technical skills and sound leadership abilities. Her contributions were critical to launching key products on time and she consistently stepped up to help junior engineers get up to speed and deliver. She took ownership of critical delivery initiatives and made the people around her better by offering support and guidance to other team members. She's a valuable professional and the kind of engineer you want on your team."</blockquote>
+                            <div class="testimonial-author">
+                                <p class="testimonial-name">Mohammad Abuhaija</p>
+                                <p class="testimonial-title">Director, Site Reliability Engineering &amp; Enterprise DevOps</p>
+                                <p class="testimonial-company">American Express</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <img src="testimonials/tom-schaeffer-avatar.jpeg" alt="Tom Schaeffer" class="testimonial-avatar">
+                            <blockquote class="testimonial-quote">"I hired Olivia early in her career and saw right away that she had the drive and technical ability to grow into something special. She showed early on that she had the technical chops and a deep understanding of our business goals, helping develop a broader business strategy. She helped us build products in a competitive space and brought energy to the team, making everyone better. We've stayed in touch ever since, and I'm not surprised at all that she's building her own thing now!"</blockquote>
+                            <div class="testimonial-author">
+                                <p class="testimonial-name">Tom Schaeffer</p>
+                                <p class="testimonial-title">Founder, Executive Ghostwriter</p>
+                                <p class="testimonial-company">Tom Schaeffer &amp; Co.</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <img src="testimonials/sylke-lopez-avatar.jpeg" alt="Sylke Lopez" class="testimonial-avatar">
+                            <blockquote class="testimonial-quote">"Working with Olivia on the Women's Code and Coffee Python workshops was a standout experience. Back in 2018, Olivia was already leading hands-on sessions on machine learning chatbots, years before AI became mainstream. She explains concepts in multiple ways, creating a supportive and confidence-building learning environment. Olivia is endlessly patient, welcoming, and generous with her time, and her volunteer work made a real impact on everyone who showed up to learn."</blockquote>
+                            <div class="testimonial-author">
+                                <p class="testimonial-name">Sylke Lopez</p>
+                                <p class="testimonial-title">Senior Designer</p>
+                                <p class="testimonial-company">Microsoft</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" aria-label="Next testimonial">&#8250;</button>
+                </div>
             </div>
         </section>
 
@@ -409,6 +448,62 @@ She's at oj@learnwithoj.com or learnwithoj.com.
                 }
             });
         });
+    })();
+
+    // Testimonials carousel: same horizontal-scroll pattern as the homepage,
+    // with arrows that only appear when the track overflows.
+    (function () {
+        var track = document.querySelector('.testimonials-track');
+        var leftArrow = document.querySelector('.carousel-arrow-left');
+        var rightArrow = document.querySelector('.carousel-arrow-right');
+        if (!track || !leftArrow || !rightArrow) return;
+
+        function getScrollAmount() {
+            var card = track.querySelector('.testimonial-card');
+            if (!card) return 340;
+            var gap = parseFloat(getComputedStyle(track).gap) || 20;
+            return card.offsetWidth + gap;
+        }
+
+        function updateArrows() {
+            var scrollable = track.scrollWidth > track.clientWidth + 1;
+            track.classList.toggle('can-scroll', scrollable);
+            if (!scrollable) {
+                leftArrow.classList.remove('visible');
+                rightArrow.classList.remove('visible');
+                return;
+            }
+            leftArrow.classList.toggle('visible', track.scrollLeft > 1);
+            rightArrow.classList.toggle('visible', track.scrollLeft + track.clientWidth < track.scrollWidth - 1);
+        }
+
+        function smoothScroll(distance) {
+            var start = track.scrollLeft;
+            var target = Math.max(0, Math.min(start + distance, track.scrollWidth - track.clientWidth));
+            var duration = 300;
+            var startTime = null;
+
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                var progress = Math.min((timestamp - startTime) / duration, 1);
+                var ease = progress < 0.5
+                    ? 2 * progress * progress
+                    : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+                track.scrollLeft = start + (target - start) * ease;
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    updateArrows();
+                }
+            }
+            requestAnimationFrame(step);
+        }
+
+        leftArrow.addEventListener('click', function () { smoothScroll(-getScrollAmount()); });
+        rightArrow.addEventListener('click', function () { smoothScroll(getScrollAmount()); });
+        track.addEventListener('scroll', updateArrows);
+        window.addEventListener('resize', updateArrows);
+        updateArrows();
     })();
     </script>
 </body>
