@@ -3,7 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>document.documentElement.classList.add('js');</script>
+    <script>
+        document.documentElement.classList.add('js');
+        // Honor prefers-reduced-motion on the hero <video>: pause it ASAP
+        // and detach autoplay/loop so the poster image stays in place
+        // instead of forcing the user to watch a 5-second motion loop.
+        (function () {
+            if (!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelectorAll('video[autoplay]').forEach(function (v) {
+                    try { v.pause(); } catch (e) {}
+                    v.removeAttribute('autoplay');
+                    v.removeAttribute('loop');
+                    try { v.currentTime = 0; } catch (e) {}
+                });
+            });
+        })();
+    </script>
     <meta name="description" content="B2B engineering, architecture, and AI-assisted development work from a working senior software and infrastructure engineer with 20+ years of experience.">
     <title>Learn with O.J. - For Companies and Referrers</title>
 
@@ -31,10 +47,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
-    <link rel="stylesheet" href="styles.css?v=20">
+    <link rel="preload" as="style" crossorigin href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" crossorigin href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" crossorigin href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+    <link rel="stylesheet" href="styles.css?v=21">
 
     <!-- Analytics -->
     <script data-goatcounter="https://learnwithoj.goatcounter.com/count"
@@ -420,6 +436,17 @@ She's at oj@learnwithoj.com or learnwithoj.com.
             return Promise.resolve(legacyCopy(text));
         }
 
+        function normalizeTemplate(text) {
+            // Defensive: strip any leading whitespace from each line before
+            // copying. The <pre> source is currently flush-left, but this
+            // guards against a future HTML reformatter introducing
+            // accidental indentation that would otherwise paste into the
+            // recipient's email client as awkward leading spaces.
+            return text.split('\n').map(function (line) {
+                return line.replace(/^[ \t]+/, '');
+            }).join('\n');
+        }
+
         function announce(message) {
             if (!status) return;
             // Re-set so screen readers re-announce on repeated events.
@@ -443,7 +470,7 @@ She's at oj@learnwithoj.com or learnwithoj.com.
         }
 
         button.addEventListener('click', function () {
-            Promise.resolve(copyText(target.textContent)).then(function (ok) {
+            Promise.resolve(copyText(normalizeTemplate(target.textContent))).then(function (ok) {
                 if (ok) {
                     flashState(SUCCESS_CLASS, HOLD_MS, 'Intro template copied to clipboard');
                 } else {
@@ -483,6 +510,15 @@ She's at oj@learnwithoj.com or learnwithoj.com.
         function smoothScroll(distance) {
             var start = track.scrollLeft;
             var target = Math.max(0, Math.min(start + distance, track.scrollWidth - track.clientWidth));
+
+            // Honor prefers-reduced-motion: jump to the target without the
+            // 300ms RAF easing.
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                track.scrollLeft = target;
+                updateArrows();
+                return;
+            }
+
             var duration = 300;
             var startTime = null;
 
