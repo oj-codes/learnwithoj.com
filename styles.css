@@ -18,6 +18,7 @@
     --color-mint: #6ee7b7;
     --color-border: rgba(255, 255, 255, 0.08);
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     --container-max: 720px;
     --container-narrow: 600px;
     --radius-sm: 6px;
@@ -1805,4 +1806,295 @@ a:hover {
 
 .maher-role {
     color: var(--color-text-muted);
+}
+
+/* Visually-hidden utility for screen-reader-only content
+   (aria-live status announcements, etc.). */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Send someone my way (#refer). The page's craft moment. */
+.refer-intro {
+    margin: 0.5rem 0 1.75rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+@media (min-width: 640px) {
+    .refer-intro {
+        font-size: 1.0625rem;
+        margin-bottom: 2rem;
+    }
+}
+
+.refer-template {
+    position: relative;
+    background: var(--color-bg);
+    border: 1px solid rgba(56, 182, 193, 0.22);
+    border-radius: var(--radius-md);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+}
+
+.refer-template-chrome {
+    display: flex;
+    align-items: center;
+    gap: 0.4375rem;
+    padding: 0.75rem 1.125rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.refer-template-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--color-text-dim);
+    opacity: 0.45;
+}
+
+.refer-template-body {
+    margin: 0;
+    padding: 1.5rem 1.5rem 1.625rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--color-text);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-x: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-variant-ligatures: contextual;
+    font-feature-settings: "calt" 1;
+    tab-size: 2;
+    user-select: text;
+}
+
+@media (min-width: 640px) {
+    .refer-template-body {
+        font-size: 0.9375rem;
+        line-height: 1.7;
+        padding: 1.75rem 2rem 1.875rem;
+    }
+}
+
+.refer-placeholder {
+    color: var(--color-accent);
+    font-weight: 500;
+}
+
+.refer-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+@media (max-width: 479px) {
+    .refer-actions {
+        justify-content: stretch;
+    }
+    .refer-actions .btn-copy {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Copy button: default → hover → success states.
+   Default and success icons/labels both live in the DOM;
+   the active pair is toggled via .is-success on the button. */
+.btn-copy {
+    appearance: none;
+    -webkit-appearance: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.125rem;
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: background 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-copy:hover {
+    background: rgba(56, 182, 193, 0.16);
+    border-color: rgba(56, 182, 193, 0.4);
+    color: var(--color-white);
+    transform: translateY(-1px);
+}
+
+.btn-copy:hover .btn-copy-icon-default {
+    transform: scale(1.05);
+}
+
+.btn-copy:active {
+    transform: translateY(0);
+}
+
+.btn-copy:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+.btn-copy-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-copy-icon-success,
+.btn-copy-label-success {
+    display: none;
+}
+
+/* Success state: persistent visual swap (mint bg, mint text, icon swap,
+   label swap) plus a single 250ms scale pulse the moment it triggers. */
+.btn-copy.is-success {
+    background: rgba(110, 231, 183, 0.16);
+    border-color: rgba(110, 231, 183, 0.5);
+    color: var(--color-mint);
+    animation: btn-copy-pulse 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-copy.is-success .btn-copy-icon-default,
+.btn-copy.is-success .btn-copy-label-default {
+    display: none;
+}
+
+.btn-copy.is-success .btn-copy-icon-success,
+.btn-copy.is-success .btn-copy-label-success {
+    display: inline-flex;
+}
+
+@keyframes btn-copy-pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-copy,
+    .btn-copy:hover,
+    .btn-copy.is-success,
+    .btn-copy-icon,
+    .btn-copy:hover .btn-copy-icon-default {
+        transition: none;
+        transform: none;
+        animation: none;
+    }
+}
+
+/* Direct contact options below the button. */
+.refer-contact {
+    list-style: none;
+    margin: 2.5rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    font-size: 0.9375rem;
+}
+
+.refer-contact-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    color: var(--color-text-muted);
+}
+
+.refer-contact-label {
+    color: var(--color-text-dim);
+    font-weight: 500;
+}
+
+.refer-contact-link {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.refer-contact-link:hover {
+    color: var(--color-accent-hover);
+}
+
+.refer-contact-link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
+}
+
+/* Footer pointer: subtle line back to the B2C site. Quiet, not a CTA. */
+.showcase-page #footer-pointer {
+    padding: 2rem 0 2.5rem;
+}
+
+@media (min-width: 640px) {
+    .showcase-page #footer-pointer {
+        padding: 2.5rem 0 3rem;
+    }
+}
+
+.footer-pointer-text {
+    margin: 0;
+    text-align: center;
+    color: var(--color-text-dim);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-pointer-text a {
+    color: var(--color-text-muted);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.18);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                text-decoration-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+}
+
+.footer-pointer-text a:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+}
+
+.footer-pointer-arrow {
+    display: inline-block;
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-pointer-text a:hover .footer-pointer-arrow {
+    transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .footer-pointer-text a,
+    .footer-pointer-arrow,
+    .footer-pointer-text a:hover .footer-pointer-arrow,
+    .refer-contact-link {
+        transition: none;
+        transform: none;
+    }
 }

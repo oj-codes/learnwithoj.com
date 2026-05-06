@@ -30,8 +30,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=5">
 
     <!-- Analytics -->
     <script data-goatcounter="https://learnwithoj.goatcounter.com/count"
@@ -237,11 +237,74 @@
             </div>
         </section>
 
-        <!-- TODO: Send someone my way. Lead line, then the intro template in a styled monospace block (JetBrains Mono, custom chrome, muted-teal placeholders for [Name] and [Your name]). Below: "Copy intro template" button with the full success-state craft moment ("Off it goes ✓", icon swap, scale, mint shift, aria-live announcement). Then three direct contact options (email, LinkedIn, optional calendar). -->
-        <section id="refer"></section>
+        <section id="refer" class="section section-alt">
+            <div class="container">
+                <h2>Send someone my way</h2>
+                <p class="refer-intro">If you know a company that fits, here's intro language you can copy and forward. Edit it however you want.</p>
 
-        <!-- TODO: Footer pointer. Small subtle line: "Looking for 1:1 career strategy or resume review for software and infrastructure engineers? Visit learnwithoj.com →" linking to /. Not a primary CTA. -->
-        <section id="footer-pointer"></section>
+                <div class="refer-template">
+                    <div class="refer-template-chrome" aria-hidden="true">
+                        <span class="refer-template-dot"></span>
+                        <span class="refer-template-dot"></span>
+                        <span class="refer-template-dot"></span>
+                    </div>
+                    <pre class="refer-template-body" id="refer-template-text">Subject: Quick intro: O.J. Wilcox (Learn with O.J.)
+
+Hey <span class="refer-placeholder">[Name]</span>,
+
+Wanted to introduce you to O.J. Wilcox, founder of Learn
+with O.J. (learnwithoj.com).
+
+She's a working senior software and infrastructure engineer
+with 20+ years of experience across startup and Fortune 100
+environments. She does fractional engineering leadership,
+architecture and infrastructure consulting, and AI-assisted
+development training for engineering teams. Currently taking
+on B2B contracts at $325/hr in cash, direct billing.
+
+I met her recently and was impressed by her depth and how she
+operates. Worth a 15-minute conversation if you have an
+engineering or AI need on your radar.
+
+She's at oj@learnwithoj.com or learnwithoj.com.
+
+<span class="refer-placeholder">[Your name]</span></pre>
+                </div>
+
+                <div class="refer-actions">
+                    <button type="button" class="btn-copy" data-copy-target="refer-template-text">
+                        <svg class="btn-copy-icon btn-copy-icon-default" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="6.5" y="6" width="10.5" height="11.5" rx="1.5"/>
+                            <path d="M13.5 6V4.5A1.5 1.5 0 0 0 12 3H5.5A1.5 1.5 0 0 0 4 4.5V13a1.5 1.5 0 0 0 1.5 1.5H7"/>
+                        </svg>
+                        <svg class="btn-copy-icon btn-copy-icon-success" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M4 10.5l4 4 8.5-8.5"/>
+                        </svg>
+                        <span class="btn-copy-label btn-copy-label-default">Copy intro template</span>
+                        <span class="btn-copy-label btn-copy-label-success">Off it goes &#10003;</span>
+                    </button>
+                </div>
+
+                <div class="refer-status sr-only" role="status" aria-live="polite"></div>
+
+                <ul class="refer-contact">
+                    <li class="refer-contact-item">
+                        <span class="refer-contact-label">Email</span>
+                        <a href="mailto:oj@learnwithoj.com" class="refer-contact-link">oj@learnwithoj.com</a>
+                    </li>
+                    <li class="refer-contact-item">
+                        <span class="refer-contact-label">LinkedIn</span>
+                        <a href="https://www.linkedin.com/in/learnwithoj/" target="_blank" rel="noopener noreferrer" class="refer-contact-link">linkedin.com/in/learnwithoj</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="footer-pointer" class="section">
+            <div class="container">
+                <p class="footer-pointer-text">Looking for 1:1 career strategy or resume review for software and infrastructure engineers? <a href="/">Visit learnwithoj.com <span class="footer-pointer-arrow" aria-hidden="true">&rarr;</span></a></p>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -252,5 +315,70 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    (function () {
+        var button = document.querySelector('.btn-copy[data-copy-target]');
+        if (!button) return;
+
+        var target = document.getElementById(button.getAttribute('data-copy-target'));
+        var status = document.querySelector('.refer-status');
+        if (!target) return;
+
+        var resetTimer = null;
+        var SUCCESS_CLASS = 'is-success';
+        var HOLD_MS = 2000;
+
+        function legacyCopy(text) {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.setAttribute('readonly', '');
+            ta.style.position = 'absolute';
+            ta.style.left = '-9999px';
+            ta.style.top = '0';
+            document.body.appendChild(ta);
+            var prevSelection = document.activeElement;
+            ta.select();
+            var ok = false;
+            try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+            document.body.removeChild(ta);
+            if (prevSelection && typeof prevSelection.focus === 'function') {
+                prevSelection.focus();
+            }
+            return ok;
+        }
+
+        function copyText(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                return navigator.clipboard.writeText(text).then(
+                    function () { return true; },
+                    function () { return legacyCopy(text); }
+                );
+            }
+            return Promise.resolve(legacyCopy(text));
+        }
+
+        function flashSuccess() {
+            button.classList.add(SUCCESS_CLASS);
+            if (status) {
+                // Re-set so screen readers re-announce on repeated copies.
+                status.textContent = '';
+                window.setTimeout(function () {
+                    status.textContent = 'Intro template copied to clipboard';
+                }, 30);
+            }
+            window.clearTimeout(resetTimer);
+            resetTimer = window.setTimeout(function () {
+                button.classList.remove(SUCCESS_CLASS);
+            }, HOLD_MS);
+        }
+
+        button.addEventListener('click', function () {
+            Promise.resolve(copyText(target.textContent)).then(function (ok) {
+                if (ok) flashSuccess();
+            });
+        });
+    })();
+    </script>
 </body>
 </html>
