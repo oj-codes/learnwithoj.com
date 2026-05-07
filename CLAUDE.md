@@ -65,6 +65,7 @@ showcase.html           B2B referral page (post-event landing)
 resources.html          Free resources page
 styles.css              All styles (single shared stylesheet)
 assets/                 Hero/about videos, headshot, og-image
+assets/logos/           Company logos rendered below each testimonial card (Microsoft, Amex, etc.)
 testimonials/           Avatars + testimonials.md source
 docs/                   Planning notes for future work
 CHANGELOG.md            Versioned change log (semver-ish)
@@ -120,18 +121,20 @@ See `CLAUDE-showcase-v1.md` for full structure. High level:
 2. What I do for companies (four service buckets with technical specificity)
 3. How engagements work (rate, billing, contractor model, trust-but-verify approach)
 4. Recent B2B work
-5. How I show up when it matters (the DST story + Maher quote)
-6. Send someone my way (copy/paste referral template + direct contact)
-7. Small footer pointer toward `index.html` for 1:1 mentoring traffic
+5. Voices — curated testimonials carousel (former managers + Sylke's "early to AI" perspective)
+6. How I show up when it matters (the DST story + Maher quote)
+7. Send someone my way (copy/paste referral template + direct contact)
+8. Small footer pointer toward `index.html` for 1:1 mentoring traffic
 
 ## Design system
 
 Defined as CSS custom properties at the top of `styles.css`. Source of truth, don't hardcode colors elsewhere.
 
 - Dark theme: `--color-bg` `#0a0f1a`, alt `--color-bg-alt` `#0f1524`, cards `--color-bg-card` `#141c2e`
-- Teal accent: `--color-accent` `#38b6c1` (buttons, links, highlights)
+- Teal accent: `--color-accent` `#38b6c1` (links, accents, focus rings, gradient buttons), `--color-accent-deep` `#157d86` (darker variant for solid white-on-teal CTAs that need WCAG AA contrast, e.g. the header `.btn-header`)
+- Mint accent: `--color-mint` `#6ee7b7` — showcase eyebrow, success states (referral copy button), pull-quote rule
 - Coral accent: `#e8755a` — used only on the hero starburst badge to contrast with teal
-- Font: Inter via Google Fonts, weights 400/500/600/700
+- Font: Inter via Google Fonts, weights 400/500/600/700; JetBrains Mono (`--font-mono`) loaded only on the showcase page for the referral template block
 - Container max widths: `--container-max` 720px, `--container-narrow` 600px, plus `.container-wide` and `.container-full` modifiers
 
 If a build needs a monospace font (code blocks, terminal aesthetics), add it as a CSS variable and use a real stack. JetBrains Mono or Fira Code via Google Fonts, falling back to `ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`.

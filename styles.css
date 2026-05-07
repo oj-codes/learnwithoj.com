@@ -13,10 +13,13 @@
     --color-white: #ffffff;
     --color-accent: #38b6c1;
     --color-accent-hover: #4fd1dc;
+    --color-accent-deep: #157d86;
     --color-accent-dim: rgba(56, 182, 193, 0.15);
     --color-accent-glow: rgba(56, 182, 193, 0.25);
+    --color-mint: #6ee7b7;
     --color-border: rgba(255, 255, 255, 0.08);
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     --container-max: 720px;
     --container-narrow: 600px;
     --radius-sm: 6px;
@@ -123,17 +126,20 @@ body {
     display: none;
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--color-white);
-    background: var(--color-accent);
+    background: var(--color-accent-deep);
     border-radius: var(--radius-full);
     text-decoration: none;
-    transition: background var(--transition-fast), transform var(--transition-fast);
+    transition: background var(--transition-fast),
+                transform var(--transition-fast),
+                box-shadow var(--transition-fast);
 }
 
 .btn-header:hover {
-    background: var(--color-accent-hover);
+    background: var(--color-accent-deep);
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(21, 125, 134, 0.4);
 }
 
 @media (min-width: 640px) {
@@ -274,7 +280,7 @@ body {
     display: inline-block;
     font-size: 0.8125rem;
     font-weight: 500;
-    background: linear-gradient(90deg, #38b6c1, #6ee7b7, #38b6c1);
+    background: linear-gradient(90deg, var(--color-accent), var(--color-mint), var(--color-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -734,6 +740,7 @@ p {
     grid-template-rows: auto 1fr auto;
     gap: 0 1.25rem;
     overflow-x: hidden;
+    overscroll-behavior-x: contain;
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding: 0.5rem 0;
@@ -765,7 +772,14 @@ p {
 }
 
 .carousel-arrow {
-    display: none;
+    /* Always rendered with display: flex so the carousel's flex row width
+       stays stable when the arrow toggles at scroll boundaries. We hide
+       via visibility + opacity instead of display: none to avoid the layout
+       reflow that produced a visible stutter at the end of the track. */
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
     background: var(--color-bg-card);
     border: 1px solid var(--color-border);
     color: var(--color-white);
@@ -777,7 +791,7 @@ p {
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s, border-color 0.2s;
+    transition: opacity 180ms ease, background 0.2s, border-color 0.2s;
     z-index: 2;
 }
 
@@ -787,7 +801,9 @@ p {
 }
 
 .carousel-arrow.visible {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .testimonial-avatar {
@@ -813,6 +829,11 @@ p {
     flex-direction: column;
     align-items: center;
     gap: 0;
+    /* Reserve space so the company logo sits at the same y across cards
+       regardless of how many lines the title wraps to. The logo uses
+       margin-top: auto, so any extra height in this block becomes a
+       buffer above the logo. */
+    min-height: 180px;
 }
 
 .testimonial-author p {
@@ -839,6 +860,48 @@ p {
     opacity: 0.75;
     line-height: 1.3;
 }
+
+/* Company logo, displayed below the company name on each testimonial card.
+   Renders transparent so the cards stay clean. SVG/PNG sources for dark-on-
+   light logos (Tom Schaeffer, Microsoft) ship pre-recolored to white.
+   Default sizing fits the wordmark-shaped logos (Microsoft, Tom Schaeffer,
+   Blackbaud, Meal Suite); iconic-square and shield logos get per-logo
+   overrides below so they don't render too small for legibility. */
+.testimonial-company-logo {
+    display: block;
+    margin: auto auto 0;
+    max-height: 44px;
+    max-width: 200px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Iconic square logos (Amex blue square, DataSnipper "D" icon): the
+   "AMERICAN EXPRESS" text inside the Amex square is unreadable at 32-44
+   square px, so render these at 56 to give the inset text room. */
+.testimonial-company-logo[src*="american-express"],
+.testimonial-company-logo[src*="datasnipper"] {
+    max-height: 56px;
+    max-width: 56px;
+}
+
+/* DataSnipper's actual brand square uses a navy (#011638) that is darker
+   than the card bg (#141c2e), so the square edges merge into the card.
+   A 1px low-opacity outline preserves the brand colors but gives the
+   square a visible boundary. */
+.testimonial-company-logo[src*="datasnipper"] {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+/* PBSC ships an official horizontal lockup (shield + wordmark). At 44px tall
+   the wordmark text is too small to read; bumping the height brings it
+   into legible range without blowing out the layout. */
+.testimonial-company-logo[src*="palmbeachstate"] {
+    max-height: 60px;
+    max-width: 220px;
+}
+
 
 @media (max-width: 599px) {
     .testimonials-track {
@@ -1107,12 +1170,12 @@ h2.pricing-heading {
 .footer-brand {
     font-size: 0.9375rem;
     font-weight: 500;
-    color: var(--color-text-dim);
+    color: var(--color-text-muted);
 }
 
 .footer-email a {
     font-size: 0.875rem;
-    color: var(--color-text-dim);
+    color: var(--color-text-muted);
     text-decoration: none;
     transition: color var(--transition-fast);
 }
@@ -1310,4 +1373,898 @@ a {
 
 a:hover {
     color: var(--color-accent-hover);
+}
+
+/* ============================================
+   Secondary Button (ghost / outline)
+   ============================================ */
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-white);
+    background: transparent;
+    border: 1px solid rgba(56, 182, 193, 0.45);
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 220ms cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 220ms cubic-bezier(0.4, 0, 0.2, 1),
+                color 220ms cubic-bezier(0.4, 0, 0.2, 1),
+                transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-secondary:hover {
+    background: rgba(56, 182, 193, 0.1);
+    border-color: var(--color-accent);
+    color: var(--color-white);
+    transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
+}
+
+/* Custom focus ring for primary and secondary buttons */
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+/* ============================================
+   Showcase Page (B2B)
+   ============================================ */
+.showcase-hero {
+    padding: 5rem 0 4rem;
+    text-align: center;
+    position: relative;
+}
+
+@media (min-width: 640px) {
+    .showcase-hero {
+        padding: 8rem 0 6rem;
+    }
+}
+
+@media (min-width: 960px) {
+    .showcase-hero {
+        padding: 10rem 0 8rem;
+    }
+}
+
+.showcase-hero-content {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.showcase-hero-portrait {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.75rem;
+}
+
+.showcase-hero-video {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-accent);
+    box-shadow:
+        0 0 0 4px var(--color-accent-dim),
+        0 0 24px rgba(56, 182, 193, 0.18),
+        var(--shadow-md);
+}
+
+@media (min-width: 480px) {
+    .showcase-hero-video {
+        width: 108px;
+        height: 108px;
+    }
+}
+
+@media (min-width: 640px) {
+    .showcase-hero-video {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (min-width: 960px) {
+    .showcase-hero-video {
+        width: 132px;
+        height: 132px;
+    }
+    .showcase-hero-portrait {
+        margin-bottom: 2rem;
+    }
+}
+
+.showcase-hero-eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-mint);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 1.75rem;
+}
+
+@media (min-width: 640px) {
+    .showcase-hero-eyebrow {
+        font-size: 0.8125rem;
+    }
+}
+
+.showcase-hero-title {
+    font-size: clamp(2.75rem, 8vw, 4.25rem);
+    font-weight: 700;
+    color: var(--color-white);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    margin-bottom: 1.75rem;
+}
+
+.showcase-hero-subtitle {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    margin: 0 auto 2.75rem;
+    max-width: 560px;
+}
+
+@media (min-width: 640px) {
+    .showcase-hero-subtitle {
+        font-size: 1.1875rem;
+        line-height: 1.6;
+    }
+}
+
+.showcase-hero-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    max-width: 320px;
+    margin: 0 auto 2rem;
+}
+
+.showcase-hero-cta .btn-primary,
+.showcase-hero-cta .btn-secondary {
+    min-height: 48px;
+    padding: 0.9375rem 2.25rem;
+}
+
+@media (min-width: 480px) {
+    .showcase-hero-cta {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        max-width: none;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+.showcase-hero-jump {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    transition: color 220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.showcase-hero-jump:hover {
+    color: var(--color-white);
+}
+
+.showcase-hero-jump:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+    color: var(--color-white);
+}
+
+.showcase-hero-jump-arrow {
+    display: inline-block;
+    transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.showcase-hero-jump:hover .showcase-hero-jump-arrow {
+    transform: translateY(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-secondary,
+    .btn-secondary:hover,
+    .showcase-hero-jump,
+    .showcase-hero-jump-arrow,
+    .showcase-hero-jump:hover .showcase-hero-jump-arrow {
+        transition: none;
+        transform: none;
+    }
+}
+
+/* Showcase-scoped section rhythm: more generous padding than the
+   3rem default to match the hero's authority. */
+.showcase-page .section {
+    padding: 4rem 0;
+}
+
+@media (min-width: 640px) {
+    .showcase-page .section {
+        padding: 5rem 0;
+    }
+}
+
+@media (min-width: 960px) {
+    .showcase-page .section {
+        padding: 6rem 0;
+    }
+}
+
+.showcase-page .section h2 {
+    font-size: 1.875rem;
+    margin-bottom: 0.5rem;
+}
+
+@media (min-width: 640px) {
+    .showcase-page .section h2 {
+        font-size: 2.125rem;
+    }
+}
+
+/* Services grid (#services). Same DNA as .features-grid but breaks
+   to 2 columns later, since each card carries a list of specifics. */
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.75rem;
+}
+
+@media (min-width: 720px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+}
+
+.service-card {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card .feature-icon {
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    font-size: 1.0625rem;
+    letter-spacing: -0.005em;
+    margin-bottom: 0.375rem;
+}
+
+.service-card .service-summary {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin: 0 0 1rem;
+}
+
+.service-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.service-list li {
+    position: relative;
+    padding-left: 1rem;
+    font-size: 0.875rem;
+    color: var(--color-text);
+    line-height: 1.5;
+}
+
+.service-list li::before {
+    content: '';
+    position: absolute;
+    left: 0.125rem;
+    top: 0.6875rem;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-mint);
+    opacity: 0.85;
+}
+
+/* Engagement steps (#how). Reuses .steps / .step but lives on a
+   semantic <ul>, so reset list defaults and tighten the rhythm. */
+.engagement-steps {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.75rem;
+    gap: 1.5rem;
+}
+
+.engagement-steps .step-content h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 0.375rem;
+    letter-spacing: -0.005em;
+}
+
+.engagement-steps .step-content p {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (min-width: 640px) {
+    .engagement-steps {
+        gap: 1.75rem;
+    }
+    .engagement-steps .step {
+        gap: 1rem;
+    }
+}
+
+/* Recent work (#proof). Editorial list, not cards.
+   Top-border separators between items, no chrome. */
+.proof-list {
+    list-style: none;
+    margin: 1.75rem 0 0;
+    padding: 0;
+}
+
+.proof-item {
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.proof-item:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+.proof-item:last-child {
+    padding-bottom: 0;
+}
+
+.proof-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-white);
+    letter-spacing: -0.005em;
+    margin: 0 0 0.375rem;
+}
+
+.proof-item p {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (min-width: 640px) {
+    .proof-item {
+        padding: 1.5rem 0;
+    }
+    .proof-item h3 {
+        font-size: 1.0625rem;
+    }
+}
+
+/* DST story + Maher quote (#trust). The emotional center of the page.
+   Narrower column, generous line-height, editorial rhythm. */
+.trust-frame {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.trust-story {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.trust-story p {
+    margin: 0;
+    font-size: 1.0625rem;
+    color: var(--color-text);
+    line-height: 1.75;
+}
+
+@media (min-width: 640px) {
+    .trust-story {
+        gap: 1.625rem;
+        margin-top: 2.25rem;
+    }
+    .trust-story p {
+        font-size: 1.125rem;
+    }
+}
+
+/* Punchline. Stops the scroll: thin mint accent line, larger type. */
+.trust-punchline {
+    position: relative;
+    margin: 3rem 0;
+    padding: 0.25rem 0 0.25rem 1.25rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-white);
+    line-height: 1.45;
+    letter-spacing: -0.015em;
+    border-left: 2px solid var(--color-mint);
+}
+
+@media (min-width: 640px) {
+    .trust-punchline {
+        margin: 3.5rem 0;
+        padding-left: 1.75rem;
+        font-size: 1.4375rem;
+        line-height: 1.4;
+    }
+}
+
+/* Transition line. Quieter beat that bridges story to testimonial. */
+.trust-transition {
+    margin: 0 0 3rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+@media (min-width: 640px) {
+    .trust-transition {
+        margin-bottom: 3.5rem;
+    }
+}
+
+/* Maher pull quote. Hanging open-quote sits in the gutter. */
+.trust-quote {
+    margin: 0;
+    padding: 0 0 0 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .trust-quote {
+        padding-left: 2rem;
+    }
+}
+
+.maher-quote {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.maher-quote::before {
+    content: '\201C';
+    position: absolute;
+    left: -1.5rem;
+    top: -0.45rem;
+    font-size: 2.75rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--color-mint);
+    opacity: 0.5;
+    font-weight: 400;
+    line-height: 1;
+    pointer-events: none;
+}
+
+@media (min-width: 640px) {
+    .maher-quote::before {
+        left: -2rem;
+        top: -0.55rem;
+        font-size: 3.5rem;
+    }
+}
+
+.maher-quote p {
+    margin: 0;
+    font-size: 1.125rem;
+    font-style: italic;
+    color: var(--color-white);
+    line-height: 1.6;
+    letter-spacing: -0.005em;
+}
+
+@media (min-width: 640px) {
+    .maher-quote p {
+        font-size: 1.1875rem;
+        line-height: 1.55;
+    }
+}
+
+.maher-attribution {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+.maher-name {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.maher-divider {
+    margin: 0 0.5rem;
+    color: var(--color-text-dim);
+}
+
+.maher-role {
+    color: var(--color-text-muted);
+}
+
+/* Visually-hidden utility for screen-reader-only content
+   (aria-live status announcements, etc.). */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Send someone my way (#refer). The page's craft moment. */
+.refer-intro {
+    margin: 0.5rem 0 1.75rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+@media (min-width: 640px) {
+    .refer-intro {
+        font-size: 1.0625rem;
+        margin-bottom: 2rem;
+    }
+}
+
+.refer-template {
+    position: relative;
+    background: var(--color-bg);
+    border: 1px solid rgba(56, 182, 193, 0.22);
+    border-radius: var(--radius-md);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+}
+
+.refer-template-chrome {
+    display: flex;
+    align-items: center;
+    gap: 0.4375rem;
+    padding: 0.75rem 1.125rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.refer-template-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--color-text-dim);
+    opacity: 0.45;
+}
+
+.refer-template-body {
+    margin: 0;
+    padding: 1.5rem 1.5rem 1.625rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--color-text);
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    overflow-x: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-variant-ligatures: contextual;
+    font-feature-settings: "calt" 1;
+    tab-size: 2;
+    user-select: text;
+}
+
+@media (min-width: 640px) {
+    .refer-template-body {
+        font-size: 0.9375rem;
+        line-height: 1.7;
+        padding: 1.75rem 2rem 1.875rem;
+    }
+}
+
+.refer-placeholder {
+    color: var(--color-accent);
+    font-weight: 500;
+}
+
+.refer-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+@media (max-width: 479px) {
+    .refer-actions {
+        justify-content: stretch;
+    }
+    .refer-actions .btn-copy {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Copy button: default → hover → success states.
+   Default and success icons/labels both live in the DOM;
+   the active pair is toggled via .is-success on the button.
+   Hidden by default; the inline <script> in <head> adds .js to <html>
+   so the button only appears when JavaScript is actually running.
+   Without JS, a <noscript> fallback message renders in its place. */
+.btn-copy {
+    appearance: none;
+    -webkit-appearance: none;
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.125rem;
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: background 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.js .btn-copy {
+    display: inline-flex;
+}
+
+.refer-noscript {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    font-style: italic;
+}
+
+.btn-copy:hover {
+    background: rgba(56, 182, 193, 0.16);
+    border-color: rgba(56, 182, 193, 0.4);
+    color: var(--color-white);
+    transform: translateY(-1px);
+}
+
+.btn-copy:hover .btn-copy-icon-default {
+    transform: scale(1.05);
+}
+
+.btn-copy:active {
+    transform: translateY(0);
+}
+
+.btn-copy:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+.btn-copy-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-copy-icon-success,
+.btn-copy-label-success,
+.btn-copy-icon-error,
+.btn-copy-label-error {
+    display: none;
+}
+
+/* Success state: persistent visual swap (mint bg, mint text, icon swap,
+   label swap) plus a single 250ms scale pulse the moment it triggers. */
+.btn-copy.is-success {
+    background: rgba(110, 231, 183, 0.16);
+    border-color: rgba(110, 231, 183, 0.5);
+    color: var(--color-mint);
+    animation: btn-copy-pulse 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-copy.is-success .btn-copy-icon-default,
+.btn-copy.is-success .btn-copy-label-default {
+    display: none;
+}
+
+.btn-copy.is-success .btn-copy-icon-success,
+.btn-copy.is-success .btn-copy-label-success {
+    display: inline-flex;
+}
+
+/* Error state: clipboard write failed (denied, unsupported, sandboxed).
+   Visible state mirrors success in structure (icon + label swap, soft tinted
+   surface) but uses neutral surfaces, since the brand reserves coral for the
+   homepage starburst only. The aria-live status node carries the actionable
+   instruction for screen readers. */
+.btn-copy.is-error {
+    background: var(--color-bg-card);
+    border-color: rgba(255, 255, 255, 0.18);
+    color: var(--color-text);
+}
+
+.btn-copy.is-error .btn-copy-icon-default,
+.btn-copy.is-error .btn-copy-label-default {
+    display: none;
+}
+
+.btn-copy.is-error .btn-copy-icon-error,
+.btn-copy.is-error .btn-copy-label-error {
+    display: inline-flex;
+}
+
+@keyframes btn-copy-pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-copy,
+    .btn-copy:hover,
+    .btn-copy.is-success,
+    .btn-copy-icon,
+    .btn-copy:hover .btn-copy-icon-default {
+        transition: none;
+        transform: none;
+        animation: none;
+    }
+}
+
+/* Direct contact options below the button. */
+.refer-contact {
+    list-style: none;
+    margin: 2.5rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    font-size: 0.9375rem;
+}
+
+.refer-contact-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    color: var(--color-text-muted);
+}
+
+.refer-contact-label {
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.refer-contact-link {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.refer-contact-link:hover {
+    color: var(--color-accent-hover);
+}
+
+.refer-contact-link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
+}
+
+/* Footer pointer: subtle line back to the B2C site. Quiet, not a CTA. */
+.showcase-page #footer-pointer {
+    padding: 2rem 0 2.5rem;
+}
+
+@media (min-width: 640px) {
+    .showcase-page #footer-pointer {
+        padding: 2.5rem 0 3rem;
+    }
+}
+
+.footer-pointer-text {
+    margin: 0;
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-pointer-text a {
+    color: var(--color-text-muted);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.18);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                text-decoration-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+}
+
+.footer-pointer-text a:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+}
+
+.footer-pointer-arrow {
+    display: inline-block;
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-pointer-text a:hover .footer-pointer-arrow {
+    transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .footer-pointer-text a,
+    .footer-pointer-arrow,
+    .footer-pointer-text a:hover .footer-pointer-arrow,
+    .refer-contact-link {
+        transition: none;
+        transform: none;
+    }
+}
+
+/* ============================================
+   Sitewide accessibility
+   ============================================ */
+
+/* Custom focus ring on every focusable interactive element.
+   Component-level :focus-visible rules (with class selectors)
+   override this where they exist. */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+/* Honor prefers-reduced-motion for the few transforms that
+   live on shared site components and were not previously
+   wrapped in a reduced-motion handler. */
+@media (prefers-reduced-motion: reduce) {
+    .btn-primary,
+    .btn-primary:hover,
+    .btn-primary:active,
+    .btn-header,
+    .btn-header:hover,
+    .feature-card,
+    .feature-card:hover {
+        transition: none;
+        transform: none;
+    }
 }

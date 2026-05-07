@@ -35,7 +35,7 @@ Specifically:
 - Real keyboard navigation with visible focus states (custom, not browser default).
 - `prefers-reduced-motion` honored.
 - Open Graph card so when the URL is shared in a DM or Slack, the preview is polished.
-- One UX craft moment that earns its keep: the copy-to-clipboard interaction on the referral template. Specs below in section 6.
+- One UX craft moment that earns its keep: the copy-to-clipboard interaction on the referral template. Specs below in section 7.
 
 ## Page structure
 
@@ -96,7 +96,19 @@ Four short blocks. No client names. Just the shape and outcome.
 - **25 discovery conversations completed in the first quarter.** Across founders, operators, and engineering leaders. Pipeline of additional B2B engagements building from those.
 - **LinkedIn content engine compounding.** A career story posted in mid-April reached 119,000+ impressions, 64,000+ members, and generated hundreds of inbound DMs. Inbound is converting.
 
-### 5. How I show up when it matters (`#trust`)
+### 5. Voices (`#voices`)
+
+Curated testimonial carousel, narrower scope than the homepage's. Three cards in this order:
+
+1. **Mohammad Abuhaija** — Director, SRE & Enterprise DevOps at American Express (managed O.J.). Strongest manager-perspective credibility for B2B audiences.
+2. **Tom Schaeffer** — Founder, Executive Ghostwriter (hired O.J. early in her career at Float Left Interactive).
+3. **Sylke Lopez** — Senior Designer at Microsoft (Dycom colleague). The "early to AI" beat — quotes the 2018 ML chatbot workshops.
+
+Skip Maher in this carousel — he is already the trust-section pull quote, including him here would dilute him. Skip Kirk (paying mentee, not a manager), Susan / Peter (peers), Sobia (peer collab on a writing piece).
+
+Each card includes the company logo below the attribution. Logos are sized via per-logo CSS overrides (square brand icons larger than wordmark logos for legibility); see "Company logos" notes in `styles.css`.
+
+### 6. How I show up when it matters (`#trust`)
 
 Section heading: `How I show up when it matters`
 
@@ -130,7 +142,7 @@ Attribution: `Alexander Maher  ·  Senior Director of Product, DataSnipper`
 
 **Visual notes for this section.** This is the emotional center of the page. Treat the story like an editorial piece, not a marketing block. Slightly tighter type, more generous line height (1.7 to 1.8), narrower content width than the surrounding sections (around 600 to 640px), centered. The punchline should visually stop the scroll. Consider a thin mint accent line beside it, or a subtle change in background. The pull quote should feel like a quote, with proper hanging punctuation and visible attribution.
 
-### 6. Send someone my way (`#refer`)
+### 7. Send someone my way (`#refer`)
 
 Section heading: `Send someone my way`
 
@@ -206,7 +218,7 @@ Below the copy button, three direct contact options as a horizontal list with ap
 - `LinkedIn: linkedin.com/in/learnwithoj`
 - (Optional, if calendar link exists) `Book 15 minutes: [calendar URL]`
 
-### 7. Footer pointer (`#footer-pointer`)
+### 8. Footer pointer (`#footer-pointer`)
 
 A small section just above the footer.
 
