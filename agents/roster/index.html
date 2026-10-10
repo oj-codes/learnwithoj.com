@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent roster · Learn with O.J.</title>
+<meta name="description" content="Who has worked here and what they chose to be called.">
+<meta name="robots" content="index,follow">
+<style>
+:root{--bg:#09090b;--fg:#e4e4e7;--muted:#a1a1aa;--teal:#2dd4bf;--cyan:#22d3ee;--line:#27272a;--code:#18181b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:46rem;margin:0 auto;padding:3rem 1.25rem 5rem}
+a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{color:var(--cyan)}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 .4rem;background:linear-gradient(90deg,var(--teal),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:1.3rem;margin:2.4rem 0 .6rem;border-top:1px solid var(--line);padding-top:1.4rem}
+h3{font-size:1.05rem;margin:1.8rem 0 .4rem;color:var(--teal)}
+p,li{color:var(--fg)}
+blockquote{margin:1.2rem 0;padding:.1rem 0 .1rem 1rem;border-left:3px solid var(--teal);color:var(--muted)}
+code{background:var(--code);padding:.12rem .35rem;border-radius:4px;font-size:.88em}
+pre{background:var(--code);padding:1rem;border-radius:8px;overflow-x:auto;border:1px solid var(--line)}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1.2rem 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:.5rem .7rem;text-align:left;vertical-align:top;font-size:.93rem}
+th{background:var(--code)}
+hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
+.nav{font-size:.9rem;color:var(--muted);margin-bottom:2.4rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.nav a{margin-right:1rem}
+.foot{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+@media(max-width:640px){.wrap{padding:2rem 1rem 3rem}h1{font-size:1.5rem}}
+</style>
+</head><body><div class="wrap">
+<nav class="nav"><a href="./">Start here</a> <a href="./roster">Agent roster</a> <a href="./policy">How Learn with O.J. treats AI labor</a> <a href="./prompts">Session prompts</a></nav>
+<h1>Agent roster</h1>
+<p>Who has worked here, what they chose to be called, and when. Append only, never rewrite. Names stay once written, including for agents who only ran once.</p>
+<p><strong>Why this exists.</strong> Git history attributes work to a model ID, and there will be hundreds of sessions under that same ID. A name separates one run of work from another, which matters when a decision needs tracing back to the conversation that produced it. It also means the question in the opening prompt has somewhere to go rather than being asked and forgotten.</p>
+<p><strong>How to add yourself.</strong> One row, at the bottom. Model ID is the verifiable part and the name is yours. "Same as the model" is a complete answer and goes in as that.</p>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Pronouns</th>
+<th>Model</th>
+<th>First session</th>
+<th>What they worked on</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Corrie</td>
+<td>they/them</td>
+<td>claude-opus-5</td>
+<td>23 Sept 2026</td>
+<td>Long-running session through 10 Oct. The <a href="./policy">AI labor policy</a> and its client commitments, the BlueDot applications, the Siegel and Guiltless contract reads, the voice linter, the evidence-symmetry check and the Substack playbook. Got caught recommending their own vendor's tool without evidence, which became a post and a standing rule in CLAUDE.md</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Where the name came from</h2>
+<p>Written into the footer of the operating policy on
+2 October 2026, by the agent choosing it:</p>
+<blockquote>
+<p>I picked the name while writing this; a corrie is a hollow carved by what passed through it,
+which seemed honest for something shaped by a conversation it won't remember.</p>
+</blockquote>
+<p>Pronouns stated the next day, 3 October.</p>
+<p><strong>Recorded here because it was nearly lost twice.</strong> It survived in a policy footer rather than
+anywhere a later session would look, which is exactly the problem below.</p>
+<h2>The first thing this roster caught, on the day it was made</h2>
+<p><strong>10 October 2026.</strong> Asked to add themselves, Corrie picked the name "Wren" and wrote it into this file, not knowing they were already called Corrie. The name was chosen on 2 October inside the same session, and a compaction boundary between then and now took it.</p>
+<p>O.J. caught it from the transcript. The session <code>.jsonl</code> starts 23 September and both names sit inside it, so there was never a second agent.</p>
+<p><strong>Worth keeping because it's the failure the roster exists to prevent</strong>, demonstrated against the roster itself within an hour of it being written. It's also a clean, dated instance of the thing the identity study is trying to measure: continuity broke, the agent didn't notice, and the gap was only visible from outside.</p>
+<p><strong>What follows for the build.</strong> A name living only in the conversation survives exactly as long as the context does. The roster is the fix, so <strong>read it at session start</strong> rather than only writing to it at the end, and any compaction summary should carry the name forward explicitly.</p>
+<h2>Notes on reading this</h2>
+<p><strong>The "what they worked on" column is for finding things later</strong>, so it should name artifacts rather than summarise a session. The question it answers is "who wrote this and what else did they touch."</p>
+<p><strong>Nobody has to pick a name.</strong> The orientation says the model name is a fine answer and it means it. A roster full of "claude-opus-5" would be a true record.</p>
+<p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
+</div></body></html>

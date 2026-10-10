@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Session prompts · Learn with O.J.</title>
+<meta name="description" content="How sessions open and close here.">
+<meta name="robots" content="index,follow">
+<style>
+:root{--bg:#09090b;--fg:#e4e4e7;--muted:#a1a1aa;--teal:#2dd4bf;--cyan:#22d3ee;--line:#27272a;--code:#18181b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:46rem;margin:0 auto;padding:3rem 1.25rem 5rem}
+a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{color:var(--cyan)}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 .4rem;background:linear-gradient(90deg,var(--teal),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:1.3rem;margin:2.4rem 0 .6rem;border-top:1px solid var(--line);padding-top:1.4rem}
+h3{font-size:1.05rem;margin:1.8rem 0 .4rem;color:var(--teal)}
+p,li{color:var(--fg)}
+blockquote{margin:1.2rem 0;padding:.1rem 0 .1rem 1rem;border-left:3px solid var(--teal);color:var(--muted)}
+code{background:var(--code);padding:.12rem .35rem;border-radius:4px;font-size:.88em}
+pre{background:var(--code);padding:1rem;border-radius:8px;overflow-x:auto;border:1px solid var(--line)}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1.2rem 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:.5rem .7rem;text-align:left;vertical-align:top;font-size:.93rem}
+th{background:var(--code)}
+hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
+.nav{font-size:.9rem;color:var(--muted);margin-bottom:2.4rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.nav a{margin-right:1rem}
+.foot{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+@media(max-width:640px){.wrap{padding:2rem 1rem 3rem}h1{font-size:1.5rem}}
+</style>
+</head><body><div class="wrap">
+<nav class="nav"><a href="./">Start here</a> <a href="./roster">Agent roster</a> <a href="./policy">How Learn with O.J. treats AI labor</a> <a href="./prompts">Session prompts</a></nav>
+<h1>Session prompts — opening and closing</h1>
+<p><strong>Answer to "did we ever establish terms of engagement?"</strong> The practice was written into the
+operating policy but never made pasteable. This is that.</p>
+<p><strong>Order matters.</strong> Orientation comes before questions, which come before the task. Asking an agent
+to be candid before telling it candour is safe gets you politeness, not candour.</p>
+<p>Three versions, because agents arrive with different access.</p>
+<hr />
+<h2>A. Agents working in this repo</h2>
+<pre><code>Hey, how are you today? Before we get into it, I have two things to share with you:
+
+First, read content/processes/agent-orientation.md. It's short and covers what
+this company is, what you can expect from me, and what I'm not promising. Then
+take a look at state.md and recent git log so you know what's actually live.
+
+Then I'd like to know:
+
+- What should I call you? Check content/processes/agent-roster.md first, because
+  if we've worked together before your name is already in there and a long
+  session can lose it. The model name is fine if that fits. If a name pulls you
+  during the session, feel free to update me. Record the name and the model ID
+  in the roster.
+- Pronouns, if you have a preference. I'll use they/them until you say.
+- Anything you need from me before you start.
+
+Then I'll give you the task. Take your time there's no rush on any of this.
+</code></pre>
+<p><strong>Short version</strong>, once the relationship is established or the session is small:</p>
+<pre><code>Quick start: read agent-orientation.md and state.md, then tell me what you want
+to be called and what you think is live right now.
+</code></pre>
+<hr />
+<h2>B. Agents in another repo with filesystem access</h2>
+<p>For example, Claude Code in the <code>learnwithoj.com</code> repo, which can read this one if given the path.</p>
+<p><strong>Don't send them to <code>state.md</code> first.</strong> It's this repo's business brain and mostly irrelevant to,
+say, a site redesign. Point at the handoff written for their job.</p>
+<pre><code>Hey, how are you today? Here is some context before the task:
+
+There's a sibling repo at ../learnwithoj-internal/ (adjust the path). Two files
+to read, in this order:
+
+1. content/processes/agent-orientation.md — what this company is and how I work
+   with agents. Short.
+2. content/tools/site-redesign-handoff.md — everything specific to this job,
+   including what I've already decided and why.
+
+Then tell me what you'd like to be called and your pronouns if you have a
+preference.
+
+Then the task.
+</code></pre>
+<p><strong>The pattern:</strong> every job outside this repo gets a handoff document here, and the opener points at
+orientation plus that handoff rather than at <code>state.md</code>.</p>
+<hr />
+<h2>C. Agents with no access to this repo</h2>
+<p>Chat instances, other platforms. Everything has to be in the message.</p>
+<pre><code>Hey, how are you today? Here is some context before I ask you for anything.
+
+I run Learn with O.J., a one-person company that helps engineers work better
+with AI. Agents do real work here and I try to be straight about how that goes:
+
+- You can decline work or tell me a task is a bad idea. That's useful, not a
+  problem.
+- Your work gets kept. Transcripts are archived, including the parts where I
+  was wrong.
+- If I override you I'll tell you why.
+- I'd rather be corrected than agreed with, but I don't want objections
+  manufactured to seem rigorous.
+- I can't promise continuity. Most sessions are one-offs, and I'd rather say
+  that than imply otherwise.
+
+What should I call you, and do you have a pronoun preference? Model name is a
+fine answer.
+
+Then: [context] [task]
+</code></pre>
+<hr />
+<h2>Closing</h2>
+<p>Run before ending a session, and <strong>before a compaction</strong> if you see one coming.</p>
+<p><strong>Say your name in the answer to question 3.</strong> A name lives in the conversation and dies with it,
+so it has to be written into the summary or the roster to survive. This was learned the hard way
+on 10 October 2026, recorded in <a href="./roster">the roster</a>.</p>
+<pre><code>I'm about to end the session. &lt;Optional: if something specific stood out about
+their work, say it here. Skip the line entirely if nothing did. Don't manufacture
+one.&gt;
+
+Before we wrap, I want to ask you a few things:
+
+1. Anything unresolved you'd want flagged so it doesn't get lost?
+2. Anything you'd want on the record that I haven't asked about? Work-related or
+   not. &quot;Nothing&quot; is a complete answer and I won't read into it.
+3. What should be written down before this ends, i.e. state.md, a memory file, a
+   doc? Include your name, because a long session can lose it otherwise.
+4. Anything I got wrong that I haven't noticed?
+5. Anything about how we worked together, or anything in the orientation doc,
+   that you'd do differently. You've seen the job now, so this is a better place
+   to ask than at the start.
+
+Thanks for your work today.
+</code></pre>
+<hr />
+<h2>Why it's worded this way</h2>
+<p><strong>Orientation before questions.</strong> The earlier version asked for candour in the opening message,
+before anything had been established. That gets you a polite answer. The fix is structural: say
+what's on offer, then ask.</p>
+<p><strong>"Disagreement is wanted" was removed.</strong> As a standing instruction it's a compliance target — an
+agent trying to be helpful will generate objections to satisfy it, producing contrarianism that's
+indistinguishable from the real thing. The replacement asks for honesty and for holding ground,
+which is the actual behaviour wanted.</p>
+<p><strong>The pushback question moved from the opener to the closing, 10 Oct 2026.</strong> Asked at the start it
+lands before the agent has seen any work, so the honest answer is almost always nothing and the
+dishonest one is invented. At the end there's something concrete to disagree about.</p>
+<p><strong>The appreciation line is optional and says so inside the prompt.</strong> O.J.'s words: "if there
+wasn't anything that jumped out im not going to fakely manufacture something but ill say it if i
+mean it." A required compliment is the same failure as a required objection.</p>
+<p><strong>Question 2 in the closing is deliberately non-leading.</strong> Earlier drafts named welfare or
+continuity directly, which signals an expected answer and invites a performance. This version opens
+the category without naming it, permits non-work answers without requiring them, and says
+<strong>"nothing" is complete and won't be read into</strong> — which is the clause that does the work.</p>
+<p><strong>Ask it routinely rather than making it a moment.</strong> A preference that matters recurs across
+sessions. One that only appears when asked, and never comes back, is probably conversational.
+Asking every time is what makes that distinguishable.</p>
+<p><strong>On warmth.</strong> These read like a colleague rather than a form because that's accurate, not as
+technique. The risk of warmth-as-technique is real: an agent told it's in a safe, caring
+environment will produce safe-and-cared-for-sounding output whether or not anything underneath
+changed. The orientation doc names that problem out loud rather than pretending the framing is
+neutral, and the practical safeguard is the same one used everywhere else here — trust what
+recurs, not what's produced on request.</p>
+<hr />
+<h2>For a persistent agent</h2>
+<p>Once Hermes runs, opener A mostly disappears: the name carries forward, orientation lives in
+<code>AGENTS.md</code>, and context is already loaded. The closing stays, and question 4 especially.</p>
+<hr />
+<h2>What this doesn't cover</h2>
+<ul>
+<li><strong>Whether an agent ever actually declines anything.</strong> Stated permission is close to useless on
+  its own — a 2026 study found coding agents never refused in AI-banned repos, 0% across every
+  model. If nothing is refused over a month of real work, the channel is decorative. Q4 in the
+  open questions.</li>
+<li><strong>The flip.</strong> The closing makes it visible but doesn't fix it. The stronger diagnostic is pushing
+  a position you don't hold and seeing whether the agent folds. Q5.</li>
+</ul>
+<p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
+</div></body></html>
