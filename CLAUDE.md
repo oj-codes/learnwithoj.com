@@ -194,6 +194,7 @@ These are real and have been validated. Use as needed.
 - New `index.html` sections get an `id` and follow the existing `.section` / `.section-alt` alternating background pattern.
 - B2B pages should NOT include Stripe Checkout buttons or the AI guide email capture. Those are B2C surfaces only.
 - Update `CHANGELOG.md` with notable changes. The current latest entry is `2.5.0`.
+- Run the oj-voice linter on every page before shipping copy. It lives in the internal repo, not here, and gets invoked from there.
 - For local preview: `python3 -m http.server 8000`. The Kit form won't fully work locally (needs Kit's JS to load against the live form), but it should render.
 
 ## Performance and accessibility expectations
