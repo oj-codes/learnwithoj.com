@@ -11,7 +11,7 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com), and th
 - `#engineers` section wraps the existing checklist, topic tags and the three Stripe cards, with a "Best for" line on each card
 - "Can my company pay for this?" block with a copy-to-clipboard email to a manager, built on the showcase referral-template chrome and copy button (success and error states, `aria-live` announcement). Copy script generalised to any `.btn-copy[data-copy-target]`
 - `#learning` section, "What I'm learning now": the frame line as a pull quote and a dated list sourced from the internal learning timeline. "Submitted", never "published", for the sprint papers
-- Intro video slot in the hero (`.hero-intro`, native controls, poster, captions track), shipped `hidden` until `assets/oj-intro.mp4`, `assets/oj-intro-poster.jpg` and `assets/oj-intro.vtt` land. One-attribute swap to switch on
+- Intro video slot in the hero (`.hero-intro`, native controls, poster, captions track), shipped `hidden` with the paths in `data-*` attributes until `assets/oj-intro.mp4`, `assets/oj-intro-poster.jpg` and `assets/oj-intro.vtt` land, so nothing is requested meanwhile. Switch-on steps are in the HTML comment
 - Two FAQ entries: what happens on the 15-minute call, and whether a promotion can be guaranteed (no)
 - Footer on every page carries the legal name, city, LinkedIn, AI policy and For agents links, the 1% for the Planet member slot (asset deliberately absent, see below), and the sign-off line
 - Voice skill copied in at `.claude/skills/oj-voice/` with its linter, and `.gitignore` narrowed from `.claude/` to `.claude/settings.local.json` so the skill can be committed
@@ -30,7 +30,7 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com), and th
 - Stylesheet cache-busted to `v=22`
 
 ### Blocked on assets
-- `assets/logos/one-percent-for-the-planet.svg` is referenced and absent on purpose, pending the member-portal download and its usage rules
+- `assets/logos/one-percent-for-the-planet.svg` is absent on purpose, pending the member-portal download and its usage rules. The footer slot ships `hidden` with `data-src` on all three pages so nothing 404s; add the file, rename to `src`, remove `hidden`
 - The intro video files above
 
 ## [2.4.0] - 2026-05-06

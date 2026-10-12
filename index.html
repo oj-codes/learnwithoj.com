@@ -82,14 +82,16 @@
                 <div class="hero-content">
                     <!--
                         INTRO VIDEO. Hidden until assets/oj-intro.mp4, assets/oj-intro-poster.jpg
-                        and assets/oj-intro.vtt land. To switch it on: remove `hidden` from
-                        .hero-intro and add `hidden` to .hero-video-wrapper below. Native
+                        and assets/oj-intro.vtt land. The paths sit in data-* attributes so a
+                        hidden slot requests nothing. To switch it on: add the three files,
+                        rename data-poster and both data-src to poster and src, remove `hidden`
+                        from .hero-intro and add `hidden` to .hero-video-wrapper below. Native
                         controls on purpose: play button and scrubber, no autoplay.
                     -->
                     <figure class="hero-intro" hidden>
-                        <video class="hero-intro-video" controls preload="none" playsinline poster="assets/oj-intro-poster.jpg">
-                            <source src="assets/oj-intro.mp4" type="video/mp4">
-                            <track kind="captions" src="assets/oj-intro.vtt" srclang="en" label="English">
+                        <video class="hero-intro-video" controls preload="metadata" playsinline data-poster="assets/oj-intro-poster.jpg">
+                            <source data-src="assets/oj-intro.mp4" type="video/mp4">
+                            <track kind="captions" data-src="assets/oj-intro.vtt" srclang="en" label="English">
                             Your browser doesn't play video here, so <a href="assets/oj-intro.mp4">download the intro instead</a>.
                         </video>
                         <figcaption class="sr-only">O.J. introduces Learn with O.J. in about two minutes.</figcaption>
