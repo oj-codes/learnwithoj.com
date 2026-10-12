@@ -33,8 +33,14 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com), and th
 - Stylesheet cache-busted to `v=22`
 
 ### Blocked on assets
-- `assets/logos/one-percent-for-the-planet.svg` is absent on purpose, pending the member-portal download and its usage rules. The footer slot ships `hidden` with `data-src` on all three pages so nothing 404s; add the file, rename to `src`, remove `hidden`
 - The intro video files above
+
+## [2.5.1] - 2026-10-12
+### Added
+- 1% for the Planet member block in the footer of all three pages. Full-colour Primary lockup on a white panel, 80px tall, linked to onepercentfortheplanet.org, with the business name and their required precertification wording beside it. The file is a 2x PNG (`assets/logos/1ftp-primary-horizontal-fullcolor.png`) cut from the member-portal pack; there is no SVG in the pack. Never the Certified Business seal or the Impact Partner mark, no dollar figure, no "certified". Full rules live in the internal repo under `content/branding`
+
+### Changed
+- The footer's hidden `data-src` placeholder slot is gone, replaced by the live block
 
 ## [2.4.0] - 2026-05-06
 ### Added

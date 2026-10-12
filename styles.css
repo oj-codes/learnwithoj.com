@@ -2516,16 +2516,42 @@ a:hover {
     color: var(--color-accent);
 }
 
+/* 1% for the Planet. Compliance rather than taste: the mark stays at least
+   80px tall at every width, it's a link, the business name is in the sentence
+   beside it and that sentence is their required precertification wording. The
+   full-colour lockup needs a light surface, so it sits on a white panel. */
 .footer-onepercent {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.875rem;
 }
 
-.footer-onepercent img {
-    display: inline-block;
-    max-height: 40px;
+.footer-onepercent-mark {
+    display: inline-flex;
+    padding: 0.875rem 1.25rem;
+    background: #fff;
+    border-radius: 12px;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.footer-onepercent-mark:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(56, 182, 193, 0.18);
+}
+
+.footer-onepercent-mark img {
+    display: block;
+    height: 80px;
     width: auto;
-    opacity: 0.8;
+}
+
+.footer-onepercent-text {
+    max-width: 34rem;
+    margin: 0;
     font-size: 0.8125rem;
+    line-height: 1.6;
     color: var(--color-text-dim);
 }
 
@@ -2574,7 +2600,9 @@ button:focus-visible {
     .btn-header,
     .btn-header:hover,
     .feature-card,
-    .feature-card:hover {
+    .feature-card:hover,
+    .footer-onepercent-mark,
+    .footer-onepercent-mark:hover {
         transition: none;
         transform: none;
     }
