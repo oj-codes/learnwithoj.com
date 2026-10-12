@@ -8,7 +8,7 @@ The site has two distinct audiences served by different pages. See "Pages and au
 
 ## About the business
 
-**Founder.** O.J. is a working senior software and infrastructure engineer with 20+ years of experience. She has leveled up to senior twice, first as a Senior Software Engineer, then as a Senior Site Reliability Engineer. Career range spans scrappy startups (smart TV apps competing with Netflix) through Fortune 100 (American Express).
+**Founder.** O.J. is a working senior software and infrastructure engineer with 25 years of experience. She has leveled up to senior twice, first as a Senior Software Engineer, then as a Senior Site Reliability Engineer. Career range spans scrappy startups (smart TV apps competing with Netflix) through Fortune 100 (American Express).
 
 **Brand positioning.** "A working engineer in your corner." The "working" part is load-bearing. She is not a coach from the sidelines, she is still actively doing the work. That is what gives every claim on the site credibility.
 
@@ -90,22 +90,22 @@ Critically: visitors to `/showcase` did NOT come looking for resume reviews. The
 
 ### `index.html` (top to bottom)
 
-Sticky header → sections in this order, each with an `id`:
+Sticky header (For companies · For engineers · Resources · Book 15 minutes) → sections in this order, each with an `id`:
 
-1. `.hero` — circular video portrait, starburst "Free AI Guide" badge linking to `/resources.html#ai-guide`, "Let's Talk First" CTA to LinkedIn
-2. `.credentials` — 20+ years / 2x Senior Engineer / SWE + SRE
-3. `#who-for`
-4. `#what-you-get`
-5. `#topics`
-6. `#how-it-works`
-7. `#about`
-8. `#testimonials` — JS-powered horizontal carousel
-9. `#pricing` — Fresh Squeeze ($275), Career Accelerator ($900), Focused Hour ($325). Stripe Checkout links.
-10. `#faq`
-11. `#vision` — "The bigger picture"
-12. `#cta-bottom`
+1. `.hero` — intro video slot (`.hero-intro`, hidden until the HeyGen file lands), circular looping portrait with the starburst "Free AI Guide" badge, headline, "Book 15 minutes" CTA with the no-pitch line
+2. `.credentials` — 25 years / 2x Senior Engineer / SWE + SRE / Startup to Fortune 100
+3. `#companies` — "Work with me": three `.offer` rows (`#training`, `#fractional-cto`, `#advisory`), each with a situation line, body, how it starts and a booking CTA, then the `.notfor` block ("Who shouldn't hire me")
+4. `#engineers` — who-for checklist, topic tags, then `#pricing` (Fresh Squeeze $275, Career Accelerator $900, Focused Hour $325, Stripe Checkout links, "Best for" line each), then `#company-pay` (copy-to-clipboard email to a manager)
+5. `#learning` — "What I'm learning now": frame line as a pull quote plus a dated list. Source of truth is the learning timeline in the internal repo. "Submitted" never "published" for the sprint papers
+6. `#testimonials` — JS-powered horizontal carousel
+7. `#about` — O.J.'s own copy. Don't redraft it
+8. `#faq`
+9. `#vision` — "The bigger picture"
+10. `#cta-bottom`
 
-Footer + a sticky `.mobile-cta` button at the bottom on small screens.
+Footer (legal name, city, links, 1% for the Planet slot, "it's always DNS") + a sticky `.mobile-cta` button at the bottom on small screens.
+
+The booking CTA points at `mailto:oj@learnwithoj.com?subject=15%20minutes` until a scheduling tool is chosen. The intended public URL is `book.learnwithoj.com` behind a Cloudflare redirect, so the vendor never owns the link.
 
 ### `resources.html`
 
@@ -158,7 +158,7 @@ Hard rules. These are not preferences, they are enforced.
 |---------|----------------------|
 | Collaborative | She works alongside teams, not over them. Words like "together," "alongside," "with your team." |
 | Real | Admits what she doesn't know. Specific over abstract. Concrete examples over claims. |
-| Experienced | 20+ years, two leveled-up roles, name-recognizable companies (Netflix-competing startups, American Express). Don't be shy about this. |
+| Experienced | 25 years, two leveled-up roles, name-recognizable companies (Netflix-competing startups, American Express). Don't be shy about this. |
 | Irreverent | The juice/O.J. brand angle. Dry humor when it fits. The opposite of corporate. Don't force it but don't water it down. |
 | Determined | She doesn't quit. Maps to "showed up for years" stories like the K8s case. |
 
@@ -179,8 +179,8 @@ These are real and have been validated. Use as needed.
 - The Amex intern story: 6 of 6 interns on her team chose to stay permanently and cited her as the reason. Her boss gave her the highest score that year because of it. Use to demonstrate talent development, mentorship, leadership without title.
 - The Lucie/Guiltless deal: a founder approached her at a networking event, objected to her hourly rate, then closed an AI-assisted development training for her team after a discovery call with her CTO. Use to demonstrate B2B sales motion and rate confidence.
 
-**Numbers (current as of May 2026, verify before publishing).**
-- 20+ years of engineering experience.
+**Numbers (current as of October 2026, verify before publishing).**
+- 25 years of engineering experience (the site said 20+ until October 2026; she miscounted when it was built).
 - 2 leveled-up senior roles (SWE then SRE).
 - 25 discovery conversations completed.
 - 119K+ impressions on a viral April LinkedIn post (64K+ members reached, hundreds of DMs). 60K+ of those impressions in the first 7 days.
@@ -193,7 +193,7 @@ These are real and have been validated. Use as needed.
 - Stripe links and the Kit form UID are live production integrations. Don't swap them for placeholders.
 - New `index.html` sections get an `id` and follow the existing `.section` / `.section-alt` alternating background pattern.
 - B2B pages should NOT include Stripe Checkout buttons or the AI guide email capture. Those are B2C surfaces only.
-- Update `CHANGELOG.md` with notable changes. The current latest entry is `2.3.0`.
+- Update `CHANGELOG.md` with notable changes. The current latest entry is `2.5.0`.
 - For local preview: `python3 -m http.server 8000`. The Kit form won't fully work locally (needs Kit's JS to load against the live form), but it should render.
 
 ## Performance and accessibility expectations

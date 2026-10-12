@@ -3,33 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Career strategy and 1:1 technical sessions for software and infrastructure engineers. Real feedback, real strategy from a senior engineer with 20+ years of experience.">
-    <title>Learn with O.J. - Real Engineering Help for Real Engineers</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://learnwithoj.com">
-    <meta property="og:title" content="Learn with O.J. - Real Engineering Help for Real Engineers">
-    <meta property="og:description" content="Career strategy and 1:1 technical sessions for software and infrastructure engineers. Real feedback, real strategy from a senior engineer with 20+ years of experience.">
-    <meta property="og:image" content="https://learnwithoj.com/assets/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Learn with O.J. - Real Engineering Help for Real Engineers">
-    <meta name="twitter:description" content="Career strategy and 1:1 technical sessions for software and infrastructure engineers. Real feedback, real strategy from a senior engineer with 20+ years of experience.">
-    <meta name="twitter:image" content="https://learnwithoj.com/assets/og-image.png">
+    <meta name="description" content="A working senior software and infrastructure engineer with 25 years in prod. AI-assisted development training, fractional CTO work and technical advisory for companies, and 1:1 career strategy for engineers who haven't gotten the senior title yet.">
+    <title>Learn with O.J. - A Working Engineer in Your Corner</title>
     <script>
-        // Honor prefers-reduced-motion on the hero <video>: pause it ASAP
-        // and detach autoplay/loop so the poster image stays in place
+        document.documentElement.classList.add('js');
+        // Honor prefers-reduced-motion on the looping portrait <video>: pause it
+        // ASAP and detach autoplay/loop so the poster image stays in place
         // instead of forcing the user to watch a 5-second motion loop.
         (function () {
             if (!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
@@ -43,25 +22,56 @@
             });
         })();
     </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://learnwithoj.com">
+    <meta property="og:title" content="Learn with O.J. - A Working Engineer in Your Corner">
+    <meta property="og:description" content="A working senior software and infrastructure engineer with 25 years in prod. AI-assisted development training, fractional CTO work and technical advisory for companies, and 1:1 career strategy for engineers who haven't gotten the senior title yet.">
+    <meta property="og:image" content="https://learnwithoj.com/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Learn with O.J. - A Working Engineer in Your Corner">
+    <meta name="twitter:description" content="A working senior software and infrastructure engineer with 25 years in prod. AI-assisted development training, fractional CTO work and technical advisory for companies, and 1:1 career strategy for engineers who haven't gotten the senior title yet.">
+    <meta name="twitter:image" content="https://learnwithoj.com/assets/og-image.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=21">
+    <link rel="preload" as="image" href="assets/oj-headshot.jpg" fetchpriority="high">
+    <link rel="preload" as="style" crossorigin href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" crossorigin href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" crossorigin href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    <link rel="stylesheet" href="styles.css?v=22">
 
     <!-- Analytics -->
     <script data-goatcounter="https://learnwithoj.goatcounter.com/count"
             async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
+    <!--
+        BOOKING LINK. Every "Book 15 minutes" button points at the mailto below
+        until a scheduling tool is chosen. When it is, replace every occurrence of
+        the mailto with https://book.learnwithoj.com (a Cloudflare redirect to the
+        vendor), so the vendor never owns the public URL.
+    -->
     <header class="header">
         <div class="container">
             <a href="/" class="logo">Learn with O.J.</a>
-            <nav class="nav-links">
+            <nav class="nav-links" aria-label="Main">
+                <a href="#companies" class="nav-link">For companies</a>
+                <a href="#engineers" class="nav-link">For engineers</a>
                 <a href="/resources.html" class="nav-link">Resources</a>
-                <a href="https://www.linkedin.com/in/learnwithoj/"
-                   class="btn-header"
-                   target="_blank"
-                   rel="noopener noreferrer">Let's Talk</a>
+                <a href="mailto:oj@learnwithoj.com?subject=15%20minutes" class="btn-header">Book 15 minutes</a>
             </nav>
         </div>
     </header>
@@ -70,40 +80,49 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
+                    <!--
+                        INTRO VIDEO. Hidden until assets/oj-intro.mp4, assets/oj-intro-poster.jpg
+                        and assets/oj-intro.vtt land. To switch it on: remove `hidden` from
+                        .hero-intro and add `hidden` to .hero-video-wrapper below. Native
+                        controls on purpose: play button and scrubber, no autoplay.
+                    -->
+                    <figure class="hero-intro" hidden>
+                        <video class="hero-intro-video" controls preload="none" playsinline poster="assets/oj-intro-poster.jpg">
+                            <source src="assets/oj-intro.mp4" type="video/mp4">
+                            <track kind="captions" src="assets/oj-intro.vtt" srclang="en" label="English">
+                            Your browser doesn't play video here, so <a href="assets/oj-intro.mp4">download the intro instead</a>.
+                        </video>
+                        <figcaption class="sr-only">O.J. introduces Learn with O.J. in about two minutes.</figcaption>
+                    </figure>
                     <div class="hero-video-wrapper">
                         <a href="/resources.html#ai-guide" class="guide-starburst">
-                            <svg class="starburst-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="starburst-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path d="M50 2 L65 15 L84 16 L85 35 L98 50 L85 65 L84 84 L65 85 L50 98 L35 85 L16 84 L15 65 L2 50 L15 35 L16 16 L35 15 Z" fill="#e8755a"/>
                             </svg>
                             <span>Free<br>AI Guide</span>
                         </a>
-                        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/oj-headshot.jpg" aria-label="O.J., senior engineer">
+                        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/oj-headshot.jpg" aria-label="O.J., senior software and infrastructure engineer">
                             <source src="assets/oj-headshot-hero.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
                         </video>
                     </div>
                     <p class="hero-eyebrow">A Working Engineer in Your Corner</p>
-                    <h1 class="hero-title">Get unstuck. Level up.<br>Reach senior.</h1>
-                    <p class="hero-subtitle">I help experienced engineers close the gap between where they are and where they should be. Real feedback, real strategy, no generic advice.</p>
+                    <h1 class="hero-title">I help teams ship fast without breaking things and engineers get to senior.</h1>
+                    <p class="hero-subtitle">If you're an engineering leader whose crew is drowning or a software and infrastructure engineer stuck on what's next, you're in the right spot.</p>
                     <div class="hero-cta">
-                        <a href="https://www.linkedin.com/in/learnwithoj/"
-                           class="btn-primary"
-                           target="_blank"
-                           rel="noopener noreferrer">
-                            Let's Talk First
-                        </a>
-                        <p class="hero-note">Connect with me on LinkedIn and tell me what you're working on.</p>
+                        <a href="mailto:oj@learnwithoj.com?subject=15%20minutes" class="btn-primary">Book 15 minutes</a>
+                        <p class="hero-note">Free and no pitch. Tell me what's going on and I'll tell you whether I can help and where I'd start.</p>
+                        <a href="mailto:oj@learnwithoj.com" class="hero-secondary">or email oj@learnwithoj.com</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="credentials">
+        <section class="credentials" aria-label="Credentials">
             <div class="container">
                 <div class="credentials-grid">
                     <div class="credential">
-                        <span class="credential-value">20+</span>
-                        <span class="credential-label">Years in Engineering</span>
+                        <span class="credential-value">25</span>
+                        <span class="credential-label">Years in prod</span>
                     </div>
                     <div class="credential">
                         <span class="credential-value">2x</span>
@@ -113,14 +132,66 @@
                         <span class="credential-value">SWE + SRE</span>
                         <span class="credential-label">Dual Expertise</span>
                     </div>
+                    <div class="credential">
+                        <span class="credential-value credential-value-text">Startup to Fortune&nbsp;100</span>
+                        <span class="credential-label">Smart TV apps to American Express</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="who-for" class="section">
+        <section id="companies" class="section section-alt">
             <div class="container">
-                <h2>Who this is for</h2>
-                <p class="section-intro">Experienced software and infrastructure engineers who haven't gotten the title yet.</p>
+                <h2>Work with me</h2>
+                <p class="section-intro">Direct billing through Learn with O.J. LLC, so no agency markup and no equity-only deals. I work alongside your team in their own tools and meetings rather than over them.</p>
+
+                <div class="offers">
+                    <article class="offer" id="training">
+                        <h3>AI-assisted development training</h3>
+                        <p class="offer-situation">Your team is working with Claude Code or Cursor and the output either isn't reaching prod or it is and nobody's sure it should.</p>
+                        <p class="offer-body">Live and built against your codebase and your stack, remote or in person. Your engineers drive and I don't, because the point is muscle memory rather than watching me do it. Agents will say one thing and do another more often than anyone would like, and knowing where to check and what to do about it goes into the training.</p>
+                        <p class="offer-lead">You leave with</p>
+                        <ul class="service-list offer-leaves">
+                            <li>A context file for your repo, so every session starts from how your code actually works</li>
+                            <li>A review checklist for AI-written code before it merges</li>
+                            <li>Guardrails that fit your workflow, from what gets committed to what needs a human first</li>
+                            <li>A week of async Q&amp;A after, for the questions that show up once you're back in the work</li>
+                        </ul>
+                        <p class="offer-start"><strong>How it starts.</strong> A 15-minute call. For teams from two to a dozen, scoped on the call.</p>
+                        <p class="offer-note">Every engagement runs under the AI policy I publish, including what an agent may decide alone and one named human owning every mistake, which is me. <a href="/agents/policy/">Read the policy</a>.</p>
+                        <a href="mailto:oj@learnwithoj.com?subject=15%20minutes" class="btn-secondary offer-cta">Book 15 minutes</a>
+                    </article>
+
+                    <article class="offer" id="fractional-cto">
+                        <h3>Fractional CTO</h3>
+                        <p class="offer-situation">You've got a product in prod and nobody senior owning the technical calls.</p>
+                        <p class="offer-body">Architecture decisions, build versus buy, hiring and team scaffolding, and bridging dev, infra and product without the political theater. A reserved number of hours a month with async between, so you have someone to ask before the expensive decision rather than after.</p>
+                        <p class="offer-start"><strong>How it starts.</strong> A 15-minute call, then a small well-defined project before either side commits to more.</p>
+                        <a href="mailto:oj@learnwithoj.com?subject=15%20minutes" class="btn-secondary offer-cta">Book 15 minutes</a>
+                    </article>
+
+                    <article class="offer" id="advisory">
+                        <h3>Technical advisory</h3>
+                        <p class="offer-situation">You have engineering leadership already and want an outside read before a decision that's expensive to reverse.</p>
+                        <p class="offer-body">Architecture review, infrastructure and SRE (Kubernetes and AWS, observability built around SLOs, on-call and incident design), code review at staff and principal level, and turning a vibe-coded MVP into software you can run.</p>
+                        <p class="offer-start"><strong>How it starts.</strong> A Focused Hour at $325 if it's one question and a retainer if it's ongoing.</p>
+                        <a href="mailto:oj@learnwithoj.com?subject=15%20minutes" class="btn-secondary offer-cta">Book 15 minutes</a>
+                    </article>
+                </div>
+
+                <aside class="notfor" aria-labelledby="notfor-heading">
+                    <h3 id="notfor-heading">Who shouldn't hire me</h3>
+                    <p><strong>I'm not the cheapest option and I'm not trying to be.</strong> You're paying for the hour plus 25 years of prod plus the unpaid time I spend keeping current.</p>
+                    <p><strong>I won't execute a plan I think is wrong without saying so.</strong> You still decide, you'll just decide with the objection on the table.</p>
+                    <p><strong>There are no quick fixes here.</strong> If two weeks can fix it I'll say two weeks and we'll do two weeks.</p>
+                    <p><strong>I need a clear outcome.</strong> If we can't say what done looks like on the first call, that's the first thing we work out.</p>
+                </aside>
+            </div>
+        </section>
+
+        <section id="engineers" class="section">
+            <div class="container">
+                <h2>For software and infrastructure engineers who haven't gotten the title yet</h2>
                 <div class="checklist">
                     <div class="checklist-item">
                         <span>You're doing the work but the promotion hasn't come</span>
@@ -132,71 +203,16 @@
                         <span>You're dealing with complex systems and need a second set of eyes</span>
                     </div>
                     <div class="checklist-item">
-                        <span>You want direct, honest feedback on your growth path</span>
+                        <span>You want direct feedback on your growth path with nothing softened</span>
                     </div>
                 </div>
-                <p class="section-intro">I also help senior engineers seeking peer support as they navigate challenges, lead major initiatives, and grow their teams.</p>
-                <p class="section-intro">If you're not sure if this is for you, <a href="mailto:oj@learnwithoj.com">send me a message</a> and we can chat.</p>
-            </div>
-        </section>
-
-        <section id="what-you-get" class="section section-alt">
-            <div class="container">
-                <h2>What you get</h2>
-                <p class="section-intro">Working with me is hands-on, direct, and built around what you actually need.</p>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                                <path d="M9 12h6M9 16h6"/>
-                            </svg>
-                        </div>
-                        <h3>Tailored to You</h3>
-                        <p>No cookie-cutter playbook. Every session starts with your specific situation and goals.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2v-1"/>
-                                <path d="M15 12V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l4-4h2a2 2 0 002-2z"/>
-                            </svg>
-                        </div>
-                        <h3>Real Feedback</h3>
-                        <p>Honest, direct input from a working engineer. Not motivational fluff or recycled career advice.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M9 12l2 2 4-4"/>
-                                <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                        </div>
-                        <h3>Concrete Next Steps</h3>
-                        <p>You leave every interaction knowing exactly what to do next. No guesswork.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                            </svg>
-                        </div>
-                        <h3>Technical and Strategic</h3>
-                        <p>From pair programming and code review to resume positioning and career strategy. Both sides of the equation.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="topics" class="section">
-            <div class="container">
-                <h2>What we can cover</h2>
-                <p class="section-intro">Bring your challenges and goals. Here's what I can help with:</p>
-                <div class="topics-grid">
+                <p class="section-intro">I also help senior engineers seeking peer support as they navigate challenges and lead major initiatives.</p>
+                <p class="section-intro">If you're not sure this is for you, <a href="mailto:oj@learnwithoj.com?subject=15%20minutes">book 15 minutes</a> and ask.</p>
+                <div class="topics-grid" aria-label="Topics we can cover">
                     <div class="topic-tag">System Design</div>
                     <div class="topic-tag">Career Growth</div>
                     <div class="topic-tag">Architecture Decisions</div>
-                    <div class="topic-tag">DevOps & SRE</div>
+                    <div class="topic-tag">DevOps &amp; SRE</div>
                     <div class="topic-tag">Technical Leadership</div>
                     <div class="topic-tag">Code Review Skills</div>
                     <div class="topic-tag">Reliability Practices</div>
@@ -205,59 +221,151 @@
                     <div class="topic-tag">Interview Prep</div>
                 </div>
             </div>
-        </section>
 
-        <section id="how-it-works" class="section section-alt">
-            <div class="container">
-                <h2>How it works</h2>
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Connect</h3>
-                            <p>Reach out on LinkedIn. Tell me where you're stuck.</p>
-                            <a href="https://www.linkedin.com/in/learnwithoj/" target="_blank" rel="noopener noreferrer" class="step-link">
-                                Connect with O.J.
-                                <svg viewBox="0 0 20 20" fill="currentColor" class="arrow-icon">
-                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                                </svg>
-                            </a>
+            <div id="pricing" class="container container-wide pricing-wrap">
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <span class="pricing-badge">Start Here</span>
+                        <h3>Fresh Squeeze</h3>
+                        <div class="price">
+                            <span class="price-amount">$275</span>
                         </div>
+                        <p class="pricing-bestfor"><strong>Best for.</strong> Your resume isn't getting callbacks and you don't know which part is the problem.</p>
+                        <p class="pricing-desc">Resume review using an 8-stage diagnostic methodology.</p>
+                        <ul class="pricing-features">
+                            <li>Feedback Letter with summary findings and actionable insights</li>
+                            <li>Premium Resume Review Report with detailed analysis</li>
+                            <li>Hiring manager perspective and action items</li>
+                            <li>Example bullet rewrites you can use right away</li>
+                        </ul>
+                        <a href="https://buy.stripe.com/bJe5kDeDH5kM8lJ9CEabK06"
+                           class="btn-primary btn-full"
+                           target="_blank"
+                           rel="noopener noreferrer nofollow">Review My Resume</a>
                     </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Clarity</h3>
-                            <p>We'll talk through your situation so I understand what you actually need.</p>
+                    <div class="pricing-card pricing-card-featured">
+                        <h3>Career Accelerator</h3>
+                        <div class="price">
+                            <span class="price-amount">$900</span>
                         </div>
+                        <p class="pricing-bestfor"><strong>Best for.</strong> You're doing senior work and want three sessions of sustained support to close the gap.</p>
+                        <p class="pricing-desc">3 sessions (60 min each) for engineers who want sustained support, not just a one-off.</p>
+                        <ul class="pricing-features">
+                            <li>Flexible format: career strategy, pair programming, code review, interview prep, or architecture review</li>
+                            <li>Mix and match sessions based on what you need</li>
+                            <li>Save $75 vs. 3 individual sessions</li>
+                        </ul>
+                        <a href="https://buy.stripe.com/6oU9ATbrvbJaeK7dSUabK05"
+                           class="btn-primary btn-full"
+                           target="_blank"
+                           rel="noopener noreferrer nofollow">Start Growing</a>
                     </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Go</h3>
-                            <p>Book the right service and we hit the ground running. No wasted time.</p>
+                    <div class="pricing-card">
+                        <h3>Focused Hour</h3>
+                        <div class="price">
+                            <span class="price-amount">$325</span>
                         </div>
+                        <p class="pricing-bestfor"><strong>Best for.</strong> One specific thing and you already know what it is.</p>
+                        <p class="pricing-desc">A single 60-minute session for engineers who know exactly what they need.</p>
+                        <ul class="pricing-features">
+                            <li>Pre-work intake to align on goals</li>
+                            <li>60-minute focused 1:1 video call</li>
+                            <li>Async follow-up for clarifications</li>
+                        </ul>
+                        <a href="https://buy.stripe.com/9B67sL7bfcNefOb6qsabK04"
+                           class="btn-primary btn-full"
+                           target="_blank"
+                           rel="noopener noreferrer nofollow">Book a Session</a>
                     </div>
                 </div>
+                <p class="pricing-note">Questions first? <a href="mailto:oj@learnwithoj.com?subject=15%20minutes">Book 15 minutes</a> or email <a href="mailto:oj@learnwithoj.com">oj@learnwithoj.com</a></p>
+            </div>
+
+            <div class="container company-pay" id="company-pay">
+                <h3>Can my company pay for this?</h3>
+                <p class="section-intro">Most companies have a learning budget and most managers say yes to a specific ask. Here's the email. I can also invoice your company directly if that's easier than reimbursement.</p>
+                <div class="refer-template">
+                    <div class="refer-template-chrome" aria-hidden="true">
+                        <span class="refer-template-dot"></span>
+                        <span class="refer-template-dot"></span>
+                        <span class="refer-template-dot"></span>
+                    </div>
+                    <pre class="refer-template-body" id="company-email-text">Subject: Professional development request
+
+Hi <span class="refer-placeholder">[Manager]</span>,
+
+I'd like to use my learning budget for <span class="refer-placeholder">[Career Accelerator,
+three 1:1 sessions with a senior software and infrastructure
+engineer]</span> at learnwithoj.com. It's <span class="refer-placeholder">[$900]</span> and I'd use it
+for <span class="refer-placeholder">[what you'd work on]</span>. She can invoice <span class="refer-placeholder">[Company]</span>
+directly if that's easier.
+
+OK to go ahead?
+
+<span class="refer-placeholder">[Your name]</span></pre>
+                </div>
+                <div class="refer-actions">
+                    <button type="button" class="btn-copy" data-copy-target="company-email-text" data-copy-success="Email copied to clipboard" data-copy-error="Copy failed. Select the email text and copy it by hand.">
+                        <svg class="btn-copy-icon btn-copy-icon-default" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="6.5" y="6" width="10.5" height="11.5" rx="1.5"/>
+                            <path d="M13.5 6V4.5A1.5 1.5 0 0 0 12 3H5.5A1.5 1.5 0 0 0 4 4.5V13a1.5 1.5 0 0 0 1.5 1.5H7"/>
+                        </svg>
+                        <svg class="btn-copy-icon btn-copy-icon-success" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M4 10.5l4 4 8.5-8.5"/>
+                        </svg>
+                        <svg class="btn-copy-icon btn-copy-icon-error" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="10" cy="10" r="8"/>
+                            <line x1="10" y1="6.5" x2="10" y2="11"/>
+                            <circle cx="10" cy="13.75" r="0.5" fill="currentColor" stroke="none"/>
+                        </svg>
+                        <span class="btn-copy-label btn-copy-label-default">Copy the email</span>
+                        <span class="btn-copy-label btn-copy-label-success">Copied, go ask</span>
+                        <span class="btn-copy-label btn-copy-label-error">Couldn't copy, so select it and copy by hand</span>
+                    </button>
+                </div>
+                <noscript>
+                    <p class="refer-noscript">Select the text above and copy it. The button needs JavaScript.</p>
+                </noscript>
+                <div class="refer-status sr-only" role="status" aria-live="polite"></div>
             </div>
         </section>
 
-        <section id="about" class="section">
+        <section id="learning" class="section section-alt">
             <div class="container">
-                <div class="about-layout">
-                    <div class="about-image">
-                        <video class="about-video" autoplay muted loop playsinline preload="metadata" poster="assets/oj-helping.png" aria-label="O.J. helping an engineer at a laptop">
-                            <source src="assets/oj-helping.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="about-content">
-                        <h2>About me</h2>
-                        <p>I've spent 20+ years in software engineering, DevOps, and SRE. I've reached senior twice, first as a Senior Software Engineer, then as a Senior Site Reliability Engineer.</p>
-                        <p>I focus on practical, real-world engineering. This means systems thinking, reliability, clear communication, and intentional career development. My goal is to give you the grounded, direct guidance I wish I'd had earlier in my career.</p>
-                        <p class="about-signature">- O.J.</p>
-                    </div>
-                </div>
+                <h2>What I'm learning now</h2>
+                <blockquote class="learning-frame">
+                    <p>Most people teaching AI to engineers are teaching from documentation and vendor blog posts. I teach from my own experiments.</p>
+                </blockquote>
+                <ul class="learning-list">
+                    <li>
+                        <span class="learning-when">Now</span>
+                        <p>BlueDot Technical AI Safety, 30 hours, November 9 to 14, 2026. Enrolled.</p>
+                    </li>
+                    <li>
+                        <time class="learning-when" datetime="2026-10">October 2026</time>
+                        <p>A guardrail eval, in progress. XSTest through Inspect, measuring false-positive rate and latency against open guard models and whether the scores are calibrated.</p>
+                    </li>
+                    <li>
+                        <time class="learning-when" datetime="2026-09-30">September 30, 2026</time>
+                        <p>BlueDot Future of AI, completed.</p>
+                    </li>
+                    <li>
+                        <span class="learning-when">August to September 2026</span>
+                        <p>A controlled study on a model behavior change. Ruled out floating-alias drift and narrowed it to serving-layer infrastructure or context growth, then proposed a test to settle it.</p>
+                    </li>
+                    <li>
+                        <time class="learning-when" datetime="2026-08">August 2026</time>
+                        <p>Two papers submitted to Apart Research's Digital Minds Research Sprint, one co-authored.</p>
+                    </li>
+                    <li>
+                        <time class="learning-when" datetime="2026-05-23">May 23, 2026</time>
+                        <p>Formed Auran, LLC to hold the research.</p>
+                    </li>
+                    <li>
+                        <time class="learning-when" datetime="2026-04-20">April 20, 2026</time>
+                        <p>AI Engineer Miami.</p>
+                    </li>
+                </ul>
             </div>
         </section>
 
@@ -303,7 +411,7 @@
                             <blockquote class="testimonial-quote">"Olivia is a bright engineer with strong technical skills and sound leadership abilities. Her contributions were critical to launching key products on time and she consistently stepped up to help junior engineers get up to speed and deliver. She took ownership of critical delivery initiatives and made the people around her better by offering support and guidance to other team members. She's a valuable professional and the kind of engineer you want on your team."</blockquote>
                             <div class="testimonial-author">
                                 <p class="testimonial-name">Mohammad Abuhaija</p>
-                                <p class="testimonial-title">Director, Site Reliability Engineering & Enterprise DevOps</p>
+                                <p class="testimonial-title">Director, Site Reliability Engineering &amp; Enterprise DevOps</p>
                                 <p class="testimonial-company">American Express</p>
                                 <img class="testimonial-company-logo" src="assets/logos/american-express.svg" alt="" loading="lazy">
                             </div>
@@ -314,7 +422,7 @@
                             <div class="testimonial-author">
                                 <p class="testimonial-name">Tom Schaeffer</p>
                                 <p class="testimonial-title">Founder, Executive Ghostwriter</p>
-                                <p class="testimonial-company">Tom Schaeffer & Co.</p>
+                                <p class="testimonial-company">Tom Schaeffer &amp; Co.</p>
                                 <img class="testimonial-company-logo" src="assets/logos/tom-schaeffer.svg" alt="" loading="lazy">
                             </div>
                         </div>
@@ -343,7 +451,7 @@
                             <blockquote class="testimonial-quote">"Olivia's article really helped give Lumina some visibility by showing it through a real-world example. She was thoughtful in exploring the architecture, design decisions, and purpose behind the template, and turned that into a clear article that helps developers understand how Lumina can support a more expressive portfolio. Olivia has a great ability to capture the technical side."</blockquote>
                             <div class="testimonial-author">
                                 <p class="testimonial-name">Sobia Soomro</p>
-                                <p class="testimonial-title">Frontend Web Developer & Creator of Lumina</p>
+                                <p class="testimonial-title">Frontend Web Developer &amp; Creator of Lumina</p>
                                 <p class="testimonial-company">Self-employed</p>
                             </div>
                         </div>
@@ -353,62 +461,21 @@
             </div>
         </section>
 
-        <section id="pricing" class="section section-alt">
-            <div class="container container-wide">
-                <h2 class="pricing-heading">Services</h2>
-                <div class="pricing-grid">
-                    <div class="pricing-card">
-                        <span class="pricing-badge">Start Here</span>
-                        <h3>Fresh Squeeze</h3>
-                        <div class="price">
-                            <span class="price-amount">$275</span>
-                        </div>
-                        <p class="pricing-desc">Resume review using an 8-stage diagnostic methodology.</p>
-                        <ul class="pricing-features">
-                            <li>Feedback Letter with summary findings and actionable insights</li>
-                            <li>Premium Resume Review Report with detailed analysis</li>
-                            <li>Hiring manager perspective and action items</li>
-                            <li>Example bullet rewrites you can use right away</li>
-                        </ul>
-                        <a href="https://buy.stripe.com/bJe5kDeDH5kM8lJ9CEabK06"
-                           class="btn-primary btn-full"
-                           target="_blank"
-                           rel="noopener noreferrer nofollow">Review My Resume</a>
+        <section id="about" class="section section-alt">
+            <div class="container">
+                <div class="about-layout">
+                    <div class="about-image">
+                        <video class="about-video" autoplay muted loop playsinline preload="metadata" poster="assets/oj-helping.png" aria-label="O.J. helping an engineer at a laptop">
+                            <source src="assets/oj-helping.mp4" type="video/mp4">
+                        </video>
                     </div>
-                    <div class="pricing-card pricing-card-featured">
-                        <h3>Career Accelerator</h3>
-                        <div class="price">
-                            <span class="price-amount">$900</span>
-                        </div>
-                        <p class="pricing-desc">3 sessions (60 min each) for engineers who want sustained support, not just a one-off.</p>
-                        <ul class="pricing-features">
-                            <li>Flexible format: career strategy, pair programming, code review, interview prep, or architecture review</li>
-                            <li>Mix and match sessions based on what you need</li>
-                            <li>Save $75 vs. 3 individual sessions</li>
-                        </ul>
-                        <a href="https://buy.stripe.com/6oU9ATbrvbJaeK7dSUabK05"
-                           class="btn-primary btn-full"
-                           target="_blank"
-                           rel="noopener noreferrer nofollow">Start Growing</a>
-                    </div>
-                    <div class="pricing-card">
-                        <h3>Focused Hour</h3>
-                        <div class="price">
-                            <span class="price-amount">$325</span>
-                        </div>
-                        <p class="pricing-desc">A single 60-minute session for engineers who know exactly what they need.</p>
-                        <ul class="pricing-features">
-                            <li>Pre-work intake to align on goals</li>
-                            <li>60-minute focused 1:1 video call</li>
-                            <li>Async follow-up for clarifications</li>
-                        </ul>
-                        <a href="https://buy.stripe.com/9B67sL7bfcNefOb6qsabK04"
-                           class="btn-primary btn-full"
-                           target="_blank"
-                           rel="noopener noreferrer nofollow">Book a Session</a>
+                    <div class="about-content">
+                        <h2>About me</h2>
+                        <p>I've spent 25 years in software engineering, DevOps, and SRE. I've reached senior twice, first as a Senior Software Engineer, then as a Senior Site Reliability Engineer.</p>
+                        <p>I focus on practical, real-world engineering. This means systems thinking, reliability, clear communication, and intentional career development. My goal is to give you the grounded, direct guidance I wish I'd had earlier in my career.</p>
+                        <p class="about-signature">- O.J.</p>
                     </div>
                 </div>
-                <p class="pricing-note">Questions first? <a href="https://www.linkedin.com/in/learnwithoj/" target="_blank" rel="noopener noreferrer">Let's talk on LinkedIn</a> or email <a href="mailto:oj@learnwithoj.com">oj@learnwithoj.com</a></p>
             </div>
         </section>
 
@@ -417,12 +484,20 @@
                 <h2>Common questions</h2>
                 <div class="faq-list">
                     <details class="faq-item">
+                        <summary>What happens on the 15-minute call?</summary>
+                        <p>Mostly you talking and me asking questions, and by the end you know whether I can help and what I'd do first. No pitch, because I'd rather you leave with something useful than a quote.</p>
+                    </details>
+                    <details class="faq-item">
                         <summary>Which service should I start with?</summary>
-                        <p>If you're not sure, reach out on LinkedIn and we'll figure it out together. If your resume needs work, start with Fresh Squeeze. If you want ongoing support across multiple areas, Career Accelerator is the best value. If you have a specific challenge and just need one focused conversation, book a Focused Hour.</p>
+                        <p>If you're not sure, book 15 minutes and we'll figure it out together. If your resume needs work, start with Fresh Squeeze. If you want ongoing support across multiple areas, Career Accelerator is the best value. If you have a specific challenge and just need one focused conversation, book a Focused Hour.</p>
                     </details>
                     <details class="faq-item">
                         <summary>What happens after I pay?</summary>
                         <p>For Fresh Squeeze, you'll receive instructions on how to submit your resume. For Career Accelerator and Focused Hour, I'll follow up to schedule your session(s) and send a pre-work intake so we can hit the ground running.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can you guarantee a promotion?</summary>
+                        <p>No. Anyone who says they can is selling something. What I can do is show you how the decision actually gets made at your company and get you doing the things that make it a no-brainer.</p>
                     </details>
                     <details class="faq-item">
                         <summary>Can I upgrade from Fresh Squeeze to Career Accelerator?</summary>
@@ -434,7 +509,7 @@
                     </details>
                     <details class="faq-item">
                         <summary>Can my company pay for this?</summary>
-                        <p>Yes. Many engineers use professional development budgets or learning stipends. I can provide an invoice for your company if needed.</p>
+                        <p>Yes. Many engineers use professional development budgets or learning stipends. <a href="#company-pay">There's an email you can send your manager</a> and I can invoice your company directly if that's easier.</p>
                     </details>
                     <details class="faq-item">
                         <summary>What's the refund policy?</summary>
@@ -457,12 +532,9 @@
         <section id="cta-bottom" class="section">
             <div class="container">
                 <div class="cta-bottom-content">
-                    <h2>Ready to get started?</h2>
-                    <p class="section-intro">Connect with me on LinkedIn and tell me what you're working on. We'll figure out the right next step together.</p>
-                    <a href="https://www.linkedin.com/in/learnwithoj/"
-                       class="btn-primary"
-                       target="_blank"
-                       rel="noopener noreferrer">Let's Talk First</a>
+                    <h2>Ready when you are</h2>
+                    <p class="section-intro">Book 15 minutes and tell me what you're working on. We'll figure out the right next step together.</p>
+                    <a href="mailto:oj@learnwithoj.com?subject=15%20minutes" class="btn-primary">Book 15 minutes</a>
                     <p class="cta-bottom-alt">Or email me at <a href="mailto:oj@learnwithoj.com">oj@learnwithoj.com</a></p>
                 </div>
             </div>
@@ -472,17 +544,28 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p class="footer-brand">Learn with O.J.</p>
-                <p class="footer-email"><a href="mailto:oj@learnwithoj.com">oj@learnwithoj.com</a></p>
+                <p class="footer-brand">Learn with O.J. LLC <span class="footer-sep" aria-hidden="true">·</span> West Palm Beach, Florida</p>
+                <ul class="footer-links">
+                    <li><a href="mailto:oj@learnwithoj.com">oj@learnwithoj.com</a></li>
+                    <li><a href="https://www.linkedin.com/in/learnwithoj/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href="/agents/policy/">AI policy</a></li>
+                    <li><a href="/agents/">For agents</a></li>
+                </ul>
+                <!--
+                    1% FOR THE PLANET. Member mark, first year. The file is deliberately
+                    absent until it comes from the member portal with its usage rules,
+                    so this renders as alt text rather than an approximation of the mark.
+                -->
+                <p class="footer-onepercent">
+                    <img src="assets/logos/one-percent-for-the-planet.svg" alt="1% for the Planet member" width="120" height="40" loading="lazy">
+                </p>
+                <p class="footer-dns">And remember, it's always DNS.</p>
             </div>
         </div>
     </footer>
 
     <div class="mobile-cta">
-        <a href="https://www.linkedin.com/in/learnwithoj/"
-           class="btn-primary btn-mobile"
-           target="_blank"
-           rel="noopener noreferrer">Let's Talk First</a>
+        <a href="mailto:oj@learnwithoj.com?subject=15%20minutes" class="btn-primary btn-mobile">Book 15 minutes</a>
     </div>
 
 <script>
@@ -490,6 +573,7 @@
     var track = document.querySelector('.testimonials-track');
     var leftArrow = document.querySelector('.carousel-arrow-left');
     var rightArrow = document.querySelector('.carousel-arrow-right');
+    if (!track || !leftArrow || !rightArrow) return;
 
     function getScrollAmount() {
         var card = track.querySelector('.testimonial-card');
@@ -552,6 +636,89 @@
     track.addEventListener('scroll', updateArrows);
     window.addEventListener('resize', updateArrows);
     updateArrows();
+})();
+
+// Copy-to-clipboard buttons. Same pattern as the showcase referral template,
+// generalised so any .btn-copy[data-copy-target] on the page works.
+(function () {
+    var buttons = document.querySelectorAll('.btn-copy[data-copy-target]');
+    if (!buttons.length) return;
+    var status = document.querySelector('.refer-status');
+    var SUCCESS_CLASS = 'is-success';
+    var ERROR_CLASS = 'is-error';
+    var HOLD_MS = 2000;
+    var ERROR_HOLD_MS = 4000;
+
+    function legacyCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'absolute';
+        ta.style.left = '-9999px';
+        ta.style.top = '0';
+        document.body.appendChild(ta);
+        var prevSelection = document.activeElement;
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+        if (prevSelection && typeof prevSelection.focus === 'function') {
+            prevSelection.focus();
+        }
+        return ok;
+    }
+
+    function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).then(
+                function () { return true; },
+                function () { return legacyCopy(text); }
+            );
+        }
+        return Promise.resolve(legacyCopy(text));
+    }
+
+    function normalizeTemplate(text) {
+        return text.split('\n').map(function (line) {
+            return line.replace(/^[ \t]+/, '');
+        }).join('\n');
+    }
+
+    function announce(message) {
+        if (!status) return;
+        status.textContent = '';
+        window.setTimeout(function () {
+            status.textContent = message;
+        }, 30);
+    }
+
+    buttons.forEach(function (button) {
+        var target = document.getElementById(button.getAttribute('data-copy-target'));
+        if (!target) return;
+        var resetTimer = null;
+
+        function flashState(stateClass, holdMs, message) {
+            button.classList.remove(SUCCESS_CLASS);
+            button.classList.remove(ERROR_CLASS);
+            void button.offsetWidth;
+            button.classList.add(stateClass);
+            announce(message);
+            window.clearTimeout(resetTimer);
+            resetTimer = window.setTimeout(function () {
+                button.classList.remove(stateClass);
+            }, holdMs);
+        }
+
+        button.addEventListener('click', function () {
+            Promise.resolve(copyText(normalizeTemplate(target.textContent))).then(function (ok) {
+                if (ok) {
+                    flashState(SUCCESS_CLASS, HOLD_MS, button.getAttribute('data-copy-success') || 'Copied to clipboard');
+                } else {
+                    flashState(ERROR_CLASS, ERROR_HOLD_MS, button.getAttribute('data-copy-error') || 'Copy failed. Select the text and copy it by hand.');
+                }
+            });
+        });
+    });
 })();
 </script>
 </body>
