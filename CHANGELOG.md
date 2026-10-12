@@ -28,6 +28,8 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com), and th
 - Hero tightened so the credentials row sits above the fold on a laptop: headline capped at 2.625rem and balanced, column widened to 720px, vertical margins trimmed. Topic tags replaced with one sentence, since the pills read as buttons
 - FAQ rewritten for both audiences: start-with, after-payment and best-suited answers cover company work, plus a new "How do engagements with companies work?"
 - Google Fonts stylesheet loads non-blocking on the home and resources pages (same preload-and-swap pattern the showcase page already used) and the hero poster is preloaded. Home page mobile Lighthouse performance went from 75 on main to 95
+- Credentials strip columns size to their content so every value sits on one line; fourth cell is "Apps to Amex" over "Startup to Fortune 100"
+- Fixed a pre-existing horizontal scroll on phones: the hero's decorative glow was a fixed 500px circle that extended past the viewport, so the page was 438px wide at 375px. Capped at the hero's width
 - Stylesheet cache-busted to `v=22`
 
 ### Blocked on assets

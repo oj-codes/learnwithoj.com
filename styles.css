@@ -175,7 +175,7 @@ body {
     top: -20%;
     left: 50%;
     transform: translateX(-50%);
-    width: 500px;
+    width: min(500px, 100%); /* wider than a phone, it was the thing making the page scroll sideways */
     height: 500px;
     background: radial-gradient(circle, rgba(56, 182, 193, 0.08) 0%, rgba(56, 182, 193, 0.03) 40%, transparent 70%);
     pointer-events: none;
@@ -389,8 +389,16 @@ body {
 }
 
 @media (min-width: 640px) {
+    /* Columns size to their content, so a longer value widens its own
+       column instead of wrapping while the short ones sit in empty space. */
     .credentials-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, auto);
+        justify-content: space-between;
+        gap: 1.5rem;
+    }
+    .credential-value,
+    .credential-label {
+        white-space: nowrap;
     }
 }
 
@@ -2236,19 +2244,6 @@ a:hover {
    Hero intro player, offers, not-for block,
    company-pay template, learning list, footer.
    ============================================ */
-
-/* Credential whose value is a phrase, not a number. */
-.credential-value-text {
-    font-size: 1.0625rem;
-    line-height: 1.25;
-    padding: 0.25rem 0;
-}
-
-@media (min-width: 480px) {
-    .credential-value-text {
-        font-size: 1.125rem;
-    }
-}
 
 /* Intro video. Native controls, poster until play, 16:9 frame with the
    same ring treatment as the portrait so the hero reads as one family. */
