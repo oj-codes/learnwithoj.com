@@ -105,7 +105,7 @@ Sticky header (For companies · For engineers · Resources · Book 15 minutes) �
 
 Footer (legal name, city, links, 1% for the Planet slot, "it's always DNS") + a sticky `.mobile-cta` button at the bottom on small screens.
 
-The booking CTA points at `mailto:oj@learnwithoj.com?subject=15%20minutes` until a scheduling tool is chosen. The intended public URL is `book.learnwithoj.com` behind a Cloudflare redirect, so the vendor never owns the link.
+The booking CTA points at `https://cal.com/learnwithoj/quick-chat`, the cal.com event "Quick Chat (15 min)", on all three pages. `book.learnwithoj.com` as a Cloudflare redirect is still an option so the vendor never owns the public link; if it gets set up, swap every occurrence.
 
 ### `resources.html`
 
