@@ -96,6 +96,7 @@ body {
     color: var(--color-white);
     text-decoration: none;
     letter-spacing: -0.01em;
+    white-space: nowrap;
 }
 
 .nav-links {
@@ -107,6 +108,7 @@ body {
 .nav-link {
     display: none;
     font-size: 0.875rem;
+    white-space: nowrap;
     font-weight: 500;
     color: var(--color-text-muted);
     text-decoration: none;
@@ -125,6 +127,7 @@ body {
 .btn-header {
     display: none;
     padding: 0.5rem 1rem;
+    white-space: nowrap;
     font-size: 0.875rem;
     font-weight: 600;
     color: var(--color-white);
@@ -143,10 +146,15 @@ body {
 }
 
 @media (min-width: 640px) {
-    .nav-link {
+    .btn-header {
         display: inline-flex;
     }
-    .btn-header {
+}
+
+/* Four text links plus the button plus the wordmark need about 680px
+   before anything wraps, so the links come in later than the button. */
+@media (min-width: 680px) {
+    .nav-link {
         display: inline-flex;
     }
 }
@@ -543,6 +551,9 @@ p {
     display: flex;
     flex-wrap: wrap;
     gap: 0.625rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .topic-tag {

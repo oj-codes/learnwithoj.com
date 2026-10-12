@@ -208,18 +208,18 @@
                 </div>
                 <p class="section-intro">I also help senior engineers seeking peer support as they navigate challenges and lead major initiatives.</p>
                 <p class="section-intro">If you're not sure this is for you, <a href="mailto:oj@learnwithoj.com?subject=15%20minutes">book 15 minutes</a> and ask.</p>
-                <div class="topics-grid" aria-label="Topics we can cover">
-                    <div class="topic-tag">System Design</div>
-                    <div class="topic-tag">Career Growth</div>
-                    <div class="topic-tag">Architecture Decisions</div>
-                    <div class="topic-tag">DevOps &amp; SRE</div>
-                    <div class="topic-tag">Technical Leadership</div>
-                    <div class="topic-tag">Code Review Skills</div>
-                    <div class="topic-tag">Reliability Practices</div>
-                    <div class="topic-tag">Communication</div>
-                    <div class="topic-tag">Complex Codebases</div>
-                    <div class="topic-tag">Interview Prep</div>
-                </div>
+                <ul class="topics-grid" aria-label="Topics we can cover">
+                    <li class="topic-tag">System Design</li>
+                    <li class="topic-tag">Career Growth</li>
+                    <li class="topic-tag">Architecture Decisions</li>
+                    <li class="topic-tag">DevOps &amp; SRE</li>
+                    <li class="topic-tag">Technical Leadership</li>
+                    <li class="topic-tag">Code Review Skills</li>
+                    <li class="topic-tag">Reliability Practices</li>
+                    <li class="topic-tag">Communication</li>
+                    <li class="topic-tag">Complex Codebases</li>
+                    <li class="topic-tag">Interview Prep</li>
+                </ul>
             </div>
 
             <div id="pricing" class="container container-wide pricing-wrap">
@@ -553,11 +553,13 @@ OK to go ahead?
                 </ul>
                 <!--
                     1% FOR THE PLANET. Member mark, first year. The file is deliberately
-                    absent until it comes from the member portal with its usage rules,
-                    so this renders as alt text rather than an approximation of the mark.
+                    absent until it comes from the member portal with its usage rules. The
+                    slot ships hidden with data-src so no request is made and nothing 404s.
+                    To switch it on, on all three pages: add the file, rename data-src to
+                    src, remove `hidden`.
                 -->
-                <p class="footer-onepercent">
-                    <img src="assets/logos/one-percent-for-the-planet.svg" alt="1% for the Planet member" width="120" height="40" loading="lazy">
+                <p class="footer-onepercent" hidden>
+                    <img data-src="assets/logos/one-percent-for-the-planet.svg" alt="1% for the Planet member" width="120" height="40" loading="lazy">
                 </p>
                 <p class="footer-dns">And remember, it's always DNS.</p>
             </div>
