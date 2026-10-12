@@ -51,7 +51,7 @@
     <link rel="preload" as="style" crossorigin href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" crossorigin href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" crossorigin href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
-    <link rel="stylesheet" href="styles.css?v=22">
+    <link rel="stylesheet" href="styles.css?v=23">
 
     <!-- Analytics -->
     <script data-goatcounter="https://learnwithoj.goatcounter.com/count"
@@ -547,15 +547,20 @@ OK to go ahead?
                     <li><a href="/agents/">For agents</a></li>
                 </ul>
                 <!--
-                    1% FOR THE PLANET. Member mark, first year. The file is deliberately
-                    absent until it comes from the member portal with its usage rules. The
-                    slot ships hidden with data-src so no request is made and nothing 404s.
-                    To switch it on, on all three pages: add the file, rename data-src to
-                    src, remove `hidden`.
+                    1% FOR THE PLANET. Precertification member, so the Primary mark only,
+                    never the Certified Business seal or the Impact Partner logo. Four rules
+                    from their brand guidelines: at least 80px tall, linked, the business
+                    name beside it, and the accompanying text below in their wording.
+                    Rewriting that text in O.J.'s voice needs her sign-off and a check
+                    against the live guidelines first. The full rules live in the internal
+                    repo under content/branding. Same block on all three pages.
                 -->
-                <p class="footer-onepercent" hidden>
-                    <img data-src="assets/logos/one-percent-for-the-planet.svg" alt="1% for the Planet member" width="120" height="40" loading="lazy">
-                </p>
+                <div class="footer-onepercent">
+                    <a class="footer-onepercent-mark" href="https://www.onepercentfortheplanet.org/" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/logos/1ftp-primary-horizontal-fullcolor.png" alt="1% for the Planet" width="188" height="80" loading="lazy" decoding="async">
+                    </a>
+                    <p class="footer-onepercent-text">Learn with O.J. LLC is a member of 1% for the Planet. We have committed to give back 1% of our annual sales to vetted and approved impact partners. Our first certification will take place after our current fiscal year ends.</p>
+                </div>
                 <p class="footer-dns">And remember, it's always DNS.</p>
             </div>
         </div>

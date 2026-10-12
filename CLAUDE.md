@@ -103,7 +103,7 @@ Sticky header (For companies · For engineers · Resources · Quick chat (15 min
 9. `#vision` — "The bigger picture"
 10. `#cta-bottom`
 
-Footer (legal name, city, links, 1% for the Planet slot, "it's always DNS") + a sticky `.mobile-cta` button at the bottom on small screens.
+Footer (legal name, city, links, the 1% for the Planet member block, "it's always DNS") + a sticky `.mobile-cta` button at the bottom on small screens.
 
 The booking CTA points at `https://cal.com/learnwithoj/quick-chat`, the cal.com event "Quick Chat (15 min)", on all three pages. `book.learnwithoj.com` as a Cloudflare redirect is still an option so the vendor never owns the public link; if it gets set up, swap every occurrence.
 
@@ -193,7 +193,8 @@ These are real and have been validated. Use as needed.
 - Stripe links and the Kit form UID are live production integrations. Don't swap them for placeholders.
 - New `index.html` sections get an `id` and follow the existing `.section` / `.section-alt` alternating background pattern.
 - B2B pages should NOT include Stripe Checkout buttons or the AI guide email capture. Those are B2C surfaces only.
-- Update `CHANGELOG.md` with notable changes. The current latest entry is `2.5.0`.
+- Update `CHANGELOG.md` with notable changes. The current latest entry is `2.5.1`.
+- The 1% for the Planet footer block is a compliance surface. Primary logo only, at least 80px tall, linked, next to the business name, with their precertification wording. The wording is theirs and any rewrite needs O.J.'s sign-off against the live guidelines. Never the Certified Business seal, never the Impact Partner mark, no dollar figure, no "certified". The rules are filed in the internal repo under `content/branding`.
 - Run the oj-voice linter on every page before shipping copy. It lives in the internal repo, not here, and gets invoked from there.
 - For local preview: `python3 -m http.server 8000`. The Kit form won't fully work locally (needs Kit's JS to load against the live form), but it should render.
 
