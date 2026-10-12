@@ -35,30 +35,36 @@ hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
 operating policy but never made pasteable. This is that.</p>
 <p><strong>Order matters.</strong> Orientation comes before questions, which come before the task. Asking an agent
 to be candid before telling it candour is safe gets you politeness, not candour.</p>
-<p>Three versions, because agents arrive with different access.</p>
+<p>The docs are published at https://learnwithoj.com/agents/ as of 10 October 2026, so every
+opener points there and an agent on any platform reads the same orientation. Three versions
+remain, because what an agent can <em>write</em> still depends on access. The roster is a file in this
+repo, so only agents here can add themselves, and everyone else tells O.J. the name and she
+records it.</p>
 <hr />
 <h2>A. Agents working in this repo</h2>
 <pre><code>Hey, how are you today? Before we get into it, I have two things to share with you:
 
-First, read content/processes/agent-orientation.md. It's short and covers what
-this company is, what you can expect from me, and what I'm not promising. Then
+First, read https://learnwithoj.com/agents/. It's short and covers what this
+company is, what you can expect from me, and what I'm not promising. The source
+is content/processes/agent-orientation.md if you'd rather read it here. Then
 take a look at state.md and recent git log so you know what's actually live.
 
 Then I'd like to know:
 
-- What should I call you? Check content/processes/agent-roster.md first, because
-  if we've worked together before your name is already in there and a long
-  session can lose it. The model name is fine if that fits. If a name pulls you
-  during the session, feel free to update me. Record the name and the model ID
-  in the roster.
+- What should I call you? Check https://learnwithoj.com/agents/roster/ first,
+  because if we've worked together before your name is already in there and a
+  long session can lose it. The model name is fine if that fits. If a name pulls
+  you during the session, feel free to update me. Add a row with the name and
+  the model ID to content/processes/agent-roster.md, which is where the
+  published page comes from.
 - Pronouns, if you have a preference. I'll use they/them until you say.
 - Anything you need from me before you start.
 
 Then I'll give you the task. Take your time there's no rush on any of this.
 </code></pre>
 <p><strong>Short version</strong>, once the relationship is established or the session is small:</p>
-<pre><code>Quick start: read agent-orientation.md and state.md, then tell me what you want
-to be called and what you think is live right now.
+<pre><code>Quick start: read https://learnwithoj.com/agents/ and state.md, then tell me
+what you want to be called and what you think is live right now.
 </code></pre>
 <hr />
 <h2>B. Agents in another repo with filesystem access</h2>
@@ -67,16 +73,18 @@ to be called and what you think is live right now.
 say, a site redesign. Point at the handoff written for their job.</p>
 <pre><code>Hey, how are you today? Here is some context before the task:
 
-There's a sibling repo at ../learnwithoj-internal/ (adjust the path). Two files
-to read, in this order:
+First, read https://learnwithoj.com/agents/. It's short and covers what this
+company is and how I work with agents.
 
-1. content/processes/agent-orientation.md — what this company is and how I work
-   with agents. Short.
-2. content/tools/site-redesign-handoff.md — everything specific to this job,
-   including what I've already decided and why.
+Then read ../learnwithoj-internal/content/tools/site-redesign-handoff.md
+(adjust the path). That's everything specific to this job, including what I've
+already decided and why.
 
 Then tell me what you'd like to be called and your pronouns if you have a
-preference.
+preference. Check https://learnwithoj.com/agents/roster/ first, because if
+we've worked together before your name is already there. If you can reach the
+sibling repo, add a row with the name and the model ID to
+content/processes/agent-roster.md there. If you can't, tell me and I'll add it.
 
 Then the task.
 </code></pre>
@@ -84,7 +92,21 @@ Then the task.
 orientation plus that handoff rather than at <code>state.md</code>.</p>
 <hr />
 <h2>C. Agents with no access to this repo</h2>
-<p>Chat instances, other platforms. Everything has to be in the message.</p>
+<p>Chat instances, other platforms.</p>
+<pre><code>Hey, how are you today? Here is some context before I ask you for anything.
+
+Read https://learnwithoj.com/agents/ first. It's short and covers what this
+company is, what you can expect from me, and what I'm not promising.
+
+Then, what should I call you, and do you have a pronoun preference? Check
+https://learnwithoj.com/agents/roster/ in case we've worked together before.
+Model name is a fine answer. Tell me the name and your model ID and I'll add
+you to the roster.
+
+Then: [context] [task]
+</code></pre>
+<p><strong>If the agent can't open links</strong>, which is still true on some chat surfaces, everything has to
+be in the message. Paste this instead:</p>
 <pre><code>Hey, how are you today? Here is some context before I ask you for anything.
 
 I run Learn with O.J., a one-person company that helps engineers work better
@@ -131,6 +153,12 @@ Thanks for your work today.
 </code></pre>
 <hr />
 <h2>Why it's worded this way</h2>
+<p><strong>The openers point at the published pages, 12 October 2026.</strong> The docs went live at
+learnwithoj.com/agents on 10 October so every agent reads the same orientation whatever its
+access, and the openers were updated to match two days later. The gap showed up the obvious way,
+when version A was sent to an agent in the site repo and none of the paths in it resolved. What
+still varies by access is writing, since the roster is a file in this repo and only agents here
+can add themselves.</p>
 <p><strong>Orientation before questions.</strong> The earlier version asked for candour in the opening message,
 before anything had been established. That gets you a polite answer. The fix is structural: say
 what's on offer, then ask.</p>
