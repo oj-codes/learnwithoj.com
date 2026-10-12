@@ -15,8 +15,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=21">
+    <link rel="preload" as="style" crossorigin href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" crossorigin href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" crossorigin href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    <link rel="stylesheet" href="styles.css?v=22">
 
     <!-- Analytics -->
     <script data-goatcounter="https://learnwithoj.goatcounter.com/count"
@@ -26,12 +28,11 @@
     <header class="header">
         <div class="container">
             <a href="/" class="logo">Learn with O.J.</a>
-            <nav class="nav-links">
+            <nav class="nav-links" aria-label="Main">
+                <a href="/#companies" class="nav-link">For companies</a>
+                <a href="/#engineers" class="nav-link">For engineers</a>
                 <a href="/resources.html" class="nav-link nav-link-active">Resources</a>
-                <a href="https://www.linkedin.com/in/learnwithoj/"
-                   class="btn-header"
-                   target="_blank"
-                   rel="noopener noreferrer">Let's Talk</a>
+                <a href="https://cal.com/learnwithoj/quick-chat" class="btn-header">Quick chat (15 min)</a>
             </nav>
         </div>
     </header>
@@ -48,7 +49,7 @@
             <div class="container">
                 <div class="resource-card">
                     <h2>AI-Assisted Development: A Practical Guide for Engineering Teams</h2>
-                    <p class="resource-desc">A 10-page guide covering the AI-assisted development landscape, how to actually implement it on your team, and the things most people aren't talking about. This isn't a vendor pitch or a hype piece. It's written from hands-on experience shipping software with these tools and helping teams figure out what works. This guide has been used by engineering teams evaluating how to adopt AI-assisted development workflows.</p>
+                    <p class="resource-desc">What the research says about working with AI, including the parts that will burn your time if nobody tells you first. Written from hands-on experience shipping software alongside these systems and helping teams work out what works, not from a vendor's blog. Engineering teams have used it to decide how to adopt AI-assisted development, and it gets refreshed as the landscape moves.</p>
                     <div class="kit-form-container">
                         <script async data-uid="36c7f50077" src="https://learn-with-o-j.kit.com/36c7f50077/index.js"></script>
                     </div>
@@ -71,8 +72,17 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p class="footer-brand">Learn with O.J.</p>
-                <p class="footer-email"><a href="mailto:oj@learnwithoj.com">oj@learnwithoj.com</a></p>
+                <p class="footer-brand">Learn with O.J. LLC <span class="footer-sep" aria-hidden="true">·</span> West Palm Beach, Florida</p>
+                <ul class="footer-links">
+                    <li><a href="mailto:oj@learnwithoj.com">oj@learnwithoj.com</a></li>
+                    <li><a href="https://www.linkedin.com/in/learnwithoj/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href="/agents/policy/">AI policy</a></li>
+                    <li><a href="/agents/">For agents</a></li>
+                </ul>
+                <p class="footer-onepercent" hidden>
+                    <img data-src="assets/logos/one-percent-for-the-planet.svg" alt="1% for the Planet member" width="120" height="40" loading="lazy">
+                </p>
+                <p class="footer-dns">And remember, it's always DNS.</p>
             </div>
         </div>
     </footer>
