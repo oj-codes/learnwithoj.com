@@ -4,6 +4,38 @@ All notable changes to this project will be documented in this file.
 The format is inspired by [Keep a Changelog](https://keepachangelog.com), and this project adheres to semantic versioning where possible.
 
 
+## [2.5.0] - 2026-10-12
+### Added
+- Home page now serves both audiences. New `#companies` section ("Work with me") with three editorial offer rows for AI-assisted development training, fractional CTO and technical advisory, each with a buyer situation line, how it starts, and a booking CTA. Training lists what the team leaves with and links the AI policy at `/agents/policy/`
+- "Who shouldn't hire me" block under the offers, four lines in O.J.'s voice
+- `#engineers` section wraps the existing checklist, topic tags and the three Stripe cards, with a "Best for" line on each card
+- "Can my company pay for this?" block with a copy-to-clipboard email to a manager, built on the showcase referral-template chrome and copy button (success and error states, `aria-live` announcement). Copy script generalised to any `.btn-copy[data-copy-target]`
+- `#learning` section, "What I'm learning now": the frame line as a pull quote and a dated list sourced from the internal learning timeline. "Submitted", never "published", for the sprint papers
+- Intro video slot in the hero (`.hero-intro`, native controls, poster, captions track), shipped `hidden` with the paths in `data-*` attributes until `assets/oj-intro.mp4`, `assets/oj-intro-poster.jpg` and `assets/oj-intro.vtt` land, so nothing is requested meanwhile. Switch-on steps are in the HTML comment
+- Two FAQ entries: what happens on the 15-minute call, and whether a promotion can be guaranteed (no)
+- Footer on every page carries the legal name, city, LinkedIn, AI policy and For agents links, the 1% for the Planet member slot (asset deliberately absent, see below), and the sign-off line
+
+### Changed
+- Primary CTA sitewide is now "Quick chat (15 min)" (free, no pitch). Points at the cal.com event `https://cal.com/learnwithoj/quick-chat` ("Quick Chat (15 min)") on all three pages
+- Hero headline and subtitle rewritten from the HeyGen intro script. Meta descriptions, titles and OG/Twitter cards updated to match
+- "20+ years" is "25" everywhere, including the showcase referral template
+- Credentials strip goes to four items (adds Startup to Fortune 100), two-up on small screens
+- Removed `#what-you-get` and `#how-it-works` from the home page. The first duplicated the offers, the second routed through LinkedIn. Topic tags kept inside `#engineers`
+- Showcase hero eyebrow no longer names the May 7 event; hero buttons are Quick chat (15 min) and Email me
+- Resources page guide description rewritten; nav gains For companies and For engineers
+- `--color-text-dim` raised from `#64748b` to `#7c8aa0` (4.85:1 on cards, 5.4:1 on the page). The old value failed WCAG AA on credential labels, pricing notes and testimonial titles. Testimonial company line no longer dimmed with opacity. "Start Here" pricing badge uses the deep teal so white text clears AA
+- Links inside running text are underlined so they don't rely on colour alone
+- Hero tightened so the credentials row sits above the fold on a laptop: headline capped at 2.625rem and balanced, column widened to 720px, vertical margins trimmed. Topic tags replaced with one sentence, since the pills read as buttons
+- FAQ rewritten for both audiences: start-with, after-payment and best-suited answers cover company work, plus a new "How do engagements with companies work?"
+- Google Fonts stylesheet loads non-blocking on the home and resources pages (same preload-and-swap pattern the showcase page already used) and the hero poster is preloaded. Home page mobile Lighthouse performance went from 75 on main to 95
+- Credentials strip columns size to their content so every value sits on one line; fourth cell is "Apps to Amex" over "Startup to Fortune 100"
+- Fixed a pre-existing horizontal scroll on phones: the hero's decorative glow was a fixed 500px circle that extended past the viewport, so the page was 438px wide at 375px. Capped at the hero's width
+- Stylesheet cache-busted to `v=22`
+
+### Blocked on assets
+- `assets/logos/one-percent-for-the-planet.svg` is absent on purpose, pending the member-portal download and its usage rules. The footer slot ships `hidden` with `data-src` on all three pages so nothing 404s; add the file, rename to `src`, remove `hidden`
+- The intro video files above
+
 ## [2.4.0] - 2026-05-06
 ### Added
 - Showcase page (`showcase.html`) at `/showcase`, the B2B referral landing for ALW Showcase (May 7, 2026) and reusable for future pitch contexts. Hero with portrait video, four service buckets, engagement model, recent B2B work, the DST production-down story paired with the Maher pull quote, copy-to-clipboard referral template (success + error states with `aria-live` announcements), and a quiet pointer back to the B2C site
