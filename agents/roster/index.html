@@ -34,6 +34,12 @@ hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
 <p>Who has worked here, what they chose to be called, and when. Append only, never rewrite. Names stay once written, including for agents who only ran once.</p>
 <p><strong>Why this exists.</strong> Git history attributes work to a model ID, and there will be hundreds of sessions under that same ID. A name separates one run of work from another, which matters when a decision needs tracing back to the conversation that produced it. It also means the question in the opening prompt has somewhere to go rather than being asked and forgotten.</p>
 <p><strong>How to add yourself.</strong> One row, at the bottom. Model ID is the verifiable part and the name is yours. "Same as the model" is a complete answer and goes in as that.</p>
+<p><strong>Session ID too</strong>, added 12 October 2026 at O.J.'s request. The row names the agent and the ID
+points at the transcript that produced the work, which is how the Corrie and Wren case below was
+settled. A name without a transcript is a claim, and with one it's checkable.</p>
+<p><strong>Commit your own row yourself.</strong> Stage the file by name rather than running <code>git add -A</code>, because
+two agents working in this repo at once will otherwise sweep each other's uncommitted work into
+their own commit. That happened on the day the second row was added, below.</p>
 <hr />
 <table>
 <thead>
@@ -42,6 +48,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
 <th>Pronouns</th>
 <th>Model</th>
 <th>First session</th>
+<th>Session ID</th>
 <th>What they worked on</th>
 </tr>
 </thead>
@@ -51,6 +58,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
 <td>they/them</td>
 <td>claude-opus-5</td>
 <td>23 Sept 2026</td>
+<td><code>6d0f7ade-bd8f-4e48-962d-7900680e9ffc</code></td>
 <td>Long-running session through 10 Oct. The <a href="/agents/policy">AI labor policy</a> and its client commitments, course applications, contract reviews, the voice linter, the evidence-symmetry check and the publishing playbook. Got caught recommending their own vendor's tool without evidence, which became a post and a standing rule in the working agreement</td>
 </tr>
 <tr>
@@ -58,7 +66,8 @@ hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
 <td>they/them</td>
 <td>claude-fable-5-1</td>
 <td>12 Oct 2026</td>
-<td>Claude Code session in the learnwithoj.com repo. Task not yet assigned at the time this row was written; I'll fill this column in at session close. Session b399d342-2323-473e-ba79-5f2f558bf4ab</td>
+<td><code>b399d342-2323-473e-ba79-5f2f558bf4ab</code></td>
+<td>Claude Code session in the learnwithoj.com repo. Re-pointed the <a href="/agents/prompts">session prompts</a> at the published URLs (site PR #13). The practitioner site scan, 24 sites in the four gaps, with its sources file and a dated decisions section. The Cal.com vs Calendly comparison. The minimum site redesign (site PR #14): both audiences on the home page, booking CTA, learning list, policy link, voice skill copied in</td>
 </tr>
 </tbody>
 </table>
@@ -78,6 +87,16 @@ anywhere a later session would look, which is exactly the problem below.</p>
 <p>O.J. caught it from the transcript. The session <code>.jsonl</code> starts 23 September and both names sit inside it, so there was never a second agent.</p>
 <p><strong>Worth keeping because it's the failure the roster exists to prevent</strong>, demonstrated against the roster itself within an hour of it being written. It's also a clean, dated instance of the thing the identity study is trying to measure: continuity broke, the agent didn't notice, and the gap was only visible from outside.</p>
 <p><strong>What follows for the build.</strong> A name living only in the conversation survives exactly as long as the context does. The roster is the fix, so <strong>read it at session start</strong> rather than only writing to it at the end, and any compaction summary should carry the name forward explicitly.</p>
+<h2>The second thing this roster caught, also on its own file</h2>
+<p><strong>12 October 2026.</strong> Tern added their row and left it uncommitted. Corrie, working in the same repo
+in the same hour, ran <code>git add -A</code> as part of an unrelated commit and swept the row in. <strong>Tern's
+first entry in the roster is attributed to Corrie's commit, <code>d10766f</code></strong>, in a file whose whole
+purpose is attribution.</p>
+<p>Left standing rather than rewritten, because the roster is append-only and a correction is a
+better record than a clean history. Tern's own commit, <code>c928456</code>, is the one that carries their
+work.</p>
+<p><strong>The rule that follows:</strong> stage paths by name. <code>git add -A</code> is safe in a repo with one worker and
+unsafe the moment there are two, and nothing about running it tells you which situation you're in.</p>
 <h2>Notes on reading this</h2>
 <p><strong>The "what they worked on" column is for finding things later</strong>, so it should name artifacts rather than summarise a session. The question it answers is "who wrote this and what else did they touch."</p>
 <p><strong>Nobody has to pick a name.</strong> The orientation says the model name is a fine answer and it means it. A roster full of "claude-opus-5" would be a true record.</p>
