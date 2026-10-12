@@ -90,9 +90,9 @@ Critically: visitors to `/showcase` did NOT come looking for resume reviews. The
 
 ### `index.html` (top to bottom)
 
-Sticky header (For companies · For engineers · Resources · Book 15 minutes) → sections in this order, each with an `id`:
+Sticky header (For companies · For engineers · Resources · Quick chat (15 min)) → sections in this order, each with an `id`:
 
-1. `.hero` — intro video slot (`.hero-intro`, hidden until the HeyGen file lands), circular looping portrait with the starburst "Free AI Guide" badge, headline, "Book 15 minutes" CTA with the no-pitch line
+1. `.hero` — intro video slot (`.hero-intro`, hidden until the HeyGen file lands), circular looping portrait with the starburst "Free AI Guide" badge, headline, "Quick chat (15 min)" CTA with the no-pitch line
 2. `.credentials` — 25 years / 2x Senior Engineer / SWE + SRE / Startup to Fortune 100
 3. `#companies` — "Work with me": three `.offer` rows (`#training`, `#fractional-cto`, `#advisory`), each with a situation line, body, how it starts and a booking CTA, then the `.notfor` block ("Who shouldn't hire me")
 4. `#engineers` — who-for checklist, topic tags, then `#pricing` (Fresh Squeeze $275, Career Accelerator $900, Focused Hour $325, Stripe Checkout links, "Best for" line each), then `#company-pay` (copy-to-clipboard email to a manager)

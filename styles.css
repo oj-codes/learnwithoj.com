@@ -151,9 +151,9 @@ body {
     }
 }
 
-/* Four text links plus the button plus the wordmark need about 680px
+/* Four text links plus the longer button plus the wordmark need about 720px
    before anything wraps, so the links come in later than the button. */
-@media (min-width: 680px) {
+@media (min-width: 720px) {
     .nav-link {
         display: inline-flex;
     }

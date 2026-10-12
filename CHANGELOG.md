@@ -16,12 +16,12 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com), and th
 - Footer on every page carries the legal name, city, LinkedIn, AI policy and For agents links, the 1% for the Planet member slot (asset deliberately absent, see below), and the sign-off line
 
 ### Changed
-- Primary CTA sitewide is now "Book 15 minutes" (free, no pitch). Points at the cal.com event `https://cal.com/learnwithoj/quick-chat` ("Quick Chat (15 min)") on all three pages
+- Primary CTA sitewide is now "Quick chat (15 min)" (free, no pitch). Points at the cal.com event `https://cal.com/learnwithoj/quick-chat` ("Quick Chat (15 min)") on all three pages
 - Hero headline and subtitle rewritten from the HeyGen intro script. Meta descriptions, titles and OG/Twitter cards updated to match
 - "20+ years" is "25" everywhere, including the showcase referral template
 - Credentials strip goes to four items (adds Startup to Fortune 100), two-up on small screens
 - Removed `#what-you-get` and `#how-it-works` from the home page. The first duplicated the offers, the second routed through LinkedIn. Topic tags kept inside `#engineers`
-- Showcase hero eyebrow no longer names the May 7 event; hero buttons are Book 15 minutes and Email me
+- Showcase hero eyebrow no longer names the May 7 event; hero buttons are Quick chat (15 min) and Email me
 - Resources page guide description rewritten; nav gains For companies and For engineers
 - `--color-text-dim` raised from `#64748b` to `#7c8aa0` (4.85:1 on cards, 5.4:1 on the page). The old value failed WCAG AA on credential labels, pricing notes and testimonial titles. Testimonial company line no longer dimmed with opacity. "Start Here" pricing badge uses the deep teal so white text clears AA
 - Links inside running text are underlined so they don't rely on colour alone
