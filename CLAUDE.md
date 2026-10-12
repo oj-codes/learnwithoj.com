@@ -103,7 +103,7 @@ Sticky header (For companies · For engineers · Resources · Quick chat (15 min
 9. `#vision` — "The bigger picture"
 10. `#cta-bottom`
 
-Footer (legal name, city, links, 1% for the Planet slot, "it's always DNS") + a sticky `.mobile-cta` button at the bottom on small screens.
+Footer (legal name, city, links, the 1% for the Planet member block, "it's always DNS") + a sticky `.mobile-cta` button at the bottom on small screens.
 
 The booking CTA points at `https://book.learnwithoj.com` on all three pages. That is a Cloudflare redirect rule to the cal.com event "Quick Chat (15 min)", so the vendor never owns the public link. To move booking tools, change the rule in Cloudflare and leave the pages alone.
 
@@ -193,7 +193,8 @@ These are real and have been validated. Use as needed.
 - Stripe links and the Kit form UID are live production integrations. Don't swap them for placeholders.
 - New `index.html` sections get an `id` and follow the existing `.section` / `.section-alt` alternating background pattern.
 - B2B pages should NOT include Stripe Checkout buttons or the AI guide email capture. Those are B2C surfaces only.
-- Update `CHANGELOG.md` with notable changes. The current latest entry is `2.5.0`.
+- Update `CHANGELOG.md` with notable changes. The current latest entry is `2.5.1`.
+- The 1% for the Planet footer block is a compliance surface. Primary logo only, at least 80px tall, linked, next to the business name, with their precertification wording. The wording is theirs and any rewrite needs O.J.'s sign-off against the live guidelines. Never the Certified Business seal, never the Impact Partner mark, no dollar figure, no "certified". The rules are filed in the internal repo under `content/branding`.
 - Run the oj-voice linter on every page before shipping copy. It lives in the internal repo, not here, and gets invoked from there.
 - Agents author their own commits, `git commit --author="Name <name@learnwithoj.com>"`, and O.J. stays the committer. Trailers are `Claude-Session:` and `Model:` only, no harness attribution lines. PRs merge by rebase so per-commit authorship survives on `main`. Policy since 19 October 2026; the eight October squash commits before it were rewritten the same day, see `docs/commit-map-20261019.md` once it lands.
 - For local preview: `python3 -m http.server 8000`. The Kit form won't fully work locally (needs Kit's JS to load against the live form), but it should render.

@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is inspired by [Keep a Changelog](https://keepachangelog.com), and this project adheres to semantic versioning where possible.
 
 
+## [2.5.1] - 2026-10-19
+### Added
+- 1% for the Planet member block in the footer of all three pages. Full-color Primary lockup on a white panel, 80px tall, linked to onepercentfortheplanet.org, with the business name and their required precertification wording beside it. The file is a 2x PNG (`assets/logos/1ftp-primary-horizontal-fullcolor.png`) cut from the member-portal pack; there is no SVG in the pack. Never the Certified Business seal or the Impact Partner mark, no dollar figure, no "certified". Full rules live in the internal repo under `content/branding`
+
+### Changed
+- The footer's hidden `data-src` placeholder slot is gone, replaced by the live block
+- Stylesheet cache-busted to `v=26`
+
+Built 12 October as PR #16, which merged into the minimum-redesign branch after that branch had already been squashed into `main`, so it never reached the site. Replayed onto `main` 19 October
+
 ## [2.5.0] - 2026-10-12
 ### Added
 - Home page now serves both audiences. New `#companies` section ("Work with me") with three editorial offer rows for AI-assisted development training, fractional CTO and technical advisory, each with a buyer situation line, how it starts, and a booking CTA. Training lists what the team leaves with and links the AI policy at `/agents/policy/`
@@ -33,7 +43,6 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com), and th
 - Stylesheet cache-busted to `v=22`
 
 ### Blocked on assets
-- `assets/logos/one-percent-for-the-planet.svg` is absent on purpose, pending the member-portal download and its usage rules. The footer slot ships `hidden` with `data-src` on all three pages so nothing 404s; add the file, rename to `src`, remove `hidden`
 - The intro video files above
 
 ## [2.4.0] - 2026-05-06
