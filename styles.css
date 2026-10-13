@@ -2540,7 +2540,7 @@ a:hover {
    Sitewide accessibility
    ============================================ */
 
-/* Links inside running text are underlined, so they don't rely on colour
+/* Links inside running text are underlined, so they don't rely on color
    alone against muted body copy (WCAG 1.4.1, Lighthouse link-in-text-block). */
 .section-intro a,
 .offer-note a,

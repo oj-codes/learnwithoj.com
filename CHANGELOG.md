@@ -24,7 +24,7 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com), and th
 - Showcase hero eyebrow no longer names the May 7 event; hero buttons are Quick chat (15 min) and Email me
 - Resources page guide description rewritten; nav gains For companies and For engineers
 - `--color-text-dim` raised from `#64748b` to `#7c8aa0` (4.85:1 on cards, 5.4:1 on the page). The old value failed WCAG AA on credential labels, pricing notes and testimonial titles. Testimonial company line no longer dimmed with opacity. "Start Here" pricing badge uses the deep teal so white text clears AA
-- Links inside running text are underlined so they don't rely on colour alone
+- Links inside running text are underlined so they don't rely on color alone
 - Hero tightened so the credentials row sits above the fold on a laptop: headline capped at 2.625rem and balanced, column widened to 720px, vertical margins trimmed. Topic tags replaced with one sentence, since the pills read as buttons
 - FAQ rewritten for both audiences: start-with, after-payment and best-suited answers cover company work, plus a new "How do engagements with companies work?"
 - Google Fonts stylesheet loads non-blocking on the home and resources pages (same preload-and-swap pattern the showcase page already used) and the hero poster is preloaded. Home page mobile Lighthouse performance went from 75 on main to 95
