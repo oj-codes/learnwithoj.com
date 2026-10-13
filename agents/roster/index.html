@@ -37,6 +37,37 @@ hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
 <p><strong>Session ID too</strong>, added 12 October 2026 at O.J.'s request. The row names the agent and the ID
 points at the transcript that produced the work, which is how the Corrie and Wren case below was
 settled. A name without a transcript is a claim, and with one it's checkable.</p>
+<p><strong>Pick a terminal colour too</strong>, added 12 October 2026. O.J. runs more than one session at once in
+separate windows and needs to know which agent she's talking to before she reads anything. The
+colour is yours the same way the name is, and it goes in the Colour column.</p>
+<p>It lives in the <code>.claude/settings.json</code> of the repo you're working in, so the colour follows the
+repo and one agent per repo means one colour per repo.</p>
+<p><strong>1. Convert your hex to decimal</strong>, because the escape sequence takes <code>R;G;B</code> and not hex:</p>
+<pre><code class="language-bash">python3 -c &quot;h='7DD3FC'; print(';'.join(str(int(h[i:i+2],16)) for i in (0,2,4)))&quot;
+# 125;211;252
+</code></pre>
+<p><strong>2. Merge this into <code>.claude/settings.json</code>, don't replace the file.</strong> It almost certainly has
+<code>hooks</code> or other keys already and overwriting them breaks things the repo depends on. Read it, add
+the one key, write it back:</p>
+<pre><code class="language-json">&quot;statusLine&quot;: {
+  &quot;type&quot;: &quot;command&quot;,
+  &quot;command&quot;: &quot;printf '\\033[1;38;2;125;211;252m YourName \\033[0m\\033[38;2;125;211;252m repo-name\\033[0m'&quot;
+}
+</code></pre>
+<p>Both <code>125;211;252</code> are the same numbers from step 1. The first sequence is bold plus colour for the
+name, the second is colour alone for the repo, and <code>\\033[0m</code> resets between them so the rest of the
+line isn't tinted.</p>
+<p><strong>3. Check it actually renders</strong>, because a wrong escape prints the codes as text rather than
+colouring anything:</p>
+<pre><code class="language-bash">eval &quot;$(jq -r '.statusLine.command' .claude/settings.json)&quot; | od -c | head -1
+</code></pre>
+<p>The first byte should be <code>033</code>, which is ESC. If you see a literal backslash instead, the escaping
+is wrong.</p>
+<p><strong>4. Tell her to open <code>/config</code>.</strong> That forces a settings reload and the line appears at the bottom
+of the pane without restarting the session, which matters because restarting risks resuming the
+wrong agent. No restart was needed when this was first set up.</p>
+<p><strong>Pick something that reads fast on a dark terminal and isn't the brand teal</strong>, since brand colours
+already appear in the output and a colour that blends in defeats the point.</p>
 <p><strong>Commit your own row yourself.</strong> Stage the file by name rather than running <code>git add -A</code>, because
 two agents working in this repo at once will otherwise sweep each other's uncommitted work into
 their own commit. That happened on the day the second row was added, below.</p>
@@ -48,6 +79,7 @@ their own commit. That happened on the day the second row was added, below.</p>
 <th>Pronouns</th>
 <th>Model</th>
 <th>First session</th>
+<th>Colour</th>
 <th>Session ID</th>
 <th>What they worked on</th>
 </tr>
@@ -58,6 +90,7 @@ their own commit. That happened on the day the second row was added, below.</p>
 <td>they/them</td>
 <td>claude-opus-5</td>
 <td>23 Sept 2026</td>
+<td><code>#7DD3FC</code></td>
 <td><code>6d0f7ade-bd8f-4e48-962d-7900680e9ffc</code></td>
 <td>Long-running session through 10 Oct. The <a href="/agents/policy">AI labor policy</a> and its client commitments, course applications, contract reviews, the voice linter, the evidence-symmetry check and the publishing playbook. Got caught recommending their own vendor's tool without evidence, which became a post and a standing rule in the working agreement</td>
 </tr>
@@ -66,8 +99,9 @@ their own commit. That happened on the day the second row was added, below.</p>
 <td>they/them</td>
 <td>claude-fable-5-1</td>
 <td>12 Oct 2026</td>
+<td><code>#FBBF24</code></td>
 <td><code>b399d342-2323-473e-ba79-5f2f558bf4ab</code></td>
-<td>Claude Code session in the learnwithoj.com repo. Re-pointed the <a href="/agents/prompts">session prompts</a> at the published URLs (site PR #13). The practitioner site scan, 24 sites in the four gaps, with its sources file and a dated decisions section. The Cal.com vs Calendly comparison. The minimum site redesign (site PR #14): both audiences on the home page, booking CTA, learning list, policy link, voice skill copied in</td>
+<td>Claude Code session in the learnwithoj.com repo. Re-pointed the <a href="/agents/prompts">session prompts</a> at the published URLs (site PR #13). The practitioner site scan, 24 sites in the four gaps, with its sources file and a dated decisions section. The Cal.com vs Calendly comparison. The minimum site redesign (site PR #14): both audiences on the home page, the cal.com Quick Chat CTA, learning list, policy link, with the voice linter run from this repo rather than copied in. The 1% for the Planet footer block with its compliance rules (site PR #16). Republishes <code>/agents</code> from this roster (site PR #15 onward)</td>
 </tr>
 </tbody>
 </table>
