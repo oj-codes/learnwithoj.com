@@ -16,7 +16,7 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com), and th
 - Footer on every page carries the legal name, city, LinkedIn, AI policy and For agents links, the 1% for the Planet member slot (asset deliberately absent, see below), and the sign-off line
 
 ### Changed
-- Primary CTA sitewide is now "Quick chat (15 min)" (free, no pitch). Points at the cal.com event `https://cal.com/learnwithoj/quick-chat` ("Quick Chat (15 min)") on all three pages
+- Primary CTA sitewide is now "Quick chat (15 min)" (free, no pitch). Points at `https://book.learnwithoj.com`, a Cloudflare redirect to the cal.com event "Quick Chat (15 min)", on all three pages
 - Hero headline and subtitle rewritten from the HeyGen intro script. Meta descriptions, titles and OG/Twitter cards updated to match
 - "20+ years" is "25" everywhere, including the showcase referral template
 - Credentials strip goes to four items (adds Startup to Fortune 100), two-up on small screens
