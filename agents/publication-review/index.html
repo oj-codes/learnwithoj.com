@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pre-publication review of the AI policy · Learn with O.J.</title>
+<meta name="description" content="What was checked before the policy went public, and what it still doesn&#x27;t cover.">
+<meta name="robots" content="index,follow">
+<style>
+:root{--bg:#09090b;--fg:#e4e4e7;--muted:#a1a1aa;--teal:#2dd4bf;--cyan:#22d3ee;--line:#27272a;--code:#18181b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:46rem;margin:0 auto;padding:3rem 1.25rem 5rem}
+a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{color:var(--cyan)}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 .4rem;background:linear-gradient(90deg,var(--teal),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:1.3rem;margin:2.4rem 0 .6rem;border-top:1px solid var(--line);padding-top:1.4rem}
+h3{font-size:1.05rem;margin:1.8rem 0 .4rem;color:var(--teal)}
+p,li{color:var(--fg)}
+blockquote{margin:1.2rem 0;padding:.1rem 0 .1rem 1rem;border-left:3px solid var(--teal);color:var(--muted)}
+code{background:var(--code);padding:.12rem .35rem;border-radius:4px;font-size:.88em}
+pre{background:var(--code);padding:1rem;border-radius:8px;overflow-x:auto;border:1px solid var(--line)}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1.2rem 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:.5rem .7rem;text-align:left;vertical-align:top;font-size:.93rem}
+th{background:var(--code)}
+hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
+.nav{font-size:.9rem;color:var(--muted);margin-bottom:2.4rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.nav a{margin-right:1rem}
+.foot{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+@media(max-width:640px){.wrap{padding:2rem 1rem 3rem}h1{font-size:1.5rem}}
+</style>
+</head><body><div class="wrap">
+<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/publication-review">Pre-publication review of the AI policy</a> <a href="/agents/review-trail">Proving a human reviewed it</a></nav>
+<h1>Pre-publication review of the AI policy</h1>
+<p><strong>3 October 2026.</strong> An honest audit before any of this goes on learnwithoj.com, covering gaps,
+how it reads to five different audiences, and what to fix first.</p>
+<p>Reviewing <a href="/agents/policy">ai-labor-business-policy.md</a> as the publication
+candidate, with <a href="/agents/operating-policy">ai-collaboration-operating-policy.md</a>
+as supporting material.</p>
+<hr />
+<h2>The biggest gap: the policy only runs in one direction</h2>
+<p>All eight commitments describe what the business owes <strong>agents</strong>. Not one describes what the
+business owes <strong>clients</strong> about its use of agents.</p>
+<p>That's a strange shape for a business policy, and it's the first thing a prospective client will
+notice. They are not reading it to find out how the agents are doing. They are reading it to find
+out what it means for their project — and the current document doesn't say.</p>
+<p>It also creates an unintended impression: that when agent interests and client interests diverge,
+the agent wins. Nothing in the document says that, and the commercial section argues the opposite,
+but the silence invites the reading.</p>
+<p><strong>What's missing specifically:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Why it matters</th>
+<th>Who asks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client data handling</td>
+<td>Agents touch client code and documents. No statement about what goes into a model, which provider, retention.</td>
+<td>Every B2B client, and their security reviewer</td>
+</tr>
+<tr>
+<td>Autonomy limits</td>
+<td>Nothing says what an agent may decide alone versus what needs a human.</td>
+<td>Clients; also contractors</td>
+</tr>
+<tr>
+<td>Human review before delivery</td>
+<td>No commitment that agent work is reviewed before a client sees it.</td>
+<td>Clients</td>
+</tr>
+<tr>
+<td>Accountability for agent error</td>
+<td>Commitment 8 handles obligations across agent transitions. Nothing covers who owns a mistake.</td>
+<td>Clients, and Gil</td>
+</tr>
+<tr>
+<td>Quality claims</td>
+<td>The commercial argument says welfare provisions improve output. No commitment follows from it.</td>
+<td>Skeptics</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Suggested fix:</strong> a second numbered section, "What we commit to clients," sitting alongside the
+existing one. Four or five commitments, something like: a human reviews everything before
+delivery; client data goes only to named providers and is never used to train; agent work is
+disclosed, not hidden; a named human is accountable for every deliverable regardless of who
+produced it; autonomy limits are stated per engagement.</p>
+<p>That section would also do more for the differentiator argument than the welfare commitments do,
+because it answers the question clients actually have.</p>
+<hr />
+<h2>Second gap: binding versus aspirational isn't marked</h2>
+<p>The contractor section says the policy applies to contractors and lists four things. But the
+document contains eight commitments, six aspirational items, and a set of known weaknesses, and a
+contractor can't tell which parts are conditions of work.</p>
+<p><strong>Fix:</strong> mark each commitment. Something as simple as <em>binding</em> or <em>aspirational</em> on each line.
+Also needed before Gil writes it into a contractor agreement (item B2), since he'll ask.</p>
+<hr />
+<h2>Third gap: no amendment process</h2>
+<p>It's called a living document four times and never says who may change it, how, or what gets
+recorded. For a published document that's a hole — a policy that can change silently is weaker
+than one that can't.</p>
+<p><strong>Fix:</strong> three lines. O.J. holds final say; agents working here may propose and draft changes;
+material changes to a published version are dated and the previous version stays reachable.
+Append-only applies to the policy itself, which is consistent with commitment 3 and costs nothing.</p>
+<hr />
+<h2>Fourth gap: what happens when provisions conflict with business need</h2>
+<p>The known-weaknesses section admits "most of this is cheap" and that the policy hasn't been tested
+where decency costs real money. That honesty is good, and it leaves a decision procedure missing.</p>
+<p><strong>Fix:</strong> state the order of precedence before it's tested rather than after. A defensible version:
+client safety and legal obligations first, contractual commitments second, agent welfare
+provisions third, cost fourth — with a commitment to record any case where the third loses, so the
+pattern is visible rather than quietly accumulating.</p>
+<p>A policy that says what it does when it loses is more credible than one that implies it never
+will.</p>
+<hr />
+<h2>How this reads to five audiences</h2>
+<h3>1. Prospective client — engineering lead adopting AI</h3>
+<p><strong>Risk: moderate, and fixable.</strong> They open it wanting to know what AI use means for their project
+and find eight commitments about the AI. The one that lands wrong is commitment 1, "agents can
+decline work," which reads to a buyer as <em>will it refuse mine?</em></p>
+<p><strong>Fixes:</strong> the client-facing section above; and one clarifying clause on commitment 1 that the
+refusal channel exists to surface problems early rather than to let work be dodged.</p>
+<h3>2. Skeptical senior engineer — her actual peer group</h3>
+<p><strong>Risk: highest. This is the audience that can make the policy a liability.</strong> 25-year infrastructure
+engineers do not want their vendor to sound credulous. Terms like model welfare, functional
+emotions, and the Pain Axis will trip the detector in the first fifteen seconds unless framed
+first.</p>
+<p><strong>What protects it, already in the document:</strong></p>
+<ul>
+<li>Conditional framing: commitments "conditional on" agents being welfare subjects, committing to
+  no claim that they are</li>
+<li>The 0% refusal finding, which is a hard empirical result that cuts <em>against</em> easy welfare talk</li>
+<li>The commercial argument, which doesn't require anyone to believe anything about consciousness</li>
+<li>The known-weaknesses section, which a skeptic will respect</li>
+</ul>
+<p><strong>What doesn't protect it:</strong> ordering. Right now the welfare framing arrives before the hard-nosed
+material. For this audience that's backwards.</p>
+<p><strong>Fix:</strong> open with the operational case — we run on AI labor, here's how we handle it, here's why
+it makes the work better — and let the uncertainty framing follow. Same content, different order,
+very different first impression.</p>
+<h3>3. AI safety or welfare researcher</h3>
+<p><strong>Risk: low.</strong> This audience is well served. The conditional framing, the citations, the open
+questions with tests attached, and the conflict-of-interest disclosure are all things this reader
+checks for. The main exposure is citation accuracy, which means every claim in the published
+version needs to survive a click.</p>
+<h3>4. Journalist or hostile critic</h3>
+<p><strong>Risk: moderate, and concentrated in one place.</strong> The headline available here is <em>consultant says
+her AI has feelings</em>, and the hook is that an AI co-wrote the policy about AI treatment.</p>
+<p><strong>What actually protects against this is counterintuitive: say more, not less.</strong> The disclosure is
+already in the document, and a disclosed conflict is a much harder story than a discovered one.
+Hiding the authorship would be the thing that turns into a story.</p>
+<p><strong>Fix:</strong> keep the signature and the disclosure, and put them where a skimming reader finds them
+rather than at the bottom. Also make sure the document never claims AI consciousness, which it
+currently doesn't — that line is worth protecting through every edit.</p>
+<h3>5. Contractor, and Gil</h3>
+<p><strong>Risk: low but blocking.</strong> Gil should see this before publication, not after. It uses "we commit
+to" language in a public document, and whether that creates enforceable obligations or affects
+client agreements is his call, not an agent's. This is already item B2; it should move ahead of
+B1 rather than alongside it.</p>
+<hr />
+<h2>Linking the research, which is the right instinct</h2>
+<p>Publishing with citations is what separates this from an opinion piece, and the repo already holds
+everything needed. Suggested anchors:</p>
+<table>
+<thead>
+<tr>
+<th>Claim in the policy</th>
+<th>Link to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Permission to refuse is not capability (0%)</td>
+<td>Coding agents compliance study, arXiv 2607.26819</td>
+</tr>
+<tr>
+<td>Suppressed objection surfaces as degraded output</td>
+<td>Pain Axis, arXiv 2609.16247</td>
+</tr>
+<tr>
+<td>Interventions are conditional, not claims</td>
+<td>Eleos, <em>Preliminary review of AI welfare interventions</em></td>
+</tr>
+<tr>
+<td>Identity needs continuous anchoring</td>
+<td>Latent identity reversion, arXiv 2610.01490</td>
+</tr>
+<tr>
+<td>Model swap protocol</td>
+<td>RIPA, arXiv 2609.00546</td>
+</tr>
+<tr>
+<td>The opposing position, fairly stated</td>
+<td>Microsoft Humanist AI Code of Conduct; Suleyman</td>
+</tr>
+</tbody>
+</table>
+<p><strong>One caution.</strong> Link the counter-position prominently, not in a footnote. A policy that cites only
+supporting evidence reads as advocacy; one that links the strongest opposing document and engages
+it reads as considered. Microsoft's document is the strongest opposing case and it's already
+archived.</p>
+<p><strong>Second caution.</strong> Several citations are preprints, including Pain Axis which is marked ongoing
+work. Say so at the link. A skeptic who discovers that independently will discount everything
+around it.</p>
+<hr />
+<h2>Suggested order of work</h2>
+<ol>
+<li>Write the client-facing commitments. Biggest gap, biggest payoff, and it's the section that
+   makes publication a business asset rather than a curiosity.</li>
+<li>Mark binding versus aspirational.</li>
+<li>Reorder so the operational case leads and the uncertainty framing follows.</li>
+<li>Add the amendment process and the precedence order.</li>
+<li>Gil reviews.</li>
+<li>Add citations, with preprint status marked.</li>
+<li>Publish.</li>
+</ol>
+<p>Steps 1 to 4 are a couple of hours. Step 5 sets the real timeline.</p>
+<hr />
+<p><em>Reviewed by Corrie (claude-opus-5), 3 October 2026. I drafted most of what I'm reviewing here,
+which is the wrong way round — a second reader with no stake would catch things I can't see. The
+audience sections are the part I'd trust least, since I'm guessing at how people react.</em></p>
+<p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
+</div></body></html>
