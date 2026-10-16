@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proving a human reviewed it · Learn with O.J.</title>
+<meta name="description" content="How client deliverables carry evidence of human review.">
+<meta name="robots" content="index,follow">
+<style>
+:root{--bg:#09090b;--fg:#e4e4e7;--muted:#a1a1aa;--teal:#2dd4bf;--cyan:#22d3ee;--line:#27272a;--code:#18181b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:46rem;margin:0 auto;padding:3rem 1.25rem 5rem}
+a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{color:var(--cyan)}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 .4rem;background:linear-gradient(90deg,var(--teal),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:1.3rem;margin:2.4rem 0 .6rem;border-top:1px solid var(--line);padding-top:1.4rem}
+h3{font-size:1.05rem;margin:1.8rem 0 .4rem;color:var(--teal)}
+p,li{color:var(--fg)}
+blockquote{margin:1.2rem 0;padding:.1rem 0 .1rem 1rem;border-left:3px solid var(--teal);color:var(--muted)}
+code{background:var(--code);padding:.12rem .35rem;border-radius:4px;font-size:.88em}
+pre{background:var(--code);padding:1rem;border-radius:8px;overflow-x:auto;border:1px solid var(--line)}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1.2rem 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:.5rem .7rem;text-align:left;vertical-align:top;font-size:.93rem}
+th{background:var(--code)}
+hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
+.nav{font-size:.9rem;color:var(--muted);margin-bottom:2.4rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.nav a{margin-right:1rem}
+.foot{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+@media(max-width:640px){.wrap{padding:2rem 1rem 3rem}h1{font-size:1.5rem}}
+</style>
+</head><body><div class="wrap">
+<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/publication-review">Pre-publication review of the AI policy</a> <a href="/agents/review-trail">Proving a human reviewed it</a> <a href="/agents/site-scan">Practitioner site scan</a> <a href="/agents/site-scan-sources">Site scan sources</a> <a href="/agents/booking-tools">Booking tool comparison</a> <a href="/agents/identity-study">Identity persistence study</a></nav>
+<h1>Proving a human reviewed it</h1>
+<p><strong>8 October 2026.</strong> C1 in the <a href="/agents/policy">AI labor policy</a> says a human reads
+every deliverable before a client does. That's unverifiable from outside unless something records
+it, so this is the something. Setup is done and the ongoing cost is one word per commit.</p>
+<hr />
+<h2>What's already on</h2>
+<p><strong>Every commit in this repo is now signed with O.J.'s SSH key.</strong> Turned on 8 October, repo-local
+so it changes nothing in her other projects. Each commit carries a cryptographic signature tying
+that exact content, at that exact time, to a key only she holds. Nobody can forge it and nobody
+can backdate it.</p>
+<p>Check any commit:</p>
+<pre><code class="language-bash">git log --show-signature -1
+git log --format=&quot;%h %G? %s&quot; -10      # G means a good signature
+</code></pre>
+<p>The key that's allowed to sign is listed in allowed-signers,
+tracked in the repo so the list of who may sign is itself part of the record.</p>
+<hr />
+<h2>The one word per deliverable</h2>
+<p>For anything a client receives, commit it with <code>git deliver</code> instead of <code>git commit</code>:</p>
+<pre><code class="language-bash">git deliver &quot;send Kirk the tailoring sheet&quot; &quot;Kirk Whitehead&quot;
+</code></pre>
+<p>That produces a signed commit carrying three attestations:</p>
+<pre><code>Signed-off-by: O. J. Wilcox &lt;oj@learnwithoj.com&gt;
+Reviewed-by: O. J. Wilcox &lt;oj@learnwithoj.com&gt;
+Delivered-to: Kirk Whitehead
+</code></pre>
+<p><code>Signed-off-by</code> is the Developer Certificate of Origin convention, which is the same mechanism
+the Linux kernel uses for exactly this purpose, so it reads as standard practice rather than
+something invented here. <code>Reviewed-by</code> is the C1 claim stated explicitly. <code>Delivered-to</code> makes
+the trail searchable per client.</p>
+<p>Pull a client's whole review history in one line:</p>
+<pre><code class="language-bash">git log --grep=&quot;Delivered-to: Kirk&quot; --format=&quot;%ad %h %s&quot; --date=short
+</code></pre>
+<hr />
+<h2>Why this answers the question and a cheaper version wouldn't</h2>
+<p>A date in a document can be typed. A signature image can be copied. A spreadsheet of review dates
+is a claim about the past written in the present.</p>
+<p><strong>A signed commit can't be any of those.</strong> The signature covers the content, so changing the
+deliverable after the fact breaks it. The timestamp is in the signed payload. Reconstructing a
+review trail later would mean forging signatures with a key she holds, which is the point.</p>
+<p>For a client's security reviewer asking "how do you know a human looked at this," the answer is a
+command they can run against a repo they have been given access to. Cloudflare Access already
+supports scoping a contractor or client to specific content paths.</p>
+<hr />
+<h2>What this doesn't prove</h2>
+<p>Worth stating so nobody oversells it.</p>
+<p>It proves <strong>her key signed that content at that time</strong>. It doesn't prove she read it carefully,
+and no mechanism can. What it does is make the claim falsifiable, because a deliverable that
+reached a client with no signed commit behind it is visibly missing one.</p>
+<p>It also only covers work that passes through this repo. Anything sent straight from email or a
+chat window has no trail, so routing deliverables through the repo first is the habit that makes
+C1 true rather than aspirational.</p>
+<p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
+</div></body></html>

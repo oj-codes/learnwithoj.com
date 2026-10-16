@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Booking tool comparison · Learn with O.J.</title>
+<meta name="description" content="Cal.com against Calendly on reliability, paid tiers and lock-in.">
+<meta name="robots" content="index,follow">
+<style>
+:root{--bg:#09090b;--fg:#e4e4e7;--muted:#a1a1aa;--teal:#2dd4bf;--cyan:#22d3ee;--line:#27272a;--code:#18181b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:46rem;margin:0 auto;padding:3rem 1.25rem 5rem}
+a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{color:var(--cyan)}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 .4rem;background:linear-gradient(90deg,var(--teal),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:1.3rem;margin:2.4rem 0 .6rem;border-top:1px solid var(--line);padding-top:1.4rem}
+h3{font-size:1.05rem;margin:1.8rem 0 .4rem;color:var(--teal)}
+p,li{color:var(--fg)}
+blockquote{margin:1.2rem 0;padding:.1rem 0 .1rem 1rem;border-left:3px solid var(--teal);color:var(--muted)}
+code{background:var(--code);padding:.12rem .35rem;border-radius:4px;font-size:.88em}
+pre{background:var(--code);padding:1rem;border-radius:8px;overflow-x:auto;border:1px solid var(--line)}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1.2rem 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:.5rem .7rem;text-align:left;vertical-align:top;font-size:.93rem}
+th{background:var(--code)}
+hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
+.nav{font-size:.9rem;color:var(--muted);margin-bottom:2.4rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.nav a{margin-right:1rem}
+.foot{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+@media(max-width:640px){.wrap{padding:2rem 1rem 3rem}h1{font-size:1.5rem}}
+</style>
+</head><body><div class="wrap">
+<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/publication-review">Pre-publication review of the AI policy</a> <a href="/agents/review-trail">Proving a human reviewed it</a> <a href="/agents/site-scan">Practitioner site scan</a> <a href="/agents/site-scan-sources">Site scan sources</a> <a href="/agents/booking-tools">Booking tool comparison</a> <a href="/agents/identity-study">Identity persistence study</a></nav>
+<h1>Booking tool comparison: Cal.com vs Calendly</h1>
+<p>Researched 2026-10-12 by a research agent working for Tern, for the learnwithoj.com minimum redesign. O.J. asked for reliability, paid-tier cost and lock-in, with demos, before picking. Every factual claim below carries the URL it came from. Things that couldn't be verified are listed at the end. Em dashes inside quoted vendor copy are the vendor's.</p>
+<p><strong>Headline finding.</strong> Cal.com stopped being open source on April 14, 2026. The production code went private and a stripped-down MIT "community edition" called Cal.diy was left public, which the vendor itself labels "strictly recommended for personal, non-production use" (https://cal.com/blog/cal-com-goes-closed-source-why, https://cal.diy). So the thing that drew her to Cal.com (open source you could self-host as an escape hatch) is mostly gone. The comparison below is really Cal.com cloud vs Calendly cloud, with Cal.diy self-hosting as a weak third option.</p>
+<p><strong>Decision taken.</strong> See the "Decisions on the minimum" section of <a href="/agents/site-scan">the practitioner scan</a> once O.J. has chosen.</p>
+<hr />
+<h2>1. Reliability</h2>
+<h3>Cal.com (hosted cloud)</h3>
+<p>Status page: https://status.cal.com (hosted on OpenStatus at https://cal.openstatus.dev). Shows only a 45-day uptime window: App 99.995%, Website 100%, API 100% (https://cal.openstatus.dev, fetched 2026-10-12).</p>
+<p>Full incident list is at https://cal.openstatus.dev/events (23 reports since Feb 2024). In the last 12 months (Oct 12 2025 to Oct 12 2026) the count is 12 incidents:</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Title</th>
+<th>Severity (their label)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025-11-18</td>
+<td>Upstream provider Cloudflare global network issues</td>
+<td>Degraded</td>
+</tr>
+<tr>
+<td>2026-01-27</td>
+<td>Degraded database performance</td>
+<td>Degraded</td>
+</tr>
+<tr>
+<td>2026-02-12</td>
+<td>Problems with email provider</td>
+<td>Degraded</td>
+</tr>
+<tr>
+<td>2026-03-07</td>
+<td>Degraded service creating bookings via API v2</td>
+<td>Degraded</td>
+</tr>
+<tr>
+<td>2026-04-06</td>
+<td>Intermittent issues loading data on app.cal.com dashboard</td>
+<td>Degraded</td>
+</tr>
+<tr>
+<td>2026-04-15</td>
+<td>Delayed webhook delivery</td>
+<td>Degraded</td>
+</tr>
+<tr>
+<td>2026-05-17</td>
+<td>Partial outage for cal.com links</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td>2026-06-22</td>
+<td>Delayed webhooks and email notifications</td>
+<td>Degraded</td>
+</tr>
+<tr>
+<td>2026-06-25</td>
+<td>Gateway timeouts</td>
+<td>Degraded</td>
+</tr>
+<tr>
+<td>2026-07-21</td>
+<td>Partial outage, Cal Atoms endpoint</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td>2026-08-31</td>
+<td>Major outage: API (1h 14m, US East lost DB connectivity, EU unaffected)</td>
+<td>Major</td>
+</tr>
+<tr>
+<td>2026-09-15</td>
+<td>Degraded service, app and API (58 min, a high-volume query)</td>
+<td>Degraded</td>
+</tr>
+</tbody>
+</table>
+<p>Sources: https://cal.openstatus.dev/events, https://cal.openstatus.dev/events/report/2791 (Aug 31 detail), https://cal.openstatus.dev/events/report/3064 (Sep 15 detail). A third-party monitor's account of the April incidents matches (https://isdown.app/status/cal-com/outage-history, via search snippet; the page itself returned 403). Just outside the window there was a "major degradation of service across the app" on 2025-08-20.</p>
+<p>Security incident worth knowing: on 2026-01-26 Gecko Security published a chain of flaws in Cal.com Cloud allowing full account takeover of any user and read/modify of any booking; Cal.com patched within days (v6.0.8 and v6.0.9) (https://www.gecko.security/blog/caldotcom-broken-access-controls). One tracker lists it as CVE-2026-23478 with CVSS 10 and affected versions 3.1.6 to 6.0.6 (https://www.appsecure.security/vulnerability-database/cve-2026-23478/, not verified against NVD). Self-hosters on those versions were exposed too.</p>
+<p>Breaking change: the April 2026 closed-source move itself. Teams, Organizations, Routing Forms, Workflows, Instant Booking, AI Phone, SAML/SSO, Insights, API v1, Booking Audit and Impersonation were removed from the public repo (https://cal.com/blog/cal-diy-open-source-to-closed-source). Community reaction was negative: Hacker News thread 259 points, 71 comments, with "bait and switch" as the top comment's framing (https://news.ycombinator.com/item?id=47852155); critical coverage at https://dev.to/dishant0406/calcom-went-closed-source-and-nobody-bought-the-excuse-2gd7 and https://gigazine.net/gsc_news/en/20260422-cal-diy/.</p>
+<h3>Cal.com self-hosted (Cal.diy)</h3>
+<p>GitHub repo health (the old calcom/cal.com repo was renamed to calcom/cal.diy, so history and stars carried over):
+- 48,970 stars, 15,325 forks, 1,504 open issues, MIT license, created 2021-03-22, last push 2026-09-26 (https://api.github.com/repos/calcom/cal.diy)
+- Last tagged release: v6.2.0 on 2026-03-01. Before the split the cadence was rapid (15 releases between Jan 22 and Mar 1 2026). There have been zero tagged releases in the 7 months since the split (https://api.github.com/repos/calcom/cal.diy/releases).
+- Recent commits are small fixes and locale additions, e.g. 2026-09-20 "fix: remove duplicated words in three user-visible strings", 2026-09-12 "feat(i18n): add Indonesian locale" (https://api.github.com/repos/calcom/cal.diy/commits).
+- Does self-hosted lag hosted? Yes, structurally and permanently now. The cloud product is a separate private codebase. Cal.diy keeps "the core scheduling logic, the app store, the booking flows, and API v2" but none of the team, workflow, routing, insights, or SSO features (https://cal.com/blog/cal-diy-open-source-to-closed-source). The vendor states "Cal.com, Inc. does not guarantee security and safety of the open source project" (https://cal.diy).
+- Known self-hosting pain points, from the vendor's own troubleshooting page (https://cal.diy/troubleshooting): Stripe silently not working when env vars are missing, redirects to localhost:3000 when NEXT_PUBLIC_WEBAPP_URL/NEXTAUTH_URL are wrong, API v2 container failing to start without REDIS_URL/JWT_SECRET/etc, CLIENT_FETCH_ERROR from Docker DNS, SSL problems behind a reverse proxy, first-user setup failing until migrations run. Community reports: Cloudron package updates breaking team pages and public booking pages (https://forum.cloudron.io/category/174/cal-com?page=2, https://forum.cloudron.io/topic/15533/skip-older-cal-packages/17). Requirements are Node 18, Postgres, yarn, plus cron jobs you must wire yourself (https://cal.diy/installation).</p>
+<h3>Calendly</h3>
+<p>Status page: https://www.calendlystatus.com (hosted on incident.io). It shows only a Jul to Oct 2026 window, all components at 100% (calendly.com, Chrome extension, API, Webhooks, calendar and third-party integrations), and has no history page. The RSS feed (https://www.calendlystatus.com/feed.rss) lists only two items: 2026-07-23 "Users Unable to Log In to Calendly due to blank Login Page" (resolved) and 2026-09-06 scheduled maintenance.</p>
+<p>No official 12-month incident history for Calendly could be found. Third-party monitors fill some of the gap:
+- Pulsetic (monitoring since Apr 2026): 2026-07-23 login page blank, 26 min, minor; 2026-07-08 degraded performance on calendly.com, 23h 11m, minor; 2026-06-08 Callie not responding, under 1 min; 2026-05-22 error on Meetings page, 53 min, minor (https://pulsetic.com/status/calendly/incidents/)
+- Pingoru (via search snippet, page returned 403): 2026-04-13 outage of about 9 minutes; 99.992% uptime over 90 days (https://pingoru.io/providers/calendly/outage-history)
+- Statusfield: 100% over last 90 days, "last broke" 2026-07-23 (https://statusfield.com/services/calendly)</p>
+<p>No widely reported Calendly outage or breaking product change in the last 12 months was found. The equivalent evidence to Cal.com's public incident log simply is not published by Calendly, so "fewer incidents" here partly means "less disclosure". Unsure how much of the gap is real.</p>
+<hr />
+<h2>2. Pricing (vendor pages, fetched 2026-10-12)</h2>
+<h3>Cal.com (https://cal.com/pricing)</h3>
+<p>The page only displays the yearly toggle. Verbatim:</p>
+<ul>
+<li>Free: "1 user", "Unlimited event types &amp; calendars", "Email &amp; SMS notifications", "Integrate with 100+ apps", "Accept Stripe &amp; PayPal payments", "Two-way Salesforce &amp; HubSpot sync", "1-click import Calendly events". Branding removal is NOT on free.</li>
+<li>Teams: "$12" "per user/month" "YEARLY" "Save 25%", 14-day trial. Adds "1 team, shared availability", round-robin, "Managed &amp; collective event types", "Recurring events", "Customizable email &amp; SMS notifications", "Remove Cal.com branding, Routing forms, Booking analytics, Custom APIs".</li>
+<li>Organizations: "$28" per user/month yearly, "Save 25%". Adds "Unlimited sub-teams", "Route by custom variables", "Company subdomain (yourcompany.cal.com)", "SAML SSO and SCIM", compliance.</li>
+<li>Enterprise: custom.</li>
+</ul>
+<p>Monthly prices are not shown anywhere on the page (grepped the HTML; only "$12", "$28" and "YEARLY" appear). A third-party tracker lists Teams at $15/user/month and Organizations at $37/user/month when billed monthly (https://costbench.com/changelog/cal-com-price-increase-2026-02/, checked Aug 27 2026). Treat the monthly figures as unverified.</p>
+<p>Paid sessions via Stripe at booking: on the free plan, per the pricing page. Fee question: the Stripe app is listed as "Free" (https://cal.com/apps/stripe), the current help docs on paid bookings say nothing about a Cal.com cut (https://cal.com/help/event-types/how-to-receive-payments.md, https://cal.com/help/bookings/paid-bookings.md), and the Cal.diy Stripe code hard-codes fee: 0 (https://raw.githubusercontent.com/calcom/cal.diy/main/packages/app-store/stripepayment/lib/PaymentService.ts). One stale search snippet claimed a 3% application fee removed by a "Pro" plan that no longer exists. Unverified; do a $1 test booking and check the Stripe dashboard for an application fee before relying on it. Cal.com's own "Cal Pay" option does take a cut ("Application fee: Cal.com's take rate" plus withdrawal fees of 2.3% card, 1% ACH) (https://cal.com/help/cal-pay.md). Use Stripe, not Cal Pay.</p>
+<p>What forces an upgrade: removing "Cal.com" branding, customizing reminder emails, team features, routing forms, analytics. A short or common username costs "a monthly fee" (https://cal.com/help/quick-start/create-account.md).</p>
+<h3>Calendly (https://calendly.com/pricing)</h3>
+<p>Verbatim:
+- Free: "One event type", "One calendar connection", "One-on-one scheduling", "Customizable booking page", "Browser extension". Payments: not included. Contacts: not included.
+- Standard: "$10/seat/mo" billed annually, "$120/seat/year", "saves 17%". Adds "Unlimited event types", "Connect multiple calendars", "Automations &amp; reminders", "Connect Hubspot, Mailchimp", "Connect Stripe, PayPal".
+- Teams: "$16/seat/mo" billed annually, "$192/seat/year", "saves 20%". Adds round-robin, routing, Salesforce, Marketo.
+- Standard Plus $18 and Teams Plus $24 per seat/month annually, adding the Callie AI assistant and Notetaker (launched Aug 19 2026) (https://calendly.com/pricing, https://www.usagepricing.com/blueprint/activity/calendly-2026-08-19-packaging).
+- Enterprise: "Starts at $15,000/year", minimum 50 seats.</p>
+<p>Monthly billing prices were not legible in the fetch of the page. Working from the stated discounts, Standard is $12/seat/month monthly and Teams $20/seat/month monthly; a third-party tracker lists exactly those (https://www.usagepricing.com/blueprint/calendly). Mark as inferred.</p>
+<p>Paid sessions via Stripe at booking: NOT on free. Available on "Professional, Standard, Standard Plus, Teams, Teams Plus, and Enterprise" (https://calendly.com/help/calendly-stripe). No Calendly fee on top of Stripe is documented.</p>
+<p>What forces an upgrade for her specifically: a second event type. Free allows exactly one, so "free 15-min intro" plus "paid 60-min session" requires Standard ($120/yr) before you even get to payments.</p>
+<hr />
+<h2>3. Lock-in</h2>
+<h3>Calendly</h3>
+<ul>
+<li>Export bookings: CSV export of meetings exists (Calendar page, filter, Export) with invitee name, contact details, event type, date, location, UTM, payment details, but only on "Professional, Standard, Standard Plus, Teams, Teams Plus, and Enterprise" (https://calendly.com/help/tracking-and-reporting). Free plan cannot export. Contacts export: not documented; the Contacts feature is itself paid.</li>
+<li>Moving your link: "When you change your booking page link, the previous URL stops working. Old links do not redirect." (https://calendly.com/help/how-to-customize-your-scheduling-page-links). No custom domain, so the link is always calendly.com/you.</li>
+<li>Cancel: downgrading to Free keeps the account and data but leaves only one event type active (https://zeeg.me/post/how-to-cancel-calendly-subscription, third party). Deleting the account is "permanent and cannot be undone" and booked meetings "can't be recovered in Calendly" (https://calendly.com/help/how-to-delete-your-account).</li>
+<li>No self-host option. No import tool from other schedulers found.</li>
+</ul>
+<h3>Cal.com</h3>
+<ul>
+<li>Export bookings: privacy policy (effective Oct 1 2026) says "You can get your data out, or delete it. Any time, self-serve or by email" and on account closure "You get an export window of at least 30 days, then we delete the data" (https://cal.com/privacy). No help article for a bookings CSV button was found (the help index at https://cal.com/help/llms.txt has no export entry). API v2 bookings endpoints are available to get data out programmatically (https://cal.com/docs/_llms/api-v2-reference.txt). Mark: self-serve export UI unverified.</li>
+<li>Moving your link: username changes at Settings → Profile (https://cal.com/blog/an-overview-of-cal-com-s-account-level-settings). No official statement found on whether old links redirect; a third-party guide says changing it "can break existing links" (https://aiindigo.com/tutorials/getting-started-with-cal-com-automate-your-schedule-with-custom-events). Unverified.</li>
+<li>Hosted to self-hosted and back: no migration tool or documented path exists in either direction. The only vendor article on the topic is generic 2023 advice (https://cal.com/blog/transitioning-from-cloud-to-self-hosted-scheduling-a-step-by-step-guide) and the Cal.diy docs say nothing about migration (https://cal.diy). Since April 2026 the two are different codebases, so parity is gone anyway.</li>
+<li>Inbound: "1-click import Calendly events" is advertised on the free tier (https://cal.com/pricing).</li>
+</ul>
+<p>Practical mitigation for either vendor: never put the vendor URL on the site. Put a Cloudflare redirect rule on book.learnwithoj.com (or a page on the Cloudflare Pages site with an inline embed) so the public link is hers and survives a vendor switch.</p>
+<hr />
+<h2>4. Integrations she needs</h2>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Cal.com</th>
+<th>Calendly</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google Calendar two-way sync</td>
+<td>Free. Onboarding step "Connect your calendar so Cal.com can check your busy times to prevent double bookings and add new bookings to your calendar" (https://cal.com/help/quick-start/complete-onboarding.md); Google Calendar app listed Free (https://cal.com/apps/google-calendar). Unlimited calendars on free.</td>
+<td>Free, one calendar connection. Settings → Scheduling → Calendars → Connect. You pick calendars to check for conflicts, one calendar to write to, and can enable "Automatically sync cancellations and reschedules from this calendar to Calendly" (https://calendly.com/help/how-to-connect-your-google-calendar).</td>
+</tr>
+<tr>
+<td>Google Meet / Zoom link generation</td>
+<td>Free. Install Google Meet or Zoom from the app store, then pick it in the event type's Location box (https://cal.com/help/event-types/how-to-add-location.md, https://cal.com/help/event-types/adding-zoom.md).</td>
+<td>Free. Location → "Video conferencing - Connect a supported video tool: Zoom, Google Meet, Microsoft Teams, Webex, or GoTo Meeting", marked "All plans" (https://calendly.com/help/how-to-set-the-location-for-your-event-type).</td>
+</tr>
+<tr>
+<td>Stripe payment at booking</td>
+<td>Free plan (https://cal.com/pricing). Install Stripe app, then event's "Payments &amp; Seats" settings (https://cal.com/help/event-types/how-to-receive-payments.md). Fee: see unverified note in section 2.</td>
+<td>Standard and up ($120/yr). Automations → Integrations &amp; apps → Stripe, then event → Payment → "Require payment to book this meeting" (https://calendly.com/help/calendly-stripe).</td>
+</tr>
+<tr>
+<td>Embed on static site</td>
+<td>Free. "Inline", "Pop-up via element click", "Floating button pop-up", via the in-app Embed Snippet Generator; the snippet is also usable on self-hosted (https://cal.com/help/embedding/adding-embed.md).</td>
+<td>Free can embed (https://calendly.com/blog/calendly-free-scheduling-features). Three options "Inline embed", "Pop-up text", "Pop-up widget", from the event's three-dot menu → "Add to website" (https://calendly.com/help/embed-options). Changing embed colors/button label needs a paid plan (https://calendly.com/help/how-to-customize-your-embed).</td>
+</tr>
+<tr>
+<td>Custom subdomain (book.learnwithoj.com)</td>
+<td>Organizations plan only ($28/user/month yearly). Shipped in v6.3, March 2026 (https://cal.com/blog/calcom-v6-3); the feature page still says "Only available on the organizations plan" and reads as a waitlist (https://cal.com/custom-domain-email-waitlist). Not available to an individual free or Teams user. Self-hosted Cal.diy runs on any domain you own by definition.</td>
+<td>Not available on any plan. Calendly has no custom-domain feature; "domain control" in their help is SSO login enforcement, not booking URLs (https://calendly.com/help/how-to-set-up-domain-control). Third-party sources state this flatly (https://blog.mystrika.com/calendly-alternatives/).</td>
+</tr>
+</tbody>
+</table>
+<p>Workaround for both: a Cloudflare redirect rule from book.learnwithoj.com to the vendor URL, or an inline embed on a page served at that hostname. Either way she controls the public link.</p>
+<hr />
+<h2>5. Demos</h2>
+<p>Official (lengths read from YouTube page metadata):
+- Calendly: "Calendly Tutorial 2025 | How to Use Calendly for Easy Scheduling", Calendly channel, 14:39, published 2025-09-26, https://www.youtube.com/watch?v=rqwatDyWXT4. Shorter: "What is Calendly? How Meeting Scheduling Software Works", 2:00, 2024-07-23, https://www.youtube.com/watch?v=kiz8rvXr28c. Newest: "Introducing the New Calendly", 1:36, 2026-08-19, https://www.youtube.com/watch?v=uWdLrmM0Fj8.
+- Cal.com (channel "Cal.com, Inc."): "Welcome to Cal.com", 1:54, 2022-05-26, https://www.youtube.com/watch?v=QcDJ15bzzWs; "Creating your first event type - Cal.com", 4:49, 2023-03-13, https://www.youtube.com/watch?v=DboZrQjHgWU; "Adding and managing calendars - Cal.com", 1:37, 2023-03-13, https://www.youtube.com/watch?v=OUOume6QKuw; "How To Create Paid Bookings In Cal.com", 3:03, about a year old, https://www.youtube.com/watch?v=xopxmk2H4Ng; "How To Embed Your Booking Page With Cal.com", 1:29, https://www.youtube.com/watch?v=fMHW6jYPIb8. Note the core Cal.com walkthroughs are 3 to 4 years old and the UI has moved on. Worth 9 minutes: Bailey Pumfleet explaining the closed-source decision, 9:16, 2026-04-15, https://www.youtube.com/watch?v=JYEPLpgCRck.</p>
+<p>Independent, 2025 or 2026, actually tried both:
+- Article: Toolfinder, "Calendly vs Cal.com: Polished Paid Tool or Open Source Freedom in 2026?", published 2026-03-26, states "Tested hands-on for 30+ days, 500+ tasks completed, evaluated on 15 criteria". Conclusion in one line: Calendly for polished reliability and integrations, Cal.com for transparency and better value, choose on stability versus control (https://toolfinder.com/comparisons/calendly-vs-cal-dot-com). Note it predates the April closed-source move, so its "open source" framing is stale.
+- Video: the only substantial one is Efficient App, "Best Scheduling Software 2026? Calendly vs Cal.com vs TidyCal vs SavvyCal vs Chili Piper", 12:47, but it was published 2024-11-26 and carries Cal.com affiliate links, so it fails both the date and independence tests (https://www.youtube.com/watch?v=4ROulDJxfKw). A 2026-07-17 video "Calendly vs Cal com - Which is Better?" (HelperMan, 2:06, https://www.youtube.com/watch?v=kSIVFs4cPyM) exists but it could not be verified that it tried either tool; it reads as a generic explainer. No 2025 or 2026 hands-on comparison video worth trusting was found.</p>
+<hr />
+<h2>6. Setup click path, free tier, to a shareable 15-minute Google Meet link on Google Calendar</h2>
+<h3>Cal.com</h3>
+<ol>
+<li>Go to https://cal.com/signup. Enter username (this becomes cal.com/username), email, password, or click the Google button (https://cal.com/help/quick-start/create-account.md). Avoid short or common usernames, they cost a monthly fee.</li>
+<li>Onboarding, screen 1: choose "For personal use" (https://cal.com/help/quick-start/complete-onboarding.md).</li>
+<li>Onboarding, screen 2 "Add your details": photo, name, username, bio.</li>
+<li>Onboarding, screen 3 "Connect your calendar": pick Google Calendar, authorize with oj@learnwithoj.com. This both checks busy times and writes new bookings to Google Calendar.</li>
+<li>You land on the dashboard. Open Availability and set working hours (official video https://www.youtube.com/watch?v=UsICIcyGIBA, 2:16) (exact screen labels unverified).</li>
+<li>Go to https://cal.com/apps, find Google Meet, click Install (https://cal.com/help/event-types/how-to-add-location.md).</li>
+<li>Event Types → create a new event (or edit the default 15-minute one if one was created for you; whether defaults are created is unverified) → title "Intro call", duration 15 → Location select-box → Google Meet → save.</li>
+<li>Copy the link shown on the event type card, cal.com/username/intro-call (exact card label unverified).</li>
+<li>For the paid 60-minute session, repeat step 7 and in the event's "Payments &amp; Seats" settings choose Stripe, set the amount, after installing the Stripe app from the app store (https://cal.com/help/event-types/how-to-receive-payments.md). Still free tier.</li>
+</ol>
+<h3>Calendly</h3>
+<ol>
+<li>Go to https://calendly.com/signup (URL not verified by fetch; it is the standard sign-up path) and choose "Sign up with Google" using oj@learnwithoj.com. "If you signed up using a Google email address, your calendar may already be connected" (https://calendly.com/help/calendar-connections).</li>
+<li>If it is not connected: Settings → Scheduling → Calendars → "Connect" next to Google Calendar → sign in → back in Calendly, tick the calendars to check for conflicts and choose the one calendar to add meetings to (https://calendly.com/help/how-to-connect-your-google-calendar).</li>
+<li>Scheduling → "+ Create" → choose the one-on-one event type (https://calendly.com/help/how-to-set-up-an-event-type).</li>
+<li>In the editor set Event name "Intro call", Duration 15, Location → "Video conferencing" → Google Meet (https://calendly.com/help/how-to-set-the-location-for-your-event-type).</li>
+<li>"Save changes".</li>
+<li>Scheduling → hover the event card → "Copy link" (https://calendly.com/help/how-to-share-your-scheduling-link).</li>
+<li>Stop here on free. A second event type (the paid 60-minute one) and Stripe both require Standard, $120/yr (https://calendly.com/pricing).</li>
+</ol>
+<hr />
+<h2>7. Who makes it</h2>
+<p><strong>Calendly.</strong> Founded 2013 in Atlanta by Tope Awotona, who self-funded it out of his savings (https://calendly.com/about, https://techcrunch.com/?p=2100684). Raised only $550K before a $350M Series B in January 2021 from OpenView and Iconiq at a valuation over $3B; was already profitable with roughly $70M in subscription revenue at the time (same TechCrunch link). Third-party estimates put revenue at $276M in 2023 and around $350M in 2025, unverified (https://getlatka.com/companies/calendly). Claims 50M+ users and 1.3B+ meetings booked (https://calendly.com/about). Two rounds of layoffs: about 60 in July 2023 and about 70 (13%) on 2024-12-11, with the CEO citing a need to "capitalize on AI" (https://www.aol.com/read-memo-calendlys-ceo-sent-133038924.html). 2026 trajectory is an AI pivot: Callie assistant and Notetaker, two new "Plus" tiers at an $8/seat uplift (Aug 19 2026), and a reported Teams price rise from $12 to $16 in Feb 2026 (https://www.costbench.com/changelog/calendly-price-increase-2026-02/, third party). No acquisition of or by Calendly. It faces free competitors in Google and Microsoft's built-in booking pages. Net: large, profitable, boring in a good way; the base tiers have been stable and the risk is slow price creep, not disappearance.</p>
+<p><strong>Cal.com.</strong> Cal.com, Inc., founded 2021 (originally Calendso) by Peer Richelsen (Berlin) and Bailey Pumfleet; third-party profiles list San Francisco as HQ while its own Terms are governed by UK law, so "where it is based" is fuzzy (https://theorg.com/org/cal-com/org-chart/bailey-pumfleet, https://cal.com/terms). Funding: $7.4M seed December 2021 and $25M Series A April 2022 at a $150M valuation, $32.4M total, and no round since was found (https://cal.com/blog/seed, https://www.clay.com/dossier/calcom-funding). The "Open Startup" page no longer publishes metrics (https://cal.com/open). Last-year trajectory: pivot toward enterprise, AI agents, "Cal Pay" (its own payment rail with a take rate), usage-priced AI phone, custom domains for Organizations (v6.3, March 2026), and then the April 14 2026 closed-source move with Cal.diy as a non-production community edition (https://cal.com/blog/calcom-v6-3, https://cal.com/blog/cal-com-goes-closed-source-why). The individual free tier has stayed generous through all of this. Net: a small, venture-backed company four years past its last raise that just spent goodwill with its core community; the free tier is excellent today but there is no structural reason it stays that way.</p>
+<hr />
+<h2>Recommendation</h2>
+<p><strong>Use Cal.com's hosted cloud service on the free tier, do not self-host, and put the public link on book.learnwithoj.com via a Cloudflare redirect rule so the vendor never owns her URL.</strong> Reason: her minimum requirement is two event types plus Stripe at booking, which Cal.com gives her for $0 and Calendly only gives her for $120/yr, and the Cloudflare redirect removes the main lock-in from either vendor. Self-hosting Cal.diy is off the table because the vendor itself calls it non-production, it has had no tagged release since March 2026, and it no longer tracks the hosted product, so the open-source reason she was drawn to Cal.com no longer really applies. If she decides $120/yr is worth it for fewer visible incidents, Calendly Standard is a perfectly reasonable answer and this is close to "either works, pick on price vs disclosed reliability".</p>
+<p>Biggest risk with Cal.com: operational and corporate volatility. Twelve logged incidents in 12 months including one major API outage, a critical account-takeover vulnerability in January, no new funding since 2022, and a founder team that just reversed its core positioning. If the free tier gets squeezed, the exit is the privacy-policy export plus the API, since there is no documented one-click bookings export.</p>
+<p>Biggest risk with Calendly: paying forever for features the other tool gives away, with a hard floor at $120/yr that has already crept up once this year, no custom domain on any plan, no export on free, and old links that die the moment you rename anything.</p>
+<p>Two things to verify on day one with Cal.com: make a $1 test booking and check the Stripe dashboard for any Cal.com application fee (docs say none, one stale source says 3%), and confirm Google Calendar writes bookings to the right calendar before publishing the link.</p>
+<h2>Things that could not be verified</h2>
+<ul>
+<li>Cal.com monthly (non-annual) prices; vendor page only shows yearly.</li>
+<li>Calendly monthly prices; inferred from stated discounts.</li>
+<li>Any Cal.com fee on Stripe payments (likely zero, test it).</li>
+<li>Whether a bookings CSV export button exists in the Cal.com app.</li>
+<li>Whether old Cal.com links redirect after a username change.</li>
+<li>Calendly's official incident history beyond July 2026; they do not publish one.</li>
+<li>Whether the Cal.com hosted custom-domain feature is live or still waitlisted.</li>
+<li>The CVE number for the January 2026 Cal.com vulnerability (from a secondary tracker only).</li>
+</ul>
+<p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
+</div></body></html>
