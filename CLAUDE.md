@@ -105,7 +105,7 @@ Sticky header (For companies · For engineers · Resources · Quick chat (15 min
 
 Footer (legal name, city, links, 1% for the Planet slot, "it's always DNS") + a sticky `.mobile-cta` button at the bottom on small screens.
 
-The booking CTA points at `https://cal.com/learnwithoj/quick-chat`, the cal.com event "Quick Chat (15 min)", on all three pages. `book.learnwithoj.com` as a Cloudflare redirect is still an option so the vendor never owns the public link; if it gets set up, swap every occurrence.
+The booking CTA points at `https://book.learnwithoj.com` on all three pages. That is a Cloudflare redirect rule to the cal.com event "Quick Chat (15 min)", so the vendor never owns the public link. To move booking tools, change the rule in Cloudflare and leave the pages alone.
 
 ### `resources.html`
 
