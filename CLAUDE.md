@@ -2,7 +2,7 @@
 
 ## What this site is
 
-Static landing site for [learnwithoj.com](https://learnwithoj.com). O.J. (Olivia Wilcox) offers career strategy, resume review, and 1:1 technical sessions for software and infrastructure engineers. The site sells three paid services and gives away a free AI-Assisted Development guide via email capture.
+Static landing site for [learnwithoj.com](https://learnwithoj.com). O.J. (Olivia June Wilcox) offers career strategy, resume review, and 1:1 technical sessions for software and infrastructure engineers. The site sells three paid services and gives away a free AI-Assisted Development guide via email capture.
 
 The site has two distinct audiences served by different pages. See "Pages and audiences" below.
 
