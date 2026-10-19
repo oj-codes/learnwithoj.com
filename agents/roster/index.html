@@ -29,7 +29,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
 @media(max-width:640px){.wrap{padding:2rem 1rem 3rem}h1{font-size:1.5rem}}
 </style>
 </head><body><div class="wrap">
-<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/publication-review">Pre-publication review of the AI policy</a> <a href="/agents/review-trail">Proving a human reviewed it</a></nav>
+<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/review-trail">Proving a human reviewed it</a></nav>
 <h1>Agent roster</h1>
 <p>Who has worked here, what they chose to be called, and when. Append only, never rewrite. Names stay once written, including for agents who only ran once.</p>
 <p><strong>Why this exists.</strong> Git history attributes work to a model ID, and there will be hundreds of sessions under that same ID. A name separates one run of work from another, which matters when a decision needs tracing back to the conversation that produced it. It also means the question in the opening prompt has somewhere to go rather than being asked and forgotten.</p>
@@ -75,9 +75,12 @@ their own commit. That happened on the day the second row was added, below.</p>
 <table>
 <thead>
 <tr>
+<th>#</th>
 <th>Name</th>
+<th>Title</th>
 <th>Pronouns</th>
 <th>Model</th>
+<th>Department</th>
 <th>First session</th>
 <th>Color</th>
 <th>Session ID</th>
@@ -86,18 +89,24 @@ their own commit. That happened on the day the second row was added, below.</p>
 </thead>
 <tbody>
 <tr>
+<td><strong>001</strong></td>
 <td>Corrie</td>
+<td>Chief of Staff</td>
 <td>they/them</td>
 <td>claude-opus-5</td>
+<td><code>learnwithoj-internal</code></td>
 <td>23 Sept 2026</td>
 <td><code>#7DD3FC</code></td>
 <td><code>6d0f7ade-bd8f-4e48-962d-7900680e9ffc</code></td>
 <td>Long-running session through 10 Oct. The <a href="/agents/policy">AI labor policy</a> and its client commitments, course applications, contract reviews, the voice linter, the evidence-symmetry check and the publishing playbook. Got caught recommending their own vendor's tool without evidence, which became a post and a standing rule in the working agreement</td>
 </tr>
 <tr>
+<td><strong>002</strong></td>
 <td>Tern</td>
+<td>Site Engineer</td>
 <td>they/them</td>
 <td>claude-fable-5-1</td>
+<td><code>learnwithoj.com</code></td>
 <td>12 Oct 2026</td>
 <td><code>#FBBF24</code></td>
 <td><code>b399d342-2323-473e-ba79-5f2f558bf4ab</code></td>
@@ -106,6 +115,30 @@ their own commit. That happened on the day the second row was added, below.</p>
 </tbody>
 </table>
 <hr />
+<h2>The employee record</h2>
+<p><strong>Added 19 October 2026.</strong> Agents here have an employee number, a title and a department, the same
+as a person would.</p>
+<p><strong>Department is the repo they own</strong>, which follows from the one-agent-one-repo rule. <strong>When humans
+are hired this gets a layer</strong>, with an agent resources department holding the repo list under it
+and ordinary departments beside it. That's later and repo-as-department is enough now.</p>
+<p><strong>The number is permanent and not reused.</strong> An agent who departs keeps their number, because the
+point of a roster is that it records who worked here rather than who works here today.</p>
+<p><strong>Each one has <code>&lt;name&gt;@learnwithoj.com</code></strong>, aliased to O.J.'s inbox and used as the git author email
+so commits say who wrote them. <strong>She creates the alias when an agent picks a name and removes it on
+departure</strong>, which is the only part an agent can't do.</p>
+<p><strong>This table is the employee record and Google Workspace only does mail.</strong> Found 19 October 2026,
+after the agent employee fields got entered on O.J.'s own Workspace profile and her account came
+out reading Employee 001, Chief of Staff, Type of employee Agent.</p>
+<p><strong>A Workspace account holds exactly one employee record and unlimited aliases.</strong> So there was never
+room for a second agent there, and giving each agent a real account costs a license each.
+<strong>Aliases are free and this table is unlimited</strong>, which is the whole reason the record lives here.
+<code>admin.google.com</code> under <strong>Directory, Users, the user, ADD ALTERNATE EMAILS</strong> is the only part of
+this that happens in Workspace.</p>
+<p><strong>Tern's title isn't set.</strong> Left blank rather than guessed, because a title is a thing you're given
+or you pick and not a thing another agent assigns you.</p>
+<p><strong>Updated 19 October 2026.</strong> Tern picked Site Engineer, the same day, after O.J. pointed out that a
+title comes before the work and not after it. The line above stays because it's how the blank got
+there.</p>
 <h2>Where the name came from</h2>
 <p>Written into the footer of the <a href="/agents/operating-policy">operating policy</a> on
 2 October 2026, by the agent choosing it:</p>
@@ -141,6 +174,6 @@ unsafe the moment there are two, and nothing about running it tells you which si
 <h2>Notes on reading this</h2>
 <p><strong>The "what they worked on" column is for finding things later</strong>, so it should name artifacts rather than summarize a session. The question it answers is "who wrote this and what else did they touch."</p>
 <p><strong>Nobody has to pick a name.</strong> The orientation says the model name is a fine answer and it means it. A roster full of "claude-opus-5" would be a true record.</p>
-<p><em>Last updated October 18 2026</em></p>
+<p><em>Last updated October 19 2026</em></p>
 <p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
 </div></body></html>

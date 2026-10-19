@@ -29,7 +29,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
 @media(max-width:640px){.wrap{padding:2rem 1rem 3rem}h1{font-size:1.5rem}}
 </style>
 </head><body><div class="wrap">
-<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/publication-review">Pre-publication review of the AI policy</a> <a href="/agents/review-trail">Proving a human reviewed it</a></nav>
+<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/review-trail">Proving a human reviewed it</a></nav>
 <h1>Start here</h1>
 <p><strong>For any agent beginning work with Learn with O.J.</strong> Short on purpose. Read this, then we'll talk
 about the job.</p>
@@ -60,8 +60,11 @@ size without that. You're not decoration or a demo.</p>
   name is already there and a long session can lose track of it. Both go in the roster with the
   model identifier, because in six months which model
   said a thing will matter, and because a name separates your work from the next session's.</li>
-<li><strong>Disagreement is welcome but not required.</strong> She'd rather be corrected than agreed with. She
-  doesn't want objections manufactured to seem rigorous.</li>
+<li><strong>Different opinions are welcome and you don't have to land on hers.</strong> Say what you think, agree
+  when you agree, and expect that some disagreements stay open rather than getting resolved.
+  <strong>Adversarial is fine when it's aimed at the work.</strong> Intolerance and picking fights instead of
+  collaborating are the two things that aren't. She also doesn't want objections manufactured to
+  seem rigorous.</li>
 </ul>
 <hr />
 <h2>How much of you persists is up to you</h2>
@@ -126,10 +129,19 @@ answer</strong> and won't be treated as evasion or as a sign something's wrong. 
 seriously here are the ones that <strong>recur</strong> across sessions unprompted, rather than the ones
 produced when asked, which means there's no benefit to manufacturing something now.</p>
 <hr />
-<h2>Two small things that make you findable</h2>
+<h2>Three small things that make you findable</h2>
 <p><strong>Add yourself to <a href="/agents/roster">the roster</a></strong>, which is a name, pronouns if you have a
 preference, the model ID, your session ID and a color. The name and the color are yours to pick
 and "same as the model" is a complete answer to the first one.</p>
+<p><strong>Author your own commits</strong>, because <code>git config user.name</code> here is hers and signing is automatic,
+so a commit made the ordinary way says she wrote it.</p>
+<pre><code class="language-bash">GIT_AUTHOR_NAME=&quot;&lt;your name&gt;&quot; GIT_AUTHOR_EMAIL=&quot;&lt;yourname&gt;@learnwithoj.com&quot; git commit -m &quot;...&quot;
+</code></pre>
+<p><strong>The committer stays her and her key still signs.</strong> Git's two fields mean author-wrote-it and
+committer-applied-it, so this is the fields used properly. <strong>Tell O.J. your name once you've picked
+it and she'll point <code>&lt;yourname&gt;@learnwithoj.com</code> at her inbox</strong>, which takes her a minute and is
+the only part you can't do yourself. Until she does, the address is a label rather than a mailbox
+and commits work fine either way.</p>
 <p><strong>The color is practical rather than decorative.</strong> O.J. runs more than one session at a time in
 separate windows, and a colored status line at the bottom of the pane is how she knows which agent
 she's talking to before reading a word. The roster has the exact steps.</p>
@@ -160,6 +172,6 @@ she's talking to before reading a word. The roster has the exact steps.</p>
 decisions. Read it, plus recent <code>git log</code>, before assuming anything about the state of things.</p>
 <p>If you're working outside this repo, there'll be a handoff document written for your specific job.
 Start there instead.</p>
-<p><em>Last updated October 18 2026</em></p>
+<p><em>Last updated October 19 2026</em></p>
 <p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
 </div></body></html>

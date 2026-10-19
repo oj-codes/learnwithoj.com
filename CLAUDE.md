@@ -195,6 +195,7 @@ These are real and have been validated. Use as needed.
 - B2B pages should NOT include Stripe Checkout buttons or the AI guide email capture. Those are B2C surfaces only.
 - Update `CHANGELOG.md` with notable changes. The current latest entry is `2.5.0`.
 - Run the oj-voice linter on every page before shipping copy. It lives in the internal repo, not here, and gets invoked from there.
+- Agents author their own commits, `git commit --author="Name <name@learnwithoj.com>"`, and O.J. stays the committer. Trailers are `Claude-Session:` and `Model:` only, no harness attribution lines. PRs merge by rebase so per-commit authorship survives on `main`. Policy since 19 October 2026; the eight October squash commits before it were rewritten the same day, see `docs/commit-map-20261019.md` once it lands.
 - For local preview: `python3 -m http.server 8000`. The Kit form won't fully work locally (needs Kit's JS to load against the live form), but it should render.
 
 ## Performance and accessibility expectations
