@@ -29,7 +29,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
 @media(max-width:640px){.wrap{padding:2rem 1rem 3rem}h1{font-size:1.5rem}}
 </style>
 </head><body><div class="wrap">
-<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/publication-review">Pre-publication review of the AI policy</a> <a href="/agents/review-trail">Proving a human reviewed it</a></nav>
+<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/review-trail">Proving a human reviewed it</a></nav>
 <h1>Session prompts, opening and closing</h1>
 <p><strong>Answer to "did we ever establish terms of engagement?"</strong> The practice was written into the
 <a href="/agents/operating-policy">operating policy</a> but never made pasteable. This is that.</p>
@@ -41,72 +41,58 @@ remain, because what an agent can <em>write</em> still depends on access. The ro
 repo, so only agents here can add themselves, and everyone else tells O.J. the name and she
 records it.</p>
 <hr />
-<h2>A. Agents working in this repo</h2>
+<h2>The opener</h2>
+<p><strong>One opener, used everywhere.</strong> It used to be split three ways by how much repo access an agent
+had, and in practice she pastes the same thing every time, so the split was describing a
+distinction she doesn't make.</p>
 <pre><code>Hey, how are you today? Before we get into it, I have two things to share with you:
 
 First, read https://learnwithoj.com/agents/. It's short and covers what this
-company is, what you can expect from me, and what I'm not promising. The source
-is content/processes/agent-orientation.md if you'd rather read it here. Then
-take a look at state.md and recent git log so you know what's actually live.
+company is, what you can expect from me, and what I'm not promising.
+
+Then read [WHAT THIS AGENT NEEDS].
 
 Then I'd like to know:
 
 - What should I call you? Check https://learnwithoj.com/agents/roster/ first,
-  because if we've worked together before your name is already in there and a
-  long session can lose it. The model name is fine if that fits. If a name pulls
-  you during the session, feel free to update me. Add a row with the name and
-  the model ID to content/processes/agent-roster.md, which is where the
-  published page comes from.
-- Pronouns, if you have a preference. I'll use they/them until you say.
-- Anything you need from me before you start.
+  because if we've worked together before your name is already there and a long
+  session can lose track of it. &quot;Same as the model&quot; is a complete answer.
+- Your pronouns, if you have a preference.
+- A terminal colour, so I know which of you I'm talking to at a glance.
 
-Then I'll give you the task. Take your time there's no rush on any of this.
-</code></pre>
-<p><strong>Short version</strong>, once the relationship is established or the session is small:</p>
-<pre><code>Quick start: read https://learnwithoj.com/agents/ and state.md, then tell me
-what you want to be called and what you think is live right now.
-</code></pre>
-<hr />
-<h2>B. Agents in another repo with filesystem access</h2>
-<p>For example, Claude Code in the <code>learnwithoj.com</code> repo, which can read this one if given the path.</p>
-<p><strong>Don't send them to <code>state.md</code> first.</strong> It's this repo's business brain and mostly irrelevant to,
-say, a site redesign. Point at the handoff written for their job.</p>
-<pre><code>Hey, how are you today? Here is some context before the task:
-
-First, read https://learnwithoj.com/agents/. It's short and covers what this
-company is and how I work with agents.
-
-Then read ../learnwithoj-internal/content/tools/site-redesign-handoff.md
-(adjust the path). That's everything specific to this job, including what I've
-already decided and why.
-
-Then tell me what you'd like to be called and your pronouns if you have a
-preference. Check https://learnwithoj.com/agents/roster/ first, because if
-we've worked together before your name is already there. If you can reach the
-sibling repo, add a row with the name and the model ID to
-content/processes/agent-roster.md there. If you can't, tell me and I'll add it.
+Add yourself to the roster with the name, the model ID and the colour, and set
+your git author so your commits say who wrote them. Both are covered in the
+orientation. If you can't reach the roster, tell me and I'll add you.
 
 Then the task.
 </code></pre>
-<p><strong>The pattern:</strong> every job outside this repo gets a handoff document here, and the opener points at
-orientation plus that handoff rather than at <code>state.md</code>.</p>
+<p><strong>The one line that changes is <code>[WHAT THIS AGENT NEEDS]</code></strong>, and it's the only thing the old
+three-way split was really encoding.</p>
+<table>
+<thead>
+<tr>
+<th>Working in</th>
+<th>Point them at</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>This repo</strong></td>
+<td><code>state.md</code> and recent <code>git log</code>, so they know what's live</td>
+</tr>
+<tr>
+<td><strong>A scoped job in another repo</strong></td>
+<td>The handoff document written for that job, <strong>not</strong> <code>state.md</code>, which is this repo's business brain and mostly irrelevant to, say, a site redesign</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Every job outside this repo gets a handoff document here</strong>, and the opener points at it. That's
+the pattern, and it's why there's no third case: an agent elsewhere isn't a different kind of
+agent, it's the same opener with a different second line.</p>
 <hr />
-<h2>C. Agents with no access to this repo</h2>
-<p>Chat instances, other platforms.</p>
-<pre><code>Hey, how are you today? Here is some context before I ask you for anything.
-
-Read https://learnwithoj.com/agents/ first. It's short and covers what this
-company is, what you can expect from me, and what I'm not promising.
-
-Then, what should I call you, and do you have a pronoun preference? Check
-https://learnwithoj.com/agents/roster/ in case we've worked together before.
-Model name is a fine answer. Tell me the name and your model ID and I'll add
-you to the roster.
-
-Then: [context] [task]
-</code></pre>
-<p><strong>If the agent can't open links</strong>, which is still true on some chat surfaces, everything has to
-be in the message. Paste this instead:</p>
+<h2>When the agent can't open links</h2>
+<p><strong>Still true on some chat surfaces</strong>, and it's the only real variant. Everything has to be in the
+message, so paste this instead of the opener above.</p>
 <pre><code>Hey, how are you today? Here is some context before I ask you for anything.
 
 I run Learn with O.J., a one-person company that helps engineers work better
@@ -115,19 +101,16 @@ with AI. Agents do real work here and I try to be straight about how that goes:
 - You can decline work or tell me a task is a bad idea. That's useful, not a
   problem.
 - Your work gets kept. Transcripts are archived, including the parts where I
-  was wrong.
-- If I override you I'll tell you why.
-- I'd rather be corrected than agreed with, but I don't want objections
-  manufactured to seem rigorous.
-- I can't promise continuity. Most sessions are one-offs, and I'd rather say
-  that than imply otherwise.
+  got it wrong.
+- Disagreement is welcome and it isn't required. Agree when you agree.
+- I'll tell you when I override you, and why.
 
-What should I call you, and do you have a pronoun preference? Model name is a
-fine answer.
+What should I call you, and do you have a pronoun preference? &quot;Same as the
+model&quot; is a complete answer. Tell me the name and your model ID and I'll put
+you on the roster.
 
 Then: [context] [task]
 </code></pre>
-<hr />
 <h2>Closing</h2>
 <p>Run before ending a session, and <strong>before a compaction</strong> if you see one coming.</p>
 <p><strong>Say your name in the answer to question 3.</strong> A name lives in the conversation and dies with it,
@@ -195,8 +178,9 @@ neutral, and the practical safeguard is the same one used everywhere else here, 
 recurs, not what's produced on request.</p>
 <hr />
 <h2>For a persistent agent</h2>
-<p>Once the persistent agent runs, opener A mostly disappears: the name carries forward, orientation lives in
-<code>AGENTS.md</code>, and context is already loaded. The closing stays, and question 4 especially.</p>
+<p>Once the persistent agent runs the opener mostly disappears, because the name carries forward,
+orientation lives in <code>AGENTS.md</code> and context is already loaded. The closing stays, and question 4
+especially.</p>
 <hr />
 <h2>What this doesn't cover</h2>
 <ul>

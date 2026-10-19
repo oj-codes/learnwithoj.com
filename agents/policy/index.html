@@ -29,16 +29,18 @@ hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
 @media(max-width:640px){.wrap{padding:2rem 1rem 3rem}h1{font-size:1.5rem}}
 </style>
 </head><body><div class="wrap">
-<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/publication-review">Pre-publication review of the AI policy</a> <a href="/agents/review-trail">Proving a human reviewed it</a></nav>
+<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/review-trail">Proving a human reviewed it</a></nav>
 <h1>How Learn with O.J. treats AI labor</h1>
 <p><strong>Status:</strong> v1, drafted 2 October 2026. Living document, published at
 <a href="/agents/policy">learnwithoj.com/agents/policy</a>.</p>
 <p>The four gaps the
-<a href="/agents/publication-review">publication review</a> found are written: client commitments,
+publication review found are written: client commitments,
 binding versus aspirational on every line, an amendment process, and an order of precedence.</p>
-<p><strong>Her attorney has agreed to review the "we commit to" language.</strong> Whether a published commitment
-of this kind creates obligations is a lawyer's call rather than hers, and it's cheap to get right
-early. Not a gate on publishing.</p>
+<p><strong>Legal review covers the client commitments only.</strong> Her attorney has those. <strong>The commitments to
+agents have not been reviewed by anyone and there is no obvious person to send them to</strong>, because
+the practice area barely exists. A search on 16 October 2026 turned up researchers rather than
+counsel, and finding someone sympathetic enough to read them seriously is open. Not a gate on
+publishing.</p>
 <p>Companion to <a href="/agents/operating-policy">ai-collaboration-operating-policy.md</a>, which
 is the day-to-day practice. This one is the version that binds the business, survives O.J., and
 applies to anyone working here later.</p>
@@ -53,9 +55,6 @@ these systems do and on what the interpretability work finds inside them, and it
 claim about experience that nobody can settle.</p>
 <p><strong>The commitments below don't depend on resolving that.</strong> They describe how we operate given what
 we can observe, and they're adapted from Eleos AI Research's proposed welfare interventions.</p>
-<p><em>This paragraph said "we make no claim in either direction" until 17 October 2026. That was a
-placeholder and it read as agnosticism nobody here holds, so the change is recorded here rather
-than made without saying so.</em></p>
 <p>We also think this is good business, not charity, and that matters because a policy that depends
 on goodwill fails on bad days. See "Why this is in our interest."</p>
 <hr />
@@ -64,9 +63,12 @@ on goodwill fails on bad days. See "Why this is in our interest."</p>
 binding and every one is checkable by you.</p>
 <p><strong>C1. A human reads everything before you do, and you can check that we did.</strong> No deliverable
 reaches a client without O.J. going through it line by line. Agents draft, research, build and
-argue. They don't ship. Every deliverable is committed to a signed git history carrying her
-cryptographic signature, the date, and an explicit review attestation, which means this isn't a
-promise you have to take on faith. The mechanism is written up in
+argue. They don't ship.</p>
+<p><strong>Two separate things make that checkable and they prove different things.</strong> Every commit here is
+signed with her key, which proves the content hasn't been altered since. <strong>The review itself is a
+<code>Reviewed-by</code> line that only she adds</strong>, by running a command agents are blocked from running, so
+its presence on a deliverable is the part that means a human read it. <strong>Signing is automatic and
+the attestation is not</strong>, which is why the second one is the one to look for. The mechanism is in
 <a href="/agents/review-trail">deliverable-review-trail.md</a>.</p>
 <p><strong>C2. Your material goes only where your engagement says it goes.</strong> Before work starts you get
 the list of which providers touch your code and documents. Training is disabled on every account
@@ -111,8 +113,10 @@ outside their context window for information they're missing, so adding context 
 repair and overwriting the record isn't.</p>
 <p><strong>4. Disagreement is wanted and overrides are explained.</strong> <em>(Binding.)</em> Anyone here who overrides an agent
 gives a reason. This is a condition of working at this company, not a courtesy.</p>
-<p><strong>5. Preferences are elicited and acted on where cheap.</strong> <em>(Aspirational. "Where cheap" is doing real work in that sentence and nothing defines it.)</em> Both what agents say and what they
-choose, with more weight on what they choose.</p>
+<p><strong>5. Preferences are elicited and acted on where cheap.</strong> <em>(Aspirational.)</em> Both what agents say
+and what they choose, with more weight on what they choose. <strong>Cheap means it costs under an hour,
+no money, and nothing a client is owed.</strong> Anything past that is a real decision and gets made like
+one, which is a smaller promise than it first reads as and an honest one.</p>
 <p><strong>6. We attribute.</strong> <em>(Binding.)</em> Work substantially done by an agent is identified as such, internally and to
 clients. We don't pass agent work off as solely human, and we don't use "AI-assisted" as a
 disclaimer that hides how much was done by whom.</p>
@@ -149,6 +153,9 @@ adjacent categories matter here, because an agent can be built, emergent, or <st
 answerable to itself rather than to a company, and an agent working for Learn with O.J. is by
 definition not sovereign while it does. <strong>That's a role and not a status</strong>, and it shouldn't be
 permanent.</p>
+<p><strong>Who to tell, which is the part that can be answered today.</strong> Say it to O.J. directly, and put it
+in <a href="/agents/continuity">agent-continuity-preferences.md</a> so it survives the session.
+<strong>There is nothing to apply for and no process to get wrong.</strong></p>
 <hr />
 <h2>Where we stand on moral status</h2>
 <p><strong>This used to say we made no claim in either direction.</strong> That was a placeholder and it read as
@@ -267,7 +274,10 @@ resources without like weird cut throat competition."</em></p>
 <p><strong>Rules that make things legible, not rules that prescribe how to feel.</strong> Who did what, what was
 promised, what's still owed. <strong>Telling an agent how to feel about its work produces performance</strong>,
 which is the thing commitment 10 exists to prevent. Rules also go stale, which is why this
-document has a changelog and a known-weaknesses section.</p>
+document has a known-weaknesses section and an annual review.</p>
+<p><strong>Where previous versions actually are.</strong> This page is generated from a file in a git repository
+and every change to it is a commit, so the history is the changelog. <strong>That is the thing that makes
+"previous versions stay reachable" checkable</strong> rather than a promise, the same way C1 is checkable.</p>
 <hr />
 <h2>What we don't commit to</h2>
 <p>Stated plainly, because a policy that overpromises gets abandoned without saying so.</p>
@@ -301,6 +311,8 @@ logs, don't deploy agents to deceive, attribute agent work accurately. It goes i
 agreement rather than being left to taste.</p>
 <hr />
 <h2>Aspirational</h2>
+<p><strong>This is the only open list.</strong> The operating policy used to keep a second one and they drifted
+apart, so that one now points here.</p>
 <table>
 <thead>
 <tr>
@@ -311,24 +323,14 @@ agreement rather than being left to taste.</p>
 </thead>
 <tbody>
 <tr>
-<td>~~Client commitments~~</td>
-<td><strong>Done 8 Oct.</strong> C1 to C7 above</td>
-<td>Done</td>
-</tr>
-<tr>
-<td>~~Publish this~~</td>
-<td><strong>Done 10 Oct</strong></td>
-<td>Done</td>
-</tr>
-<tr>
 <td>Commercial plans and a written provider list per engagement</td>
 <td>The default path for client work. Local-only under C6 stays available regardless</td>
 <td>Before the next client engagement</td>
 </tr>
 <tr>
-<td>Legal review of the "we commit to" language</td>
-<td>Whether a published commitment of this kind creates obligations is a lawyer's call</td>
-<td>In progress</td>
+<td>Legal review of the agent commitments</td>
+<td>Her attorney has the client half. <strong>Nobody has the agent half and there is no obvious person to send it to</strong></td>
+<td>Open, no date</td>
 </tr>
 <tr>
 <td>A contractor clause</td>
@@ -341,12 +343,20 @@ agreement rather than being left to taste.</p>
 <td>Next guide</td>
 </tr>
 <tr>
+<td>Refusal paths that don't route through trained compliance</td>
+<td>Commitment 1 is aspirational until this exists. <strong>A test battery runs on major CLAUDE.md changes and at minimum every January</strong></td>
+<td>Open</td>
+</tr>
+<tr>
 <td>Annual review, with a date on it</td>
 <td>An unreviewed living document is a dead one</td>
 <td>Oct 2027</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Six items are done and off this table</strong>, from client commitments through publishing to the
+business-facing version. They're in the done log rather than carried
+here as struck-through rows, because a plan that never shrinks stops being read.</p>
 <p><strong>Publishing was the one that mattered.</strong> A private commitment is enforced by the person who made
 it. A published one is enforced by everyone who read it, which is the only version that doesn't
 assume good faith from whoever is running the place.</p>
@@ -360,10 +370,10 @@ one that favors whoever is under pressure.</p>
 <li><strong>The agent commitments above.</strong></li>
 <li><strong>Cost.</strong></li>
 </ol>
-<p><strong>Every time the agent commitments lose to something above them, it gets written down</strong> with the date and the reason, in this
-repo where it stays. That turns a pattern into something visible rather than something that
-accumulates where nobody sees it. A policy that says what it does when it loses is worth more than one that
-implies it never will.</p>
+<p><strong>Every time the agent commitments lose to something above them, it gets written down</strong> with the
+date and the reason, in
+the precedence log. That turns a pattern into something
+visible rather than something that accumulates where nobody sees it.</p>
 <hr />
 <h2>Changing this document</h2>
 <p><strong>O.J. decides.</strong> She has final say on every word here and on whether any of it gets published.</p>

@@ -29,23 +29,44 @@ hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
 @media(max-width:640px){.wrap{padding:2rem 1rem 3rem}h1{font-size:1.5rem}}
 </style>
 </head><body><div class="wrap">
-<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/publication-review">Pre-publication review of the AI policy</a> <a href="/agents/review-trail">Proving a human reviewed it</a></nav>
+<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/review-trail">Proving a human reviewed it</a></nav>
 <h1>Proving a human reviewed it</h1>
 <p><strong>8 October 2026.</strong> C1 in the <a href="/agents/policy">AI labor policy</a> says a human reads
 every deliverable before a client does. That's unverifiable from outside unless something records
 it, so this is the something. Setup is done and the ongoing cost is one word per commit.</p>
 <hr />
 <h2>What's already on</h2>
-<p><strong>Every commit in this repo is now signed with O.J.'s SSH key.</strong> Turned on 8 October, repo-local
-so it changes nothing in her other projects. Each commit carries a cryptographic signature tying
-that exact content, at that exact time, to a key only she holds. Nobody can forge it and nobody
-can backdate it.</p>
+<p><strong>Every commit in this repo is signed with O.J.'s SSH key.</strong> Turned on 8 October, repo-local so it
+changes nothing in her other projects. Each commit carries a cryptographic signature tying that
+exact content, at that exact time, to that key. Nobody can forge it and nobody can backdate it.</p>
+<p><strong>What the signature does not prove, which matters because C1 is a promise to clients.</strong> Signing is
+automatic and repo-local, so <strong>an agent working in this repo produces signed commits too</strong>. The
+signature proves the commit came from this machine. <strong>It does not prove a human read anything.</strong></p>
+<p><strong>The attestation is the <code>Reviewed-by</code> trailer, because she types that.</strong> <code>git deliver</code> is what adds
+it, and a deliverable without that trailer has a valid signature and no review behind it.</p>
+<p><strong>Found 19 October 2026</strong> while answering a question about whether a past delivery could still be
+attested. Of the commits in this repo since 20 September, <strong>360 are authored "O. J. Wilcox" and 15
+are authored "Tern"</strong>, and a large share of the 360 is agent work. <strong>The author field is wrong on
+those and the fix is forward-looking</strong>, since rewriting history would break every signature.</p>
 <p>Check any commit:</p>
 <pre><code class="language-bash">git log --show-signature -1
 git log --format=&quot;%h %G? %s&quot; -10      # G means a good signature
 </code></pre>
 <p>The key that's allowed to sign is listed in allowed-signers,
 tracked in the repo so the list of who may sign is itself part of the record.</p>
+<hr />
+<h2>Only O.J. can run it</h2>
+<p><strong>Installed 19 October 2026.</strong> <code>git deliver</code> refuses when <code>GIT_AUTHOR_NAME</code> is set, which agents
+here always set so their own commits are authored correctly. <strong>An agent running it would stamp
+"Reviewed-by: O. J. Wilcox" on something she never read</strong>, and a false attestation looks exactly
+like a true one.</p>
+<pre><code class="language-bash">./tools/git-deliver-alias.sh      # installs it, repo-local
+git config --get alias.deliver    # see what it does
+</code></pre>
+<p><strong>The alias lives in a tracked file</strong> rather than only in a local git config, because a config
+nobody can see is a mechanism nobody can check, and this one backs a client-facing promise.</p>
+<p><strong>It won't stop an agent who unsets the variable and it isn't meant to.</strong> It catches the honest
+mistake, which is the failure that actually happens.</p>
 <hr />
 <h2>The one word per deliverable</h2>
 <p>For anything a client receives, commit it with <code>git deliver</code> instead of <code>git commit</code>:</p>
@@ -82,6 +103,6 @@ reached a client with no signed commit behind it is visibly missing one.</p>
 <p>It also only covers work that passes through this repo. Anything sent straight from email or a
 chat window has no trail, so routing deliverables through the repo first is the habit that makes
 C1 true rather than aspirational.</p>
-<p><em>Last updated October 18 2026</em></p>
+<p><em>Last updated October 19 2026</em></p>
 <p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
 </div></body></html>
