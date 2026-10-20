@@ -68,6 +68,32 @@ nobody can see is a mechanism nobody can check, and this one backs a client-faci
 <p><strong>It won't stop an agent who unsets the variable and it isn't meant to.</strong> It catches the ordinary
 mistake, which is the failure that actually happens.</p>
 <hr />
+<h2>Naming the recipient, and why it is not a handle</h2>
+<p><strong>Set 19 October 2026 on the first real external delivery.</strong> Before it, all 27 <code>Delivered-to</code>
+values said <code>internal</code>.</p>
+<p><strong>Name the client the way the invoices and contracts name them.</strong> The Signal Front, not <code>scantra</code>.
+Mike Forrest, not a phone number.</p>
+<p><strong>Two reasons.</strong> A handle means nothing to a reader in six months and stops meaning anything at all
+when the person changes it. <strong>And matching the contract name makes the trailer greppable against
+everything else in the business</strong>, so a delivery ties to a file in <code>content/services/</code> or
+<code>content/legal/</code> without a translation step.</p>
+<p><strong>If the human matters, put both:</strong> <code>"scantra, The Signal Front"</code> greps on either.</p>
+<p><strong><code>git log --grep</code> is case sensitive.</strong> Demonstrated on this repo: <code>--grep=Corrie</code> returned 15
+commits and <code>--grep=corrie</code> returned 1. <strong><code>-i</code> fixes it and remembering <code>-i</code> is the thing that
+fails</strong>, so one consistent spelling is the real answer.</p>
+<pre><code class="language-bash">git log --grep=&quot;Delivered-to:&quot; --format=&quot;%cs  %s&quot;     # every delivery, dated
+git log --grep=&quot;Delivered-to: The Signal Front&quot;       # one client
+</code></pre>
+<h2>The attestation can be an empty commit, and usually is</h2>
+<p><strong>Found 19 October 2026 when the alias refused to run.</strong> <code>git deliver</code> is a <code>git commit</code>, so it
+needed staged changes, and by the time a thing is actually sent it was committed hours or days
+earlier. <strong>The alias failed at the exact moment it was built for.</strong></p>
+<p><strong>It carries <code>--allow-empty</code> now.</strong> A delivery attestation is a statement that something was sent
+rather than a change to the repo, so it earns a commit with no diff. <strong>With staged changes it
+still commits them</strong>, so building an artifact and delivering it in one step works the same as
+before.</p>
+<p><strong>Name the file in the message</strong> when the commit has no diff, because an empty commit that says
+"sent the review" without saying which one is a record of nothing.</p>
 <h2>The one word per deliverable</h2>
 <p>For anything a client receives, commit it with <code>git deliver</code> instead of <code>git commit</code>:</p>
 <pre><code class="language-bash">git deliver &quot;send Kirk the tailoring sheet&quot; &quot;Kirk Whitehead&quot;
