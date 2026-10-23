@@ -10,7 +10,8 @@ changed something other than the date itself, and CI fails on drift.
     python3 tools/last-reviewed/check.py --fix    # rewrite the dates to match git
 
 The page carries <time class="explainer-reviewed" datetime="YYYY-MM-DD">Month D YYYY</time>
-and, when present, a JSON-LD "dateModified" that is kept in step.
+and, when present, a JSON-LD "dateModified" that is kept in step. "datePublished"
+is left alone.
 """
 import re
 import subprocess
@@ -32,21 +33,37 @@ MONTHS = ["January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December"]
 
 
+def _without_dates(line):
+    """The line with its date stamps replaced by a sentinel, for comparison."""
+    line = TIME.sub('<time class="explainer-reviewed" datetime="DATE">DATE</time>', line)
+    return LD.sub('"dateModified": "DATE"', line)
+
+
 def _only_touches_the_date(sha, path):
-    """True if this commit changed nothing in the file but its date stamps."""
+    """True if this commit changed nothing in the file but its date stamps.
+
+    Compares the removed and added lines with the dates blanked, so an edit
+    elsewhere on the same line as a date still counts as a content change.
+    """
     diff = subprocess.run(
         ["git", "show", "--format=", "--unified=0", sha, "--", path],
         cwd=ROOT, capture_output=True, text=True).stdout
-    changed = [l[1:].strip() for l in diff.splitlines()
-               if (l.startswith("+") or l.startswith("-"))
-               and not l.startswith(("+++", "---"))]
-    return bool(changed) and all(TIME.search(l) or LD.search(l) for l in changed)
+    removed = [_without_dates(l[1:]) for l in diff.splitlines()
+               if l.startswith("-") and not l.startswith("---")]
+    added = [_without_dates(l[1:]) for l in diff.splitlines()
+             if l.startswith("+") and not l.startswith("+++")]
+    return bool(removed) and removed == added
 
 
 def git_date(path):
-    """ISO and long-form date of the last commit that changed the page in a way that counts."""
+    """ISO and long-form date of the last commit that changed the page in a way that counts.
+
+    Author date, not committer date. This repo merges by rebase, which rewrites
+    the committer date on every merge and would make every page stale the day
+    it landed.
+    """
     log = subprocess.run(
-        ["git", "log", "--format=%H %cs", "--", path],
+        ["git", "log", "--format=%H %as", "--", path],
         cwd=ROOT, capture_output=True, text=True).stdout.strip().splitlines()
     for entry in log:
         sha, iso = entry.split()
