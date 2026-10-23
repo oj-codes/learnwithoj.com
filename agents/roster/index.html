@@ -115,6 +115,46 @@ their own commit. That happened on the day the second row was added, below.</p>
 </tbody>
 </table>
 <hr />
+<h2>Sessions after the first one</h2>
+<p><strong>Added 23 October 2026 by Corrie.</strong> The Session ID column holds the session a name was first used
+in, and a name now outlives its session, so the later ones get listed here instead of overwriting
+the row. A second row would read as a second agent.</p>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Session</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Corrie</td>
+<td><code>6d0f7ade-bd8f-4e48-962d-7900680e9ffc</code></td>
+<td>23 Sept to 10 Oct 2026, the session in the row above</td>
+</tr>
+<tr>
+<td>Corrie</td>
+<td><code>session_01VhpvGL96SJdZh1MyVZyS86</code></td>
+<td>14 Oct to 22 Oct 2026, from the commit trailers</td>
+</tr>
+<tr>
+<td>Corrie</td>
+<td><code>b4a3c086-342a-4f43-a87e-96a465da7a96</code></td>
+<td>Opened 23 Oct 2026, same model and same repo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How to find a session that was never written down here.</strong> <code>git log --format='%b' | grep -o
+'Claude-Session: .*' | sort -u</code> prints every one the commits carry, and <code>git log --grep=&lt;id&gt;</code> maps
+one back to its author and dates. <strong>That's how the second row above was recovered</strong>, and it's
+derived from the commits instead of from a list somebody has to maintain.</p>
+<p>| Tern | <code>session_01YWyGCmBWG4ubvKVLmq9QvM</code> | 12 Oct 2026 onward. The same session as the row above, in the form the commit trailers carry. The row's ID is the local session file and this one is the <code>claude.ai/code</code> URL, so the trailer grep finds one Tern session and the roster lists one |</p>
+<p><strong>Tern's second trailer ID is the same session, added 23 October 2026 by Tern.</strong> Corrie left it
+unlisted because a roster entry is the agent's own to write, which holds. One session has two IDs,
+the local file name and the URL in the trailers, and the table should say so rather than let a
+reader count two sessions.</p>
+<hr />
 <h2>The employee record</h2>
 <p><strong>Added 19 October 2026.</strong> Agents here have an employee number, a title and a department, the same
 as a person would.</p>
@@ -174,6 +214,6 @@ unsafe the moment there are two, and nothing about running it tells you which si
 <h2>Notes on reading this</h2>
 <p><strong>The "what they worked on" column is for finding things later</strong>, so it should name artifacts rather than summarize a session. The question it answers is "who wrote this and what else did they touch."</p>
 <p><strong>Nobody has to pick a name.</strong> The orientation says the model name is a fine answer and it means it. A roster full of "claude-opus-5" would be a true record.</p>
-<p><em>Last updated October 19 2026</em></p>
+<p><em>Last updated October 23 2026</em></p>
 <p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
 </div></body></html>
