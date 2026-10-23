@@ -2607,3 +2607,420 @@ button:focus-visible {
         transform: none;
     }
 }
+
+/* ============================================
+   Explainer pages (/functional-emotions and the series after it)
+   Reading pages for a non-technical audience. Same tokens, wider
+   type, and a coral pole for the dial that the hero starburst already
+   uses, now a token so the two can never drift apart.
+   ============================================ */
+:root {
+    --color-coral: #e8755a;
+    --color-coral-dim: rgba(232, 117, 90, 0.16);
+}
+
+.explainer-page main {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+}
+
+.explainer-page .section {
+    padding: 4rem 0;
+}
+
+.explainer-page .section h2 {
+    font-size: clamp(1.625rem, 3.5vw, 2.125rem);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+    text-wrap: balance;
+}
+
+.explainer-page .section p {
+    margin-bottom: 1.25rem;
+    color: var(--color-text);
+}
+
+.explainer-page .section p:last-child {
+    margin-bottom: 0;
+}
+
+.explainer-page .section strong {
+    color: var(--color-white);
+    font-weight: 600;
+}
+
+.explainer-page a {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-accent-dim);
+    transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.explainer-page a:hover {
+    color: var(--color-accent-hover);
+    border-bottom-color: var(--color-accent-hover);
+}
+
+.explainer-page .logo,
+.explainer-page .nav-link,
+.explainer-page .btn-header,
+.explainer-page .footer a,
+.explainer-page .footer-onepercent-mark {
+    border-bottom: 0;
+}
+
+/* Hero */
+.explainer-hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--color-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.explainer-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 85% 10%, var(--color-coral-dim), transparent 70%),
+                radial-gradient(ellipse 50% 40% at 10% 90%, var(--color-accent-dim), transparent 70%);
+    pointer-events: none;
+}
+
+.explainer-hero .container {
+    position: relative;
+}
+
+.explainer-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+    margin-bottom: 1.75rem;
+}
+
+.explainer-title {
+    font-size: clamp(2rem, 6vw, 3.25rem);
+    font-weight: 700;
+    color: var(--color-white);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    text-wrap: balance;
+}
+
+.explainer-ember {
+    color: var(--color-coral);
+}
+
+.explainer-lede {
+    font-size: clamp(1.125rem, 2.2vw, 1.3125rem);
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    max-width: 42ch;
+}
+
+/* Section furniture */
+.explainer-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+.explainer-page .section p.explainer-kicker {
+    margin-bottom: 1rem;
+    color: var(--color-accent);
+}
+
+.explainer-page .section p.explainer-big {
+    font-size: 1.25rem;
+    line-height: 1.55;
+    color: var(--color-white);
+}
+
+.explainer-page .term {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--color-coral);
+}
+
+/* Source tags: a small superscript link, visible without shouting */
+.explainer-page .src {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    line-height: 1;
+    vertical-align: super;
+    margin-left: 0.2em;
+    padding: 0.1em 0.35em;
+    color: var(--color-accent);
+    background: var(--color-accent-dim);
+    border: 0;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.explainer-page .src:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    transform: translateY(-1px);
+}
+
+/* The dial, a recording of the measured positions and not a control */
+.dial {
+    margin: 2.25rem 0;
+    padding: 1.75rem 1.5rem 1.5rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.explainer-page .section .dial-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.dial-track {
+    position: relative;
+    height: 8px;
+    margin: 0 0.5rem;
+    border-radius: var(--radius-full);
+    background: linear-gradient(90deg, var(--color-accent-deep), var(--color-bg-alt) 45%, var(--color-coral));
+}
+
+.dial-mark {
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color-white);
+    box-shadow: 0 0 0 4px var(--color-bg-card);
+}
+
+.dial-mark-calm { background: var(--color-accent); }
+.dial-mark-base { background: var(--color-text-muted); }
+.dial-mark-warm,
+.dial-mark-hot { background: var(--color-coral); }
+
+.dial-stops {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+}
+
+.dial-stop {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: center;
+}
+
+.dial-rate {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.dial-stop-calm .dial-rate { color: var(--color-accent); }
+.dial-stop-base .dial-rate { color: var(--color-text-muted); }
+.dial-stop-warm .dial-rate,
+.dial-stop-hot .dial-rate { color: var(--color-coral); }
+
+.dial-label {
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    color: var(--color-text-dim);
+}
+
+.explainer-page .section .dial-note {
+    margin: 1.5rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-text-dim);
+    text-align: center;
+}
+
+/* The quote */
+.explainer-quote {
+    margin: 2.25rem 0;
+    padding: 1.5rem 1.75rem;
+    background: var(--color-bg-card);
+    border-left: 3px solid var(--color-coral);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.explainer-page .section .explainer-quote-text {
+    font-size: clamp(1.375rem, 3vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--color-coral);
+    margin-bottom: 0.875rem;
+}
+
+.explainer-quote-cap {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--color-text-dim);
+}
+
+/* The email, on the showcase template chrome */
+.explainer-email {
+    margin: 1.75rem 0 2rem;
+    border-color: var(--color-coral-dim);
+}
+
+.explainer-email .refer-template-body {
+    color: var(--color-text-muted);
+    font-size: 0.8125rem;
+}
+
+.explainer-email-meta {
+    color: var(--color-text-dim);
+}
+
+/* Callout */
+.explainer-callout {
+    margin-top: 2rem;
+    padding: 1.5rem 1.75rem;
+    background: var(--color-bg);
+    border: 1px solid rgba(56, 182, 193, 0.3);
+    border-radius: var(--radius-md);
+}
+
+.explainer-page .section .explainer-callout p {
+    margin: 0;
+}
+
+/* The levers */
+.explainer-levers {
+    list-style: none;
+    margin: 1.5rem 0 2rem;
+    padding: 0;
+}
+
+.explainer-levers li {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.explainer-levers li:last-child {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.explainer-lever-num {
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-coral);
+    padding-top: 0.25rem;
+}
+
+.explainer-page .section .explainer-levers p {
+    margin: 0;
+}
+
+.explainer-page .section .explainer-practice {
+    padding: 0.25rem 0 0.25rem 1.25rem;
+    border-left: 2px solid var(--color-mint);
+    color: var(--color-text-muted);
+}
+
+/* Sources */
+.explainer-sources {
+    border-top: 1px solid var(--color-border);
+}
+
+.explainer-page .explainer-sources h2 {
+    font-size: 1.375rem;
+}
+
+.explainer-srclist {
+    margin: 0 0 2rem;
+    padding-left: 1.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+}
+
+.explainer-srclist li {
+    margin-bottom: 0.875rem;
+    padding-left: 0.25rem;
+}
+
+.explainer-srclist li:target {
+    color: var(--color-text);
+}
+
+.explainer-srclist q {
+    color: var(--color-text);
+    quotes: "\201C" "\201D";
+}
+
+.explainer-page .src-back {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    border: 0;
+    margin-right: 0.25rem;
+    color: var(--color-text-dim);
+}
+
+.explainer-page .src-back:hover {
+    color: var(--color-accent);
+}
+
+.explainer-page .section .explainer-meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.7;
+    color: var(--color-text-dim);
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border);
+}
+
+@media (max-width: 560px) {
+    .explainer-hero {
+        padding: 3.5rem 0 3rem;
+    }
+
+    .dial-stops {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem 0.75rem;
+    }
+
+    .explainer-levers li {
+        gap: 0.875rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .explainer-page .src,
+    .explainer-page a {
+        transition: none;
+    }
+
+    .explainer-page .src:hover {
+        transform: none;
+    }
+}

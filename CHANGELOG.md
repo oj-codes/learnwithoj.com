@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is inspired by [Keep a Changelog](https://keepachangelog.com), and this project adheres to semantic versioning where possible.
 
 
+## [2.6.0] - 2026-10-23
+### Added
+- `/functional-emotions`, "The Desperation Dial". The first entry in a show-don't-tell explainer series for a non-technical audience, built from Auran's design doc and three reviews in the internal repo (`content/writing/explainers/functional-emotions/`). Static v1, every number and quote carries a source tag that links to the verbatim sentence in Anthropic's emotion-concepts paper, the measured blackmail rates (0%, 22%, 66%, 72%) sit on the dial, and the page links the AI policy as the worked example of its fourth lever
+- `--color-coral` token for the dial's desperate pole, the same value the hero starburst already uses
+- `tools/last-reviewed/check.py` and a `Checks` workflow on pull requests, ported from the internal repo's policy-dates tool. The "Last updated" line on a living page is derived from git and CI fails on drift
+
+### Changed
+- Stylesheet cache-busted to `v=27`
+
 ## [2.5.1] - 2026-10-19
 ### Added
 - 1% for the Planet member block in the footer of all three pages. Full-color Primary lockup on a white panel, 80px tall, linked to onepercentfortheplanet.org, with the business name and their required precertification wording beside it. The file is a 2x PNG (`assets/logos/1ftp-primary-horizontal-fullcolor.png`) cut from the member-portal pack; there is no SVG in the pack. Never the Certified Business seal or the Impact Partner mark, no dollar figure, no "certified". Full rules live in the internal repo under `content/branding`

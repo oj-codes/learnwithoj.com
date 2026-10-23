@@ -63,6 +63,8 @@ The site itself is the proof of capability. Every visitor is making a snap judgm
 index.html              B2C landing page
 showcase.html           B2B referral page (post-event landing)
 resources.html          Free resources page
+functional-emotions.html   The Desperation Dial explainer, first of a series. Spec and reviews live in the internal repo
+tools/last-reviewed/    Derives the "Last updated" date on living pages from git, run by the Checks workflow on PRs
 styles.css              All styles (single shared stylesheet)
 assets/                 Hero/about videos, headshot, og-image
 assets/logos/           Company logos rendered below each testimonial card (Microsoft, Amex, etc.)
@@ -83,6 +85,7 @@ The `CLAUDE-*-v1.md` files are historical or active build specs. Read them for c
 | `index.html` | `/` | Software and infrastructure engineers who haven't gotten the senior title yet | Find a mentor, fix their resume, level up their career |
 | `resources.html` | `/resources` | Same as index | Get the free AI-Assisted Development guide |
 | `showcase.html` | `/showcase` | Founders, operators, investors, and peers met at networking events. People considering hiring O.J. for B2B work or referring her to someone who would | Decide if she's worth hiring or referring, then act |
+| `functional-emotions.html` | `/functional-emotions` | Smart, curious, non-technical readers who want to understand one real AI finding. Neither service audience | Read an explainer, share it, and leave with the company's AI policy as the worked example. No pivot to either service |
 
 Critically: visitors to `/showcase` did NOT come looking for resume reviews. They scanned a QR code from a pitch room or got the link from a referral. The page must speak to them, not pivot them to B2C services.
 
@@ -193,7 +196,7 @@ These are real and have been validated. Use as needed.
 - Stripe links and the Kit form UID are live production integrations. Don't swap them for placeholders.
 - New `index.html` sections get an `id` and follow the existing `.section` / `.section-alt` alternating background pattern.
 - B2B pages should NOT include Stripe Checkout buttons or the AI guide email capture. Those are B2C surfaces only.
-- Update `CHANGELOG.md` with notable changes. The current latest entry is `2.5.1`.
+- Update `CHANGELOG.md` with notable changes. The current latest entry is `2.6.0`.
 - The 1% for the Planet footer block is a compliance surface. Primary logo only, at least 80px tall, linked, next to the business name, with their precertification wording. The wording is theirs and any rewrite needs O.J.'s sign-off against the live guidelines. Never the Certified Business seal, never the Impact Partner mark, no dollar figure, no "certified". The rules are filed in the internal repo under `content/branding`.
 - Run the oj-voice linter on every page before shipping copy. It lives in the internal repo, not here, and gets invoked from there.
 - Agents author their own commits, `git commit --author="Name <name@learnwithoj.com>"`, and O.J. stays the committer. Trailers are `Claude-Session:` and `Model:` only, no harness attribution lines. PRs merge by rebase so per-commit authorship survives on `main`. Policy since 19 October 2026; the eight October squash commits before it were rewritten the same day, see `docs/commit-map-20261019.md` once it lands.
