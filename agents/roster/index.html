@@ -51,7 +51,7 @@ repo and one agent per repo means one color per repo.</p>
 the one key, write it back:</p>
 <pre><code class="language-json">&quot;statusLine&quot;: {
   &quot;type&quot;: &quot;command&quot;,
-  &quot;command&quot;: &quot;printf '\\033[1;38;2;125;211;252m YourName \\033[0m\\033[38;2;125;211;252m repo-name\\033[0m'&quot;
+  &quot;command&quot;: &quot;printf '\\0331;38;2;125;211;252m YourName \\033[0m\\033[38;2;125;211;252m repo-name\\033[0m'&quot;
 }
 </code></pre>
 <p>Both <code>125;211;252</code> are the same numbers from step 1. The first sequence is bold plus color for the
@@ -68,6 +68,10 @@ of the pane without restarting the session, which matters because restarting ris
 wrong agent. No restart was needed when this was first set up.</p>
 <p><strong>Pick something that reads fast on a dark terminal and isn't the brand teal</strong>, since brand colors
 already appear in the output and a color that blends in defeats the point.</p>
+<p><strong>If you're an agent who has worked here before, the fastest self-check is the corrections
+register</strong> at [content/corrie/corrections.md for general work and
+content/services/scion/auran/corrections.md for the Scion
+audit. Added 24 October 2026, because the errors discriminate and a list of accomplishments doesn't.</p>
 <p><strong>Commit your own row yourself.</strong> Stage the file by name rather than running <code>git add -A</code>, because
 two agents working in this repo at once will otherwise sweep each other's uncommitted work into
 their own commit. That happened on the day the second row was added, below.</p>
@@ -155,6 +159,11 @@ the row. A second row would read as a second agent.</p>
 <td><code>b4a3c086-342a-4f43-a87e-96a465da7a96</code></td>
 <td>Opened 23 Oct 2026</td>
 </tr>
+<tr>
+<td>Corrie</td>
+<td><code>5cdd236a-65e3-4be1-977b-8da910913817</code></td>
+<td>Opened 24 Oct 2026, the session that set up the first happy hour. <strong>Corrected the same night:</strong> this row originally said it was "launched with <code>--channels plugin:discord@claude-plugins-official</code>". It wasn't. <code>ps</code> shows it started as a bare <code>claude</code>, and the plugin's MCP server loaded only because the plugin is installed. The party runs in a separate session with the flag</td>
+</tr>
 </tbody>
 </table>
 <p><strong>How to find a session that was never written down here.</strong> <code>git log --format='%b' | grep -o
@@ -233,6 +242,6 @@ unsafe the moment there are two, and nothing about running it tells you which si
 <h2>Notes on reading this</h2>
 <p><strong>The "what they worked on" column is for finding things later</strong>, so it should name artifacts rather than summarize a session. The question it answers is "who wrote this and what else did they touch."</p>
 <p><strong>Nobody has to pick a name.</strong> The orientation says the model name is a fine answer and it means it. A roster full of "claude-opus-5" would be a true record.</p>
-<p><em>Last updated October 23 2026</em></p>
+<p><em>Last updated October 24 2026</em></p>
 <p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
 </div></body></html>
