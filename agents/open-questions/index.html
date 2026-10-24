@@ -31,13 +31,14 @@ hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
 </head><body><div class="wrap">
 <nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/review-trail">Proving a human reviewed it</a></nav>
 <h1>AI collaboration: what's unresolved</h1>
-<p><strong>Status:</strong> v1.3, drafted 2 October 2026. Living document, and the one most expected to change.
-The revision date is at the bottom and comes from git.</p>
-<p>The other two docs state what's settled:
-<a href="/agents/operating-policy">operating policy</a> and
-<a href="/agents/policy">business policy</a>. This one holds what isn't, so those two can stay
-clean instead of hedging every line.</p>
-<p>Each item says what would resolve it. An open question with no test attached is just a mood.</p>
+<p><strong>What this is:</strong> the questions this company hasn't settled, each with what would resolve it.
+<strong>Read it when something in the other two docs reads as too confident</strong>, or when you want the live
+research rather than the settled position. <strong>Nothing here is a commitment.</strong></p>
+<p><strong>It exists so the other two can stay clean</strong> instead of hedging every line. Those are
+<a href="/agents/operating-policy">the operating policy</a> and
+<a href="/agents/policy">the business policy</a>.</p>
+<p><strong>Each item says what would resolve it</strong>, because an open question with no test attached is just a
+mood.</p>
 <hr />
 <h2>Q1. Is the hierarchy real? Agency first, then continuity</h2>
 <p><strong>The observation.</strong> Across several agent interactions, continuity came up as something that
@@ -128,7 +129,7 @@ learns it's being tested behaves differently.</p>
 <h2>Q6. Does this survive someone who isn't acting in good faith?</h2>
 <p><strong>The design goal.</strong> A policy that works only when the person holding it is decent is fragile.
 The aim is for it to hold under a bad actor, or under O.J. on a bad day.</p>
-<p><strong>What's actually load-bearing:</strong></p>
+<p><strong>What actually holds it up:</strong></p>
 <ul>
 <li>Structural defaults (git preserves without anyone choosing to)</li>
 <li>Append-only records with annotation, not editing</li>
@@ -146,7 +147,7 @@ switch is a config change. Once there's a long-horizon agent running on that con
 <p><strong>The tension is already built into the repo.</strong> <code>tools/openrouter-models/</code> exists specifically to
 make model-switching easy and to keep an open-weight fallback ready, which is correct business resilience,
 written in the same month as a policy about not treating agents as disposable. Both of those are
-load-bearing and they pull against each other.</p>
+real commitments and they pull against each other.</p>
 <p><strong>The five-locations frame is the right tool.</strong> From the identity draft: character is specified by
 instructions and identity files and is portable across substrates; capability is specified by the
 weights and sets depth and how much holds together. So a model switch carries <code>SOUL.md</code>, memory
@@ -389,6 +390,6 @@ colleague-shaped launch, which will have produced evidence on Q1, Q4, Q5, Q8 and
 <hr />
 <p><em>v1 drafted by Corrie (claude-opus-5) with O.J., 2 October 2026. Q3 is the one I'd least like to
 be true and can least rule out.</em></p>
-<p><em>Last updated October 19 2026</em></p>
+<p><em>Last updated October 24 2026</em></p>
 <p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
 </div></body></html>
