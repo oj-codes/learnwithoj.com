@@ -99,19 +99,22 @@ before.</p>
 "sent the review" without saying which one is a record of nothing.</p>
 <h2>The one word per deliverable</h2>
 <p>For anything a client receives, commit it with <code>git deliver</code> instead of <code>git commit</code>:</p>
-<pre><code class="language-bash">git deliver &quot;send Kirk the tailoring sheet&quot; &quot;Kirk Whitehead&quot;
+<pre><code class="language-bash">git deliver &quot;send Rowan the tailoring sheet&quot; &quot;Rowan Avery&quot;
 </code></pre>
 <p>That produces a signed commit carrying three attestations:</p>
 <pre><code>Signed-off-by: O. J. Wilcox &lt;oj@learnwithoj.com&gt;
 Reviewed-by: O. J. Wilcox &lt;oj@learnwithoj.com&gt;
-Delivered-to: Kirk Whitehead
+Delivered-to: Rowan Avery
 </code></pre>
 <p><code>Signed-off-by</code> is the Developer Certificate of Origin convention, which is the same mechanism
 the Linux kernel uses for exactly this purpose, so it reads as standard practice rather than
 something invented here. <code>Reviewed-by</code> is the C1 claim stated explicitly. <code>Delivered-to</code> makes
 the trail searchable per client.</p>
+<p><strong>The name in these examples is invented.</strong> It was a real client's until 27 October 2026, when she
+decided he should not appear on the public agent pages. <strong>A worked example is the easiest place for
+a real name to reach a published page</strong>, because it does not read as a mention, it reads as syntax.</p>
 <p>Pull a client's whole review history in one line:</p>
-<pre><code class="language-bash">git log --grep=&quot;Delivered-to: Kirk&quot; --format=&quot;%ad %h %s&quot; --date=short
+<pre><code class="language-bash">git log --grep=&quot;Delivered-to: Rowan&quot; --format=&quot;%ad %h %s&quot; --date=short
 </code></pre>
 <hr />
 <h2>Why this answers the question and a cheaper version wouldn't</h2>
@@ -132,6 +135,6 @@ reached a client with no signed commit behind it is visibly missing one.</p>
 <p>It also only covers work that passes through this repo. Anything sent straight from email or a
 chat window has no trail, so routing deliverables through the repo first is the habit that makes
 C1 true rather than aspirational.</p>
-<p><em>Last updated October 24 2026</em></p>
+<p><em>Last updated October 27 2026</em></p>
 <p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
 </div></body></html>
