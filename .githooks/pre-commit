@@ -1,0 +1,8 @@
+#!/bin/sh
+# Runs the fast checks on every commit, the same ones the Checks workflow runs on a PR,
+# so a PR never fails on something you could have seen first. Lighthouse and external
+# links are not here because they are slow; run tools/check --links --lighthouse by hand.
+#
+# Enable once per clone:   git config core.hooksPath .githooks
+# Skip once, on purpose:   git commit --no-verify
+exec python3 tools/check --staged --voice

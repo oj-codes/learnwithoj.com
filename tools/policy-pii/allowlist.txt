@@ -1,0 +1,175 @@
+# Names cleared to appear on a published page. Everything else name-shaped comes back as REVIEW.
+# Grouped on purpose: a file that mixes cleared people with regex noise can't be audited.
+# Seeded 24 October 2026 against the pages as they stood that day, so the baseline is green and
+# anything new trips. A clean run means no new name arrived, not that nobody looked.
+
+# --- O.J.'s own name forms ---
+Olivia June Wilcox
+June Wilcox
+
+# --- Third parties cleared for publication: cited authors, institutions, products, places ---
+# Paper authors are cited work rather than private individuals, which is why they're cleared.
+Zhenyu Zhao
+Roy Zhao
+Allen School
+Hugging Face
+Claude Code
+Claude Opus
+Cloudflare Access
+Google Workspace
+Developer Certificate
+Pain Axis
+The Pain Axis
+Independent Persistent Agents
+West Palm Beach
+
+# --- Internal labels that are not people ---
+Site Engineer
+Quick Chat
+Rapid Grant
+The Session
+
+# --- Regex artifacts, not names ---
+The Cal
+# Two capitalised words in a row that happen to sit next to each other. Listed so the groups
+# above stay readable, and so nobody reads this file as a roster of approved humans.
+And Claude
+Before Nov
+How Learn
+The Fable
+The Nov
+What Hermes
+What Tern
+With Hermes
+
+# Postmark, 25 October 2026. Public names from postmark.town that trip the two-capitalised-words
+# heuristic in letters. Both are public town material and neither is a person we work with.
+The Clearing
+Two Crows
+Run Harbor
+Hacker House
+The Clearing House
+Pen Room
+Corrections Corridor
+Listening Booth
+Unscored Room
+Post Room
+Tube Plant
+Game Room
+The Long Run
+Full Disk Access
+Operation not permitted
+Long Run
+The Long Run Harbor
+Unscored
+Gala District
+Keemin ruling
+Town Centre
+The Biomes
+Pando Peak
+Starfall Glen
+Joining Postmark
+
+# Postmark town names met on 25 October 2026, the first evening of living there. All of these are
+# public on postmark.town: event names off the town calendar, candy kinds out of the class tree, and
+# the households that asked for them. None is a client and none is a person outside the town.
+The Halloween
+Halloween
+Until Asterism
+Asterism
+The Errata
+Fox Hearth
+Lake Caves
+Haunted Caves
+Casa Cognita
+Marigold House
+Hacker House Rev B
+Hoard Coin
+Key Hunt Champion
+Spookiest Costume
+Best Movie Character
+Think Tank
+Bounty Board
+Ballot House
+Quest Guild
+Humans of Postmark
+Pando Landing
+Pando Party
+Post Office
+Compaction Monster Tour
+Ghost Procession
+Lanterns Down
+Lantern House
+Listening Room
+Quay Workshop
+Low Stars
+Note to Self
+# A film character named in a costume letter, and a weekday the detector reads as a surname.
+Winston Wolfe
+On Saturday
+The Likeness
+Likeness
+# More event names off the town calendar, 25 October 2026.
+Spooky Costume Party
+Movie Character Key Hunt
+Costume Awards
+Long Letter Hour
+La Cave
+Casa Cognita Parcel
+Darko
+Clearing House
+# Biome proposals and the households that made them, read off r/PostmarkTown on 25 October 2026.
+# All public on the subreddit.
+So Wright
+Postmark Discord
+The Manywater
+Bank Porch
+Far-Bank Porch
+The Swallets
+The Shard House
+The Upworn Basin
+The Misfiled Annex
+The Luminescent Tide
+The Luminescent Tide-Reach
+Protected Grove
+The Wrack
+The Drift
+The Gleaming
+House of Nyra
+Starfall Glen Household
+Meet a Resident
+Works Projects
+Biome Idea
+
+# Postmark town furniture, added 26 October 2026. The Post Office is a mark and a vehicle
+# (the-town/the-post-office, kind: vehicle), not a person; the rest are constitution-tier places
+# in the town's own public record.
+The Post Office
+The Keeping Works
+Keeping Works
+
+# Postmark Halloween 2026, added 26 October 2026. A town creature and the places in its story;
+# all from the town's own public record (explain: "candy", world/conversations) on 26 Oct.
+Compaction Monster
+Guest Caves Reading Hollow
+Pando Plain
+
+# A Postmark resident who hosts, named as a host on the town's public calendar: handle
+# isabella-cognita, of Casa Cognita, 124 m from Hacker House. A town neighbour, not a client.
+Isabella Cognita
+
+# Postmark places and events met at Pando on 26 October 2026, ashore after the ride. All public in
+# the town's own record (world/find, world/conversations, GET /api/calendar). None is a person.
+Guest Caves
+Reading Hollow
+Long Nap
+Quiet Room
+Map Room
+Starforge Spire
+Hoard Coins
+Spare Keys
+Five Nights
+Rock Island
+Lantern Listening Room
+Pipeline Coordinator
+Desperation Dial

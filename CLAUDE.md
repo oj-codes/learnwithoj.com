@@ -51,7 +51,7 @@ The site itself is the proof of capability. Every visitor is making a snap judgm
 ## Tech stack
 
 - Plain HTML, CSS, vanilla JS. No framework, no build step, no bundler.
-- Hosted on GitHub Pages. `CNAME` points to `learnwithoj.com`.
+- Hosted on GitHub Pages. `CNAME` points to `learnwithoj.com`. The move to Cloudflare Pages is in progress: `wrangler.toml` and `functions/` are in place and `wrangler pages dev .` previews the site with the Functions runtime, and the DNS cutover happens once O.J. has connected the repo in the Cloudflare dashboard and approved the preview.
 - Deploys via `.github/workflows/ci.yaml` on push to `main`.
 - Stripe Checkout for paid B2C services (links live in `index.html` `#pricing`). Not used on B2B pages.
 - Kit (ConvertKit) for the email-gated AI guide. Form UID: `36c7f50077`.
@@ -64,7 +64,14 @@ index.html              B2C landing page
 showcase.html           B2B referral page (post-event landing)
 resources.html          Free resources page
 functional-emotions.html   The Desperation Dial explainer, first of a series. Spec and reviews live in the internal repo
+tools/check             One command for every local check, the same ones the Checks workflow runs. Run it before pushing
 tools/last-reviewed/    Derives the "Last updated" date on living pages from git, run by the Checks workflow on PRs
+tools/policy-pii/       PII and name gate over the generated agents/ pages. Allowlist only, copied from the internal repo. No blocklist here, this repo is public
+functions/              Cloudflare Pages Functions. /api/health today, the Stripe webhook and signed downloads later
+wrangler.toml           Cloudflare Pages configuration, output directory is the repo root
+AGENTS.md               Code review rules for Codex and CodeRabbit. Points at this file, adds nothing to it
+.githooks/              pre-commit runs tools/check on staged files. Enable with git config core.hooksPath .githooks
+lychee.toml             Link checker config. lighthouserc.json is the Lighthouse CI config. .coderabbit.yaml is CodeRabbit's
 styles.css              All styles (single shared stylesheet)
 assets/                 Hero/about videos, headshot, og-image
 assets/logos/           Company logos rendered below each testimonial card (Microsoft, Amex, etc.)
@@ -196,11 +203,12 @@ These are real and have been validated. Use as needed.
 - Stripe links and the Kit form UID are live production integrations. Don't swap them for placeholders.
 - New `index.html` sections get an `id` and follow the existing `.section` / `.section-alt` alternating background pattern.
 - B2B pages should NOT include Stripe Checkout buttons or the AI guide email capture. Those are B2C surfaces only.
-- Update `CHANGELOG.md` with notable changes. The current latest entry is `2.6.0`.
+- Update `CHANGELOG.md` with notable changes. The current latest entry is `2.7.0`.
 - The 1% for the Planet footer block is a compliance surface. Primary logo only, at least 80px tall, linked, next to the business name, with their precertification wording. The wording is theirs and any rewrite needs O.J.'s sign-off against the live guidelines. Never the Certified Business seal, never the Impact Partner mark, no dollar figure, no "certified". The rules are filed in the internal repo under `content/branding`.
-- Run the oj-voice linter on every page before shipping copy. It lives in the internal repo, not here, and gets invoked from there.
+- Run the oj-voice linter on every page before shipping copy. It lives in the internal repo, not here, and gets invoked from there. `tools/check --voice` does that when the internal repo sits beside this one.
+- Run `tools/check` before pushing, and enable the pre-commit hook once per clone with `git config core.hooksPath .githooks`. CI runs the same checks, so a green local run is a green PR.
 - Agents author their own commits, `git commit --author="Name <name@learnwithoj.com>"`, and O.J. stays the committer. Trailers are `Claude-Session:` and `Model:` only, no harness attribution lines. PRs merge by rebase so per-commit authorship survives on `main`. Policy since 19 October 2026; the eight October squash commits before it were rewritten the same day, see `docs/commit-map-20261019.md` once it lands.
-- For local preview: `python3 -m http.server 8000`. The Kit form won't fully work locally (needs Kit's JS to load against the live form), but it should render.
+- For local preview: `python3 -m http.server 8000`, or `wrangler pages dev .` when a Pages Function is involved. The Kit form won't fully work locally (needs Kit's JS to load against the live form), but it should render.
 
 ## Performance and accessibility expectations
 

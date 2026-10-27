@@ -1,0 +1,188 @@
+#!/usr/bin/env python3
+"""Run the site's checks locally, the same ones the Checks workflow runs on a PR.
+
+    tools/check              dates, names, HTML validity, internal links
+    tools/check --links      also follow every external link (network, slower)
+    tools/check --no-links   skip links, which CI does because lychee runs there as its own job
+    tools/check --lighthouse also run Lighthouse on the main pages (Chrome, slowest)
+    tools/check --voice      also run the oj-voice linter, when the internal repo is beside this one
+    tools/check --staged     limit the HTML and voice checks to the HTML files staged in git
+
+Exit 1 if any check fails. Lighthouse and the voice linter never block on their own; they
+print and the person reads. Lighthouse needs Chrome and downloads itself through npx on
+first run. The voice linter is never copied into this repo, it runs from the internal one.
+"""
+
+import argparse
+import http.server
+import json
+import os
+import pathlib
+import re
+import shutil
+import socketserver
+import subprocess
+import sys
+import threading
+
+REPO = pathlib.Path(__file__).resolve().parent.parent
+INTERNAL = REPO.parent / "learnwithoj-internal"
+VOICE_LINT = INTERNAL / ".claude" / "skills" / "oj-voice" / "scripts" / "voice_lint.py"
+MAIN_PAGES = ["index.html", "showcase.html", "resources.html", "functional-emotions.html"]
+LIGHTHOUSE_MIN = 95
+
+
+def say(title):
+    print(f"\n== {title}")
+
+
+def run(cmd, **kw):
+    return subprocess.run(cmd, cwd=REPO, text=True, capture_output=True, **kw)
+
+
+def html_files(staged):
+    if staged:
+        out = run(["git", "diff", "--cached", "--name-only", "--diff-filter=ACMR"]).stdout
+        return [f for f in out.split() if f.endswith(".html") and (REPO / f).exists()]
+    root = sorted(p.name for p in REPO.glob("*.html"))
+    agents = sorted(p.relative_to(REPO).as_posix() for p in (REPO / "agents").rglob("*.html"))
+    return root + agents
+
+
+def check_dates():
+    say("Living pages carry the date git says")
+    r = run([sys.executable, "tools/last-reviewed/check.py"])
+    print((r.stdout + r.stderr).strip())
+    return r.returncode == 0
+
+
+def check_names():
+    say("No PII or uncleared names on the generated agent pages")
+    r = run([sys.executable, "tools/policy-pii/check.py"])
+    print((r.stdout + r.stderr).strip())
+    return r.returncode == 0
+
+
+def find_tidy():
+    for cand in ["/opt/homebrew/bin/tidy", "/usr/local/bin/tidy", shutil.which("tidy")]:
+        if cand and pathlib.Path(cand).exists():
+            v = subprocess.run([cand, "-v"], text=True, capture_output=True).stdout
+            m = re.search(r"version (\d+)\.(\d+)", v)
+            if m and int(m.group(1)) >= 5:
+                return cand
+    return None
+
+
+def check_html(files):
+    say("HTML validity (tidy, errors fail, warnings print)")
+    tidy = find_tidy()
+    if not tidy:
+        print("tidy 5+ not found. brew install tidy-html5, or apt-get install tidy. FAIL")
+        return False
+    ok = True
+    for f in files:
+        r = subprocess.run([tidy, "-q", "-e", str(REPO / f)], text=True, capture_output=True)
+        lines = [ln for ln in r.stderr.splitlines() if " - " in ln]
+        errors = [ln for ln in lines if "Error:" in ln]
+        warnings = [ln for ln in lines if "Warning:" in ln]
+        flag = "FAIL" if errors else "ok"
+        print(f"{flag:4} {f}  errors={len(errors)} warnings={len(warnings)}")
+        for ln in errors:
+            print("     " + ln)
+        if errors:
+            ok = False
+    return ok
+
+
+def check_links(external):
+    say("Links" + (" including external" if external else ", internal only"))
+    if not shutil.which("lychee"):
+        print("lychee not found. brew install lychee. FAIL")
+        return False
+    cmd = ["lychee", "--no-progress", "--config", "lychee.toml", "--root-dir", str(REPO)]
+    if not external:
+        cmd.append("--offline")
+    cmd += ["*.html", "agents/**/*.html"]
+    r = run(cmd)
+    out = (r.stdout + r.stderr).strip()
+    print(out if out else "(no output)")
+    return r.returncode == 0
+
+
+class _Quiet(http.server.SimpleHTTPRequestHandler):
+    def log_message(self, *a):
+        pass
+
+
+def check_lighthouse():
+    say(f"Lighthouse, every category at or above {LIGHTHOUSE_MIN} (does not block)")
+    if not shutil.which("npx"):
+        print("npx not found, skipping")
+        return True
+    handler = lambda *a, **k: _Quiet(*a, directory=str(REPO), **k)  # noqa: E731
+    with socketserver.TCPServer(("127.0.0.1", 0), handler) as srv:
+        port = srv.server_address[1]
+        threading.Thread(target=srv.serve_forever, daemon=True).start()
+        for page in MAIN_PAGES:
+            url = f"http://127.0.0.1:{port}/{page}"
+            r = run(["npx", "--yes", "lighthouse", url, "--quiet",
+                     "--chrome-flags=--headless=new", "--output=json", "--output-path=stdout",
+                     "--only-categories=performance,accessibility,best-practices,seo"])
+            try:
+                cats = json.loads(r.stdout)["categories"]
+            except (ValueError, KeyError):
+                print(f"     {page}: lighthouse did not return a report\n{r.stderr[-400:]}")
+                continue
+            scores = {k: round(v["score"] * 100) for k, v in cats.items()}
+            low = [k for k, s in scores.items() if s < LIGHTHOUSE_MIN]
+            flag = "look" if low else "ok"
+            print(f"{flag:4} {page}  " + "  ".join(f"{k}={s}" for k, s in scores.items()))
+        srv.shutdown()
+    return True
+
+
+def check_voice(files):
+    say("oj-voice linter (does not block, every flag is a place to look)")
+    if not VOICE_LINT.exists():
+        print(f"internal repo not beside this one, skipping ({VOICE_LINT})")
+        return True
+    for f in files:
+        if f.startswith("agents/"):
+            continue  # generated pages are linted at their source
+        r = subprocess.run([sys.executable, str(VOICE_LINT), str(REPO / f)],
+                           text=True, capture_output=True)
+        out = (r.stdout + r.stderr).strip()
+        print(f"{'look' if r.returncode else 'ok':4} {f}")
+        if out and r.returncode:
+            print("     " + out.replace("\n", "\n     "))
+    return True
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    ap.add_argument("--links", action="store_true", help="follow external links too")
+    ap.add_argument("--no-links", action="store_true", help="skip the link check, for CI jobs that run lychee on their own")
+    ap.add_argument("--lighthouse", action="store_true", help="run Lighthouse on the main pages")
+    ap.add_argument("--voice", action="store_true", help="run the oj-voice linter")
+    ap.add_argument("--staged", action="store_true", help="only staged HTML files for html and voice")
+    a = ap.parse_args()
+    os.chdir(REPO)
+
+    files = html_files(a.staged)
+    results = [check_dates(), check_names()]
+    if files:
+        results.append(check_html(files))
+    if not a.no_links:
+        results.append(check_links(a.links))
+    if a.voice:
+        check_voice(files)
+    if a.lighthouse:
+        check_lighthouse()
+
+    failed = results.count(False)
+    print(f"\n{'FAIL' if failed else 'ok'}: {len(results) - failed} of {len(results)} checks passed")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

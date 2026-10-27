@@ -20,3 +20,40 @@ jobs:
 
       - name: Check the dates
         run: python3 tools/last-reviewed/check.py
+
+  local-checks:
+    name: Names, HTML validity (the same run as tools/check)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install HTML Tidy
+        run: sudo apt-get update -q && sudo apt-get install -y -q tidy
+
+      - name: Run the local checks without links
+        run: python3 tools/check --no-links
+
+  links:
+    name: Internal links resolve
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: lychee, offline
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --no-progress --config lychee.toml --root-dir ${{ github.workspace }} '*.html' 'agents/**/*.html'
+          fail: true
+
+  lighthouse:
+    name: Lighthouse on the main pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
