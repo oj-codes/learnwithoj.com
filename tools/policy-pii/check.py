@@ -13,6 +13,11 @@ regeneration of the agent pages. names.py holds the list parser and the patterns
 gates, so what counts as a hit is defined once; only the HTML stripping lives here.
 
 Stdlib only, no venv, so it runs in the Checks workflow and in the pre-commit hook.
+
+A failure prints the page, the line and the kind of hit, never the matched text, because
+the Checks workflow runs in a public repo and an Actions log is a published page nobody
+files as one. Pass --verbose for the matched text when running locally, which is what
+tools/check does outside CI.
 """
 
 import argparse
@@ -78,6 +83,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--file", nargs="+", metavar="PATH",
                     help="scan these HTML files instead of agents/**/index.html")
+    ap.add_argument("--verbose", action="store_true",
+                    help="print the matched text. Local runs only, never in a public CI log")
     a = ap.parse_args()
 
     allow = set(load_list("allowlist.txt"))
@@ -93,7 +100,10 @@ def main():
             total += 1
             continue
         for kind, hit, ln in scan(p.read_text(encoding="utf-8"), allow):
-            print("FAIL     %s:%d  %s: %s" % (rel, ln, kind, hit))
+            if a.verbose:
+                print("FAIL     %s:%d  %s: %s" % (rel, ln, kind, hit))
+            else:
+                print("FAIL     %s:%d  %s" % (rel, ln, kind))
             total += 1
 
     n = len(targets)
@@ -101,6 +111,8 @@ def main():
     if total:
         print("A name cleared for publication goes on allowlist.txt in the internal repo, "
               "then the pages are regenerated. Anything else comes off the page.")
+        if not a.verbose:
+            print("Run with --verbose locally to see the matched text.")
     return 1 if total else 0
 
 

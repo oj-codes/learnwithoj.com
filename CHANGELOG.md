@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is inspired by [Keep a Changelog](https://keepachangelog.com), and this project adheres to semantic versioning where possible.
 
 
+## [2.8.1] - 2026-10-27
+### Changed
+- The PII and name gate prints the page, line and kind of hit on failure and keeps the matched text behind `--verbose`, because its CI log is public. `tools/check` passes `--verbose` outside CI
+
 ## [2.8.0] - 2026-10-27
 ### Added
 - Mike Forrest's testimonial (Founder, ALMA my friend) on the home page carousel after Kirk's and on the showcase Voices carousel after Mohammad's, with the ALMA mark in `assets/logos/`. It is the fractional CTO proof point
