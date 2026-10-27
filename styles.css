@@ -896,6 +896,14 @@ p {
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
 }
 
+/* ALMA's mark is a 3D mascot built from the letters, nearly square. At 44px
+   the letters are a smudge, so it gets the room the other square marks get
+   plus a little, because the character takes the top half of the image. */
+.testimonial-company-logo[src*="alma-my-friend"] {
+    max-height: 64px;
+    max-width: 64px;
+}
+
 /* PBSC ships an official horizontal lockup (shield + wordmark). At 44px tall
    the wordmark text is too small to read; bumping the height brings it
    into legible range without blowing out the layout. */

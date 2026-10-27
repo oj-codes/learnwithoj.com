@@ -182,6 +182,7 @@ These are real and have been validated. Use as needed.
 - Kirk Whitehead (Cloud Engineer, Blackbaud): paying mentoring client. Featured on homepage. The customer-interview gold quote not yet on site is "She's not some consultant, she's your team member."
 - Alexander Maher (Senior Director, DataSnipper): hired her twice across two companies. "One of the most collaborative and positive team members I've worked with." Notable: Maher was one of the senior bosses in the room during the DST production-down incident (see story below). His later rehire was a direct downstream effect of seeing her operate in that crisis. Pair the story and the quote together when possible, the connection is real and worth surfacing.
 - Sobia Soomro (Frontend Web Developer, creator of Lumina): testimonial about a technical writing collaboration.
+- Mike Forrest (Founder, ALMA my friend): hired her as fractional CTO for a companion app for seniors and veterans. On the home page and the showcase. It speaks to planning, documentation and being good to work with, not to a paid outcome, so use it as proof of how she works.
 
 **Stories (use selectively).**
 - The DST production-down story: a viral LinkedIn post (119K+ impressions, 64K+ members reached, hundreds of inbound DMs). The CEO's highest-visibility system was down in production. She walked into the room, started asking questions specific-to-broad, and the room found the daylight saving time bug together. Alex Maher was one of the bosses in that room. The lesson: the engineer who gets called into the crisis isn't always the one with the deepest technical knowledge, it's the one people trust to ask the right questions and keep the room moving. Use for engineering judgment under pressure, and as the natural setup for the Maher quote.
@@ -203,7 +204,7 @@ These are real and have been validated. Use as needed.
 - Stripe links and the Kit form UID are live production integrations. Don't swap them for placeholders.
 - New `index.html` sections get an `id` and follow the existing `.section` / `.section-alt` alternating background pattern.
 - B2B pages should NOT include Stripe Checkout buttons or the AI guide email capture. Those are B2C surfaces only.
-- Update `CHANGELOG.md` with notable changes. The current latest entry is `2.7.0`.
+- Update `CHANGELOG.md` with notable changes. The current latest entry is `2.8.0`.
 - The 1% for the Planet footer block is a compliance surface. Primary logo only, at least 80px tall, linked, next to the business name, with their precertification wording. The wording is theirs and any rewrite needs O.J.'s sign-off against the live guidelines. Never the Certified Business seal, never the Impact Partner mark, no dollar figure, no "certified". The rules are filed in the internal repo under `content/branding`.
 - Run the oj-voice linter on every page before shipping copy. It lives in the internal repo, not here, and gets invoked from there. `tools/check --voice` does that when the internal repo sits beside this one.
 - Run `tools/check` before pushing, and enable the pre-commit hook once per clone with `git config core.hooksPath .githooks`. CI runs the same checks, so a green local run is a green PR.
