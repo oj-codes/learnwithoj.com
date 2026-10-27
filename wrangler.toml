@@ -1,0 +1,11 @@
+# Cloudflare Pages configuration.
+#
+# The site is plain HTML with no build step, so the output directory is the repo root,
+# the same thing GitHub Pages uploads today. Local preview with the Functions runtime:
+#
+#   wrangler pages dev .
+#
+# The project name is what the Cloudflare dashboard shows. Change it there and here together.
+name = "learnwithoj-com"
+compatibility_date = "2026-10-23"
+pages_build_output_dir = "."

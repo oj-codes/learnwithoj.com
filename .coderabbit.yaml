@@ -1,0 +1,17 @@
+# CodeRabbit, on trial for the redesign PRs alongside Codex. It reads CLAUDE.md and
+# AGENTS.md on its own, so the rules live there and not here.
+language: "en-US"
+reviews:
+  profile: "quiet"
+  high_level_summary: true
+  poem: false
+  review_status: true
+  auto_review:
+    enabled: true
+    drafts: false
+  path_filters:
+    # Generated from the internal repo and reviewed there before publishing.
+    - "!agents/**"
+    # Binary and media.
+    - "!assets/**"
+    - "!testimonials/**"

@@ -1,0 +1,15 @@
+# Link checker configuration, read by tools/check and by the Checks workflow.
+# Internal links run offline on every PR. External links run with --links locally
+# and on a schedule in CI, because other people's servers are not this repo's bug.
+
+timeout = 15
+max_retries = 1
+max_concurrency = 8
+
+exclude = [
+  # The hero intro slot is hidden until the HeyGen recording lands. Remove when it does.
+  "assets/oj-intro\\.mp4",
+  # Bot-walled or rate-limited. Checked by hand when they change.
+  "buy\\.stripe\\.com",
+  "linkedin\\.com",
+]

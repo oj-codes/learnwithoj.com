@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is inspired by [Keep a Changelog](https://keepachangelog.com), and this project adheres to semantic versioning where possible.
 
 
+## [2.7.0] - 2026-10-27
+### Added
+- `tools/check`, one local command that runs the same checks as the `Checks` workflow: the living-page dates, the PII and name gate on the generated agent pages, HTML validity with Tidy, and internal links with lychee. `--links` follows external links, `--lighthouse` runs Lighthouse on the four main pages, `--voice` runs the oj-voice linter from the internal repo when it sits beside this one
+- `tools/policy-pii/`, the site-side twin of the internal repo's PII check. It scans `agents/**/index.html` and fails on any email, phone, money, id or address pattern and on any name-shaped text not on `allowlist.txt`. The allowlist is copied from the internal repo on each regeneration. No blocklist lives here on purpose, because this repo is public
+- `.githooks/pre-commit`, which runs `tools/check --staged --voice` on every commit. Enable with `git config core.hooksPath .githooks`
+- `Checks` workflow jobs for names and HTML validity, internal links (lychee), and Lighthouse (accessibility, best practices and SEO at 95 or above fail the PR, performance warns)
+- `wrangler.toml` and `functions/api/health.js`, the Cloudflare Pages configuration and the first Pages Function, so `wrangler pages dev .` previews the site with the Functions runtime ahead of the hosting move
+- `AGENTS.md` with a Code Review Rules section for Codex and CodeRabbit, and `.coderabbit.yaml` with the quiet profile and the generated `agents/` directory filtered out
+- `lychee.toml` and `lighthouserc.json`
+
+### Fixed
+- Unescaped `&` in the Google Fonts links on all four hand-written pages
+
 ## [2.6.0] - 2026-10-23
 ### Added
 - `/functional-emotions`, "The Desperation Dial". The first entry in a show-don't-tell explainer series for a non-technical audience, built from Auran's design doc and three reviews in the internal repo (`content/writing/explainers/functional-emotions/`). Static v1, every number and quote carries a source tag that links to the verbatim sentence in Anthropic's emotion-concepts paper, the measured blackmail rates (0%, 22%, 66%, 72%) sit on the dial, and the page links the AI policy as the worked example of its fourth lever
