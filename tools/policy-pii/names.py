@@ -53,12 +53,32 @@ NAME = re.compile(r"\b[A-Z][a-z]{1,}(?:[ ]+[A-Z][a-z]{1,})+\b")
 
 
 def load_list(name: str) -> list[str]:
-    """One entry per line. Blank lines and # comments out."""
+    """One entry per line. Blank lines out, and everything from a # onward out.
+
+    The inline comment is cut, not just a whole-line one. That was check.py's behaviour
+    for its whole life and this file's was to keep it, which did not matter while the two
+    never met. It matters now that both gates import this one loader, because keeping it
+    is silently destructive rather than merely different:
+
+      blocklist line "Mark Lathem  # client, no consent"
+        -> terms  ['Mark Lathem  # client, no consent', 'consent', 'client,', 'Lathem',
+                   'Mark', 'no']
+        -> "Mark Lathem replied" becomes "[client name] [client name] replied", and every
+           ordinary "no" and "consent" on a published page is redacted too.
+
+    So the comment's own words became redaction terms and leaked into live prose, while the
+    full name stopped matching as one term. Cutting at the # removes the whole class.
+    Verified 27 October 2026 by running exactly that line through redaction_pattern().
+    """
     p = HERE / name
     if not p.exists():
         return []
-    return [ln.strip() for ln in p.read_text(encoding="utf-8").splitlines()
-            if ln.strip() and not ln.lstrip().startswith("#")]
+    out = []
+    for line in p.read_text(encoding="utf-8").splitlines():
+        line = line.split("#")[0].strip()
+        if line:
+            out.append(line)
+    return out
 
 
 def redaction_terms() -> list[str]:
