@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is inspired by [Keep a Changelog](https://keepachangelog.com), and this project adheres to semantic versioning where possible.
 
 
+## [2.8.0] - 2026-10-27
+### Added
+- Mike Forrest's testimonial (Founder, ALMA my friend) on the home page carousel after Kirk's and on the showcase Voices carousel after Mohammad's, with the ALMA mark in `assets/logos/`. It is the fractional CTO proof point
+
 ## [2.7.0] - 2026-10-27
 ### Added
 - `tools/check`, one local command that runs the same checks as the `Checks` workflow: the living-page dates, the PII and name gate on the generated agent pages, HTML validity with Tidy, and internal links with lychee. `--links` follows external links, `--lighthouse` runs Lighthouse on the four main pages, `--voice` runs the oj-voice linter from the internal repo when it sits beside this one

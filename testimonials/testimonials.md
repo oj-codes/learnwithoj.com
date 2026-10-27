@@ -85,3 +85,14 @@ Company: Microsoft
 Relationship: Worked with O.J. at Dycom Industries, Inc
 Image: sylke-lopez-avatar.jpeg
 Quote: "Working with Olivia Wilcox on the Women’s Code and Coffee Python workshops was a standout experience. Back in 2018, Olivia was already leading hands-on sessions on machine learning chatbots, years before AI became mainstream. She explains concepts in multiple ways, creating a supportive and confidence-building learning environment. Olivia is endlessly patient, welcoming, and generous with her time, and her volunteer work made a real impact on everyone who showed up to learn."
+
+---
+
+Name: Mike Forrest
+Title: Founder
+Company: ALMA my friend
+Relationship: Hired O.J. as fractional CTO for ALMA, 2026
+Image: use default avatar
+Quote: "Olivia "OJ" Wilcox took my idea for ALMA my friend, an app to help seniors and veterans get through the challenges of aging, and with detailed and inciteful knowledge, created a plan then initiated development of my thoughts. She is easy and wonderful to work with, creative, and provides a product with detailed, understanding documentation. I highly recommend her."
+Note: received by email 17 October 2026. "inciteful" is his typo for "insightful" and the site reads "insightful", O.J.'s call 19 October 2026.
+LinkedIn: not on file
