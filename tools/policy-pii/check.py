@@ -8,9 +8,9 @@ list of people who have not consented to being named is the last thing to commit
 
 So the gate here is the allowlist. Anything name-shaped that is not on allowlist.txt
 fails, and so does any hard pattern (email, phone, money, government id, street
-address). The allowlist is copied verbatim from the internal repo on each regeneration
-of the agent pages and names.py parses it the same way over there, so a name cleared
-internally is cleared here on the next copy and nothing else gets through.
+address). The allowlist and names.py are copied verbatim from the internal repo on each
+regeneration of the agent pages. names.py holds the list parser and the patterns for both
+gates, so what counts as a hit is defined once; only the HTML stripping lives here.
 
 Stdlib only, no venv, so it runs in the Checks workflow and in the pre-commit hook.
 """
@@ -24,22 +24,10 @@ import sys
 HERE = pathlib.Path(__file__).resolve().parent
 REPO = HERE.parent.parent
 sys.path.insert(0, str(HERE))
-from names import load_list  # noqa: E402
+from names import HARD, NAME, OWN_DOMAIN, load_list  # noqa: E402
 
-OWN_DOMAIN = "learnwithoj.com"
-
-HARD = [
-    ("email", re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")),
-    ("phone", re.compile(r"(?<!\d)(?:\+1[-. ]?)?\(?\d{3}\)?[-. ]\d{3}[-. ]\d{4}(?!\d)")),
-    ("money", re.compile(r"\$\s?\d[\d,]{2,}(?:\.\d{2})?\b")),
-    ("ssn", re.compile(r"(?<!\d)\d{3}-\d{2}-\d{4}(?!\d)")),
-    ("street address", re.compile(r"\b\d{1,5}\s+[A-Z][a-z]+\s+(?:St|Street|Ave|Avenue|Rd|Road|Blvd|Dr|Drive|Ln|Lane|Ct|Court|Way)\b")),
-]
-
-# Two or more capitalised words in a row, which is what a person's name looks like.
-# Single spaces only, never \s, or a heading runs into the first word of the next
-# paragraph and every section title comes back as a person.
-NAME = re.compile(r"\b[A-Z][a-z]{1,}(?:[ ]+[A-Z][a-z]{1,})+\b")
+# OWN_DOMAIN, HARD and NAME come from names.py, the one place both gates define what
+# counts as a hit. Only the stripping below is HTML-specific.
 
 # HTML furniture that would otherwise generate noise. Blocks are blanked with their
 # newlines kept, so a reported line number is the line in the file.

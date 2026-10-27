@@ -30,7 +30,6 @@ Rapid Grant
 The Session
 
 # --- Regex artifacts, not names ---
-The Cal
 # Two capitalised words in a row that happen to sit next to each other. Listed so the groups
 # above stay readable, and so nobody reads this file as a roster of approved humans.
 And Claude
@@ -173,3 +172,11 @@ Rock Island
 Lantern Listening Room
 Pipeline Coordinator
 Desperation Dial
+
+# Regex artifacts, not names. 27 October 2026, from Tern porting the gate.
+# "The Cal" is agent-roster.md line 82 reading "The [Cal.com vs Calendly comparison](...)".
+# The internal gate cannot see it: STRIP blanks the link target and leaves the brackets, so a
+# "[" sits between "The" and "Cal" and NAME needs literal spaces. Stripping HTML tags on the
+# site side removes the bracket and the match appears. Checked across all 8 published pages,
+# 27 October: this is the only string the site gate sees that the internal gate does not.
+The Cal

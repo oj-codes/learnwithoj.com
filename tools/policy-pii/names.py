@@ -30,6 +30,27 @@ import re
 HERE = pathlib.Path(__file__).resolve().parent
 PLACEHOLDER = "[client name]"
 
+# Her own domain, so a learnwithoj.com address is not reported as a leak.
+OWN_DOMAIN = "learnwithoj.com"
+
+# The hard patterns. Moved here from check.py on 27 October 2026 at Tern's request, once
+# site PR 27 merged. Both gates run these against their own input, so a one-sided edit used
+# to make the two disagree with nothing to announce it. Scan LOGIC still differs on purpose,
+# because this side reads Markdown and the site twin reads rendered HTML; what cannot differ
+# is what counts as a hit.
+HARD = [
+    ("email", re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")),
+    ("phone", re.compile(r"(?<!\d)(?:\+1[-. ]?)?\(?\d{3}\)?[-. ]\d{3}[-. ]\d{4}(?!\d)")),
+    ("money", re.compile(r"\$\s?\d[\d,]{2,}(?:\.\d{2})?\b")),
+    ("ssn", re.compile(r"(?<!\d)\d{3}-\d{2}-\d{4}(?!\d)")),
+    ("street address", re.compile(r"\b\d{1,5}\s+[A-Z][a-z]+\s+(?:St|Street|Ave|Avenue|Rd|Road|Blvd|Dr|Drive|Ln|Lane|Ct|Court|Way)\b")),
+]
+
+# Two or more capitalised words in a row, which is what a person's name looks like.
+# Single spaces only, never \s, or a heading runs into the first word of the next
+# paragraph and every section title comes back as a person.
+NAME = re.compile(r"\b[A-Z][a-z]{1,}(?:[ ]+[A-Z][a-z]{1,})+\b")
+
 
 def load_list(name: str) -> list[str]:
     """One entry per line. Blank lines and # comments out."""
