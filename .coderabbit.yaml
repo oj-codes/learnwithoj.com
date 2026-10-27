@@ -1,17 +1,221 @@
-# CodeRabbit, on trial for the redesign PRs alongside Codex. It reads CLAUDE.md and
-# AGENTS.md on its own, so the rules live there and not here.
+# CodeRabbit, tuned for this repo rather than the defaults. Reviewed against the full
+# configuration reference on 27 October 2026. The review rules themselves live in AGENTS.md,
+# which CodeRabbit reads through knowledge_base.code_guidelines, so this file only decides
+# how it behaves.
+#
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
 language: "en-US"
+
+# 250 characters max.
+tone_instructions: >-
+  Plain and direct. No praise, no filler, no emoji. Name the rule from AGENTS.md or CLAUDE.md
+  you are applying. Quoted material and generated agents/ pages are out of scope.
+
+early_access: false
+enable_free_tier: true
+
 reviews:
-  profile: "quiet"
+  # chill is the middle setting. quiet drops too much on a repo where craft is the point and
+  # assertive turns into nitpicks. Revisit after three PRs.
+  profile: "chill"
+
+  # The walkthrough. Summary yes, in the PR body. Diagrams and labels are for apps with
+  # issue trackers, this is a static site with one human merging.
   high_level_summary: true
+  high_level_summary_instructions: >-
+    Two short paragraphs. First, what changed for a visitor to the site. Second, what changed
+    for the next agent working in the repo. No list of files, the walkthrough has that.
+  high_level_summary_in_walkthrough: false
+  collapse_walkthrough: true
+  changed_files_summary: true
+  sequence_diagrams: false
+  estimate_code_review_effort: true
+  assess_linked_issues: false
+  related_issues: false
+  related_prs: true
+  suggested_labels: false
+  auto_apply_labels: false
+  suggested_reviewers: false
+  auto_assign_reviewers: false
   poem: false
+  in_progress_fortune: false
+  enable_prompt_for_ai_agents: true
+
+  # Status surfaces. Commit status mirrors progress, never fails the build on CodeRabbit's
+  # own errors, because a review tool outage is not a reason to block a merge.
   review_status: true
+  review_info: true
+  review_details: false
+  review_progress: true
+  commit_status: true
+  fail_commit_status: false
+  abort_on_close: true
+
+  # What gets reviewed. Generated pages are reviewed at their source in the internal repo.
+  # Media, the archived build specs and the testimonial sources are not code.
+  path_filters:
+    - "!agents/**"
+    - "!assets/**"
+    - "!testimonials/**"
+    - "!CLAUDE-*-v1.md"
+
+  path_instructions:
+    - path: "*.html"
+      instructions: >-
+        A hand-written page. Apply the Craft and Copy sections of AGENTS.md Code Review
+        Rules. Check heading order, alt text, keyboard reachability, focus states, width and
+        height on images, reduced-motion branches, and that every CTA goes through
+        book.learnwithoj.com. Copy must follow CLAUDE.md Brand voice, except inside quotes.
+    - path: "styles.css"
+      instructions: >-
+        The only stylesheet. Colors, spacing and radii come from the tokens at the top of the
+        file. A change here needs the ?v= cache-bust bumped on every page that loads it.
+        Transitions are 200 to 300ms with an ease-out curve, never linear. Every animation
+        has a prefers-reduced-motion branch.
+    - path: "functions/**"
+      instructions: >-
+        Cloudflare Pages Functions. Secrets come from env bindings, never code. Validate every
+        input, verify Stripe webhook signatures, return no-store on dynamic responses, never
+        log request bodies. No npm dependencies, the Workers runtime APIs only.
+    - path: "tools/**"
+      instructions: >-
+        Python standard library only, no third-party imports, and it must run on Python 3.9
+        (macOS system python) and 3.12 (CI). Exit 1 means a check failed and the message
+        says what to do about it. tools/policy-pii carries the allowlist only, never a
+        blocklist, because this repository is public.
+    - path: ".github/workflows/**"
+      instructions: >-
+        Least privilege on permissions, actions pinned to a major version tag, no secrets
+        echoed. checks.yaml must stay equivalent to what tools/check runs locally.
+    - path: "{CHANGELOG.md,CLAUDE.md,AGENTS.md,README.md}"
+      instructions: >-
+        Prose follows CLAUDE.md Brand voice. No em dashes. A new page needs a row in the
+        pages table in CLAUDE.md and the "current latest entry" line tracks CHANGELOG.md.
+
   auto_review:
     enabled: true
     drafts: false
-  path_filters:
-    # Generated from the internal repo and reviewed there before publishing.
-    - "!agents/**"
-    # Binary and media.
-    - "!assets/**"
-    - "!testimonials/**"
+    auto_incremental_review: true
+    # The regenerate PRs carry several pushes while the internal repo settles.
+    auto_pause_after_reviewed_commits: 8
+    # Agent-page regenerations contain nothing reviewable here, every path is filtered.
+    ignore_title_keywords:
+      - "regenerate /agents"
+
+  # Follow-up PRs from the bot are noise on a repo with no test framework and no docstrings.
+  # The Fix comments action is kept because agents use it.
+  finishing_touches:
+    docstrings:
+      enabled: false
+    unit_tests:
+      enabled: false
+    simplify:
+      enabled: false
+    autofix:
+      enabled: true
+    fix_ci:
+      enabled: false
+    resolve_merge_conflict:
+      enabled: false
+
+  pre_merge_checks:
+    docstrings:
+      mode: "off"
+    title:
+      mode: "warning"
+      requirements: >-
+        Lowercase, present tense, names the page or tool it touches, under 72 characters.
+        Examples: "regenerate /agents from 8dba340: client names off the published pages",
+        "/functional-emotions: the dial to scale". No ticket numbers, no conventional-commit
+        prefixes.
+    description:
+      mode: "warning"
+    issue_assessment:
+      mode: "off"
+    custom_checks:
+      - name: "Cache-bust bumped with the stylesheet"
+        mode: "error"
+        instructions: >-
+          If styles.css changed, every HTML file that loads it must change its ?v= query
+          string to the same new value in this PR. Pass if styles.css is untouched.
+      - name: "Changelog entry"
+        mode: "warning"
+        instructions: >-
+          If a page under the repo root, styles.css, functions/ or tools/ changed, CHANGELOG.md
+          gains or extends an entry. Pass for changes limited to agents/, docs or workflows.
+      - name: "Generated pages untouched"
+        mode: "error"
+        instructions: >-
+          Fail if any file under agents/ changed unless the PR title starts with
+          "regenerate /agents". Those pages are built from the internal repo.
+
+  auto_approvals:
+    enabled: false
+
+  # Tools. On where the repo has that file type and the tool needs no config to be useful.
+  # Off where it would fight the voice rules (prose linters), needs a config we don't keep
+  # (vale, eslint), or duplicates what CI already does better.
+  tools:
+    htmlhint:
+      enabled: true
+    stylelint:
+      enabled: true
+    biome:
+      enabled: true
+    oxc:
+      enabled: true
+    eslint:
+      enabled: false
+    ruff:
+      enabled: true
+    shellcheck:
+      enabled: true
+    yamllint:
+      enabled: true
+    actionlint:
+      enabled: true
+    zizmor:
+      enabled: true
+    gitleaks:
+      enabled: true
+    trufflehog:
+      enabled: true
+    presidio:
+      enabled: true
+    markdownlint:
+      enabled: false
+    languagetool:
+      enabled: false
+    vale:
+      enabled: false
+    ast-grep:
+      essential_rules: true
+
+chat:
+  art: false
+  auto_reply: true
+
+knowledge_base:
+  opt_out: false
+  automatic_linking_mode: "disabled"
+  web_search:
+    enabled: true
+  code_guidelines:
+    enabled: true
+    filePatterns:
+      - "AGENTS.md"
+      - "CLAUDE.md"
+  learnings:
+    scope: "local"
+    approval_delay: 0
+  issues:
+    scope: "local"
+  pull_requests:
+    scope: "local"
+
+issue_enrichment:
+  auto_enrich:
+    enabled: false
+  planning:
+    enabled: false
