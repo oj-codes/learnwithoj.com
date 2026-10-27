@@ -58,7 +58,9 @@ def check_dates():
 
 def check_names():
     say("No PII or uncleared names on the generated agent pages")
-    r = run([sys.executable, "tools/policy-pii/check.py"])
+    # The matched text is for a local terminal. In CI the log is public.
+    args = [] if os.environ.get("CI") else ["--verbose"]
+    r = run([sys.executable, "tools/policy-pii/check.py", *args])
     print((r.stdout + r.stderr).strip())
     return r.returncode == 0
 
