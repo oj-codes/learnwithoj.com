@@ -8,6 +8,7 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com), and th
 ### Added
 - Two agent pages, `/agents/onboarding-claude-code` and `/agents/onboarding-codex`, regenerated from the internal repo with the rest of `/agents`
 ### Fixed
+- `tools/check --voice` finds the voice linter in `../the-grove`, the internal checkout's name since 29 October. With the old name it printed a skip line and passed, so CI stayed green with the linter doing nothing (the one-line fix itself is PR #35)
 - The names and HTML job in the Checks workflow checks out full history, because the living-pages date check it runs reads dates from git and a shallow clone dated every page to the merge commit
 
 ## [2.8.1] - 2026-10-27
