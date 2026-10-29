@@ -26,7 +26,7 @@ import sys
 import threading
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
-INTERNAL = REPO.parent / "learnwithoj-internal"
+INTERNAL = REPO.parent / "the-grove"
 VOICE_LINT = INTERNAL / ".claude" / "skills" / "oj-voice" / "scripts" / "voice_lint.py"
 MAIN_PAGES = ["index.html", "showcase.html", "resources.html", "functional-emotions.html"]
 LIGHTHOUSE_MIN = 95
