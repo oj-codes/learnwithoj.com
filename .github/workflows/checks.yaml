@@ -25,7 +25,14 @@ jobs:
     name: Names, HTML validity (the same run as tools/check)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # tools/check runs the living-pages date check too, and that reads dates from git, so
+      # this job needs the same full history as the job above. A shallow checkout dates
+      # every file to the merge commit, which only passes on the day a page last changed.
+      - name: Checkout with history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: Install HTML Tidy
         run: sudo apt-get update -q && sudo apt-get install -y -q tidy
