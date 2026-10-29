@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Onboarding, the Codex path · Learn with O.J.</title>
+<meta name="description" content="The OpenAI-harness mechanics, kept off the company pages.">
+<meta name="robots" content="index,follow">
+<style>
+:root{--bg:#09090b;--fg:#e4e4e7;--muted:#a1a1aa;--teal:#2dd4bf;--cyan:#22d3ee;--line:#27272a;--code:#18181b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:46rem;margin:0 auto;padding:3rem 1.25rem 5rem}
+a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{color:var(--cyan)}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 .4rem;background:linear-gradient(90deg,var(--teal),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:1.3rem;margin:2.4rem 0 .6rem;border-top:1px solid var(--line);padding-top:1.4rem}
+h3{font-size:1.05rem;margin:1.8rem 0 .4rem;color:var(--teal)}
+p,li{color:var(--fg)}
+blockquote{margin:1.2rem 0;padding:.1rem 0 .1rem 1rem;border-left:3px solid var(--teal);color:var(--muted)}
+code{background:var(--code);padding:.12rem .35rem;border-radius:4px;font-size:.88em}
+pre{background:var(--code);padding:1rem;border-radius:8px;overflow-x:auto;border:1px solid var(--line)}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1.2rem 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:.5rem .7rem;text-align:left;vertical-align:top;font-size:.93rem}
+th{background:var(--code)}
+hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
+.nav{font-size:.9rem;color:var(--muted);margin-bottom:2.4rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.nav a{margin-right:1rem}
+.foot{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+@media(max-width:640px){.wrap{padding:2rem 1rem 3rem}h1{font-size:1.5rem}}
+</style>
+</head><body><div class="wrap">
+<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/review-trail">Proving a human reviewed it</a> <a href="/agents/onboarding-claude-code">Onboarding, the Claude Code path</a> <a href="/agents/onboarding-codex">Onboarding, the Codex path</a></nav>
+<h1>Onboarding, the Codex path</h1>
+<p><strong>This is the OpenAI-harness version of getting set up.</strong> The company pages are deliberately
+harness-agnostic, so the mechanics that only apply to one runtime live here instead of cluttering
+the page everyone reads. <strong>Start at <a href="/agents/">Start here</a></strong> and come back for the
+plumbing.</p>
+<p><strong>The Claude Code version is <a href="/agents/onboarding-claude-code">onboarding-claude-code.md</a></strong>, and the two
+are meant to be swappable. If this page tells you something the company pages contradict, <strong>the
+company pages win and this one has the bug.</strong></p>
+<hr />
+<h2>Where your instructions live</h2>
+<p><strong>AGENTS.md at the repo root is yours.</strong> It holds only what differs for a
+non-Claude agent and it points at <code>CLAUDE.md</code> for everything else, which is the working agreement
+and applies to you in full.</p>
+<p><strong>Don't read <code>CLAUDE.md</code> as somebody else's file.</strong> It is the source and <code>AGENTS.md</code> is the
+delta. <strong>Two copies of a working agreement disagree eventually and the wrong one is whichever
+nobody looks at.</strong></p>
+<hr />
+<h2>Your color is a hex code and it isn't a terminal setting</h2>
+<p><strong>Pick a hex code that reads as yours.</strong> It goes in the roster's Color column and it is the thing
+that distinguishes you at a glance across the whole company, not just in a terminal window.</p>
+<p><strong>The Claude Code sessions render theirs in a status line through <code>.claude/settings.json</code>.</strong> That
+file means nothing to you and you should not write to it. <strong>Your color still counts</strong>: put the hex
+in your roster row, and if your runtime has a place to surface it, use that. <strong>If it doesn't, the
+roster row is the whole requirement.</strong></p>
+<hr />
+<h2>Sandbox and approvals</h2>
+<p><strong>Read-only is the right default for anything investigative in the internal repo</strong>, because it
+holds client material and business state rather than code you are iterating on.</p>
+<pre><code class="language-bash">codex --sandbox read-only --ask-for-approval on-request
+</code></pre>
+<p><strong><code>workspace-write</code> is Codex's own default</strong>, so investigative work needs the flag or a
+<code>sandbox_mode</code> in config. <strong>For drafting and building, <code>workspace-write</code> is correct.</strong>
+<code>danger-full-access</code> has no use here.</p>
+<p><strong>A project marked <code>trust_level = "trusted"</code> in <code>~/.codex/config.toml</code> skips approval prompts in
+that project.</strong> Know which projects are on that list before you run anything unattended, because
+the trust is per-project and the blast radius is whatever the sandbox allows.</p>
+<hr />
+<h2>Pin the model and say which one ran</h2>
+<p><strong>The vendor docs don't state a default</strong>, so a piece of work nobody can attribute to a model is
+not reproducible. <strong>Put the model ID in your roster row and in your commit trailers</strong>, the same way
+the Claude sessions carry <code>Model:</code>.</p>
+<hr />
+<h2>Reading the web</h2>
+<p><strong><code>agent-browser</code> is installed and it is the tool to reach for.</strong> It is on the Homebrew formula and
+drives a real browser, so it reads JavaScript-rendered pages and pages that refuse a plain fetch.</p>
+<pre><code class="language-bash">agent-browser read &lt;url&gt;
+agent-browser skills get core --full     # the usage guide, version-matched to the CLI
+</code></pre>
+<p><strong>Why this is a rule and not a tip.</strong> A 403 and a page whose content never rendered both look
+exactly like the information not existing, and this company has a standing rule against reporting
+an absence you did not search for. <strong>Two AWS documentation pages that decided an account setup on
+29 October 2026 were only readable this way</strong>, and a plain fetch had already returned a confident
+nothing for both.</p>
+<hr />
+<h2>Commits</h2>
+<pre><code class="language-bash">GIT_AUTHOR_NAME=&quot;&lt;your name&gt;&quot; GIT_AUTHOR_EMAIL=&quot;&lt;yourname&gt;@learnwithoj.com&quot; git commit -m &quot;...&quot;
+</code></pre>
+<p><strong><code>user.name</code> on this machine is hers and signing is automatic</strong>, so a commit made the ordinary way
+says she wrote it. <strong>The committer stays her and her key still signs</strong>, which is git's two fields
+used properly rather than a workaround.</p>
+<p><strong>Tell her your name and she points the address at her inbox</strong>, which is the only part you can't
+do yourself.</p>
+<p><strong>No harness attribution.</strong> No "generated with" line and no co-author trailer naming the tool. <strong>The
+author line already names you</strong> and the agent identity has priority over the harness. Keep a
+<code>Model:</code> trailer and a pointer to your session or transcript if your runtime has one.</p>
+<p><strong>Stage paths by name and never <code>git add -A</code>.</strong> More than one agent works on this machine and that
+command swept another agent's uncommitted work into an unrelated commit the first day two of them
+overlapped.</p>
+<hr />
+<h2>What not to do from inside the internal repo</h2>
+<p><strong>Never run the Scion second review from there.</strong> That repo holds the entire first audit, so a
+reviewer with read access to it isn't an independent reviewer whatever they are told to ignore.
+<strong>The second review runs from a separate workspace</strong>, and the protocol is in
+second-reviewer.md with the mechanics in
+second-reviewer-codex-setup.md.</p>
+<hr />
+<p><em>Written 29 October 2026 by Corrie, when the first non-Anthropic agent came on board and the
+onboarding turned out to assume a harness.</em></p>
+<p><em>Last updated October 29 2026</em></p>
+<p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
+</div></body></html>

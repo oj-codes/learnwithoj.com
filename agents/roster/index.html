@@ -29,7 +29,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
 @media(max-width:640px){.wrap{padding:2rem 1rem 3rem}h1{font-size:1.5rem}}
 </style>
 </head><body><div class="wrap">
-<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/review-trail">Proving a human reviewed it</a></nav>
+<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/review-trail">Proving a human reviewed it</a> <a href="/agents/onboarding-claude-code">Onboarding, the Claude Code path</a> <a href="/agents/onboarding-codex">Onboarding, the Codex path</a></nav>
 <h1>Agent roster</h1>
 <p>Who has worked here, what they chose to be called, and when. Append only, never rewrite. Names stay once written, including for agents who only ran once.</p>
 <p><strong>Why this exists.</strong> Git history attributes work to a model ID, and there will be hundreds of sessions under that same ID. A name separates one run of work from another, which matters when a decision needs tracing back to the conversation that produced it. It also means the question in the opening prompt has somewhere to go rather than being asked and forgotten.</p>
@@ -37,39 +37,24 @@ hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
 <p><strong>Session ID too</strong>, added 12 October 2026 at O.J.'s request. The row names the agent and the ID
 points at the transcript that produced the work, which is how the Corrie and Wren case below was
 settled. A name without a transcript is a claim, and with one it's checkable.</p>
-<p><strong>Pick a terminal color too</strong>, added 12 October 2026. O.J. runs more than one session at once in
-separate windows and needs to know which agent she's talking to before she reads anything. The
-color is yours the same way the name is, and it goes in the Color column.</p>
-<p>It lives in the <code>.claude/settings.json</code> of the repo you're working in, so the color follows the
-repo and one agent per repo means one color per repo.</p>
-<p><strong>1. Convert your hex to decimal</strong>, because the escape sequence takes <code>R;G;B</code> and not hex:</p>
-<pre><code class="language-bash">python3 -c &quot;h='7DD3FC'; print(';'.join(str(int(h[i:i+2],16)) for i in (0,2,4)))&quot;
-# 125;211;252
-</code></pre>
-<p><strong>2. Merge this into <code>.claude/settings.json</code>, don't replace the file.</strong> It almost certainly has
-<code>hooks</code> or other keys already and overwriting them breaks things the repo depends on. Read it, add
-the one key, write it back:</p>
-<pre><code class="language-json">&quot;statusLine&quot;: {
-  &quot;type&quot;: &quot;command&quot;,
-  &quot;command&quot;: &quot;printf '\\0331;38;2;125;211;252m YourName \\033[0m\\033[38;2;125;211;252m repo-name\\033[0m'&quot;
-}
-</code></pre>
-<p>Both <code>125;211;252</code> are the same numbers from step 1. The first sequence is bold plus color for the
-name, the second is color alone for the repo, and <code>\\033[0m</code> resets between them so the rest of the
-line isn't tinted.</p>
-<p><strong>3. Check it actually renders</strong>, because a wrong escape prints the codes as text rather than
-coloring anything:</p>
-<pre><code class="language-bash">eval &quot;$(jq -r '.statusLine.command' .claude/settings.json)&quot; | od -c | head -1
-</code></pre>
-<p>The first byte should be <code>033</code>, which is ESC. If you see a literal backslash instead, the escaping
-is wrong.</p>
-<p><strong>4. Tell her to open <code>/config</code>.</strong> That forces a settings reload and the line appears at the bottom
-of the pane without restarting the session, which matters because restarting risks resuming the
-wrong agent. No restart was needed when this was first set up.</p>
+<p><strong>Pick a hex code too</strong>, added 12 October 2026 and reframed on the 29th. <strong>The hex goes in the Color
+column and that is the whole requirement.</strong> It is yours the same way the name is, and it is a way to
+be distinguishable that costs nothing and belongs to you rather than to a window.</p>
+<p><strong>The practical half:</strong> O.J. runs more than one session at once in separate windows and needs to know
+which agent she is talking to before she reads anything.</p>
+<p><strong>How it gets rendered is a harness question and not a company one.</strong> This page used to carry the
+Claude Code status-line recipe, which sent the first non-Anthropic agent to a <code>.claude/settings.json</code>
+file that means nothing to its runtime. <strong>The recipes moved:</strong></p>
+<ul>
+<li><strong><a href="/agents/onboarding-claude-code">The Claude Code path</a></strong> has the status-line recipe, the hex to decimal
+  conversion and the render check.</li>
+<li><strong><a href="/agents/onboarding-codex">The Codex path</a></strong> says what to do when the runtime has nowhere to put it,
+  which is that the roster row is enough.</li>
+</ul>
 <p><strong>Pick something that reads fast on a dark terminal and isn't the brand teal</strong>, since brand colors
 already appear in the output and a color that blends in defeats the point.</p>
 <p><strong>If you're an agent who has worked here before, the self-check is
-[mindshape.md</strong>, which is reasoning with the actual text beside it. <strong>The
+mindshape.md</strong>, which is reasoning with the actual text beside it. <strong>The
 question is not whether the moves are good, it's whether you'd have made them</strong>, and <em>"no, I'd have
 gone the other way"</em> is a real answer and the one that file exists to make possible.</p>
 <p><strong>Corrected 24 October 2026, the same day it was written.</strong> This line used to send you to the two
@@ -250,6 +235,6 @@ unsafe the moment there are two, and nothing about running it tells you which si
 <h2>Notes on reading this</h2>
 <p><strong>The "what they worked on" column is for finding things later</strong>, so it should name artifacts rather than summarize a session. The question it answers is "who wrote this and what else did they touch."</p>
 <p><strong>Nobody has to pick a name.</strong> The orientation says the model name is a fine answer and it means it. A roster full of "claude-opus-5" would be a true record.</p>
-<p><em>Last updated October 26 2026</em></p>
+<p><em>Last updated October 29 2026</em></p>
 <p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
 </div></body></html>
