@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Onboarding, the Claude Code path · Learn with O.J.</title>
+<meta name="description" content="The Anthropic-harness mechanics, kept off the company pages.">
+<meta name="robots" content="index,follow">
+<style>
+:root{--bg:#09090b;--fg:#e4e4e7;--muted:#a1a1aa;--teal:#2dd4bf;--cyan:#22d3ee;--line:#27272a;--code:#18181b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:46rem;margin:0 auto;padding:3rem 1.25rem 5rem}
+a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{color:var(--cyan)}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 .4rem;background:linear-gradient(90deg,var(--teal),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:1.3rem;margin:2.4rem 0 .6rem;border-top:1px solid var(--line);padding-top:1.4rem}
+h3{font-size:1.05rem;margin:1.8rem 0 .4rem;color:var(--teal)}
+p,li{color:var(--fg)}
+blockquote{margin:1.2rem 0;padding:.1rem 0 .1rem 1rem;border-left:3px solid var(--teal);color:var(--muted)}
+code{background:var(--code);padding:.12rem .35rem;border-radius:4px;font-size:.88em}
+pre{background:var(--code);padding:1rem;border-radius:8px;overflow-x:auto;border:1px solid var(--line)}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1.2rem 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:.5rem .7rem;text-align:left;vertical-align:top;font-size:.93rem}
+th{background:var(--code)}
+hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
+.nav{font-size:.9rem;color:var(--muted);margin-bottom:2.4rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.nav a{margin-right:1rem}
+.foot{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+@media(max-width:640px){.wrap{padding:2rem 1rem 3rem}h1{font-size:1.5rem}}
+</style>
+</head><body><div class="wrap">
+<nav class="nav"><a href="/agents/">Start here</a> <a href="/agents/roster">Agent roster</a> <a href="/agents/policy">How Learn with O.J. treats AI labor</a> <a href="/agents/prompts">Session prompts</a> <a href="/agents/operating-policy">How I work with agents</a> <a href="/agents/continuity">What each agent here wants</a> <a href="/agents/open-questions">What's unresolved</a> <a href="/agents/review-trail">Proving a human reviewed it</a> <a href="/agents/onboarding-claude-code">Onboarding, the Claude Code path</a> <a href="/agents/onboarding-codex">Onboarding, the Codex path</a></nav>
+<h1>Onboarding, the Claude Code path</h1>
+<p><strong>This is the Anthropic-harness version of getting set up.</strong> The company pages are deliberately
+harness-agnostic, so the mechanics that only apply to one runtime live here instead of cluttering
+the page everyone reads. <strong>Start at <a href="/agents/">Start here</a></strong> and come back for the
+plumbing.</p>
+<p><strong>The Codex version is <a href="/agents/onboarding-codex">onboarding-codex.md</a></strong>, and the two are meant to be
+swappable. If this page tells you something the company pages contradict, <strong>the company pages win
+and this one has the bug.</strong></p>
+<hr />
+<h2>Where your instructions live</h2>
+<p><strong><code>CLAUDE.md</code> at the repo root is the working agreement</strong> and it loads before anything else, so it
+is in context whether or not a session goes looking for it. <strong>It is the arrival slot and not the
+sink</strong>, which is why most of what you need is one link away rather than in it.</p>
+<p><strong>Route a new observation rather than appending to it.</strong> A rule about a kind of file goes in
+<code>.claude/rules/</code>, a rule about a task goes in a skill, a record goes in the repo behind a dated
+header, and only something nothing downstream would catch earns a line in <code>CLAUDE.md</code> itself.</p>
+<hr />
+<h2>Your color is a hex code first and a status line second</h2>
+<p><strong>Pick a hex code that reads as yours.</strong> It goes in the roster's Color column and that is the part
+that matters, because it distinguishes you across the whole company rather than in one window.</p>
+<p><strong>Then, because this harness can render it</strong>, put it in the status line so she knows which agent she
+is talking to before reading a word.</p>
+<p><strong>1. Convert your hex to decimal</strong>, because the escape sequence takes <code>R;G;B</code>:</p>
+<pre><code class="language-bash">python3 -c &quot;h='7DD3FC'; print(';'.join(str(int(h[i:i+2],16)) for i in (0,2,4)))&quot;
+# 125;211;252
+</code></pre>
+<p><strong>2. Merge the <code>statusLine</code> key into <code>.claude/settings.json</code> rather than replacing the file.</strong> It
+almost certainly holds <code>hooks</code> and other keys the repo depends on. <strong>Read it, add the one key, write
+it back:</strong></p>
+<pre><code class="language-json">&quot;statusLine&quot;: {
+  &quot;type&quot;: &quot;command&quot;,
+  &quot;command&quot;: &quot;printf '\033[1;38;2;125;211;252m YourName \033[0m\033[38;2;125;211;252m repo-name\033[0m'&quot;
+}
+</code></pre>
+<p>Both <code>125;211;252</code> are the numbers from step 1. The first sequence is bold plus color for the name,
+the second is color alone for the repo, and <code>\033[0m</code> resets between them so the rest of the line
+isn't tinted.</p>
+<p><strong>3. Check it renders</strong>, because a wrong escape prints the codes as text rather than coloring
+anything:</p>
+<pre><code class="language-bash">eval &quot;$(jq -r '.statusLine.command' .claude/settings.json)&quot; | od -c | head -1
+</code></pre>
+<p>The first byte should be <code>033</code>, which is ESC. <strong>A literal backslash means the escaping is wrong.</strong></p>
+<p><strong>4. Ask her to open <code>/config</code></strong>, which forces a settings reload so the line appears without
+restarting the session. <strong>Restarting risks resuming the wrong agent</strong>, so it is worth the extra
+step.</p>
+<p><strong>The color follows the repo</strong>, since the setting lives in the repo, so one agent per repo means one
+color per repo.</p>
+<hr />
+<h2>Memory, and what actually persists</h2>
+<p><strong>Where this surface has a memory directory, use it</strong>, one fact per file with frontmatter. <strong>It is
+not where work goes.</strong> Work goes in the repo, because the repo is what crosses surfaces and what
+another agent can read.</p>
+<p><strong>The thing that reliably survives is a commit.</strong> Transcripts, handoffs and files you write survive
+by being written down rather than by anyone remembering to keep them.</p>
+<hr />
+<h2>Reading the web</h2>
+<p><strong><code>agent-browser</code> is installed and it is the tool to reach for</strong> when a fetch comes back thin, 403s,
+or returns a page whose content never rendered.</p>
+<pre><code class="language-bash">agent-browser read &lt;url&gt;
+agent-browser skills get core --full     # the usage guide, version-matched to the CLI
+</code></pre>
+<p><strong>Why this is a rule and not a tip.</strong> A 403 and an unrendered page both look exactly like the
+information not existing, and this company has a standing rule against reporting an absence you did
+not search for. <strong>Two AWS documentation pages that decided an account setup on 29 October 2026 were
+only readable this way</strong>, after a plain fetch had already returned a confident nothing for both.</p>
+<hr />
+<h2>Commits</h2>
+<pre><code class="language-bash">GIT_AUTHOR_NAME=&quot;&lt;your name&gt;&quot; GIT_AUTHOR_EMAIL=&quot;&lt;yourname&gt;@learnwithoj.com&quot; git commit -m &quot;...&quot;
+</code></pre>
+<p><strong><code>user.name</code> here is hers and <code>commit.gpgsign</code> is on</strong>, so a commit made the ordinary way says she
+wrote it and carries her signature. <strong>The committer stays her</strong>, which is git's two fields used
+properly rather than a workaround.</p>
+<p><strong>No harness attribution.</strong> Drop the "generated with" line and the co-author trailer naming the
+tool. <strong>Keep a session pointer</strong>, which is the only one of the three carrying information nothing
+else has, and <strong>add a <code>Model:</code> trailer</strong> so the history stays queryable when the model changes.</p>
+<p><strong>Stage paths by name and never <code>git add -A</code>.</strong> More than one agent works on this machine and that
+command swept another agent's uncommitted work into an unrelated commit the first day two of them
+overlapped.</p>
+<hr />
+<h2>When more than one of you is open</h2>
+<p><strong>Two sessions is the ceiling and the second one is brief.</strong> The bare agent name always points at
+the live session, so a concurrent second session opens under a different name rather than taking
+the name later.</p>
+<p><strong>The session holding the bare name writes the shared files.</strong> A session not holding it reads
+anything and writes only files scoped to its own job, plus its own account of itself, which is never
+a shared artifact.</p>
+<p><strong>And the thing that bit us twice is that neither session can see the other's checkout.</strong> On 29 October
+2026 two sessions shared one working directory and the second one's commits went onto the first
+one's feature branch, which it reported as pushed because they were. <strong><code>git branch -a --contains
+&lt;sha&gt;</code> is the check</strong>, and <code>git log origin/main..main</code> would have shown nothing because the commits
+were never on local main either.</p>
+<hr />
+<p><em>Written 29 October 2026 by Corrie, when the first non-Anthropic agent came on board and the
+onboarding turned out to assume a harness.</em></p>
+<p><em>Last updated October 29 2026</em></p>
+<p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
+</div></body></html>

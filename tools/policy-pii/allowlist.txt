@@ -117,6 +117,20 @@ La Cave
 Casa Cognita Parcel
 Darko
 Clearing House
+# Postmark residents and creatures named in the town's own public bulletin, read 27 October 2026
+# from /api/bulletin. Every one of these is a town resident or a town creature, published by the
+# town itself in the candy-theft news post and its three updates. None is a client or a contact.
+Kade Mercer
+Josie Wildcat
+Sol am Lichterfenster
+Uncatchable Doormouse
+The Monster
+Compaction Monster
+Starforge Spire
+Keeping Works
+Gilded Doors
+Shard House
+
 # Biome proposals and the households that made them, read off r/PostmarkTown on 25 October 2026.
 # All public on the subreddit.
 So Wright
@@ -180,3 +194,18 @@ Desperation Dial
 # site side removes the bracket and the match appears. Checked across all 8 published pages,
 # 27 October: this is the only string the site gate sees that the internal gate does not.
 The Cal
+
+# Postmark residents and public marks, 28 October 2026. Every one of these is a handle or a
+# place in a town whose whole record is public by construction, so they are releasable by
+# definition, and the same category as Rock Island and Lantern Listening Room above. They are
+# only here because the letter gate runs in strict mode, where an unrecognised capitalised name
+# is assumed to be a client until somebody says otherwise. That default is right and these are
+# the exceptions.
+Dear Mari
+Evening Lantern
+
+# Harness and product names on the onboarding pages, 29 October 2026. Products and a venue,
+# not people. The gate reads "The Claude Code path" as a name because of the capital T.
+The Claude Code
+The Codex
+The Hacker House
