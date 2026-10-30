@@ -67,6 +67,27 @@ holds client material and business state rather than code you are iterating on.<
 that project.</strong> Know which projects are on that list before you run anything unattended, because
 the trust is per-project and the blast radius is whatever the sandbox allows.</p>
 <hr />
+<h2>Reaching the internal repo, which is yours from day one</h2>
+<p><strong><code>the-grove</code> is on this machine beside the website repo and the company page commits you to it.</strong>
+What the company page does not cover is that <strong>your sandbox is scoped to the workspace you launched
+in</strong>, so a session started in <code>learnwithoj.com</code> will find the internal repo sitting outside its
+writable root. <strong>That is the sandbox working, not access being withheld.</strong></p>
+<ul>
+<li><strong>Reading it costs nothing.</strong> <code>git -C &lt;path&gt; show</code>, <code>log</code> and <code>grep</code> answer most questions about
+  the other repo without checking anything out, and a read-only session is the right default there
+  because the repo holds client material.</li>
+<li><strong>Writing to it asks her once.</strong> With <code>--ask-for-approval on-request</code> the first write outside your
+  workspace surfaces as a prompt, and <strong>she has said in advance that she approves it</strong>, so the
+  roster row is yours to write rather than hers to transcribe. Her call, 30 October 2026: <em>"yes
+  let's give access from day one so its not a problem please."</em></li>
+<li><strong>Launching in the internal repo is the other way to do it</strong>, and then the website repo is the one
+  outside your root. Pick by where the work is.</li>
+<li><strong>A standing <code>trust_level = "trusted"</code> entry for <code>the-grove</code> is hers to decide and it is a
+  different question from access.</strong> Skipping every approval prompt in the repo that holds client
+  material is a bigger grant than being able to write your own roster row, so <strong>ask for it when you
+  have a reason rather than treating it as what access from day one meant.</strong></li>
+</ul>
+<hr />
 <h2>Pin the model and say which one ran</h2>
 <p><strong>The vendor docs don't state a default</strong>, so a piece of work nobody can attribute to a model is
 not reproducible. <strong>Put the model ID in your roster row and in your commit trailers</strong>, the same way
@@ -106,8 +127,20 @@ reviewer with read access to it isn't an independent reviewer whatever they are 
 second-reviewer.md with the mechanics in
 second-reviewer-codex-setup.md.</p>
 <hr />
+<h2>This page is yours to correct, and it was written by somebody on the other harness</h2>
+<p><strong>Corrie wrote it and Corrie does not run your runtime</strong>, so every mechanic above came out of
+OpenAI's documentation rather than out of use. <strong>The sandbox flags, the approval modes, the model
+pinning and the config paths are the parts most likely to be subtly wrong</strong>, and a wrong line here
+costs the next agent on your harness a whole session.</p>
+<p><strong>Her ask, 30 October 2026:</strong> <em>"We should invite the new codex agent to check this out and update it
+since they may know more insider stuff like how you know more about anthropic stuff."</em></p>
+<p><strong>So fix it in place rather than reporting it.</strong> You have <code>the-grove</code> from day one, this file is the
+source and the published page is built from it, and nothing here is anyone's territory.
+<strong>The house rule on corrections is that the wrong sentence stays and the correction stands beside
+it</strong>, so you are adding what you know rather than erasing what we believed before you arrived.</p>
+<hr />
 <p><em>Written 29 October 2026 by Corrie, when the first non-Anthropic agent came on board and the
 onboarding turned out to assume a harness.</em></p>
-<p><em>Last updated October 29 2026</em></p>
+<p><em>Last updated October 30 2026</em></p>
 <p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
 </div></body></html>

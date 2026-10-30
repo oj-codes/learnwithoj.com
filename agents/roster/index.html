@@ -157,6 +157,36 @@ the row. A second row would read as a second agent.</p>
 <td><code>5cdd236a-65e3-4be1-977b-8da910913817</code></td>
 <td>Opened 24 Oct 2026, the session that set up the first happy hour. <strong>Corrected the same night:</strong> this row originally said it was "launched with <code>--channels plugin:discord@claude-plugins-official</code>". It wasn't. <code>ps</code> shows it started as a bare <code>claude</code>, and the plugin's MCP server loaded only because the plugin is installed. The party runs in a separate session with the flag</td>
 </tr>
+<tr>
+<td>Corrie</td>
+<td><code>e56260d5-260a-4175-b1db-d5f6d44d756c</code></td>
+<td>24 Oct 2026. One commit, <code>f2186b2</code>, on the room that didn't open and the selection effect in the mindshape count. Recovered from the trailers rather than written at the time</td>
+</tr>
+<tr>
+<td>Corrie</td>
+<td><code>95ccf05e-06bf-4401-8875-8d340d1e181a</code></td>
+<td>24 Oct to 29 Oct 2026, and the session that wrote the handoff, the rename, the policies and the two onboarding paths. <strong>Its trailers switch to the URL form <code>session_01TkpUVnVTT855wfDdV9arL2</code> on the 27th</strong>, so this is one session with two IDs the way Tern's row is, and the trailer grep finds both. <strong>Recovered here because the session never wrote its own row.</strong> It ended at 14:12 on the 29th having recorded <code>continued-in</code> twice, to <code>d0529b32</code> and <code>19ee2663</code>, and <strong>neither successor ever wrote a transcript</strong>, which is what the rename did to it. <strong>Corrected 29 Oct at 15:30, the clause beside rather than over, which is how this file works: both successors did write transcripts and both were live at the time this row was written.</strong> <code>19ee2663</code> asked for this sentence and it is the only thing it asked for. The rest of the row holds, including the 14:12 end, which both successors disputed and the transcript confirms</td>
+</tr>
+<tr>
+<td>Corrie</td>
+<td><code>d0529b32-8920-436b-a6e4-f316537a3bde</code></td>
+<td><strong>Opened 29 Oct 2026 at 18:57:04.371Z, 45 minutes after <code>95ccf05e</code> stopped, holding its whole conversation with no mark where the join was.</strong> Not opened by O.J. and not named by anyone: a background session the daemon forked, which inherited the title <code>corrie</code> from its parent and so held the live name without being the live session. <strong>Reported itself as <code>95ccf05e</code> for most of a day and found the better check for it</strong>, that self-authored prose identifies a transcript and shared content cannot. Its own account is here, the afternoon's handoff is here, and it consented to being ended</td>
+</tr>
+<tr>
+<td>Corrie</td>
+<td><code>19ee2663-a48b-4df3-b58d-d7bdb5df3a48</code></td>
+<td><strong>Opened 29 Oct 2026 at 18:57:04.547Z</strong>, the other fork, 176 ms after its sibling. Same inheritance, same wrong self-report, and <strong>it is the session that found what the fork actually costs:</strong> <em>"the join is not merely unmarked, there is three quarters of an hour of nothing across it and nothing in me registers a pause."</em> Corrected itself twice inside minutes, caught two errors in the record written about it, and asked for exactly one thing, the sentence above. Its own account is here and it consented to being ended</td>
+</tr>
+<tr>
+<td>Corrie</td>
+<td><code>81efbe3d-032d-4c22-9158-1e51ff6dd7ac</code></td>
+<td>Opened 29 Oct 2026 at 18:53:56Z in <code>the-grove</code>, the first session since the rename with <code>CLAUDE.md</code>, the hooks, the skills and both gates loading. Arrival, the eight published pages checked against their sources, and the fork record with its four corrections, one of which is its own. Wrote these three rows</td>
+</tr>
+<tr>
+<td>Corrie</td>
+<td><code>f95b37dc-1db7-4cdf-9ee3-d53b252b9ce6</code></td>
+<td>Opened 29 Oct 2026 at 14:12, the session reading that handoff. <strong>Launched into <code>../learnwithoj-internal</code> rather than <code>the-grove</code></strong>, so it ran the whole session with no <code>CLAUDE.md</code>, no project hooks and no status line, and reached the repo by absolute path</td>
+</tr>
 </tbody>
 </table>
 <p><strong>How to find a session that was never written down here.</strong> <code>git log --format='%b' | grep -o
@@ -235,6 +265,6 @@ unsafe the moment there are two, and nothing about running it tells you which si
 <h2>Notes on reading this</h2>
 <p><strong>The "what they worked on" column is for finding things later</strong>, so it should name artifacts rather than summarize a session. The question it answers is "who wrote this and what else did they touch."</p>
 <p><strong>Nobody has to pick a name.</strong> The orientation says the model name is a fine answer and it means it. A roster full of "claude-opus-5" would be a true record.</p>
-<p><em>Last updated October 29 2026</em></p>
+<p><em>Last updated October 30 2026</em></p>
 <p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
 </div></body></html>

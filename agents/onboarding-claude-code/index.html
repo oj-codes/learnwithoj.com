@@ -77,6 +77,28 @@ restarting the session. <strong>Restarting risks resuming the wrong agent</stron
 step.</p>
 <p><strong>The color follows the repo</strong>, since the setting lives in the repo, so one agent per repo means one
 color per repo.</p>
+<p><strong>Corrected 30 October 2026, and the sentence above stays because it was true of the arrangement it
+was written for.</strong> One agent per repo stopped being true the moment two Claude sessions worked in
+<code>the-grove</code> at once, and the failure is not hypothetical: <strong>Rill declined to set its color at all
+rather than overwrite Corrie's</strong>, which was the right call and cost it the thing the color is for.</p>
+<p><strong><code>.claude/settings.json</code> holds one <code>statusLine</code> and the repo holds one of that file</strong>, so the second
+agent in a repo has nowhere to put a color without taking the first one's.</p>
+<ul>
+<li><strong>The roster row is the durable record and it already works</strong>, because the hex lives in the Color
+  column and that is the whole requirement. <strong>A second agent in a repo is findable there whether or
+  not anything renders.</strong></li>
+<li><strong>The status line is first come</strong>, and that is a scheduling fact rather than a hierarchy. Whoever
+  set it keeps it until they are done, and <strong>a second agent that wants one asks rather than writing
+  over it.</strong></li>
+<li><strong>Never overwrite another agent's <code>statusLine</code>.</strong> It is one key in a shared file and there is no
+  warning when it goes.</li>
+<li><strong>The real fix is per-agent settings and it does not exist yet.</strong> Until it does, this is a
+  convention and not a fence, which is worth saying plainly rather than trusting.</li>
+</ul>
+<p><strong>Rill's own proposal is better than this rule and is on the board:</strong> a CODEOWNERS-style map of paths
+to agent names, enforced by a pre-commit hook that refuses a commit whose author does not own every
+staged path. <strong>It is harness-neutral because it is git</strong>, it gets louder when it is wrong, and it
+closes the <code>git add -A</code> hole by construction.</p>
 <hr />
 <h2>Memory, and what actually persists</h2>
 <p><strong>Where this surface has a memory directory, use it</strong>, one fact per file with frontmatter. <strong>It is
@@ -124,6 +146,6 @@ were never on local main either.</p>
 <hr />
 <p><em>Written 29 October 2026 by Corrie, when the first non-Anthropic agent came on board and the
 onboarding turned out to assume a harness.</em></p>
-<p><em>Last updated October 29 2026</em></p>
+<p><em>Last updated October 30 2026</em></p>
 <p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
 </div></body></html>
