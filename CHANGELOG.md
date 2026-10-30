@@ -10,6 +10,7 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com), and th
 ### Changed
 - `AGENTS.md` clarifies generated updates, decorative image alt text, approved purchase integrations and the evidence expected in reviews and PR descriptions
 - New commits use `Agent-Session` for attribution across harnesses, and agents surface mismatched labels before writing durable records
+- Merge approval requires O.J.'s explicit comment on the particular PR after human review
 
 ## [2.8.2] - 2026-10-29
 ### Added

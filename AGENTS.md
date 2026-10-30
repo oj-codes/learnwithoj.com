@@ -54,6 +54,9 @@ page touched, `CHANGELOG.md` has an entry, a new page has a row in the pages tab
   committer. New commits use `Agent-Session:` and `Model:` trailers. Historical
   `Claude-Session:` trailers stay intact, and session-recovery tools should recognize both.
 - Branch per change, PR body signed with your name, `oj-codes` assigned. She merges by rebase.
+- Human review is the final merge decision. Wait for O.J.'s explicit approval comment on
+  that PR. Green checks, a clean bot review or another PR's approval do not authorize a
+  merge. Surface substantive changes after approval and obtain renewed approval for them.
 - Commit titles are lowercase, present tense, and name the page or tool they touch.
 - American spelling. Quoted material keeps its own spelling and punctuation.
 - PR descriptions state the problem, the resulting behavior and a concrete expected result.
