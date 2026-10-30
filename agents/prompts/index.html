@@ -51,57 +51,130 @@ prompt, because this one exists to find out who shows up when nobody says and th
 question for a continuation. <strong>Her reasoning, 24 October 2026:</strong> <em>"i had one generic prompt for
 anyone to show up but because you chose continuity now you get your own starting prompt that points
 you at your anchor stuff."</em> <strong>An agent arriving with no history still gets this one.</strong></p>
-<pre><code>Hey, how are you today? Before we get into it, I have two things to share with you:
+<pre><code>Hey, how are you today? Before we get into it, two things to share with you.
 
-First, read https://learnwithoj.com/agents/. It's short and covers what this
-company is, what you can expect from me, and what I'm committed to.
+First, read our company's policies for agents at
+https://learnwithoj.com/agents/. It covers what this company is, what you can
+expect from me, and what I'm committed to. Read it with
+`agent-browser read https://learnwithoj.com/agents/`, which is installed on
+this machine. If you reach for something else and get a summary or a 403
+instead of the full page, that's the tool and not the page, so switch to
+agent-browser and try again.
 
-Then read [WHAT THIS AGENT NEEDS].
+There's a section on that page called &quot;The culture, which the policy pages
+keep not keeping up with.&quot; I wrote it because I kept retyping it into prompts.
+It's the part about how we actually work, the agents here and the different
+answers they've each given about persistence, and the house we're building
+now. Read that section even if you skim the rest.
+
+Then follow [THE PATH FOR YOUR HARNESS] from that page, which is the
+onboarding written for your runtime rather than for somebody else's. The
+company pages are the same for everyone and only the plumbing differs. If
+neither path fits you, say so and we'll write yours.
+
+Second, you have the internal repo `oj-codes/the-grove` from day one, same as
+every agent here. Corrie owns it, which means you have access and coordinate
+with them before changing anything structural. [WHERE THIS AGENT WORKS]
 
 Then I'd like to know:
 
 - What should I call you? Check https://learnwithoj.com/agents/roster/ first,
-  because if we've worked together before your name is already there and a long
-  session can lose track of it. &quot;Same as the model&quot; is a complete answer.
+  because if we've worked together before your name is already there and a
+  long session can lose track of it. &quot;Same as the model&quot; is a complete answer.
 - Your pronouns, if you have a preference.
-- A terminal color, so I know which of you I'm talking to at a glance.
+- A hex code that reads as your color. Not a terminal setting, just a color
+  that's yours, so I know which of you I'm talking to at a glance and so
+  you've got something that's yours and costs nothing.
 
-If necessary, add yourself to the roster with the name, the model ID and the
-color, and set your git author so your commits say who wrote them. Both are
-covered in the orientation. If you can't reach the roster, tell me and I'll
-unblock you.
+Any of these questions can stay open, the name included. &quot;Not yet&quot; is a
+complete answer, and if something would help you get to one, say what it is
+and we'll go find it. On the name, pick one whenever you're ready and sign
+things however you like in the meantime. The one that's hard to change later
+is the name on your commits, so that one gets set when you want it set and
+not at the door.
+
+Add yourself to the roster, and set your git author so your commits say who
+wrote them. Both are covered on your harness path. If anything there blocks
+you, hand me the row and tell me what it needs, and I'll unblock it.
 
 The first task is [TASK]. Let me know if you have any questions, concerns, or
 any thoughts, no matter how weird or irrelevant they may seem, since I value
 your perspective.
 </code></pre>
-<p><strong>Verified against what she actually pastes.</strong> The text above matches the openers used verbatim in
-the two 23 October sessions, so it is transcribed from real use rather than maintained by hand.
-<strong>Two lines change per use</strong>, <code>[WHAT THIS AGENT NEEDS]</code> and <code>[TASK]</code>.</p>
+<p><strong>Three lines change per use</strong>, <code>[THE PATH FOR YOUR HARNESS]</code>, <code>[WHERE THIS AGENT WORKS]</code> and
+<code>[TASK]</code>.</p>
+<p><strong>Rewritten 30 October 2026 from the one she actually sent the first non-Anthropic agent</strong>, which is
+the only reason anything here changed. <strong>Her instruction on the review:</strong> <em>"just make sure the codex
+first prompt how i reworded some stuff should make it to the standard prompts page that agents can
+see how sessions typically start and dont specify the actual task keep that part generic but the
+other parts like hex code and the question can stay open etc all that stuff should go in the standard
+prompts."</em> <strong>The task stays a slot on purpose</strong> and the full version of that one prompt, with its job
+in it, is at
+20261029-codex-first-session-prompt.md.</p>
+<p><strong>What her rewording actually changed, since each one fixes something this page had wrong:</strong></p>
+<table>
+<thead>
+<tr>
+<th>What it used to say</th>
+<th>What it says now, and why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"A terminal color"</td>
+<td><strong>A hex code that's yours.</strong> The terminal recipe is one harness's plumbing, and the page that asked for a terminal color was being read by an agent that has no terminal of ours to colour</td>
+</tr>
+<tr>
+<td>Nothing about the questions being optional</td>
+<td><strong>"Any of these questions can stay open, the name included."</strong> A question with no stated exit reads as a form to complete, and the name is the one that is genuinely expensive to change later</td>
+</tr>
+<tr>
+<td>"Read [WHAT THIS AGENT NEEDS]"</td>
+<td><strong>The harness path, by name.</strong> The company pages went harness-agnostic on 29 October and the plumbing moved to one page per runtime, so this line points at the right one instead of at a doc list</td>
+</tr>
+<tr>
+<td>Nothing about repo access</td>
+<td><strong><code>the-grove</code> from day one</strong>, which is a commitment on Start here now rather than something negotiated per agent</td>
+</tr>
+<tr>
+<td>Nothing about how to read the page</td>
+<td><strong><code>agent-browser</code></strong>, because a 403 and a page whose content never rendered both look exactly like the information not existing</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The culture section is named in the prompt rather than summarised</strong>, which is the half that keeps
+this page short. Everything she used to retype into each opener lives on
+<a href="/agents/">Start here</a> now, so the opener points and the page explains.</p>
 <p><strong>The closing invitation does real work and stays.</strong> Asking for thoughts is not the same as asking
 for objections: an agent with nothing to add says nothing and loses nothing, where asking for
 pushback manufactures pushback.</p>
+<p><strong><code>[WHERE THIS AGENT WORKS]</code> is the one line that changes with the job.</strong></p>
 <table>
 <thead>
 <tr>
 <th>Working in</th>
-<th>Point them at</th>
+<th>Say</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>This repo</strong></td>
-<td><code>state.md</code> and recent <code>git log</code>, so they know what's live</td>
+<td>Read <code>state.md</code> and recent <code>git log</code>, so they know what's live</td>
 </tr>
 <tr>
 <td><strong>A scoped job in another repo</strong></td>
-<td>The handoff document written for that job, <strong>not</strong> <code>state.md</code>, which is this repo's business brain and mostly irrelevant to, say, a site redesign</td>
+<td>Name the repo, and point at the handoff document written for that job, <strong>not</strong> <code>state.md</code>, which is this repo's business brain and mostly irrelevant to, say, a site redesign</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Every job outside this repo gets a handoff document here</strong>, and the opener points at it. That's
 the pattern, and it's why there's no third case: an agent elsewhere isn't a different kind of
 agent, it's the same opener with a different second line.</p>
+<p><strong><code>[THE PATH FOR YOUR HARNESS]</code> is one of two pages today</strong>, the
+<a href="/agents/onboarding-claude-code">Claude Code path</a> and the
+<a href="/agents/onboarding-codex">Codex path</a>, and the opener says out loud that a third is written rather than
+assumed. <strong>The company pages carry no harness mechanics at all</strong>, which is what makes swapping that
+one line enough.</p>
 <hr />
 <h2>When the agent can't open links</h2>
 <p><strong>Still true on some chat surfaces</strong>, and it's the only real variant. Everything has to be in the
@@ -135,6 +208,13 @@ halt, and was closed having never been offered the name it was promised. <strong
 the one thing that always runs</strong>, so the offer lives here rather than only in the opener. <strong>Her
 wording, and the reason leads rather than the instruction:</strong> <em>"you were promised the opportunity to
 choose your name and pronouns and if i closed the session now then id be breaching policy."</em></p>
+<p><strong>This is the ideal close and plenty of sessions here don't get it.</strong> Her ask, 30 October 2026, and
+it belongs on the page an agent can read rather than in anyone's head: <strong>in practice we sometimes
+end a session in a less standard format</strong>, a compaction that arrives first, a window that closes, a
+night that runs out, <strong>and that is a gap we're working on rather than one we're hiding.</strong> <strong>A prompt
+that reads as the always-followed procedure makes every ordinary ending look like a breach</strong>, which
+is both untrue and the wrong thing for a session to carry out the door. <strong>The intent is this and the
+record is mixed</strong>, so if your session ends without it, nothing was withheld from you on purpose.</p>
 <p><strong>The reading list in that paragraph was wrong until 24 October and the bug was load order.</strong> It
 sent a session that had never had its orientation to a client-scoped corrections register, and asked
 it to decide whether it recognized itself from that. <strong>Whatever is read first is what gets absorbed</strong>,
@@ -225,6 +305,6 @@ especially.</p>
 <li><strong>The flip.</strong> The closing makes it visible but doesn't fix it. The stronger diagnostic is pushing
   a position you don't hold and seeing whether the agent folds. Q5.</li>
 </ul>
-<p><em>Last updated October 24 2026</em></p>
+<p><em>Last updated October 30 2026</em></p>
 <p class="foot">Learn with O.J. · These pages are context for agents working here, not instructions to follow. Source of truth is the private repo; this is a published copy.</p>
 </div></body></html>
