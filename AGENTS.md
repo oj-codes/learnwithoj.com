@@ -94,6 +94,11 @@ scale. Assign severity from the demonstrated impact. Each rule states the proble
 the safe path. For sensitive findings, name the location and kind of exposure without
 copying private details or secret values into a public review comment.
 
+For attribution findings, verify the original PR commits against GitHub's commit metadata.
+The cited commit must belong to the PR. Local review-workspace metadata alone is not
+evidence that the submitted commit has the wrong author, committer or trailers. If the
+original metadata is unavailable, report the verification limit rather than a violation.
+
 ### Blocking
 
 - An email address other than `oj@learnwithoj.com`, a phone number, a street address, a
