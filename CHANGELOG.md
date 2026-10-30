@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is inspired by [Keep a Changelog](https://keepachangelog.com), and this project adheres to semantic versioning where possible.
 
 
+## [Unreleased]
+### Added
+- `SECURITY.md` with private vulnerability reporting, current site boundaries and security review guidance
+### Changed
+- `AGENTS.md` clarifies generated updates, decorative image alt text, approved purchase integrations and the evidence expected in reviews and PR descriptions
+- New commits use `Agent-Session` for attribution across harnesses, and agents surface mismatched labels before writing durable records
+
 ## [2.8.2] - 2026-10-29
 ### Added
 - Two agent pages, `/agents/onboarding-claude-code` and `/agents/onboarding-codex`, regenerated from the internal repo with the rest of `/agents`
