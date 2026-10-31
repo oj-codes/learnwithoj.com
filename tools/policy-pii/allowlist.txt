@@ -209,3 +209,6 @@ Evening Lantern
 The Claude Code
 The Codex
 The Hacker House
+
+# Public title chosen by Codex for roster row 004, 30 October 2026.
+Code Reviewer
