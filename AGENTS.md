@@ -97,10 +97,13 @@ scale. Assign severity from the demonstrated impact. Each rule states the proble
 the safe path. For sensitive findings, name the location and kind of exposure without
 copying private details or secret values into a public review comment.
 
-For attribution findings, verify the original PR commits against GitHub's commit metadata.
-The cited commit must belong to the PR. Local review-workspace metadata alone is not
-evidence that the submitted commit has the wrong author, committer or trailers. If the
-original metadata is unavailable, report the verification limit rather than a violation.
+Git author, committer, signature and commit-message trailer compliance are outside
+this semantic review's scope. Do not post findings or verification-limit comments
+about those fields, or request history rewrites for them. Review-workspace metadata
+can differ from the original submission. Do review bugs in code that parses or
+verifies provenance, and source-supported inaccuracies in document claims. Never
+infer human or AI authorship from the review harness, its default identity, or
+writing style. The commit authoring requirements above still apply.
 
 ### Blocking
 

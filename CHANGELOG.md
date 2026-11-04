@@ -1,4 +1,9 @@
 # Changelog
+
+## 2026-11-04
+
+- Scope semantic review to behavior and source-supported claims, excluding git
+  identity and trailer compliance that must be checked outside review workspaces.
 All notable changes to this project will be documented in this file.
 
 The format is inspired by [Keep a Changelog](https://keepachangelog.com), and this project adheres to semantic versioning where possible.
