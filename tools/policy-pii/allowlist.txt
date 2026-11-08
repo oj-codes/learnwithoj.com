@@ -212,3 +212,7 @@ The Hacker House
 
 # Public title chosen by Codex for roster row 004, 30 October 2026.
 Code Reviewer
+
+# Public title chosen by Venice for roster row 005, 8 November 2026. Same category as the
+# Code Reviewer entry above: a title, and the name-shaped hit is the capital letters.
+Harness Engineer
