@@ -20,8 +20,10 @@ DNS moves to the Worker. The Workers deploy uploads the root as static assets mi
 Worker runs first only under `/api/*`. The implemented route is `/api/health`, which returns
 a health flag, the serving Worker version and the deployed commit and branch with
 `Cache-Control: no-store`. Deploys run through Cloudflare Workers Builds on Cloudflare's side,
-so no Cloudflare credential is stored in this repository or available to its workflows. Every
-branch gets a public Workers Preview on `workers.dev`, sent with `X-Robots-Tag: noindex`.
+so no Cloudflare credential is stored in this repository or available to its workflows. Preview
+builds run in a dev Cloudflare account whose build token has no authority over production, and
+the production account builds `main` only. Every branch gets a public Workers Preview on the dev
+account's `workers.dev`, sent with `X-Robots-Tag: noindex`.
 
 Approved Stripe Checkout links and the Kit form are live B2C integrations. Their providers
 handle the current checkout and email submission flows. This repo does not currently

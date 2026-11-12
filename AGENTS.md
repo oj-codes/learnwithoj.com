@@ -26,7 +26,7 @@ Vercel, not "good enough".
 - `functions/`, the Worker and its `/api/*` routes (`/api/health` today, Stripe webhook and signed downloads later)
 - `.assetsignore`, what stays out of the asset upload, so the docs and tools above never reach the site
 - `tools/`, the checks (`tools/check`, `tools/last-reviewed`, `tools/policy-pii`)
-- `.github/workflows/`, `checks.yaml` runs the checks on every PR, `ci.yaml` is GitHub Pages until DNS moves, `actions.lock` pins every action to a commit. Deploys and previews run through Cloudflare Workers Builds, not here, so no Cloudflare credential is in GitHub
+- `.github/workflows/`, `checks.yaml` runs the checks on every PR, `ci.yaml` is GitHub Pages until DNS moves, `actions.lock` pins every action to a commit. Deploys and previews run through Cloudflare Workers Builds, not here, so no Cloudflare credential is in GitHub. Previews build in a dev Cloudflare account, production builds from `main` in a separate one
 
 ## How to run
 

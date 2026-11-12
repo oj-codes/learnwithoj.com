@@ -4,13 +4,20 @@
 # Local preview with the Workers runtime:   wrangler dev
 # Validate without uploading:               wrangler deploy --dry-run --outdir /tmp/lwoj-dry
 #
-# Deploys run on Cloudflare's side through Workers Builds, connected to this repo in the
-# dashboard. A push to main deploys production, a push to any other branch creates or
-# updates a Preview at a stable URL, and the Cloudflare GitHub app posts that URL on the
-# pull request. No Cloudflare credential lives in GitHub, which is the point: a workflow
-# that holds a deploy token can be rewritten by any branch that runs it (Codex, PR 42).
+# Deploys run on Cloudflare's side through Workers Builds, from two Cloudflare accounts
+# connected to this one repo, O.J.'s call 12 November 2026 after Codex's security review:
 #
-# Dashboard build settings, Settings > Build on the Worker:
+#   production account   builds main only, preview builds off. Owns learnwithoj.com.
+#   dev account          builds every branch. Each branch gets a Preview at a stable URL,
+#                        the Cloudflare GitHub app posts it on the pull request, and main
+#                        gets a dev mirror of production. Holds nothing a visitor reaches.
+#
+# A preview build runs the branch's code with that account's build token, so previews live
+# in an account where the token has no production authority. No Cloudflare credential lives
+# in GitHub at all. The merge to main is the promotion from dev to production, and the
+# ruleset on main is what gates it.
+#
+# This file is the same for both accounts. Dashboard build settings, Settings > Build:
 #   Build command     (empty, there is no build step)
 #   Deploy command    npx wrangler deploy --var COMMIT_SHA:$WORKERS_CI_COMMIT_SHA --var BRANCH:$WORKERS_CI_BRANCH
 #   Preview command   npx wrangler preview --var COMMIT_SHA:$WORKERS_CI_COMMIT_SHA --var BRANCH:$WORKERS_CI_BRANCH
