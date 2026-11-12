@@ -1,0 +1,41 @@
+# OpenSSF Scorecard, the public supply-chain report card for this repo. Runs on main after
+# every push and weekly, uploads to the Scorecard API for the README badge, and files its
+# findings under Security, Code scanning. Reads the ruleset on main with the default token.
+
+name: Scorecard
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  analysis:
+    name: Scorecard analysis
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      # Needed to publish results and get a badge.
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Run analysis
+        uses: ossf/scorecard-action@v2.5.0
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          publish_results: true
+
+      - name: Upload to code scanning
+        uses: github/codeql-action/upload-sarif@v4.39.3
+        with:
+          sarif_file: results.sarif

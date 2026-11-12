@@ -75,7 +75,7 @@ reviews:
         has a prefers-reduced-motion branch.
     - path: "functions/**"
       instructions: >-
-        Cloudflare Pages Functions. Secrets come from env bindings, never code. Validate every
+        The Cloudflare Worker and its routes, deployed by Workers Builds. Secrets come from env bindings, never code. Validate every
         input, verify Stripe webhook signatures, return no-store on dynamic responses, never
         log request bodies. No npm dependencies, the Workers runtime APIs only.
     - path: "tools/**"
@@ -86,8 +86,9 @@ reviews:
         blocklist, because this repository is public.
     - path: ".github/workflows/**"
       instructions: >-
-        Least privilege on permissions, actions pinned to a major version tag, no secrets
-        echoed. checks.yaml must stay equivalent to what tools/check runs locally.
+        Deny-all permissions at the top with per-job grants, persist-credentials off on every
+        checkout, every action in actions.lock, no secrets echoed. checks.yaml must stay
+        equivalent to what tools/check runs locally.
     - path: "{CHANGELOG.md,CLAUDE.md,AGENTS.md,README.md}"
       instructions: >-
         Prose follows CLAUDE.md Brand voice. No em dashes. A new page needs a row in the

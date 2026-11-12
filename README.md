@@ -4,7 +4,9 @@ Career strategy and 1:1 technical sessions for software and infrastructure engin
 
 ## Overview
 
-A static site for [learnwithoj.com](https://learnwithoj.com) offering career strategy, resume review, and hands-on technical sessions for experienced software and infrastructure engineers. Built with plain HTML, CSS, and JavaScript, deployed to GitHub Pages.
+A static site for [learnwithoj.com](https://learnwithoj.com) offering career strategy, resume review, and hands-on technical sessions for experienced software and infrastructure engineers. Built with plain HTML, CSS, and JavaScript, deployed to Cloudflare Workers.
+
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/oj-codes/learnwithoj.com/badge)](https://scorecard.dev/viewer/?uri=github.com/oj-codes/learnwithoj.com)
 
 ## Tech Stack
 
@@ -15,7 +17,7 @@ A static site for [learnwithoj.com](https://learnwithoj.com) offering career str
 - Stripe Checkout for payments
 - Kit (ConvertKit) for email capture
 - GoatCounter for privacy-friendly analytics
-- GitHub Pages for hosting
+- Cloudflare Workers for hosting, with a Preview per pull request through Workers Builds
 
 ## Project Structure
 
@@ -42,4 +44,4 @@ Then open `http://localhost:8000` in your browser.
 
 ## Deployment
 
-Pushes to `main` trigger the GitHub Actions workflow in `.github/workflows/ci.yaml`, which deploys the site to GitHub Pages. The custom domain is configured via the `CNAME` file.
+Cloudflare Workers Builds watches the repo. Every pull request branch gets its own Workers Preview, posted as a comment on the PR, and a merge to `main` deploys production. No deploy credential lives in this repo. `.github/workflows/ci.yaml` still deploys GitHub Pages, which serves the custom domain until DNS moves to the Worker.

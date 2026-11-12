@@ -23,15 +23,16 @@ Vercel, not "good enough".
 - `styles.css`, the only stylesheet, tokens at the top
 - `agents/**`, generated from the internal repo and never edited by hand here
 - `SECURITY.md`, private reporting instructions and the website's security review context
-- `functions/`, Cloudflare Pages Functions (`/api/health` today, Stripe webhook and signed downloads later)
+- `functions/`, the Worker and its `/api/*` routes (`/api/health` today, Stripe webhook and signed downloads later)
+- `.assetsignore`, what stays out of the asset upload, so the docs and tools above never reach the site
 - `tools/`, the checks (`tools/check`, `tools/last-reviewed`, `tools/policy-pii`)
-- `.github/workflows/`, `ci.yaml` deploys, `checks.yaml` runs the checks on every PR
+- `.github/workflows/`, `checks.yaml` runs the checks on every PR, `ci.yaml` is GitHub Pages until DNS moves, `actions.lock` pins every action to a commit. Deploys and previews run through Cloudflare Workers Builds, not here, so no Cloudflare credential is in GitHub. Previews build in a dev Cloudflare account, production builds from `main` in a separate one
 
 ## How to run
 
 ```
 python3 -m http.server 8000      # static preview
-wrangler pages dev .             # preview with the Functions runtime
+wrangler dev                     # preview with the Workers runtime
 ```
 
 ## Checks, and what done means
@@ -53,7 +54,8 @@ page touched, `CHANGELOG.md` has an entry, a new page has a row in the pages tab
 - Commit as yourself, `git commit --author="Name <name@learnwithoj.com>"`. O.J. stays the
   committer. New commits use `Agent-Session:` and `Model:` trailers. Historical
   `Claude-Session:` trailers stay intact, and session-recovery tools should recognize both.
-- Branch per change, PR body signed with your name, `oj-codes` assigned. She merges by rebase.
+- Branch per change, PR body signed with your name, `oj-codes` assigned, the preview URL from the
+  Cloudflare app's comment copied into the description. She merges with a merge commit.
 - Human review is the final merge decision. Wait for O.J.'s explicit approval comment on
   that PR. Green checks, a clean bot review or another PR's approval do not authorize a
   merge. Surface substantive changes after approval and obtain renewed approval for them.

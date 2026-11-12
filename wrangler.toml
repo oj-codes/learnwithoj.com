@@ -1,11 +1,58 @@
-# Cloudflare Pages configuration.
+# Cloudflare Workers configuration. The site is static assets served by a Worker, with the
+# Worker running first only under /api/*.
 #
-# The site is plain HTML with no build step, so the output directory is the repo root,
-# the same thing GitHub Pages uploads today. Local preview with the Functions runtime:
+# Local preview with the Workers runtime:   wrangler dev
+# Validate without uploading:               wrangler deploy --dry-run --outdir /tmp/lwoj-dry
 #
-#   wrangler pages dev .
+# Deploys run on Cloudflare's side through Workers Builds, from two Cloudflare accounts
+# connected to this one repo, O.J.'s call 12 November 2026 after Codex's security review:
 #
-# The project name is what the Cloudflare dashboard shows. Change it there and here together.
+#   production account   builds main only, preview builds off. Owns learnwithoj.com.
+#   dev account          builds every branch. Each branch gets a Preview at a stable URL,
+#                        the Cloudflare GitHub app posts it on the pull request, and main
+#                        gets a dev mirror of production. Holds nothing a visitor reaches.
+#
+# A preview build runs the branch's code with that account's build token, so previews live
+# in an account where the token has no production authority. No Cloudflare credential lives
+# in GitHub at all. The merge to main is the promotion from dev to production, and the
+# ruleset on main is what gates it.
+#
+# This file is the same for both accounts. Dashboard build settings, Settings > Build:
+#   Build command     (empty, there is no build step)
+#   Deploy command    npx wrangler deploy --var COMMIT_SHA:$WORKERS_CI_COMMIT_SHA --var BRANCH:$WORKERS_CI_BRANCH
+#   Preview command   npx wrangler preview --var COMMIT_SHA:$WORKERS_CI_COMMIT_SHA --var BRANCH:$WORKERS_CI_BRANCH
+#
+# The custom domain is added in the dashboard when O.J. cuts DNS over from GitHub Pages;
+# until then the Worker answers on workers.dev only, so nothing here can change where
+# learnwithoj.com points.
+
 name = "learnwithoj-com"
-compatibility_date = "2026-10-23"
-pages_build_output_dir = "."
+main = "functions/worker.js"
+compatibility_date = "2026-11-12"
+
+# workers.dev hostname on, which is also what makes Preview URLs resolve.
+workers_dev = true
+
+[assets]
+# The repo root is the site. .assetsignore lists what stays out of the upload.
+directory = "."
+binding = "ASSETS"
+# Everything is served from assets first except these paths, which the Worker owns.
+run_worker_first = ["/api/*"]
+# /showcase serves showcase.html, and a trailing slash redirects to the clean path.
+html_handling = "auto-trailing-slash"
+# Serve 404.html with a 404 status once the page exists. Until then a miss is a plain 404.
+not_found_handling = "404-page"
+
+[observability]
+enabled = true
+
+# Lets /api/health report which version is answering, with no deploy-time wiring.
+[version_metadata]
+binding = "CF_VERSION_METADATA"
+
+# Previews do not inherit API bindings from the top level, so each one a Preview needs is
+# repeated here. Give a storage binding its own preview resource under this table (for
+# example a separate D1 database) the day production gets one.
+[previews.version_metadata]
+binding = "CF_VERSION_METADATA"

@@ -1,0 +1,20 @@
+# What stays out of the static asset upload. The repo root is the site, so without this
+# list the working agreement, the checks and the review config would be served to anyone
+# who asked for them, which GitHub Pages was doing until 12 November 2026.
+.git
+.github
+.githooks
+.claude
+.wrangler
+.DS_Store
+.gitignore
+.coderabbit.yaml
+.assetsignore
+*.md
+CNAME
+docs
+functions
+tools
+lychee.toml
+lighthouserc.json
+wrangler.toml
