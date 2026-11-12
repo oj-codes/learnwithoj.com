@@ -6,7 +6,8 @@
 // functions/api/ beside health.js and get a line in the table below.
 //
 // Anything this Worker does not recognize falls through to the assets binding, so a miss
-// gets the site's 404 page rather than a bare response.
+// gets the site's 404 page rather than a bare response. Deploys and previews run through
+// Workers Builds, see wrangler.toml.
 
 import { health } from "./api/health.js";
 

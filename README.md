@@ -17,7 +17,7 @@ A static site for [learnwithoj.com](https://learnwithoj.com) offering career str
 - Stripe Checkout for payments
 - Kit (ConvertKit) for email capture
 - GoatCounter for privacy-friendly analytics
-- Cloudflare Workers for hosting, with a Preview per pull request
+- Cloudflare Workers for hosting, with a Preview per pull request through Workers Builds
 
 ## Project Structure
 
@@ -44,4 +44,4 @@ Then open `http://localhost:8000` in your browser.
 
 ## Deployment
 
-Every pull request gets its own Workers Preview from `.github/workflows/deploy.yaml`, posted as a comment on the PR. A merge to `main` deploys production the same way. `.github/workflows/ci.yaml` still deploys GitHub Pages, which serves the custom domain until DNS moves to the Worker.
+Cloudflare Workers Builds watches the repo. Every pull request branch gets its own Workers Preview, posted as a comment on the PR, and a merge to `main` deploys production. No deploy credential lives in this repo. `.github/workflows/ci.yaml` still deploys GitHub Pages, which serves the custom domain until DNS moves to the Worker.

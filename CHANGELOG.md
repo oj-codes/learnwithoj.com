@@ -7,7 +7,7 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com), and th
 ## [Unreleased]
 ### Added
 - Cloudflare Workers hosting. `functions/worker.js` serves the static site and runs first under `/api/*`, `.assetsignore` keeps the docs, tools and configs off the site (GitHub Pages served `CLAUDE.md` and `wrangler.toml` to anyone who asked), and `/api/health` reports the deployed commit
-- A Deploy workflow. Every pull request from this repo gets its own Workers Preview at a stable URL, posted as a comment on the PR and deleted when it closes. A merge to `main` re-runs the fast checks on the merge commit and deploys production. GitHub Pages keeps serving the domain until DNS moves
+- Deploys through Cloudflare Workers Builds. Every branch gets its own Workers Preview at a stable URL, posted on the PR by the Cloudflare app, and a merge to `main` deploys production. No Cloudflare credential lives in GitHub, after Codex's security review of PR #42 showed that a preview job holding a deploy token can be rewritten by any branch that runs it. GitHub Pages keeps serving the domain until DNS moves
 - The Checks workflow gains two jobs. One lints the workflows (actionlint, zizmor) and verifies `actions.lock`. One fails any PR that changes `agents/` unless its title starts with `regenerate /agents`
 - `actions.lock` pins every action to a commit (GitHub workflow lockfiles, GA 28 October 2026), Dependabot updates the actions weekly, and an OpenSSF Scorecard workflow publishes the badge in the README
 - `SECURITY.md` with private vulnerability reporting, current site boundaries and security review guidance

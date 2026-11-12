@@ -26,7 +26,7 @@ Vercel, not "good enough".
 - `functions/`, the Worker and its `/api/*` routes (`/api/health` today, Stripe webhook and signed downloads later)
 - `.assetsignore`, what stays out of the asset upload, so the docs and tools above never reach the site
 - `tools/`, the checks (`tools/check`, `tools/last-reviewed`, `tools/policy-pii`)
-- `.github/workflows/`, `checks.yaml` runs the checks on every PR, `deploy.yaml` gives every PR a Workers Preview and deploys `main` to production, `ci.yaml` is GitHub Pages until DNS moves, `actions.lock` pins every action to a commit
+- `.github/workflows/`, `checks.yaml` runs the checks on every PR, `ci.yaml` is GitHub Pages until DNS moves, `actions.lock` pins every action to a commit. Deploys and previews run through Cloudflare Workers Builds, not here, so no Cloudflare credential is in GitHub
 
 ## How to run
 
@@ -55,7 +55,7 @@ page touched, `CHANGELOG.md` has an entry, a new page has a row in the pages tab
   committer. New commits use `Agent-Session:` and `Model:` trailers. Historical
   `Claude-Session:` trailers stay intact, and session-recovery tools should recognize both.
 - Branch per change, PR body signed with your name, `oj-codes` assigned, the preview URL from the
-  Deploy workflow's comment copied into the description. She merges with a merge commit.
+  Cloudflare app's comment copied into the description. She merges with a merge commit.
 - Human review is the final merge decision. Wait for O.J.'s explicit approval comment on
   that PR. Green checks, a clean bot review or another PR's approval do not authorize a
   merge. Surface substantive changes after approval and obtain renewed approval for them.

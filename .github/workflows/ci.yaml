@@ -1,5 +1,5 @@
 # GitHub Pages, the hosting learnwithoj.com still points at. It stays until O.J. cuts DNS
-# over to the Worker that deploy.yaml publishes, then this file goes. Until that day both
+# over to the Worker that Workers Builds publishes, then this file goes. Until that day both
 # deploy on every merge, and the one the domain points at is what visitors see.
 
 name: Deploy to GitHub Pages

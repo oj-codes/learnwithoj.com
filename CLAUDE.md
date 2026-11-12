@@ -52,7 +52,7 @@ The site itself is the proof of capability. Every visitor is making a snap judgm
 
 - Plain HTML, CSS, vanilla JS. No framework, no build step, no bundler.
 - Hosted on Cloudflare Workers with static assets. `wrangler.toml` is the Worker config, `functions/worker.js` is the Worker, and `.assetsignore` keeps the repo's internals off the site. `wrangler dev` previews the site with the Workers runtime. GitHub Pages (`ci.yaml`, `CNAME`) keeps serving learnwithoj.com until O.J. cuts DNS over to the Worker, then both go.
-- Dev environment, since 12 November 2026. Every PR gets its own Workers Preview at a stable URL, posted as a comment on the PR by the Deploy workflow. A PR is a complete thing. Put the preview link in the description, O.J. and Codex comment on the preview, iterate on the branch, she merges, and main deploys to production.
+- Dev environment, since 12 November 2026. Workers Builds is connected to this repo on Cloudflare's side, so a push to main deploys production and every other branch gets its own Workers Preview at a stable URL, posted on the PR by the Cloudflare GitHub app. No Cloudflare credential lives in GitHub. A PR is a complete thing. Put the preview link in the description, O.J. and Codex comment on the preview, iterate on the branch, she merges, and main deploys to production.
 - Deploys via `.github/workflows/ci.yaml` on push to `main`.
 - Stripe Checkout for paid B2C services (links live in `index.html` `#pricing`). Not used on B2B pages.
 - Kit (ConvertKit) for the email-gated AI guide. Form UID: `36c7f50077`.
@@ -71,7 +71,7 @@ tools/policy-pii/       PII and name gate over the generated agents/ pages. Allo
 functions/              The Worker (worker.js) and its routes under functions/api/. /api/health today, the Stripe webhook and signed downloads later
 wrangler.toml           Cloudflare Workers configuration, the repo root is the assets directory
 .assetsignore           What stays out of the asset upload: the docs, the tools, the configs
-.github/workflows/      checks.yaml on every PR, deploy.yaml for previews and production, ci.yaml for GitHub Pages until cutover, scorecard.yaml weekly. actions.lock pins every action to a commit
+.github/workflows/      checks.yaml on every PR, ci.yaml for GitHub Pages until cutover, scorecard.yaml weekly. actions.lock pins every action to a commit. Deploys are not here, Workers Builds runs them
 AGENTS.md               Code review rules for Codex and CodeRabbit. Points at this file, adds nothing to it
 .githooks/              pre-commit runs tools/check on staged files. Enable with git config core.hooksPath .githooks
 lychee.toml             Link checker config. lighthouserc.json is the Lighthouse CI config. .coderabbit.yaml is CodeRabbit's

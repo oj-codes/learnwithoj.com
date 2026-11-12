@@ -75,7 +75,7 @@ reviews:
         has a prefers-reduced-motion branch.
     - path: "functions/**"
       instructions: >-
-        The Cloudflare Worker and its routes. Secrets come from env bindings, never code. Validate every
+        The Cloudflare Worker and its routes, deployed by Workers Builds. Secrets come from env bindings, never code. Validate every
         input, verify Stripe webhook signatures, return no-store on dynamic responses, never
         log request bodies. No npm dependencies, the Workers runtime APIs only.
     - path: "tools/**"

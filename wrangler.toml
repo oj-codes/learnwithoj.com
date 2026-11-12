@@ -4,10 +4,20 @@
 # Local preview with the Workers runtime:   wrangler dev
 # Validate without uploading:               wrangler deploy --dry-run --outdir /tmp/lwoj-dry
 #
-# Production deploys from .github/workflows/deploy.yaml on every merge to main, and every
-# pull request gets its own Preview (wrangler preview --name pr-N). The custom domain is
-# added in the dashboard when O.J. cuts DNS over from GitHub Pages; until then the Worker
-# answers on workers.dev only, so nothing here can change where learnwithoj.com points.
+# Deploys run on Cloudflare's side through Workers Builds, connected to this repo in the
+# dashboard. A push to main deploys production, a push to any other branch creates or
+# updates a Preview at a stable URL, and the Cloudflare GitHub app posts that URL on the
+# pull request. No Cloudflare credential lives in GitHub, which is the point: a workflow
+# that holds a deploy token can be rewritten by any branch that runs it (Codex, PR 42).
+#
+# Dashboard build settings, Settings > Build on the Worker:
+#   Build command     (empty, there is no build step)
+#   Deploy command    npx wrangler deploy --var COMMIT_SHA:$WORKERS_CI_COMMIT_SHA --var BRANCH:$WORKERS_CI_BRANCH
+#   Preview command   npx wrangler preview
+#
+# The custom domain is added in the dashboard when O.J. cuts DNS over from GitHub Pages;
+# until then the Worker answers on workers.dev only, so nothing here can change where
+# learnwithoj.com points.
 
 name = "learnwithoj-com"
 main = "functions/worker.js"
@@ -29,6 +39,10 @@ not_found_handling = "404-page"
 
 [observability]
 enabled = true
+
+# Lets /api/health report which version is answering, with no deploy-time wiring.
+[version_metadata]
+binding = "CF_VERSION_METADATA"
 
 # Previews use the top-level configuration as is. Give a binding its own preview resource
 # under this table (for example a separate D1 database) the day production gets one.
