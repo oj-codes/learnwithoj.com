@@ -1,13 +1,13 @@
-// Cloudflare Pages Function, served at /api/health.
+// GET /api/health
 //
-// The first server-side route on the site. It answers with the commit and branch that
-// Pages deployed, so a watcher can tell which build is live without reading the HTML.
-// The Stripe webhook and the signed download handler for the marketplace land beside it.
-export function onRequestGet({ env }) {
+// The first server-side route on the site. It answers with the commit and branch the
+// deploy workflow passed in as vars, so a watcher can tell which build is live without
+// reading the HTML. Locally, under wrangler dev, both are null.
+export function health(request, env) {
   const body = {
     ok: true,
-    commit: env.CF_PAGES_COMMIT_SHA || null,
-    branch: env.CF_PAGES_BRANCH || null,
+    commit: env.COMMIT_SHA || null,
+    branch: env.BRANCH || null,
   };
   return new Response(JSON.stringify(body), {
     headers: {

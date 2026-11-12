@@ -6,8 +6,15 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com), and th
 
 ## [Unreleased]
 ### Added
+- Cloudflare Workers hosting. `functions/worker.js` serves the static site and runs first under `/api/*`, `.assetsignore` keeps the docs, tools and configs off the site (GitHub Pages served `CLAUDE.md` and `wrangler.toml` to anyone who asked), and `/api/health` reports the deployed commit
+- A Deploy workflow. Every pull request from this repo gets its own Workers Preview at a stable URL, posted as a comment on the PR and deleted when it closes. A merge to `main` re-runs the fast checks on the merge commit and deploys production. GitHub Pages keeps serving the domain until DNS moves
+- The Checks workflow gains two jobs. One lints the workflows (actionlint, zizmor) and verifies `actions.lock`. One fails any PR that changes `agents/` unless its title starts with `regenerate /agents`
+- `actions.lock` pins every action to a commit (GitHub workflow lockfiles, GA 28 October 2026), Dependabot updates the actions weekly, and an OpenSSF Scorecard workflow publishes the badge in the README
 - `SECURITY.md` with private vulnerability reporting, current site boundaries and security review guidance
 ### Changed
+- Workflows deny every permission at the top and grant per job, checkouts don't persist credentials, and the actions move to their current majors (checkout v7, Pages actions v5 and v6)
+- PRs merge with a merge commit rather than a rebase, O.J.'s call 12 November 2026. `CLAUDE.md` and `AGENTS.md` say so
+- Links to `/resources.html` become `/resources`, because the Worker serves clean paths and redirects the `.html` form
 - `AGENTS.md` clarifies generated updates, decorative image alt text, approved purchase integrations and the evidence expected in reviews and PR descriptions
 - New commits use `Agent-Session` for attribution across harnesses, and agents surface mismatched labels before writing durable records
 - Merge approval requires O.J.'s explicit comment on the particular PR after human review

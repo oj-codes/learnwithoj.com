@@ -1,11 +1,35 @@
-# Cloudflare Pages configuration.
+# Cloudflare Workers configuration. The site is static assets served by a Worker, with the
+# Worker running first only under /api/*.
 #
-# The site is plain HTML with no build step, so the output directory is the repo root,
-# the same thing GitHub Pages uploads today. Local preview with the Functions runtime:
+# Local preview with the Workers runtime:   wrangler dev
+# Validate without uploading:               wrangler deploy --dry-run --outdir /tmp/lwoj-dry
 #
-#   wrangler pages dev .
-#
-# The project name is what the Cloudflare dashboard shows. Change it there and here together.
+# Production deploys from .github/workflows/deploy.yaml on every merge to main, and every
+# pull request gets its own Preview (wrangler preview --name pr-N). The custom domain is
+# added in the dashboard when O.J. cuts DNS over from GitHub Pages; until then the Worker
+# answers on workers.dev only, so nothing here can change where learnwithoj.com points.
+
 name = "learnwithoj-com"
-compatibility_date = "2026-10-23"
-pages_build_output_dir = "."
+main = "functions/worker.js"
+compatibility_date = "2026-11-12"
+
+# workers.dev hostname on, which is also what makes Preview URLs resolve.
+workers_dev = true
+
+[assets]
+# The repo root is the site. .assetsignore lists what stays out of the upload.
+directory = "."
+binding = "ASSETS"
+# Everything is served from assets first except these paths, which the Worker owns.
+run_worker_first = ["/api/*"]
+# /showcase serves showcase.html, and a trailing slash redirects to the clean path.
+html_handling = "auto-trailing-slash"
+# Serve 404.html with a 404 status once the page exists. Until then a miss is a plain 404.
+not_found_handling = "404-page"
+
+[observability]
+enabled = true
+
+# Previews use the top-level configuration as is. Give a binding its own preview resource
+# under this table (for example a separate D1 database) the day production gets one.
+[previews]

@@ -6,6 +6,10 @@ timeout = 15
 max_retries = 1
 max_concurrency = 8
 
+# The Worker serves clean paths, /resources for resources.html, and the pages link that way.
+# Offline, lychee resolves a bare path by trying these extensions.
+fallback_extensions = ["html"]
+
 exclude = [
   # The hero intro slot is hidden until the HeyGen recording lands. Remove when it does.
   "assets/oj-intro\\.mp4",

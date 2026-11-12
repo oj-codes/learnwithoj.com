@@ -1,18 +1,18 @@
+# GitHub Pages, the hosting learnwithoj.com still points at. It stays until O.J. cuts DNS
+# over to the Worker that deploy.yaml publishes, then this file goes. Until that day both
+# deploy on every merge, and the one the domain points at is what visitors see.
+
 name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main  # or 'master' if that's your default branch
+    branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+permissions: {}
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
 
 jobs:
@@ -21,19 +21,24 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/checkout@v7.0.1
         with:
-          path: '.'
-      
+          persist-credentials: false
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v6.0.0
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: "."
+
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
-
+        uses: actions/deploy-pages@v5.0.1

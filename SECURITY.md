@@ -12,12 +12,15 @@ Actions logs. Use a private report for sensitive evidence.
 ## Scope and current implementation
 
 This repository is the public marketing website. It contains plain HTML, one stylesheet,
-vanilla JavaScript, generated agent-policy pages, and Cloudflare Pages Functions.
+vanilla JavaScript, generated agent-policy pages, and a Cloudflare Worker.
 
-The GitHub Pages workflow currently publishes the repository root. Cloudflare Pages
-configuration is checked in for the hosting move. The implemented Function is
-`functions/api/health.js`, which returns a health flag and deployment commit and branch
-metadata with `Cache-Control: no-store`.
+The GitHub Pages workflow publishes the repository root and keeps serving the domain until
+DNS moves to the Worker. The Workers deploy uploads the root as static assets minus
+`.assetsignore`, so the working agreement, the checks and the configs are not served. The
+Worker runs first only under `/api/*`. The implemented route is `/api/health`, which returns
+a health flag and the deployed commit and branch with `Cache-Control: no-store`. Every pull
+request from this repository gets a public Workers Preview on `workers.dev`, sent with
+`X-Robots-Tag: noindex`; forks get none, and the Cloudflare token is never exposed to one.
 
 Approved Stripe Checkout links and the Kit form are live B2C integrations. Their providers
 handle the current checkout and email submission flows. This repo does not currently

@@ -1,22 +1,40 @@
+# The checks every PR has to pass before O.J. merges it. The same four jobs tools/check runs
+# locally, plus the two that only make sense on GitHub: the workflow linters, and the gate
+# that keeps hand edits out of the generated agents/ pages.
+#
+# Job names are referenced by the ruleset on main as required checks. Rename one here and
+# the ruleset has to change with it, so the four tools/check names stay as they are.
+#
+# Actions are referenced by tag for readability. The exact commits that run are recorded in
+# actions.lock beside this file (gh actions-lock), and Dependabot updates both together.
+
 name: Checks
 
 on:
   pull_request:
   workflow_dispatch:
 
-permissions:
-  contents: read
+# Deny everything at the top. Each job grants only what it reads.
+permissions: {}
+
+# A newer push to the same PR cancels the run in progress.
+concurrency:
+  group: checks-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   last-updated:
     name: Living pages carry the date git says
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout with history
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
 
       - name: Check the dates
         run: python3 tools/last-reviewed/check.py
@@ -24,15 +42,18 @@ jobs:
   local-checks:
     name: Names, HTML validity (the same run as tools/check)
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       # tools/check runs the living-pages date check too, and that reads dates from git, so
       # this job needs the same full history as the job above. A shallow checkout dates
       # every file to the merge commit, which only passes on the day a page last changed.
       - name: Checkout with history
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
 
       - name: Install HTML Tidy
         run: sudo apt-get update -q && sudo apt-get install -y -q tidy
@@ -43,11 +64,15 @@ jobs:
   links:
     name: Internal links resolve
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
 
       - name: lychee, offline
-        uses: lycheeverse/lychee-action@v2
+        uses: lycheeverse/lychee-action@v2.9.0
         with:
           args: --offline --no-progress --config lychee.toml --root-dir ${{ github.workspace }} '*.html' 'agents/**/*.html'
           fail: true
@@ -55,12 +80,76 @@ jobs:
   lighthouse:
     name: Lighthouse on the main pages
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Lighthouse CI
-        uses: treosh/lighthouse-ci-action@v12
+        uses: treosh/lighthouse-ci-action@12.6.2
         with:
           configPath: lighthouserc.json
           uploadArtifacts: true
           temporaryPublicStorage: true
+
+  workflows:
+    name: Workflows are pinned, linted and least-privilege
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # zizmor uploads its findings as SARIF so they show under Security, Code scanning.
+      security-events: write
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      # The lockfile has to match the workflows. --no-fix writes nothing and exits 1 when a
+      # workflow references an action the lockfile does not pin.
+      - name: The lockfile covers every action
+        run: gh actions-lock --no-fix
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: actionlint, workflow syntax and expression mistakes
+        run: docker run --rm -v "${PWD}:/repo" --workdir /repo rhysd/actionlint:1.7.12 -color
+
+      - name: zizmor, workflow security
+        uses: zizmorcore/zizmor-action@v0.8.1
+        with:
+          min-severity: low
+
+  generated:
+    name: Generated pages only change in a regeneration
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      # agents/** is built from the internal repo by its publisher and never edited here by
+      # hand. A regeneration PR announces itself in the title, so anything else touching those
+      # files is a hand edit and fails. Same rule CodeRabbit's custom check describes, enforced
+      # where it cannot be skipped.
+      - name: Hand edits under agents/ fail
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          if [ -z "$BASE" ]; then echo "not a pull request, nothing to compare"; exit 0; fi
+          changed=$(git diff --name-only "$BASE...$HEAD" -- agents/ || true)
+          if [ -z "$changed" ]; then echo "agents/ untouched"; exit 0; fi
+          case "$TITLE" in
+            "regenerate /agents"*) echo "regeneration PR, agents/ changes allowed"; exit 0 ;;
+          esac
+          echo "This PR changes generated pages without a 'regenerate /agents' title:"
+          printf '%s\n' "$changed" | sed 's/^/    /'
+          echo
+          echo "Change the source in the internal repo and regenerate with the publisher."
+          exit 1

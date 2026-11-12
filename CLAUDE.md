@@ -51,7 +51,8 @@ The site itself is the proof of capability. Every visitor is making a snap judgm
 ## Tech stack
 
 - Plain HTML, CSS, vanilla JS. No framework, no build step, no bundler.
-- Hosted on GitHub Pages. `CNAME` points to `learnwithoj.com`. The move to Cloudflare Pages is in progress: `wrangler.toml` and `functions/` are in place and `wrangler pages dev .` previews the site with the Functions runtime, and the DNS cutover happens once O.J. has connected the repo in the Cloudflare dashboard and approved the preview.
+- Hosted on Cloudflare Workers with static assets. `wrangler.toml` is the Worker config, `functions/worker.js` is the Worker, and `.assetsignore` keeps the repo's internals off the site. `wrangler dev` previews the site with the Workers runtime. GitHub Pages (`ci.yaml`, `CNAME`) keeps serving learnwithoj.com until O.J. cuts DNS over to the Worker, then both go.
+- Dev environment, since 12 November 2026. Every PR gets its own Workers Preview at a stable URL, posted as a comment on the PR by the Deploy workflow. A PR is a complete thing. Put the preview link in the description, O.J. and Codex comment on the preview, iterate on the branch, she merges, and main deploys to production.
 - Deploys via `.github/workflows/ci.yaml` on push to `main`.
 - Stripe Checkout for paid B2C services (links live in `index.html` `#pricing`). Not used on B2B pages.
 - Kit (ConvertKit) for the email-gated AI guide. Form UID: `36c7f50077`.
@@ -67,8 +68,10 @@ functional-emotions.html   The Desperation Dial explainer, first of a series. Sp
 tools/check             One command for every local check, the same ones the Checks workflow runs. Run it before pushing
 tools/last-reviewed/    Derives the "Last updated" date on living pages from git, run by the Checks workflow on PRs
 tools/policy-pii/       PII and name gate over the generated agents/ pages. Allowlist only, copied from the internal repo. No blocklist here, this repo is public
-functions/              Cloudflare Pages Functions. /api/health today, the Stripe webhook and signed downloads later
-wrangler.toml           Cloudflare Pages configuration, output directory is the repo root
+functions/              The Worker (worker.js) and its routes under functions/api/. /api/health today, the Stripe webhook and signed downloads later
+wrangler.toml           Cloudflare Workers configuration, the repo root is the assets directory
+.assetsignore           What stays out of the asset upload: the docs, the tools, the configs
+.github/workflows/      checks.yaml on every PR, deploy.yaml for previews and production, ci.yaml for GitHub Pages until cutover, scorecard.yaml weekly. actions.lock pins every action to a commit
 AGENTS.md               Code review rules for Codex and CodeRabbit. Points at this file, adds nothing to it
 .githooks/              pre-commit runs tools/check on staged files. Enable with git config core.hooksPath .githooks
 lychee.toml             Link checker config. lighthouserc.json is the Lighthouse CI config. .coderabbit.yaml is CodeRabbit's
@@ -208,8 +211,8 @@ These are real and have been validated. Use as needed.
 - The 1% for the Planet footer block is a compliance surface. Primary logo only, at least 80px tall, linked, next to the business name, with their precertification wording. The wording is theirs and any rewrite needs O.J.'s sign-off against the live guidelines. Never the Certified Business seal, never the Impact Partner mark, no dollar figure, no "certified". The rules are filed in the internal repo under `content/branding`.
 - Run the oj-voice linter on every page before shipping copy. It lives in the internal repo, not here, and gets invoked from there. `tools/check --voice` does that when the internal repo sits beside this one as `../the-grove`.
 - Run `tools/check` before pushing, and enable the pre-commit hook once per clone with `git config core.hooksPath .githooks`. CI runs the same checks, so a green local run is a green PR.
-- Agents author their own commits, `git commit --author="Name <name@learnwithoj.com>"`, and O.J. stays the committer. New commits use `Agent-Session:` and `Model:` trailers, no harness attribution lines. Corrected 30 October 2026 at O.J.'s instruction. This previously required `Claude-Session:` regardless of harness, which mislabeled Codex sessions. Historical trailers stay intact and session-recovery tools should recognize both names. PRs merge by rebase so per-commit authorship survives on `main`. Policy since 19 October 2026; the eight October squash commits before it were rewritten the same day, see `docs/commit-map-20261019.md` once it lands.
-- For local preview: `python3 -m http.server 8000`, or `wrangler pages dev .` when a Pages Function is involved. The Kit form won't fully work locally (needs Kit's JS to load against the live form), but it should render.
+- Agents author their own commits, `git commit --author="Name <name@learnwithoj.com>"`, and O.J. stays the committer. New commits use `Agent-Session:` and `Model:` trailers, no harness attribution lines. Corrected 30 October 2026 at O.J.'s instruction. This previously required `Claude-Session:` regardless of harness, which mislabeled Codex sessions. Historical trailers stay intact and session-recovery tools should recognize both names. PRs merge with a merge commit, her call 12 November 2026, because the full branch history is what agents read and verify against. Rebase was the policy from 19 October to 12 November; the eight October squash commits before that were rewritten the same day, see `docs/commit-map-20261019.md`.
+- For local preview: `python3 -m http.server 8000`, or `wrangler dev` when the Worker is involved. The Kit form won't fully work locally (needs Kit's JS to load against the live form), but it should render.
 
 ## Performance and accessibility expectations
 
