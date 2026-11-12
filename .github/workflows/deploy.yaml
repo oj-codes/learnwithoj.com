@@ -125,7 +125,9 @@ jobs:
 
   production:
     name: Deploy main to production
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    # A manual run is allowed only from main itself. Dispatching the workflow on a feature
+    # branch would otherwise check out and publish that branch (Codex, PR 42).
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     environment:
       name: production

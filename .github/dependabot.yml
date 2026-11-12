@@ -10,6 +10,10 @@ updates:
       day: monday
       time: "07:00"
       timezone: America/New_York
+    # A new release waits a week before Dependabot proposes it, so a hijacked tag that gets
+    # yanked in its first days never reaches a PR here.
+    cooldown:
+      default-days: 7
     groups:
       actions:
         patterns: ["*"]
