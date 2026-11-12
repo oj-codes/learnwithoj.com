@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Run the site's checks locally, the same ones the Checks workflow runs on a PR.
 
-    tools/check              dates, names, HTML validity, internal links
+    tools/check              dates, sitemap, names, HTML validity, internal links
     tools/check --links      also follow every external link (network, slower)
     tools/check --no-links   skip links, which CI does because lychee runs there as its own job
     tools/check --lighthouse also run Lighthouse on the main pages (Chrome, slowest)
@@ -52,6 +52,13 @@ def html_files(staged):
 def check_dates():
     say("Living pages carry the date git says")
     r = run([sys.executable, "tools/last-reviewed/check.py"])
+    print((r.stdout + r.stderr).strip())
+    return r.returncode == 0
+
+
+def check_sitemap():
+    say("sitemap.xml matches the pages in the tree")
+    r = run([sys.executable, "tools/sitemap/build.py", "--check"])
     print((r.stdout + r.stderr).strip())
     return r.returncode == 0
 
@@ -171,7 +178,7 @@ def main():
     os.chdir(REPO)
 
     files = html_files(a.staged)
-    results = [check_dates(), check_names()]
+    results = [check_dates(), check_sitemap(), check_names()]
     if files:
         results.append(check_html(files))
     if not a.no_links:

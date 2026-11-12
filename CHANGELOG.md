@@ -6,6 +6,7 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com), and th
 
 ## [Unreleased]
 ### Added
+- The agent-friendly launch set. `robots.txt` carries the Content Signals line she chose on 27 October (`search=yes, ai-input=yes, ai-train=no`), `sitemap.xml` is generated from the tree by `tools/sitemap/build.py` and checked by `tools/check`, `llms.txt` maps the site for agents, and `404.html` gives a miss a real page in the site's style
 - `SECURITY.md` with private vulnerability reporting, current site boundaries and security review guidance
 ### Changed
 - `AGENTS.md` clarifies generated updates, decorative image alt text, approved purchase integrations and the evidence expected in reviews and PR descriptions
