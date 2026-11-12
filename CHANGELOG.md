@@ -14,7 +14,7 @@ The format is inspired by [Keep a Changelog](https://keepachangelog.com), and th
 ### Changed
 - Workflows deny every permission at the top and grant per job, checkouts don't persist credentials, and the actions move to their current majors (checkout v7, Pages actions v5 and v6)
 - PRs merge with a merge commit rather than a rebase, O.J.'s call 12 November 2026. `CLAUDE.md` and `AGENTS.md` say so
-- Links to `/resources.html` become `/resources`, because the Worker serves clean paths and redirects the `.html` form
+- Links to `/resources.html` become `/resources` on the three service pages, because the Worker serves clean paths and redirects the `.html` form. The explainer keeps its link so its living date stays true
 - `AGENTS.md` clarifies generated updates, decorative image alt text, approved purchase integrations and the evidence expected in reviews and PR descriptions
 - New commits use `Agent-Session` for attribution across harnesses, and agents surface mismatched labels before writing durable records
 - Merge approval requires O.J.'s explicit comment on the particular PR after human review

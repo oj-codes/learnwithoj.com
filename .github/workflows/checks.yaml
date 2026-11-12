@@ -109,7 +109,9 @@ jobs:
       # The lockfile has to match the workflows. --no-fix writes nothing and exits 1 when a
       # workflow references an action the lockfile does not pin.
       - name: The lockfile covers every action
-        run: gh actions-lock --no-fix
+        run: |
+          gh extension install github/gh-actions-lock
+          gh actions-lock --no-fix
         env:
           GH_TOKEN: ${{ github.token }}
 
