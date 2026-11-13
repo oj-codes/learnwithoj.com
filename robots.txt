@@ -1,0 +1,16 @@
+# learnwithoj.com
+#
+# Content Signals, O.J.'s call 27 October 2026: agents may index the site and read it as live
+# input so they can navigate and cite it, and nothing here is offered for training models.
+# Her words: "the training should be off but search and input should be on so ai can navigate
+# but i dont want them harvesting our data and shit for training models when i dont 100% agree
+# with the practices they use to train models in the first place."
+#
+# A signal is a stated preference under the Content Signals Policy (contentsignals.org), not
+# a technical block.
+
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+Allow: /
+
+Sitemap: https://learnwithoj.com/sitemap.xml

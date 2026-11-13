@@ -65,6 +65,10 @@ showcase.html           B2B referral page (post-event landing)
 resources.html          Free resources page
 functional-emotions.html   The Desperation Dial explainer, first of a series. Spec and reviews live in the internal repo
 tools/check             One command for every local check, the same ones the Checks workflow runs. Run it before pushing
+tools/sitemap/          Writes sitemap.xml from the pages in the tree, dated from git. tools/check fails when it drifts
+404.html                The not-found page. Absolute paths only, since it is served at whatever address was missing
+robots.txt              Content Signals line (search=yes, ai-input=yes, ai-train=no, her call 27 Oct 2026) and the sitemap pointer
+llms.txt                The short agent-readable map of the site
 tools/last-reviewed/    Derives the "Last updated" date on living pages from git, run by the Checks workflow on PRs
 tools/policy-pii/       PII and name gate over the generated agents/ pages. Allowlist only, copied from the internal repo. No blocklist here, this repo is public
 functions/              Cloudflare Pages Functions. /api/health today, the Stripe webhook and signed downloads later
@@ -93,6 +97,7 @@ The `CLAUDE-*-v1.md` files are historical or active build specs. Read them for c
 | `resources.html` | `/resources` | Same as index | Get the free AI-Assisted Development guide |
 | `showcase.html` | `/showcase` | Founders, operators, investors, and peers met at networking events. People considering hiring O.J. for B2B work or referring her to someone who would | Decide if she's worth hiring or referring, then act |
 | `functional-emotions.html` | `/functional-emotions` | Smart, curious, non-technical readers who want to understand one real AI finding. Neither service audience | Read an explainer, share it, and leave with the company's AI policy as the worked example. No pivot to either service |
+| `404.html` | any address that does not exist | Anyone who followed a stale or mistyped link, human or agent | Learn the page is gone and get to the right one in one click. No pitch |
 
 Critically: visitors to `/showcase` did NOT come looking for resume reviews. They scanned a QR code from a pitch room or got the link from a referral. The page must speak to them, not pivot them to B2C services.
 

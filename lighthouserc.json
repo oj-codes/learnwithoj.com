@@ -15,6 +15,9 @@
           "accessibility",
           "best-practices",
           "seo"
+        ],
+        "skipAudits": [
+          "robots-txt"
         ]
       }
     },

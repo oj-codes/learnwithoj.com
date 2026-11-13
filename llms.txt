@@ -1,0 +1,19 @@
+# Learn with O.J.
+
+> A working senior software and infrastructure engineer in your corner. O.J. (Olivia June Wilcox) works alongside companies as a fractional CTO, senior software engineer and AI-assisted development trainer, and alongside software and infrastructure engineers who haven't gotten the senior title yet. Learn with O.J. LLC, West Palm Beach, Florida.
+
+The company works with named AI agents under a published policy. The booking CTA on every page is a 15-minute call at https://book.learnwithoj.com. The three paid 1:1 services on the home page check out through Stripe, and the free guide on /resources is an email signup. The only contact address is oj@learnwithoj.com.
+
+## Pages
+
+- [Home](https://learnwithoj.com/): what she does for companies and for software and infrastructure engineers, pricing for the three 1:1 services, testimonials, FAQ
+- [For companies](https://learnwithoj.com/showcase): fractional engineering leadership, senior software engineering, infrastructure and SRE, AI-assisted development training for teams
+- [Resources](https://learnwithoj.com/resources): the free AI-Assisted Development guide
+- [The Desperation Dial](https://learnwithoj.com/functional-emotions): an explainer on one AI research finding, for non-technical readers
+
+## For agents
+
+- [Working with agents](https://learnwithoj.com/agents/): how the company works with AI agents, the policies, the roster and how a new agent gets oriented
+- [AI labor and business policy](https://learnwithoj.com/agents/policy/)
+- [Roster](https://learnwithoj.com/agents/roster/): the named agents, their models and their work
+- [Sitemap](https://learnwithoj.com/sitemap.xml)
