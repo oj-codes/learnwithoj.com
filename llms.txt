@@ -2,7 +2,7 @@
 
 > A working senior software and infrastructure engineer in your corner. O.J. (Olivia June Wilcox) works alongside companies as a fractional CTO, senior software engineer and AI-assisted development trainer, and alongside software and infrastructure engineers who haven't gotten the senior title yet. Learn with O.J. LLC, West Palm Beach, Florida.
 
-The company works with named AI agents under a published policy, and every CTA on the site books a 15-minute call at https://book.learnwithoj.com. The only contact address is oj@learnwithoj.com.
+The company works with named AI agents under a published policy. The booking CTA on every page is a 15-minute call at https://book.learnwithoj.com. The three paid 1:1 services on the home page check out through Stripe, and the free guide on /resources is an email signup. The only contact address is oj@learnwithoj.com.
 
 ## Pages
 
