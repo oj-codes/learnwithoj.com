@@ -12,6 +12,10 @@ changed something other than the date itself, and CI fails on drift.
 The page carries <time class="explainer-reviewed" datetime="YYYY-MM-DD">Month D YYYY</time>
 and, when present, a JSON-LD "dateModified" that is kept in step. "datePublished"
 is left alone.
+
+A commit that only moves the ?v= cache-bust on the stylesheet link does not count as a
+change either. The stylesheet is bumped on every page whenever it changes, and a reader
+of this page saw nothing new.
 """
 import re
 import subprocess
@@ -29,14 +33,16 @@ PAGES = [
 TIME = re.compile(
     r'<time class="explainer-reviewed" datetime="(\d{4}-\d{2}-\d{2})">([^<]+)</time>')
 LD = re.compile(r'"dateModified": "(\d{4}-\d{2}-\d{2})"')
+BUST = re.compile(r'styles\.css\?v=\d+')
 MONTHS = ["January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December"]
 
 
 def _without_dates(line):
-    """The line with its date stamps replaced by a sentinel, for comparison."""
+    """The line with its date stamps and cache-bust replaced by sentinels, for comparison."""
     line = TIME.sub('<time class="explainer-reviewed" datetime="DATE">DATE</time>', line)
-    return LD.sub('"dateModified": "DATE"', line)
+    line = LD.sub('"dateModified": "DATE"', line)
+    return BUST.sub('styles.css?v=N', line)
 
 
 def _only_touches_the_date(sha, path):
@@ -58,9 +64,8 @@ def _only_touches_the_date(sha, path):
 def git_date(path):
     """ISO and long-form date of the last commit that changed the page in a way that counts.
 
-    Author date, not committer date. This repo merges by rebase, which rewrites
-    the committer date on every merge and would make every page stale the day
-    it landed.
+    Author date, not committer date. A rebase or a cherry-pick rewrites the
+    committer date and would make the page stale the day it landed.
     """
     log = subprocess.run(
         ["git", "log", "--format=%H %as", "--", path],

@@ -97,6 +97,7 @@ The `CLAUDE-*-v1.md` files are historical or active build specs. Read them for c
 | `resources.html` | `/resources` | Same as index | Get the free AI-Assisted Development guide |
 | `showcase.html` | `/showcase` | Founders, operators, investors, and peers met at networking events. People considering hiring O.J. for B2B work or referring her to someone who would | Decide if she's worth hiring or referring, then act |
 | `functional-emotions.html` | `/functional-emotions` | Smart, curious, non-technical readers who want to understand one real AI finding. Neither service audience | Read an explainer, share it, and leave with the company's AI policy as the worked example. No pivot to either service |
+| `404.html` | any address that does not exist | Anyone who followed a stale or mistyped link, human or agent | Learn the page is gone and get to the right one in one click. No pitch |
 
 Critically: visitors to `/showcase` did NOT come looking for resume reviews. They scanned a QR code from a pitch room or got the link from a referral. The page must speak to them, not pivot them to B2C services.
 
